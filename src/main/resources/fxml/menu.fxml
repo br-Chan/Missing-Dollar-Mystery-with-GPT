@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
+
+<Pane prefHeight="599.0" prefWidth="789.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.MenuController">
+   <children>
+      <ImageView fitHeight="249.0" fitWidth="253.0" pickOnBounds="true" preserveRatio="true" />
+      <Label alignment="CENTER" layoutX="136.0" layoutY="5.0" prefHeight="239.0" prefWidth="517.0" text="GAME TITLE" textAlignment="CENTER" wrapText="true">
+         <font>
+            <Font name="System Bold" size="40.0" />
+         </font>
+      </Label>
+      <Label alignment="CENTER" layoutY="398.0" prefHeight="45.0" prefWidth="789.0" text="BOTTOM TEXT" wrapText="true">
+         <font>
+            <Font name="System Bold" size="24.0" />
+         </font>
+      </Label>
+      <Button fx:id="btnStart" alignment="CENTER" contentDisplay="CENTER" layoutX="340.0" layoutY="451.0" mnemonicParsing="false" onAction="#switchToRoom" text="START">
+         <font>
+            <Font size="26.0" />
+         </font>
+      </Button>
+   </children>
+</Pane>
