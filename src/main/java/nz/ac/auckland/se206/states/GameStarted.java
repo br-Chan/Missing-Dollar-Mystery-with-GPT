@@ -2,10 +2,10 @@ package nz.ac.auckland.se206.states;
 
 import java.io.IOException;
 import javafx.scene.input.MouseEvent;
-import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameStateContext;
 import nz.ac.auckland.se206.controllers.RoomController;
 import nz.ac.auckland.se206.speech.TextToSpeech;
+
 
 /**
  * The GameStarted state of the game. Handles the initial interactions when the game starts,
@@ -48,8 +48,7 @@ public class GameStarted implements GameState {
    */
   @Override
   public void handleGuessClick() throws IOException {
-    // TextToSpeech.speak("Make a guess, click on the " + context.getProfessionToGuess());
-    System.out.println("Make a guess, click on the " + context.getProfessionToGuess());
+    TextToSpeech.speak("Make a guess, click on the " + context.getProfessionToGuess());
     context.setState(context.getGuessingState());
   }
 }

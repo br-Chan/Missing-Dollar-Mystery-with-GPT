@@ -19,7 +19,6 @@ import nz.ac.auckland.apiproxy.chat.openai.ChatMessage;
 import nz.ac.auckland.apiproxy.chat.openai.Choice;
 import nz.ac.auckland.apiproxy.config.ApiProxyConfig;
 import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
-import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameStateContext;
 import nz.ac.auckland.se206.prompts.PromptEngineering;
 import nz.ac.auckland.se206.speech.TextToSpeech;
@@ -30,11 +29,8 @@ import nz.ac.auckland.se206.speech.TextToSpeech;
  */
 public class RoomController {
   @FXML private Rectangle rectPerson1;
-  @FXML private Rectangle rectPerson2;
-  @FXML private Rectangle rectPerson3;
   @FXML private Label lblProfession;
-  @FXML private Button btnGuess;
-
+  
   @FXML private TextArea txtaChat;
   @FXML private TextField txtInput;
   @FXML private Button btnSend;
@@ -96,18 +92,6 @@ public class RoomController {
     //setProfession(clickedRectangle.getId());
     context.handleRectangleClick(event, clickedRectangle.getId());
   }
-
-  /**
-   * Handles the guess button click event.
-   *
-   * @param event the action event triggered by clicking the guess button
-   * @throws IOException if there is an I/O error
-   */
-  @FXML
-  private void handleGuessClick(ActionEvent event) throws IOException {
-    context.handleGuessClick();
-  }
-
 
     /**
    * Generates the system prompt based on the profession.
