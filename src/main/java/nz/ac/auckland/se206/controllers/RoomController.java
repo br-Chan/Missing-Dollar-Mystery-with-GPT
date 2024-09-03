@@ -29,12 +29,9 @@ import nz.ac.auckland.se206.speech.TextToSpeech;
  * chat with customers and guess their profession.
  */
 public class RoomController {
-
-  @FXML private Rectangle rectCashier;
   @FXML private Rectangle rectPerson1;
   @FXML private Rectangle rectPerson2;
   @FXML private Rectangle rectPerson3;
-  @FXML private Rectangle rectWaitress;
   @FXML private Label lblProfession;
   @FXML private Button btnGuess;
 
