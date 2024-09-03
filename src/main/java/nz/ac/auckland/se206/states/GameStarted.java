@@ -4,6 +4,7 @@ import java.io.IOException;
 import javafx.scene.input.MouseEvent;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameStateContext;
+import nz.ac.auckland.se206.controllers.RoomController;
 import nz.ac.auckland.se206.speech.TextToSpeech;
 
 /**
@@ -13,14 +14,16 @@ import nz.ac.auckland.se206.speech.TextToSpeech;
 public class GameStarted implements GameState {
 
   private final GameStateContext context;
+  private final RoomController roomController;
 
   /**
    * Constructs a new GameStarted state with the given game state context.
    *
    * @param context the context of the game state
    */
-  public GameStarted(GameStateContext context) {
+  public GameStarted(GameStateContext context, RoomController roomController) {
     this.context = context;
+    this.roomController = roomController;
   }
 
   /**
@@ -42,7 +45,8 @@ public class GameStarted implements GameState {
         TextToSpeech.speak("Hi, let me know when you are ready to order!");
         return;
     }
-    App.openChat(event, context.getProfession(rectangleId));
+    //App.openChat(event, context.getProfession(rectangleId));
+    roomController.setProfession(context.getProfession(rectangleId));
   }
 
   /**
@@ -53,7 +57,8 @@ public class GameStarted implements GameState {
    */
   @Override
   public void handleGuessClick() throws IOException {
-    TextToSpeech.speak("Make a guess, click on the " + context.getProfessionToGuess());
+    // TextToSpeech.speak("Make a guess, click on the " + context.getProfessionToGuess());
+    System.out.println("Make a guess, click on the " + context.getProfessionToGuess());
     context.setState(context.getGuessingState());
   }
 }
