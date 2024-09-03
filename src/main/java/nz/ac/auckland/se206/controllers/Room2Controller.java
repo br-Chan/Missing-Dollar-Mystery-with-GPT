@@ -27,8 +27,8 @@ import nz.ac.auckland.se206.speech.TextToSpeech;
  * Controller class for the room view. Handles user interactions within the room where the user can
  * chat with customers and guess their profession.
  */
-public class RoomController extends AbstractRoomController {
-  @FXML private Rectangle rectPerson1;
+public class Room2Controller extends AbstractRoomController {
+  @FXML private Rectangle rectPerson2;
   @FXML private Label lblProfession;
   
   @FXML private TextArea txtaChat;
@@ -41,7 +41,7 @@ public class RoomController extends AbstractRoomController {
   private ChatCompletionRequest chatCompletionRequest;
   private String profession;
 
-  public RoomController() {
+  public Room2Controller() {
     context = new GameStateContext(this);
   }
 
