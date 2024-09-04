@@ -28,36 +28,22 @@ import nz.ac.auckland.se206.speech.TextToSpeech;
  * chat with customers and guess their profession.
  */
 public class Room2Controller extends AbstractRoomController {
-  @FXML private Rectangle rectPerson2;
-  @FXML private Label lblProfession;
-  
   @FXML private TextArea txtaChat;
   @FXML private TextField txtInput;
   @FXML private Button btnSend;
-
-  private static boolean isFirstTimeInit = true;
-  private static GameStateContext context;
 
   private ChatCompletionRequest chatCompletionRequest;
   private String profession;
 
   public Room2Controller() {
-    context = new GameStateContext(this);
+    suspectId = "rectPerson2";
   }
-
-  /**
-   * Initializes the room view. If it's the first time initialization, it will provide instructions
-   * via text-to-speech.
-   */
+  
+  @Override
   @FXML
-  public void initialize() {
-    if (isFirstTimeInit) {
-      TextToSpeech.speak(
-          "Chat with the three customers, and guess who is the "
-              + context.getProfessionToGuess());
-      isFirstTimeInit = false;
-    }
-    lblProfession.setText(context.getProfessionToGuess());
+  public void switchRoom() {
+    System.out.println("You are in room2");
+
   }
 
   /**

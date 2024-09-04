@@ -28,36 +28,22 @@ import nz.ac.auckland.se206.speech.TextToSpeech;
  * chat with customers and guess their profession.
  */
 public class RoomController extends AbstractRoomController {
-  @FXML private Rectangle rectPerson1;
-  @FXML private Label lblProfession;
   
   @FXML private TextArea txtaChat;
   @FXML private TextField txtInput;
   @FXML private Button btnSend;
 
-  private static boolean isFirstTimeInit = true;
-  private static GameStateContext context;
-
   private ChatCompletionRequest chatCompletionRequest;
   private String profession;
 
   public RoomController() {
-    context = new GameStateContext(this);
+    suspectId = "rectPerson1";
   }
 
-  /**
-   * Initializes the room view. If it's the first time initialization, it will provide instructions
-   * via text-to-speech.
-   */
+  @Override
   @FXML
-  public void initialize() {
-    if (isFirstTimeInit) {
-      TextToSpeech.speak(
-          "Chat with the three customers, and guess who is the "
-              + context.getProfessionToGuess());
-      isFirstTimeInit = false;
-    }
-    lblProfession.setText(context.getProfessionToGuess());
+  public void switchRoom() {
+    System.out.println("You are in room1");
   }
 
   /**
@@ -78,19 +64,6 @@ public class RoomController extends AbstractRoomController {
   @FXML
   public void onKeyReleased(KeyEvent event) {
     System.out.println("Key " + event.getCode() + " released");
-  }
-
-  /**
-   * Handles mouse clicks on rectangles representing people in the room.
-   *
-   * @param event the mouse event triggered by clicking a rectangle
-   * @throws IOException if there is an I/O error
-   */
-  @FXML
-  private void handleRectangleClick(MouseEvent event) throws IOException {
-    Rectangle clickedRectangle = (Rectangle) event.getSource();
-    //setProfession(clickedRectangle.getId());
-    context.handleRectangleClick(event, clickedRectangle.getId());
   }
 
     /**
