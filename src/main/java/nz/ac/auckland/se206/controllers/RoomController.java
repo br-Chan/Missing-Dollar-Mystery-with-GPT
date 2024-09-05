@@ -19,6 +19,7 @@ import nz.ac.auckland.apiproxy.chat.openai.ChatMessage;
 import nz.ac.auckland.apiproxy.chat.openai.Choice;
 import nz.ac.auckland.apiproxy.config.ApiProxyConfig;
 import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
+import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameStateContext;
 import nz.ac.auckland.se206.prompts.PromptEngineering;
 import nz.ac.auckland.se206.speech.TextToSpeech;
@@ -43,7 +44,11 @@ public class RoomController extends AbstractRoomController {
   @Override
   @FXML
   public void switchRoom() {
-    System.out.println("You are in room1");
+    try {
+      App.setRoot("room2");
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
   }
 
   /**

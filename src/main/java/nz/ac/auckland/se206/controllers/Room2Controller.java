@@ -19,6 +19,7 @@ import nz.ac.auckland.apiproxy.chat.openai.ChatMessage;
 import nz.ac.auckland.apiproxy.chat.openai.Choice;
 import nz.ac.auckland.apiproxy.config.ApiProxyConfig;
 import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
+import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameStateContext;
 import nz.ac.auckland.se206.prompts.PromptEngineering;
 import nz.ac.auckland.se206.speech.TextToSpeech;
@@ -42,8 +43,11 @@ public class Room2Controller extends AbstractRoomController {
   @Override
   @FXML
   public void switchRoom() {
-    System.out.println("You are in room2");
-
+    try {
+      App.setRoot("room");
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
   }
 
   /**
@@ -64,19 +68,6 @@ public class Room2Controller extends AbstractRoomController {
   @FXML
   public void onKeyReleased(KeyEvent event) {
     System.out.println("Key " + event.getCode() + " released");
-  }
-
-  /**
-   * Handles mouse clicks on rectangles representing people in the room.
-   *
-   * @param event the mouse event triggered by clicking a rectangle
-   * @throws IOException if there is an I/O error
-   */
-  @FXML
-  private void handleRectangleClick(MouseEvent event) throws IOException {
-    Rectangle clickedRectangle = (Rectangle) event.getSource();
-    //setProfession(clickedRectangle.getId());
-    context.handleRectangleClick(event, clickedRectangle.getId());
   }
 
     /**
