@@ -10,6 +10,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import nz.ac.auckland.se206.controllers.ChatController;
+import nz.ac.auckland.se206.controllers.SceneManager;
+import nz.ac.auckland.se206.controllers.SceneManager.AppUi;
 import nz.ac.auckland.se206.speech.FreeTextToSpeech;
 
 /**
@@ -41,6 +43,10 @@ public class App extends Application {
    */
   public static void setRoot(String fxml) throws IOException {
     scene.setRoot(loadFxml(fxml));
+  }
+
+  public static void setRoot(AppUi appUi) throws IOException {
+    scene.setRoot(SceneManager.getUiRoot(appUi));
   }
 
   /**
@@ -83,7 +89,10 @@ public class App extends Application {
    */
   @Override
   public void start(final Stage stage) throws IOException {
-    Parent root = loadFxml("suspect1");
+    SceneManager.addUi(AppUi.SUSPECT1, loadFxml("suspect1"));
+    SceneManager.addUi(AppUi.SUSPECT2, loadFxml("suspect2"));
+
+    Parent root = SceneManager.getUiRoot(AppUi.SUSPECT1);
     scene = new Scene(root);
     stage.setScene(scene);
     stage.show();
