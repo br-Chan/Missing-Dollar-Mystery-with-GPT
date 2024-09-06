@@ -6,7 +6,7 @@ import javafx.scene.control.Label;
 import nz.ac.auckland.se206.GameStateContext;
 import nz.ac.auckland.se206.speech.TextToSpeech;
 
-public abstract class AbstractRoomController {
+public abstract class AbstractSuspectController {
 
   @FXML protected Button btnToSwitch;
   @FXML private Label lblProfession;
@@ -16,17 +16,17 @@ public abstract class AbstractRoomController {
   protected static boolean isFirstTimeInit = true;
   protected static GameStateContext context;
 
-  public AbstractRoomController() {
+  public AbstractSuspectController() {
     context = new GameStateContext(this);
   }
 
   @FXML
-  public abstract void switchRoom();
+  public abstract void switchSuspectScene();
 
   public abstract void setProfession(String profession);
 
     /**
-   * Initializes the room view. If it's the first time initialization, it will provide instructions
+   * Initializes the suspect view. If it's the first time initialization, it will provide instructions
    * via text-to-speech.
    */
   @FXML

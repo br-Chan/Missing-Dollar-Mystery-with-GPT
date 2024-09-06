@@ -7,12 +7,9 @@ import java.util.Map;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.input.MouseEvent;
-import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.apiproxy.chat.openai.ChatCompletionRequest;
 import nz.ac.auckland.apiproxy.chat.openai.ChatCompletionResult;
 import nz.ac.auckland.apiproxy.chat.openai.ChatMessage;
@@ -20,15 +17,16 @@ import nz.ac.auckland.apiproxy.chat.openai.Choice;
 import nz.ac.auckland.apiproxy.config.ApiProxyConfig;
 import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
 import nz.ac.auckland.se206.App;
-import nz.ac.auckland.se206.GameStateContext;
+
 import nz.ac.auckland.se206.prompts.PromptEngineering;
 import nz.ac.auckland.se206.speech.TextToSpeech;
 
 /**
- * Controller class for the room view. Handles user interactions within the room where the user can
- * chat with customers and guess their profession.
+ * Controller class for the suspect1 view. Handles user interactions within the suspect1 scene where the user can
+ * chat with suspect 1 and guess their profession.
  */
-public class Room2Controller extends AbstractRoomController {
+public class Suspect1Controller extends AbstractSuspectController {
+  
   @FXML private TextArea txtaChat;
   @FXML private TextField txtInput;
   @FXML private Button btnSend;
@@ -36,15 +34,15 @@ public class Room2Controller extends AbstractRoomController {
   private ChatCompletionRequest chatCompletionRequest;
   private String profession;
 
-  public Room2Controller() {
-    suspectId = "rectPerson2";
+  public Suspect1Controller() {
+    suspectId = "rectPerson1";
   }
-  
+
   @Override
   @FXML
-  public void switchRoom() {
+  public void switchSuspectScene() {
     try {
-      App.setRoot("room");
+      App.setRoot("suspect2");
     } catch (IOException e) {
       e.printStackTrace();
     }

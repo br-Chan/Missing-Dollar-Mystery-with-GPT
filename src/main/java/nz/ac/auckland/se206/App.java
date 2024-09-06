@@ -76,14 +76,14 @@ public class App extends Application {
   }
 
   /**
-   * This method is invoked when the application starts. It loads and shows the "room" scene.
+   * This method is invoked when the application starts. It loads and shows the "suspect1" scene.
    *
    * @param stage the primary stage of the application
-   * @throws IOException if the "src/main/resources/fxml/room.fxml" file is not found
+   * @throws IOException if the "src/main/resources/fxml/suspect1.fxml" file is not found
    */
   @Override
   public void start(final Stage stage) throws IOException {
-    Parent root = loadFxml("room");
+    Parent root = loadFxml("suspect1");
     scene = new Scene(root);
     stage.setScene(scene);
     stage.show();
