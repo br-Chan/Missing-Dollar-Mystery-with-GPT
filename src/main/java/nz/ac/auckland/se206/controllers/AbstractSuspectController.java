@@ -3,7 +3,6 @@ package nz.ac.auckland.se206.controllers;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -43,25 +42,26 @@ public abstract class AbstractSuspectController {
     context = new GameStateContext(this);
   }
 
-  // public abstract void setProfession(String profession);
-
-    /**
-   * Initializes the suspect view. If it's the first time initialization, it will provide instructions
-   * via text-to-speech.
+  /**
+   * Initializes the suspect view. If it's the first time initialization, it will provide
+   * instructions via text-to-speech.
    */
   @FXML
   public void initialize() {
     System.out.println("Initialise is being run from the abstract class!");
     if (isFirstTimeInit) {
       TextToSpeech.speak(
-          "Chat with the three customers, and guess who is the "
-              + context.getProfessionToGuess());
+          "Chat with the three customers, and guess who is the " + context.getProfessionToGuess());
       isFirstTimeInit = false;
     }
     lblProfession.setText(context.getProfessionToGuess());
     setProfession(context.getProfession(suspectId));
   }
 
+  /**
+   * Switches the displayed scene based on what the current scene is. This is done by comparing its
+   * suspect ID.
+   */
   @FXML
   public void handleSwitchButtonAClick() {
     try {
@@ -79,6 +79,10 @@ public abstract class AbstractSuspectController {
     }
   }
 
+  /**
+   * Switches the displayed scene based on what the current scene is. This is done by comparing its
+   * suspect ID.
+   */
   @FXML
   public void handleSwitchButtonBClick() {
     try {
@@ -96,15 +100,14 @@ public abstract class AbstractSuspectController {
     }
   }
 
-  
   /**
-   * Handles the key pressed event.
+   * Handles the key pressed event, sending a message if the user presses ENTER.
    *
    * @param event the key event
    */
   @FXML
   public void onKeyPressed(KeyEvent event) throws ApiProxyException {
-    // Sends the message in the text field if the user presses ENTER.
+    // Check if the key pressed was ENTER.
     if (event.getCode().toString().equals("ENTER")) {
       sendMessage();
     }
@@ -116,10 +119,9 @@ public abstract class AbstractSuspectController {
    * @param event the key event
    */
   @FXML
-  public void onKeyReleased(KeyEvent event) {
-  }
+  public void onKeyReleased(KeyEvent event) {}
 
-    /**
+  /**
    * Generates the system prompt based on the profession.
    *
    * @return the system prompt string
@@ -196,6 +198,7 @@ public abstract class AbstractSuspectController {
 
   /**
    * Sends a message to the GPT model and runs the GPT model.
+   *
    * @throws ApiProxyException
    */
   private void sendMessage() throws ApiProxyException {
@@ -208,5 +211,4 @@ public abstract class AbstractSuspectController {
     appendChatMessage(msg);
     runGpt(msg);
   }
-  
 }

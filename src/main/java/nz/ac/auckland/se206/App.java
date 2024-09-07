@@ -45,6 +45,12 @@ public class App extends Application {
     scene.setRoot(loadFxml(fxml));
   }
 
+  /**
+   * Sets the root of the scene to the value of the specified AppUi in the scene manager.
+   * 
+   * @param appUi the enum key for the hash map in the scene manager.
+   * @throws IOException if the key is not found.
+   */
   public static void setRoot(AppUi appUi) throws IOException {
     scene.setRoot(SceneManager.getUiRoot(appUi));
   }
@@ -89,6 +95,7 @@ public class App extends Application {
    */
   @Override
   public void start(final Stage stage) throws IOException {
+    // Add FXMLs to the scene manager hash map.
     SceneManager.addUi(AppUi.SUSPECT1, loadFxml("suspect1"));
     SceneManager.addUi(AppUi.SUSPECT2, loadFxml("suspect2"));
     SceneManager.addUi(AppUi.SUSPECT3, loadFxml("suspect3"));
