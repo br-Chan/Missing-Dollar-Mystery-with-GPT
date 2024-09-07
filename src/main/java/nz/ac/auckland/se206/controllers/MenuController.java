@@ -9,16 +9,18 @@ import nz.ac.auckland.se206.App;
 public class MenuController {
 
   @FXML
-  private void initialize() {
+  private void initialize() {}
 
-  }
+  @FXML private Button btnStart;
 
-  @FXML
-  private Button btnStart;
-
+  /**
+   * Switches the displayed scene from the start menu to room.fxml.
+   *
+   * @param event
+   * @throws IOException
+   */
   @FXML
   private void switchToRoom(ActionEvent event) throws IOException { // change in scene builder
     App.getScene().setRoot(App.getRoomController());
   }
-
 }
