@@ -91,6 +91,7 @@ public class App extends Application {
   public void start(final Stage stage) throws IOException {
     SceneManager.addUi(AppUi.SUSPECT1, loadFxml("suspect1"));
     SceneManager.addUi(AppUi.SUSPECT2, loadFxml("suspect2"));
+    SceneManager.addUi(AppUi.SUSPECT3, loadFxml("suspect3"));
 
     Parent root = SceneManager.getUiRoot(AppUi.SUSPECT1);
     scene = new Scene(root);

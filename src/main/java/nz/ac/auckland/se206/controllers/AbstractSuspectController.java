@@ -17,7 +17,9 @@ import nz.ac.auckland.apiproxy.chat.openai.ChatMessage;
 import nz.ac.auckland.apiproxy.chat.openai.Choice;
 import nz.ac.auckland.apiproxy.config.ApiProxyConfig;
 import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
+import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameStateContext;
+import nz.ac.auckland.se206.controllers.SceneManager.AppUi;
 import nz.ac.auckland.se206.prompts.PromptEngineering;
 import nz.ac.auckland.se206.speech.TextToSpeech;
 
@@ -27,7 +29,7 @@ public abstract class AbstractSuspectController {
   @FXML private TextField txtInput;
   @FXML private Button btnSend;
 
-  @FXML protected Button btnToSwitch;
+  // @FXML protected Button btnToSwitch;
   @FXML private Label lblProfession;
 
   protected String suspectId;
@@ -40,9 +42,6 @@ public abstract class AbstractSuspectController {
   public AbstractSuspectController() {
     context = new GameStateContext(this);
   }
-
-  @FXML
-  public abstract void switchSuspectScene();
 
   // public abstract void setProfession(String profession);
 
@@ -61,6 +60,40 @@ public abstract class AbstractSuspectController {
     }
     lblProfession.setText(context.getProfessionToGuess());
     setProfession(context.getProfession(suspectId));
+  }
+
+  @FXML
+  public void handleSwitchButtonAClick() {
+    try {
+
+      if (!suspectId.equals("rectPerson1")) {
+        App.setRoot(AppUi.SUSPECT1);
+      } else if (!suspectId.equals("rectPerson2")) {
+        App.setRoot(AppUi.SUSPECT2);
+      } else {
+        App.setRoot(AppUi.SUSPECT3);
+      }
+
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
+  }
+
+  @FXML
+  public void handleSwitchButtonBClick() {
+    try {
+
+      if (!suspectId.equals("rectPerson3")) {
+        App.setRoot(AppUi.SUSPECT3);
+      } else if (!suspectId.equals("rectPerson2")) {
+        App.setRoot(AppUi.SUSPECT2);
+      } else {
+        App.setRoot(AppUi.SUSPECT1);
+      }
+
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
   }
 
   
@@ -135,7 +168,6 @@ public abstract class AbstractSuspectController {
    * @throws ApiProxyException if there is an error communicating with the API proxy
    */
   private ChatMessage runGpt(ChatMessage msg) throws ApiProxyException {
-    System.out.println(msg.getContent());
     chatCompletionRequest.addMessage(msg);
     try {
       ChatCompletionResult chatCompletionResult = chatCompletionRequest.execute();

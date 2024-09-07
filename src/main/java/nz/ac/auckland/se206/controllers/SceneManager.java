@@ -9,6 +9,7 @@ public class SceneManager {
   public enum AppUi {
     SUSPECT1,
     SUSPECT2,
+    SUSPECT3,
   }
 
   private static HashMap<AppUi, Parent> sceneMap = new HashMap<>();

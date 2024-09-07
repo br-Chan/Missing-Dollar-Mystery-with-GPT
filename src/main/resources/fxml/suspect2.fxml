@@ -34,6 +34,7 @@
       <TextArea fx:id="txtaChat" editable="false" layoutX="8.0" layoutY="416.0" prefHeight="130.0" prefWidth="774.0" wrapText="true" />
       <TextField fx:id="txtInput" layoutX="8.0" layoutY="561.0" prefHeight="26.0" prefWidth="713.0" />
       <Button fx:id="btnSend" layoutX="739.0" layoutY="562.0" mnemonicParsing="false" onAction="#onSendMessage" text="Send" />
-      <Button fx:id="btnToSwitch" layoutX="14.0" layoutY="216.0" mnemonicParsing="false" onAction="#switchSuspectScene" text="Switch to Suspect 1" />
+      <Button fx:id="switchButtonA" layoutX="14.0" layoutY="225.0" mnemonicParsing="false" onAction="#handleSwitchButtonAClick" text="go to susp 1" />
+      <Button fx:id="switchButtonB" layoutX="14.0" layoutY="270.0" mnemonicParsing="false" onAction="#handleSwitchButtonBClick" text="go to susp 3" />
    </children>
 </Pane>
