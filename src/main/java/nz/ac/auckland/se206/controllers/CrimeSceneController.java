@@ -64,11 +64,21 @@ public class CrimeSceneController {
   }
 
   @FXML
-  public void decreaseDirtOpacity() {}
+  public void decreaseDirtOpacity() {
+    decreaseOpacity(dirtImage);
+  }
 
   @FXML
-  public void decreaseScratchOpacity() {}
+  public void decreaseScratchOpacity() {
+    decreaseOpacity(scratchImage);
+  }
 
   @FXML
-  public void decreasePencilOpacity() {}
+  public void decreasePencilOpacity() {
+    decreaseOpacity(pencilImage);
+  }
+
+  public void decreaseOpacity(ImageView image) {
+    image.setOpacity(image.getOpacity() - 0.005);
+  }
 }
