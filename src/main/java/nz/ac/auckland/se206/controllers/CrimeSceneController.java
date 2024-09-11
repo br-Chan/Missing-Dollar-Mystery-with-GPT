@@ -26,6 +26,7 @@ public class CrimeSceneController {
   @FXML
   public void initialize() {
     System.out.println("Initialising...");
+    cardPane.setVisible(false);
   }
 
   /**
