@@ -2,6 +2,7 @@ package nz.ac.auckland.se206.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.shape.Rectangle;
 
 /**
  * TODO: Fill in this JavaDoc comment.
@@ -12,6 +13,8 @@ import javafx.scene.input.KeyEvent;
  * <p>This is a controller class for a fxml scene.
  */
 public class CrimeSceneController {
+
+  @FXML private Rectangle cardRectangle;
 
   /**
    * TODO: Fill in this JavaDoc comment.
@@ -41,5 +44,10 @@ public class CrimeSceneController {
   @FXML
   public void onKeyReleased(KeyEvent event) {
     System.out.println("Key " + event.getCode() + " released");
+  }
+
+  @FXML
+  public void showCardClue(){
+    
   }
 }
