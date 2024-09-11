@@ -23,6 +23,10 @@ public class CrimeSceneController {
   @FXML private ImageView pencilImage;
   @FXML private ImageView cleaningImage;
 
+  private boolean napkinOn;
+  private boolean clothOn;
+  private boolean rubberOn;
+
   /**
    * TODO: Fill in this JavaDoc comment.
    *
@@ -63,13 +67,18 @@ public class CrimeSceneController {
           cleaningImage.setX(event.getX() - 160);
           cleaningImage.setY(event.getY() - 225);
         });
-    cleaningImage.setVisible(true);
+    napkinOn = false;
+    clothOn = false;
+    rubberOn = false;
   }
 
   @FXML
   public void hideCardClue() {
     cardPane.setVisible(false);
     cleaningImage.setVisible(false);
+    napkinOn = false;
+    clothOn = false;
+    rubberOn = false;
   }
 
   @FXML
@@ -86,6 +95,15 @@ public class CrimeSceneController {
   public void decreasePencilOpacity() {
     decreaseOpacity(pencilImage);
   }
+
+  @FXML
+  void napkinSelected() {}
+
+  @FXML
+  void clothSelected() {}
+
+  @FXML
+  void rubberSelected() {}
 
   public void decreaseOpacity(ImageView image) {
     image.setOpacity(image.getOpacity() - 0.005);
