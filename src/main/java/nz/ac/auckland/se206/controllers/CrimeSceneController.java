@@ -1,10 +1,12 @@
 package nz.ac.auckland.se206.controllers;
 
 import javafx.fxml.FXML;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
+import nz.ac.auckland.se206.App;
 
 /**
  * TODO: Fill in this JavaDoc comment.
@@ -83,27 +85,51 @@ public class CrimeSceneController {
 
   @FXML
   public void decreaseDirtOpacity() {
-    decreaseOpacity(dirtImage);
+    if (napkinOn) {
+      decreaseOpacity(dirtImage);
+    }
   }
 
   @FXML
   public void decreaseScratchOpacity() {
-    decreaseOpacity(scratchImage);
+    if (clothOn) {
+      decreaseOpacity(scratchImage);
+    }
   }
 
   @FXML
   public void decreasePencilOpacity() {
-    decreaseOpacity(pencilImage);
+    if (rubberOn) {
+      decreaseOpacity(pencilImage);
+    }
   }
 
   @FXML
-  void napkinSelected() {}
+  void napkinSelected() {
+    cleaningImage.setVisible(true);
+    cleaningImage.setImage(new Image((App.class.getResource("/images/napkin.png")).toString()));
+    napkinOn = true;
+    clothOn = false;
+    rubberOn = false;
+  }
 
   @FXML
-  void clothSelected() {}
+  void clothSelected() {
+    cleaningImage.setVisible(true);
+    cleaningImage.setImage(new Image((App.class.getResource("/images/cloth.png")).toString()));
+    napkinOn = false;
+    clothOn = true;
+    rubberOn = false;
+  }
 
   @FXML
-  void rubberSelected() {}
+  void rubberSelected() {
+    cleaningImage.setVisible(true);
+    cleaningImage.setImage(new Image((App.class.getResource("/images/rubber.png")).toString()));
+    napkinOn = false;
+    clothOn = false;
+    rubberOn = true;
+  }
 
   public void decreaseOpacity(ImageView image) {
     image.setOpacity(image.getOpacity() - 0.005);
