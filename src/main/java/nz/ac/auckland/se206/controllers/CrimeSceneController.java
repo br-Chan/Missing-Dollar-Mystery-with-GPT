@@ -2,6 +2,7 @@ package nz.ac.auckland.se206.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
 
 /**
@@ -15,6 +16,7 @@ import javafx.scene.shape.Rectangle;
 public class CrimeSceneController {
 
   @FXML private Rectangle cardRectangle;
+  @FXML private Pane cardPane;
 
   /**
    * TODO: Fill in this JavaDoc comment.
@@ -47,7 +49,12 @@ public class CrimeSceneController {
   }
 
   @FXML
-  public void showCardClue(){
-    
+  public void showCardClue() {
+    cardPane.setVisible(true);
+  }
+
+  @FXML
+  public void hideCardClue() {
+    cardPane.setVisible(false);
   }
 }
