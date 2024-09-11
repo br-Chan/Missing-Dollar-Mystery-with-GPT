@@ -32,17 +32,17 @@
                   <Image url="@../images/mclovin.jpg" />
                </image>
             </ImageView>
-            <ImageView fitHeight="92.0" fitWidth="153.0" layoutX="372.0" layoutY="54.0" pickOnBounds="true">
+            <ImageView fx:id="pencilImage" fitHeight="92.0" fitWidth="153.0" layoutX="372.0" layoutY="54.0" onMouseMoved="#decreasePencilOpacity" pickOnBounds="true">
                <image>
                   <Image url="@../images/pencil.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="105.0" fitWidth="86.0" layoutX="267.0" layoutY="46.0" pickOnBounds="true">
+            <ImageView fx:id="dirtImage" fitHeight="105.0" fitWidth="86.0" layoutX="267.0" layoutY="46.0" onMouseMoved="#decreaseDirtOpacity" pickOnBounds="true">
                <image>
                   <Image url="@../images/dirt.png" />
                </image>
             </ImageView>
-            <ImageView fitHeight="55.0" fitWidth="104.0" layoutX="267.0" layoutY="158.0" pickOnBounds="true">
+            <ImageView fx:id="scratchImage" fitHeight="55.0" fitWidth="104.0" layoutX="267.0" layoutY="158.0" onMouseMoved="#decreaseScratchOpacity" pickOnBounds="true">
                <image>
                   <Image url="@../images/scratch.png" />
                </image>

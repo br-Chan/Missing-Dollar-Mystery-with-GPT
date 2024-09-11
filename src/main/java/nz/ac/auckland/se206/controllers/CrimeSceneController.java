@@ -1,6 +1,7 @@
 package nz.ac.auckland.se206.controllers;
 
 import javafx.fxml.FXML;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
@@ -17,6 +18,9 @@ public class CrimeSceneController {
 
   @FXML private Rectangle cardRectangle;
   @FXML private Pane cardPane;
+  @FXML private ImageView dirtImage;
+  @FXML private ImageView scratchImage;
+  @FXML private ImageView pencilImage;
 
   /**
    * TODO: Fill in this JavaDoc comment.
@@ -58,4 +62,13 @@ public class CrimeSceneController {
   public void hideCardClue() {
     cardPane.setVisible(false);
   }
+
+  @FXML
+  public void decreaseDirtOpacity() {}
+
+  @FXML
+  public void decreaseScratchOpacity() {}
+
+  @FXML
+  public void decreasePencilOpacity() {}
 }
