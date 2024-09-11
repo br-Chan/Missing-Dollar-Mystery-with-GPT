@@ -50,6 +50,11 @@
                   <ColorAdjust brightness="1.0" />
                </effect>
             </ImageView>
+            <ImageView fx:id="cleaningImage" fitHeight="55.0" fitWidth="50.0" layoutX="133.0" layoutY="189.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/napkin.png" />
+               </image>
+            </ImageView>
          </children>
       </Pane>
    </children>

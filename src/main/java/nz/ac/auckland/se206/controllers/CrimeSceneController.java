@@ -21,6 +21,7 @@ public class CrimeSceneController {
   @FXML private ImageView dirtImage;
   @FXML private ImageView scratchImage;
   @FXML private ImageView pencilImage;
+  @FXML private ImageView cleaningImage;
 
   /**
    * TODO: Fill in this JavaDoc comment.
@@ -31,6 +32,7 @@ public class CrimeSceneController {
   public void initialize() {
     System.out.println("Initialising...");
     cardPane.setVisible(false);
+    cleaningImage.setVisible(false);
   }
 
   /**
@@ -56,11 +58,18 @@ public class CrimeSceneController {
   @FXML
   public void showCardClue() {
     cardPane.setVisible(true);
+    cardPane.setOnMouseMoved(
+        event -> {
+          cleaningImage.setX(event.getX() - 160);
+          cleaningImage.setY(event.getY() - 225);
+        });
+    cleaningImage.setVisible(true);
   }
 
   @FXML
   public void hideCardClue() {
     cardPane.setVisible(false);
+    cleaningImage.setVisible(false);
   }
 
   @FXML
