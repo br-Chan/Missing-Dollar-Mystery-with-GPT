@@ -67,7 +67,7 @@ public class CrimeSceneController {
     cardPane.setOnMouseMoved(
         event -> {
           cleaningImage.setX(event.getX() - 160);
-          cleaningImage.setY(event.getY() - 225);
+          cleaningImage.setY(event.getY() - 215);
         });
     napkinOn = false;
     clothOn = false;
@@ -106,29 +106,44 @@ public class CrimeSceneController {
 
   @FXML
   void napkinSelected() {
-    cleaningImage.setVisible(true);
-    cleaningImage.setImage(new Image((App.class.getResource("/images/napkin.png")).toString()));
-    napkinOn = true;
-    clothOn = false;
-    rubberOn = false;
+    if (napkinOn) {
+      cleaningImage.setVisible(false);
+      napkinOn = false;
+    } else {
+      cleaningImage.setVisible(true);
+      cleaningImage.setImage(new Image((App.class.getResource("/images/napkin.png")).toString()));
+      napkinOn = true;
+      clothOn = false;
+      rubberOn = false;
+    }
   }
 
   @FXML
   void clothSelected() {
-    cleaningImage.setVisible(true);
-    cleaningImage.setImage(new Image((App.class.getResource("/images/cloth.png")).toString()));
-    napkinOn = false;
-    clothOn = true;
-    rubberOn = false;
+    if (clothOn) {
+      cleaningImage.setVisible(false);
+      clothOn = false;
+    } else {
+      cleaningImage.setVisible(true);
+      cleaningImage.setImage(new Image((App.class.getResource("/images/cloth.png")).toString()));
+      napkinOn = false;
+      clothOn = true;
+      rubberOn = false;
+    }
   }
 
   @FXML
   void rubberSelected() {
-    cleaningImage.setVisible(true);
-    cleaningImage.setImage(new Image((App.class.getResource("/images/rubber.png")).toString()));
-    napkinOn = false;
-    clothOn = false;
-    rubberOn = true;
+    if (rubberOn) {
+      cleaningImage.setVisible(false);
+      rubberOn = false;
+    } else {
+      cleaningImage.setVisible(true);
+      cleaningImage.setImage(new Image((App.class.getResource("/images/rubber.png")).toString()));
+      napkinOn = false;
+      clothOn = false;
+      rubberOn = true;
+    }
   }
 
   public void decreaseOpacity(ImageView image) {
