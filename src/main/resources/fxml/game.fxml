@@ -6,7 +6,7 @@
 
 <BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="599.0" prefWidth="789.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.GameController">
    <center>
-      <fx:include source="suspect1.fxml" />
+      <fx:include fx:id="gameView" source="suspect1.fxml" />
    </center>
    <top>
       <Label text="Timer: ticking" BorderPane.alignment="CENTER">
