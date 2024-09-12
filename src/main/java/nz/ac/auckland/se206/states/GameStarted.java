@@ -2,9 +2,10 @@ package nz.ac.auckland.se206.states;
 
 import java.io.IOException;
 import javafx.scene.input.MouseEvent;
-import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameStateContext;
+import nz.ac.auckland.se206.controllers.AbstractSuspectController;
 import nz.ac.auckland.se206.speech.TextToSpeech;
+
 
 /**
  * The GameStarted state of the game. Handles the initial interactions when the game starts,
@@ -13,14 +14,16 @@ import nz.ac.auckland.se206.speech.TextToSpeech;
 public class GameStarted implements GameState {
 
   private final GameStateContext context;
+  private final AbstractSuspectController suspectController;
 
   /**
    * Constructs a new GameStarted state with the given game state context.
    *
    * @param context the context of the game state
    */
-  public GameStarted(GameStateContext context) {
+  public GameStarted(GameStateContext context, AbstractSuspectController suspectController) {
     this.context = context;
+    this.suspectController = suspectController;
   }
 
   /**
@@ -33,16 +36,8 @@ public class GameStarted implements GameState {
    */
   @Override
   public void handleRectangleClick(MouseEvent event, String rectangleId) throws IOException {
-    // Transition to chat view or provide an introduction based on the clicked rectangle
-    switch (rectangleId) {
-      case "rectCashier":
-        TextToSpeech.speak("Welcome to my cafe!");
-        return;
-      case "rectWaitress":
-        TextToSpeech.speak("Hi, let me know when you are ready to order!");
-        return;
-    }
-    App.openChat(event, context.getProfession(rectangleId));
+    //App.openChat(event, context.getProfession(rectangleId));
+    suspectController.setProfession(context.getProfession(rectangleId));
   }
 
   /**
