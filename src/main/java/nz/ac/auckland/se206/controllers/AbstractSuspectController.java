@@ -216,11 +216,11 @@ public abstract class AbstractSuspectController {
    * @throws ApiProxyException
    */
   private void sendMessage() throws ApiProxyException {
-    chatBubbleImage.setVisible(true);
     String message = txtInput.getText().trim();
     if (message.isEmpty()) {
       return;
     }
+    chatBubbleImage.setVisible(true);
     txtInput.clear();
     ChatMessage msg = new ChatMessage("user", message);
     appendChatMessage(msg);
