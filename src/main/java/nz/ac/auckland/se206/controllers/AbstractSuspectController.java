@@ -3,12 +3,14 @@ package nz.ac.auckland.se206.controllers;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
+import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import nz.ac.auckland.apiproxy.chat.openai.ChatCompletionRequest;
 import nz.ac.auckland.apiproxy.chat.openai.ChatCompletionResult;
@@ -30,6 +32,8 @@ public abstract class AbstractSuspectController {
 
   // @FXML protected Button btnToSwitch;
   @FXML private Label lblProfession;
+
+  @FXML private ImageView testImage;
 
   protected String suspectId;
   private ChatCompletionRequest chatCompletionRequest;
@@ -176,7 +180,16 @@ public abstract class AbstractSuspectController {
       Choice result = chatCompletionResult.getChoices().iterator().next();
       chatCompletionRequest.addMessage(result.getChatMessage());
       appendChatMessage(result.getChatMessage());
-      TextToSpeech.speak(result.getChatMessage().getContent());
+      Task<Void> backgroundTask =
+          new Task<Void>() {
+            @Override
+            protected Void call() throws Exception {
+              TextToSpeech.speak(result.getChatMessage().getContent());
+              return null;
+            }
+          };
+      Thread backgroundThread = new Thread(backgroundTask);
+      backgroundThread.start();
       return result.getChatMessage();
     } catch (ApiProxyException e) {
       e.printStackTrace();
@@ -209,6 +222,20 @@ public abstract class AbstractSuspectController {
     txtInput.clear();
     ChatMessage msg = new ChatMessage("user", message);
     appendChatMessage(msg);
-    runGpt(msg);
+    Task<Void> backgroundTask =
+        new Task<Void>() {
+
+          @Override
+          protected Void call() throws Exception {
+            // Runs the chatgpt tool
+            runGpt(msg);
+
+            return null;
+          }
+        };
+
+    Thread backgroundThread = new Thread(backgroundTask);
+    // Starts the thread to run the tool
+    backgroundThread.start();
   }
 }
