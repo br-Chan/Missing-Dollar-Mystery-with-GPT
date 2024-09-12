@@ -1,16 +1,29 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.StackPane?>
 <?import javafx.scene.text.Font?>
 
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#onKeyPressed" onKeyReleased="#onKeyReleased" prefHeight="599.0" prefWidth="789.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.GameController">
-   <children>
-      <Label layoutX="280.0" layoutY="104.0" text="GAME SCENE">
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="599.0" prefWidth="789.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1">
+   <center>
+      <StackPane fx:id="viewPanel" prefHeight="150.0" prefWidth="200.0" BorderPane.alignment="CENTER" />
+   </center>
+   <top>
+      <Label text="Timer: ticking" BorderPane.alignment="CENTER">
          <font>
-            <Font size="38.0" />
+            <Font size="35.0" />
          </font>
       </Label>
-   </children>
-</Pane>
+   </top>
+   <left>
+      <Label text="left" BorderPane.alignment="CENTER" />
+   </left>
+   <right>
+      <Label text="right" BorderPane.alignment="CENTER" />
+   </right>
+   <bottom>
+      <Label text="bottom" BorderPane.alignment="CENTER" />
+   </bottom>
+</BorderPane>
