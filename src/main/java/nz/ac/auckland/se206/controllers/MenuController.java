@@ -1,45 +1,28 @@
 package nz.ac.auckland.se206.controllers;
 
-import javafx.fxml.FXML;
-import javafx.scene.input.KeyEvent;
 
-/**
- * TODO: Fill in this JavaDoc comment.
- *
- * <p>TODO: Edit the respective fxml file and add to this empty class to implement features. Remove
- * default methods as needed.
- *
- * <p>This is a controller class for a fxml scene.
- */
+import java.io.IOException;
+import javafx.event.ActionEvent;
+import javafx.fxml.FXML;
+import javafx.scene.control.Button;
+import nz.ac.auckland.se206.App;
+
 public class MenuController {
 
-  /**
-   * TODO: Fill in this JavaDoc comment.
-   *
-   * <p>Initializes the scene view.
-   */
   @FXML
-  public void initialize() {
-    System.out.println("Initialising...");
-  }
+  private void initialize() {}
+
+  @FXML private Button btnStart;
 
   /**
-   * Handles the key pressed event.
+   * Switches the displayed scene from the start menu to room.fxml.
    *
-   * @param event the key event
+   * @param event
+   * @throws IOException
    */
   @FXML
-  public void onKeyPressed(KeyEvent event) {
-    System.out.println("Key " + event.getCode() + " pressed");
-  }
+  private void switchToRoom(ActionEvent event) throws IOException { // change in scene builder
+    App.getScene().setRoot(App.getRoomController());
 
-  /**
-   * Handles the key released event.
-   *
-   * @param event the key event
-   */
-  @FXML
-  public void onKeyReleased(KeyEvent event) {
-    System.out.println("Key " + event.getCode() + " released");
   }
 }
