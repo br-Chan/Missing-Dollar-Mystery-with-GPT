@@ -33,7 +33,7 @@ public abstract class AbstractSuspectController {
   // @FXML protected Button btnToSwitch;
   @FXML private Label lblProfession;
 
-  @FXML private ImageView testImage;
+  @FXML private ImageView chatBubbleImage;
 
   protected String suspectId;
   private ChatCompletionRequest chatCompletionRequest;
@@ -190,7 +190,7 @@ public abstract class AbstractSuspectController {
           };
       Thread backgroundThread = new Thread(backgroundTask);
       backgroundThread.start();
-      testImage.setVisible(false);
+      chatBubbleImage.setVisible(false);
       return result.getChatMessage();
     } catch (ApiProxyException e) {
       e.printStackTrace();
@@ -216,7 +216,7 @@ public abstract class AbstractSuspectController {
    * @throws ApiProxyException
    */
   private void sendMessage() throws ApiProxyException {
-    testImage.setVisible(true);
+    chatBubbleImage.setVisible(true);
     String message = txtInput.getText().trim();
     if (message.isEmpty()) {
       return;
