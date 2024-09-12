@@ -21,6 +21,7 @@ import nz.ac.auckland.se206.speech.FreeTextToSpeech;
 public class App extends Application {
 
   private static Scene scene;
+  private static Parent roomController;
 
   /**
    * The main method that launches the JavaFX application.
@@ -33,6 +34,11 @@ public class App extends Application {
 
   public static Scene getScene() {
     return scene;
+  }
+
+
+  public static Parent getRoomController() {
+    return roomController;
   }
 
   /**
@@ -105,7 +111,6 @@ public class App extends Application {
     stage.setScene(scene);
     stage.show();
     stage.setOnCloseRequest(event -> handleWindowClose(event));
-    root.requestFocus();
   }
 
   private void handleWindowClose(WindowEvent event) {

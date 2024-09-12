@@ -8,5 +8,6 @@ public class Suspect1Controller extends AbstractSuspectController {
 
   public Suspect1Controller() {
     suspectId = "rectPerson1";
+
   }
 }
