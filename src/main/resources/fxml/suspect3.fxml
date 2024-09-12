@@ -36,5 +36,10 @@
       <Button fx:id="btnSend" layoutX="739.0" layoutY="562.0" mnemonicParsing="false" onAction="#onSendMessage" text="Send" />
       <Button fx:id="switchButtonA" layoutX="14.0" layoutY="225.0" mnemonicParsing="false" onAction="#handleSwitchButtonAClick" text="go to susp 1" />
       <Button fx:id="switchButtonB" layoutX="14.0" layoutY="270.0" mnemonicParsing="false" onAction="#handleSwitchButtonBClick" text="go to susp 2" />
+      <ImageView fx:id="testImage" fitHeight="150.0" fitWidth="200.0" layoutX="652.0" layoutY="185.0" pickOnBounds="true" preserveRatio="true" visible="false">
+         <image>
+            <Image url="@../images/thoughtbubble.png" />
+         </image>
+      </ImageView>
    </children>
 </Pane>

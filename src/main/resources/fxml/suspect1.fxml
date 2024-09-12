@@ -38,7 +38,7 @@
       <Button fx:id="switchButtonB" layoutX="14.0" layoutY="270.0" mnemonicParsing="false" onAction="#handleSwitchButtonBClick" text="go to susp 3" />
       <ImageView fx:id="testImage" fitHeight="150.0" fitWidth="200.0" layoutX="642.0" layoutY="175.0" pickOnBounds="true" preserveRatio="true" visible="false">
          <image>
-            <Image url="@../images/cloth.png" />
+            <Image url="@../images/thoughtbubble.png" />
          </image>
       </ImageView>
    </children>

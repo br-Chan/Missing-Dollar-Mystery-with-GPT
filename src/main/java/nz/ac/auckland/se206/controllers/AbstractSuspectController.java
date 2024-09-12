@@ -190,6 +190,7 @@ public abstract class AbstractSuspectController {
           };
       Thread backgroundThread = new Thread(backgroundTask);
       backgroundThread.start();
+      testImage.setVisible(false);
       return result.getChatMessage();
     } catch (ApiProxyException e) {
       e.printStackTrace();
@@ -215,6 +216,7 @@ public abstract class AbstractSuspectController {
    * @throws ApiProxyException
    */
   private void sendMessage() throws ApiProxyException {
+    testImage.setVisible(true);
     String message = txtInput.getText().trim();
     if (message.isEmpty()) {
       return;
