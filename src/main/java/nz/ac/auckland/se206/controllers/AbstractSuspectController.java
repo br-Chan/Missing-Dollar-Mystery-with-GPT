@@ -10,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import nz.ac.auckland.apiproxy.chat.openai.ChatCompletionRequest;
@@ -190,7 +191,7 @@ public abstract class AbstractSuspectController {
           };
       Thread backgroundThread = new Thread(backgroundTask);
       backgroundThread.start();
-      chatBubbleImage.setVisible(false);
+      setChatting(chatBubbleImage);
       return result.getChatMessage();
     } catch (ApiProxyException e) {
       e.printStackTrace();
@@ -220,7 +221,7 @@ public abstract class AbstractSuspectController {
     if (message.isEmpty()) {
       return;
     }
-    chatBubbleImage.setVisible(true);
+    setThinking(chatBubbleImage);
     txtInput.clear();
     ChatMessage msg = new ChatMessage("user", message);
     appendChatMessage(msg);
@@ -239,5 +240,13 @@ public abstract class AbstractSuspectController {
     Thread backgroundThread = new Thread(backgroundTask);
     // Starts the thread to run the tool
     backgroundThread.start();
+  }
+
+  private void setThinking(ImageView image) {
+    image.setImage(new Image(App.class.getResource("/images/thoughtbubblepixel.png").toString()));
+  }
+
+  private void setChatting(ImageView image) {
+    image.setImage(new Image(App.class.getResource("/images/chatbubblepixel.png").toString()));
   }
 }
