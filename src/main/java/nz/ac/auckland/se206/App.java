@@ -10,6 +10,8 @@ import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import nz.ac.auckland.se206.controllers.ChatController;
+import nz.ac.auckland.se206.controllers.SceneManager;
+import nz.ac.auckland.se206.controllers.SceneManager.AppUi;
 import nz.ac.auckland.se206.speech.FreeTextToSpeech;
 
 /**
@@ -19,6 +21,7 @@ import nz.ac.auckland.se206.speech.FreeTextToSpeech;
 public class App extends Application {
 
   private static Scene scene;
+  private static Parent roomController;
 
   /**
    * The main method that launches the JavaFX application.
@@ -29,6 +32,15 @@ public class App extends Application {
     launch();
   }
 
+  public static Scene getScene() {
+    return scene;
+  }
+
+
+  public static Parent getRoomController() {
+    return roomController;
+  }
+
   /**
    * Sets the root of the scene to the specified FXML file.
    *
@@ -37,6 +49,16 @@ public class App extends Application {
    */
   public static void setRoot(String fxml) throws IOException {
     scene.setRoot(loadFxml(fxml));
+  }
+
+  /**
+   * Sets the root of the scene to the value of the specified AppUi in the scene manager.
+   * 
+   * @param appUi the enum key for the hash map in the scene manager.
+   * @throws IOException if the key is not found.
+   */
+  public static void setRoot(AppUi appUi) throws IOException {
+    scene.setRoot(SceneManager.getUiRoot(appUi));
   }
 
   /**
@@ -72,19 +94,23 @@ public class App extends Application {
   }
 
   /**
-   * This method is invoked when the application starts. It loads and shows the "room" scene.
+   * This method is invoked when the application starts. It loads and shows the "suspect1" scene.
    *
    * @param stage the primary stage of the application
-   * @throws IOException if the "src/main/resources/fxml/room.fxml" file is not found
+   * @throws IOException if the "src/main/resources/fxml/suspect1.fxml" file is not found
    */
   @Override
   public void start(final Stage stage) throws IOException {
-    Parent root = loadFxml("game");
+    // Add FXMLs to the scene manager hash map.
+    SceneManager.addUi(AppUi.SUSPECT1, loadFxml("suspect1"));
+    SceneManager.addUi(AppUi.SUSPECT2, loadFxml("suspect2"));
+    SceneManager.addUi(AppUi.SUSPECT3, loadFxml("suspect3"));
+
+    Parent root = SceneManager.getUiRoot(AppUi.SUSPECT1);
     scene = new Scene(root);
     stage.setScene(scene);
     stage.show();
     stage.setOnCloseRequest(event -> handleWindowClose(event));
-    root.requestFocus();
   }
 
   private void handleWindowClose(WindowEvent event) {

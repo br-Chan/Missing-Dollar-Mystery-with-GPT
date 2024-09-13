@@ -14,6 +14,9 @@ import nz.ac.auckland.se206.speech.TextToSpeech;
 /**
  * Controller class for the room view. Handles user interactions within the room where the user can
  * chat with customers and guess their profession.
+ * 
+ * NOTE:THIS IS A DUMMY/USELESS CLASS ONLY LEFT IN TO AVOID POTENTIAL MERGE CONFLICTS FROM BRANCHES
+ * THAT BRANCHED OFF THE TEMPLATE CODE.
  */
 public class RoomController {
 
@@ -26,7 +29,7 @@ public class RoomController {
   @FXML private Button btnGuess;
 
   private static boolean isFirstTimeInit = true;
-  private static GameStateContext context = new GameStateContext();
+  private static GameStateContext context = new GameStateContext(null);
 
   /**
    * Initializes the room view. If it's the first time initialization, it will provide instructions
