@@ -3,15 +3,11 @@ package nz.ac.auckland.se206;
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
-import javafx.scene.input.MouseEvent;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
-import nz.ac.auckland.se206.controllers.ChatController;
-import nz.ac.auckland.se206.controllers.SceneManager;
-import nz.ac.auckland.se206.controllers.SceneManager.AppUi;
+import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.speech.FreeTextToSpeech;
 
 /**
@@ -21,7 +17,13 @@ import nz.ac.auckland.se206.speech.FreeTextToSpeech;
 public class App extends Application {
 
   private static Scene scene;
-  private static Parent roomController;
+
+  /**
+   * NOTE TO DEVELOPERS: Edit this variable to change which scene is shown first when loading the
+   * game during testing. firstAppUi should be Appui.MENU upon merging with main (ideally) and upon
+   * release (must).
+   */
+  private final static AppUi firstAppUi = AppUi.MENU;
 
   /**
    * The main method that launches the JavaFX application.
@@ -36,11 +38,6 @@ public class App extends Application {
     return scene;
   }
 
-
-  public static Parent getRoomController() {
-    return roomController;
-  }
-
   /**
    * Sets the root of the scene to the specified FXML file.
    *
@@ -53,7 +50,7 @@ public class App extends Application {
 
   /**
    * Sets the root of the scene to the value of the specified AppUi in the scene manager.
-   * 
+   *
    * @param appUi the enum key for the hash map in the scene manager.
    * @throws IOException if the key is not found.
    */
@@ -74,43 +71,46 @@ public class App extends Application {
   }
 
   /**
-   * Opens the chat view and sets the profession in the chat controller.
+   * Adds all FXML UI roots to the scene manager.
    *
-   * @param event the mouse event that triggered the method
-   * @param profession the profession to set in the chat controller
-   * @throws IOException if the FXML file is not found
+   * @throws IOException if a FXML file is not found
    */
-  public static void openChat(MouseEvent event, String profession) throws IOException {
-    FXMLLoader loader = new FXMLLoader(App.class.getResource("/fxml/chat.fxml"));
-    Parent root = loader.load();
+  private void addAllUi() throws IOException {
+    SceneManager.addUi(AppUi.MENU, loadFxml("menu"));
+    SceneManager.addUi(AppUi.GAME, loadFxml("game"));
 
-    ChatController chatController = loader.getController();
-    chatController.setProfession(profession);
-
-    Stage stage = (Stage) ((Node) event.getSource()).getScene().getWindow();
-    scene = new Scene(root);
-    stage.setScene(scene);
-    stage.show();
-  }
-
-  /**
-   * This method is invoked when the application starts. It loads and shows the "suspect1" scene.
-   *
-   * @param stage the primary stage of the application
-   * @throws IOException if the "src/main/resources/fxml/suspect1.fxml" file is not found
-   */
-  @Override
-  public void start(final Stage stage) throws IOException {
-    // Add FXMLs to the scene manager hash map.
+    SceneManager.addUi(AppUi.CRIME_SCENE, loadFxml("crimeScene"));
     SceneManager.addUi(AppUi.SUSPECT1, loadFxml("suspect1"));
     SceneManager.addUi(AppUi.SUSPECT2, loadFxml("suspect2"));
     SceneManager.addUi(AppUi.SUSPECT3, loadFxml("suspect3"));
 
-    Parent root = SceneManager.getUiRoot(AppUi.SUSPECT1);
+    SceneManager.addUi(AppUi.GUESS, loadFxml("guess"));
+    SceneManager.addUi(AppUi.RESULT, loadFxml("result"));
+  }
+
+  /**
+   * Sets the scene that is shown first to the UI root associated with the input AppUi value, then
+   * displays the stage to the user.
+   */
+  private void showFirstScene(final Stage stage, AppUi firstAppUi) {
+    Parent root = SceneManager.getUiRoot(firstAppUi);
     scene = new Scene(root);
     stage.setScene(scene);
     stage.show();
     stage.setOnCloseRequest(event -> handleWindowClose(event));
+  }
+
+  /**
+   * This method is invoked when the application starts. It loads and shows the first scene.
+   *
+   * @param stage the primary stage of the application
+   * @throws IOException if the FXML file is not found
+   */
+  @Override
+  public void start(final Stage stage) throws IOException {
+    addAllUi();
+
+    showFirstScene(stage, firstAppUi);
   }
 
   private void handleWindowClose(WindowEvent event) {
