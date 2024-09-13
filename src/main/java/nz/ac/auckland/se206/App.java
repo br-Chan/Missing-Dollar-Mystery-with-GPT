@@ -66,7 +66,7 @@ public class App extends Application {
   /**
    * Adds all FXML UI roots to the scene manager.
    *
-   * @throws IOException if the FXML file is not found
+   * @throws IOException if a FXML file is not found
    */
   private void addAllUi() throws IOException {
     SceneManager.addUi(AppUi.MENU, loadFxml("menu"));
@@ -104,12 +104,12 @@ public class App extends Application {
     addAllUi();
 
     /**
-     * NOTE TO DEVELOPERS: Change the value of firstAppUi to change which scene is shown first when
+     * NOTE TO DEVELOPERS: Edit this variable to change which scene is shown first when
      * loading the game during testing. firstAppUi should be Appui.MENU upon merging with main
-     * (ideally) and upon release (as a must).
+     * (ideally) and upon release (must).
      */
     AppUi firstAppUi = AppUi.MENU;
-
+    
     showFirstScene(stage, firstAppUi);
   }
 

@@ -32,8 +32,6 @@ public class SceneManager {
   /**
    * Returns the root of the UI associated with the given AppUi enum value.
    *
-   * <p>TODO: Implement exception if no AppUi found.
-   *
    * @param appUi enum value to search for.
    * @return root of the UI that the enum value associates with.
    */
