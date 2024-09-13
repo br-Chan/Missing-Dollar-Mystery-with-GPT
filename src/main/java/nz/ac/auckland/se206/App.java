@@ -19,6 +19,13 @@ public class App extends Application {
   private static Scene scene;
 
   /**
+   * NOTE TO DEVELOPERS: Edit this variable to change which scene is shown first when loading the
+   * game during testing. firstAppUi should be Appui.MENU upon merging with main (ideally) and upon
+   * release (must).
+   */
+  private final static AppUi firstAppUi = AppUi.MENU;
+
+  /**
    * The main method that launches the JavaFX application.
    *
    * @param args the command line arguments
@@ -103,13 +110,6 @@ public class App extends Application {
   public void start(final Stage stage) throws IOException {
     addAllUi();
 
-    /**
-     * NOTE TO DEVELOPERS: Edit this variable to change which scene is shown first when
-     * loading the game during testing. firstAppUi should be Appui.MENU upon merging with main
-     * (ideally) and upon release (must).
-     */
-    AppUi firstAppUi = AppUi.MENU;
-    
     showFirstScene(stage, firstAppUi);
   }
 
