@@ -21,6 +21,7 @@ public class CrimeSceneController {
   @FXML private Rectangle cardRectangle;
   @FXML private Rectangle caseRectangle;
   @FXML private Pane cardPane;
+  @FXML private Pane casePane;
   @FXML private ImageView dirtImage;
   @FXML private ImageView scratchImage;
   @FXML private ImageView pencilImage;
@@ -64,6 +65,7 @@ public class CrimeSceneController {
 
   @FXML
   public void showCardClue() {
+    System.out.println("Showing card clue");
     cardPane.setVisible(true);
     cardPane.setOnMouseMoved(
         event -> {
@@ -77,6 +79,7 @@ public class CrimeSceneController {
 
   @FXML
   public void hideCardClue() {
+    System.out.println("Hiding card clue");
     cardPane.setVisible(false);
     cleaningImage.setVisible(false);
     napkinOn = false;
@@ -148,7 +151,16 @@ public class CrimeSceneController {
   }
 
   @FXML
-  public void showCaseClue() {}
+  public void showCaseClue() {
+    System.out.println("Showing case clue");
+    casePane.setVisible(true);
+  }
+
+  @FXML
+  public void hideCaseClue() {
+    System.out.println("Hiding case clue");
+    casePane.setVisible(false);
+  }
 
   public void decreaseOpacity(ImageView image) {
     image.setOpacity(image.getOpacity() - 0.005);
