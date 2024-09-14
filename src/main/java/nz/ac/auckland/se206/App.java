@@ -23,7 +23,7 @@ public class App extends Application {
    * game during testing. firstAppUi should be Appui.MENU upon merging with main (ideally) and upon
    * release (must).
    */
-  private final static AppUi firstAppUi = AppUi.MENU;
+  private static final AppUi firstAppUi = AppUi.MENU;
 
   /**
    * The main method that launches the JavaFX application.

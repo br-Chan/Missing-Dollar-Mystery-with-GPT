@@ -1,5 +1,6 @@
 package nz.ac.auckland.se206.controllers;
 
+import java.util.ArrayList;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -19,15 +20,25 @@ import nz.ac.auckland.se206.App;
 public class CrimeSceneController {
 
   @FXML private Rectangle cardRectangle;
+  @FXML private Rectangle caseRectangle;
   @FXML private Pane cardPane;
+  @FXML private Pane casePane;
   @FXML private ImageView dirtImage;
   @FXML private ImageView scratchImage;
   @FXML private ImageView pencilImage;
   @FXML private ImageView cleaningImage;
 
+  @FXML private Pane suspensePane;
+  @FXML private Pane tigerCanPane;
+  @FXML private Pane cokeZeroPane;
+  @FXML private Pane hopCanPane;
+  @FXML private Pane tigerBottlePane;
+
   private boolean napkinOn;
   private boolean clothOn;
   private boolean rubberOn;
+
+  private ArrayList<Pane> itemPaneList = new ArrayList<>();
 
   /**
    * TODO: Fill in this JavaDoc comment.
@@ -38,7 +49,9 @@ public class CrimeSceneController {
   public void initialize() {
     System.out.println("Initialising...");
     cardPane.setVisible(false);
+    casePane.setVisible(false);
     cleaningImage.setVisible(false);
+    addAllItemPanes();
   }
 
   /**
@@ -63,6 +76,7 @@ public class CrimeSceneController {
 
   @FXML
   public void showCardClue() {
+    System.out.println("Showing card clue");
     cardPane.setVisible(true);
     cardPane.setOnMouseMoved(
         event -> {
@@ -76,6 +90,7 @@ public class CrimeSceneController {
 
   @FXML
   public void hideCardClue() {
+    System.out.println("Hiding card clue");
     cardPane.setVisible(false);
     cleaningImage.setVisible(false);
     napkinOn = false;
@@ -146,7 +161,56 @@ public class CrimeSceneController {
     }
   }
 
+  @FXML
+  public void showCaseClue() {
+    System.out.println("Showing case clue");
+    casePane.setVisible(true);
+  }
+
+  @FXML
+  public void hideCaseClue() {
+    System.out.println("Hiding case clue");
+    casePane.setVisible(false);
+  }
+
+  @FXML
+  private void displayTigerCan() {
+    showPane(tigerCanPane);
+  }
+
+  @FXML
+  private void displayCokeZeroCan() {
+    showPane(cokeZeroPane);
+  }
+
+  @FXML
+  private void displayHopCan() {
+    showPane(hopCanPane);
+  }
+
+  @FXML
+  private void displayTigerBottle() {
+    showPane(tigerBottlePane);
+  }
+
   public void decreaseOpacity(ImageView image) {
     image.setOpacity(image.getOpacity() - 0.005);
+  }
+
+  private void addAllItemPanes() {
+    itemPaneList.add(suspensePane);
+    itemPaneList.add(tigerCanPane);
+    itemPaneList.add(cokeZeroPane);
+    itemPaneList.add(hopCanPane);
+    itemPaneList.add(tigerBottlePane);
+  }
+
+  private void showPane(Pane paneToShow) {
+    for (Pane pane : itemPaneList) {
+      if (pane != paneToShow) {
+        pane.setVisible(false);
+      }
+    }
+    paneToShow.setVisible(true);
   }
 }
