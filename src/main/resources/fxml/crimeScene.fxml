@@ -76,7 +76,67 @@
                   <Image url="@../images/displayCase/display.png" />
                </image>
             </ImageView>
-            <Pane fx:id="suspensePane" layoutX="296.0" layoutY="11.0" prefHeight="378.0" prefWidth="319.0">
+            <Pane fx:id="tigerCanPane" layoutX="293.0" layoutY="15.0" prefHeight="378.0" prefWidth="319.0" visible="false">
+               <children>
+                  <ImageView fitHeight="193.0" fitWidth="165.0" layoutX="133.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../displayclue/src/main/resources/images/tigercan.jpg" />
+                     </image>
+                  </ImageView>
+                  <Text layoutX="14.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tiger Can" wrappingWidth="112.20001220703125">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="14.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Stock: 15 Last Stocked: 15/9/24" wrappingWidth="112.20001220703125" />
+               </children>
+            </Pane>
+            <Pane fx:id="cokeZeroPane" layoutX="293.0" layoutY="15.0" prefHeight="378.0" prefWidth="319.0" visible="false">
+               <children>
+                  <ImageView fitHeight="193.0" fitWidth="165.0" layoutX="133.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../displayclue/src/main/resources/images/cokezerocan.jpg" />
+                     </image>
+                  </ImageView>
+                  <Text layoutX="14.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Coke Can" wrappingWidth="112.20001220703125">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="14.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Stock: 20 Last Stocked: 15/9/24" wrappingWidth="112.20001220703125" />
+               </children>
+            </Pane>
+            <Pane fx:id="hopCanPane" layoutX="293.0" layoutY="15.0" prefHeight="378.0" prefWidth="319.0" visible="false">
+               <children>
+                  <ImageView fitHeight="193.0" fitWidth="165.0" layoutX="133.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../displayclue/src/main/resources/images/hopleafcan.png" />
+                     </image>
+                  </ImageView>
+                  <Text layoutX="14.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hopleaf Can" wrappingWidth="112.20001220703125">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="14.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Stock: 16 Last Stocked: 15/9/24" wrappingWidth="112.20001220703125" />
+               </children>
+            </Pane>
+            <Pane fx:id="tigerBottlePane" layoutX="293.0" layoutY="15.0" prefHeight="378.0" prefWidth="319.0" visible="false">
+               <children>
+                  <ImageView fitHeight="193.0" fitWidth="165.0" layoutX="133.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../../../../../displayclue/src/main/resources/images/tigerbottle.jpg" />
+                     </image>
+                  </ImageView>
+                  <Text layoutX="14.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tiger Bottle" wrappingWidth="112.20001220703125">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="14.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Stock: 14 Last Stocked: 15/9/24" wrappingWidth="112.20001220703125" />
+               </children>
+            </Pane>
+            <Pane fx:id="suspensePane" layoutX="293.0" layoutY="15.0" prefHeight="378.0" prefWidth="319.0">
                <children>
                   <Rectangle arcWidth="5.0" fill="#d7d7d7" height="96.0" layoutX="6.0" layoutY="13.0" opacity="0.2" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="118.0" />
                   <Rectangle arcWidth="5.0" fill="#d7d7d7" height="62.0" layoutX="6.0" layoutY="117.0" opacity="0.2" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="118.0" />
