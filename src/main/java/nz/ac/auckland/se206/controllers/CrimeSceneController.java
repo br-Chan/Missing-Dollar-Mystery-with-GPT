@@ -19,6 +19,7 @@ import nz.ac.auckland.se206.App;
 public class CrimeSceneController {
 
   @FXML private Rectangle cardRectangle;
+  @FXML private Rectangle caseRectangle;
   @FXML private Pane cardPane;
   @FXML private ImageView dirtImage;
   @FXML private ImageView scratchImage;
@@ -145,6 +146,9 @@ public class CrimeSceneController {
       rubberOn = true;
     }
   }
+
+  @FXML
+  public void showCaseClue() {}
 
   public void decreaseOpacity(ImageView image) {
     image.setOpacity(image.getOpacity() - 0.005);

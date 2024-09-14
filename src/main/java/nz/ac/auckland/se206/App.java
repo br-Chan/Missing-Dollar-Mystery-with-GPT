@@ -110,7 +110,7 @@ public class App extends Application {
   public void start(final Stage stage) throws IOException {
     addAllUi();
 
-    showFirstScene(stage, firstAppUi);
+    showFirstScene(stage, AppUi.CRIME_SCENE);
   }
 
   private void handleWindowClose(WindowEvent event) {
