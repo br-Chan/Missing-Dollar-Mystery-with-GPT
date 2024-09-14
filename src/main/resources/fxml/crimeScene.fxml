@@ -66,10 +66,27 @@
             <Button layoutX="429.0" layoutY="299.0" mnemonicParsing="false" onMouseClicked="#rubberSelected" prefHeight="25.0" prefWidth="121.0" text="Rubber" />
          </children>
       </Pane>
-      <Pane fx:id="casePane" layoutY="173.0" prefHeight="426.0" prefWidth="789.0" visible="false">
+      <Pane fx:id="casePane" layoutY="173.0" prefHeight="426.0" prefWidth="789.0">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="426.0" stroke="BLACK" strokeType="INSIDE" width="789.0" />
             <Button fx:id="caseBackButton" layoutX="723.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#hideCaseClue" text="Back" />
+            <ImageView fitHeight="400.0" fitWidth="390.0" layoutX="14.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/displayCase/display.png" />
+               </image>
+            </ImageView>
+            <Pane fx:id="suspensePane" layoutX="296.0" layoutY="11.0" prefHeight="378.0" prefWidth="319.0">
+               <children>
+                  <Rectangle arcWidth="5.0" fill="#d7d7d7" height="96.0" layoutX="6.0" layoutY="13.0" opacity="0.2" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="118.0" />
+                  <Rectangle arcWidth="5.0" fill="#d7d7d7" height="62.0" layoutX="6.0" layoutY="117.0" opacity="0.2" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="118.0" />
+                  <Rectangle arcWidth="5.0" fill="#d7d7d7" height="165.0" layoutX="133.0" layoutY="14.0" opacity="0.2" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="165.0" />
+                  <Text fill="#8c8c8c" layoutX="7.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Click on a drink for more information" wrappingWidth="264.79754638671875">
+                     <font>
+                        <Font size="25.0" />
+                     </font>
+                  </Text>
+               </children>
+            </Pane>
          </children>
       </Pane>
    </children>

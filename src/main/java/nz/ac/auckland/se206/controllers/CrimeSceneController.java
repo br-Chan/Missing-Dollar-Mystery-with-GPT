@@ -40,6 +40,7 @@ public class CrimeSceneController {
   public void initialize() {
     System.out.println("Initialising...");
     cardPane.setVisible(false);
+    casePane.setVisible(false);
     cleaningImage.setVisible(false);
   }
 
