@@ -80,7 +80,7 @@
                <children>
                   <ImageView fitHeight="193.0" fitWidth="165.0" layoutX="133.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../displayclue/src/main/resources/images/tigercan.jpg" />
+                        <Image url="@../images/displayCase/tigercan.jpg" />
                      </image>
                   </ImageView>
                   <Text layoutX="14.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tiger Can" wrappingWidth="112.20001220703125">
@@ -95,7 +95,7 @@
                <children>
                   <ImageView fitHeight="193.0" fitWidth="165.0" layoutX="133.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../displayclue/src/main/resources/images/cokezerocan.jpg" />
+                        <Image url="@../images/displayCase/cokezerocan.jpg" />
                      </image>
                   </ImageView>
                   <Text layoutX="14.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Coke Can" wrappingWidth="112.20001220703125">
@@ -110,7 +110,7 @@
                <children>
                   <ImageView fitHeight="193.0" fitWidth="165.0" layoutX="133.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../displayclue/src/main/resources/images/hopleafcan.png" />
+                        <Image url="@../images/displayCase/hopleafcan.png" />
                      </image>
                   </ImageView>
                   <Text layoutX="14.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hopleaf Can" wrappingWidth="112.20001220703125">
@@ -125,7 +125,7 @@
                <children>
                   <ImageView fitHeight="193.0" fitWidth="165.0" layoutX="133.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../../../../displayclue/src/main/resources/images/tigerbottle.jpg" />
+                        <Image url="@../images/displayCase/tigerbottle.jpg" />
                      </image>
                   </ImageView>
                   <Text layoutX="14.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tiger Bottle" wrappingWidth="112.20001220703125">

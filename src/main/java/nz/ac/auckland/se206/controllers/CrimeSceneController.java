@@ -1,5 +1,6 @@
 package nz.ac.auckland.se206.controllers;
 
+import java.util.ArrayList;
 import javafx.fxml.FXML;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -28,10 +29,16 @@ public class CrimeSceneController {
   @FXML private ImageView cleaningImage;
 
   @FXML private Pane suspensePane;
+  @FXML private Pane tigerCanPane;
+  @FXML private Pane cokeZeroPane;
+  @FXML private Pane hopCanPane;
+  @FXML private Pane tigerBottlePane;
 
   private boolean napkinOn;
   private boolean clothOn;
   private boolean rubberOn;
+
+  private ArrayList<Pane> itemPaneList = new ArrayList<>();
 
   /**
    * TODO: Fill in this JavaDoc comment.
@@ -44,6 +51,7 @@ public class CrimeSceneController {
     cardPane.setVisible(false);
     casePane.setVisible(false);
     cleaningImage.setVisible(false);
+    addAllItemPanes();
   }
 
   /**
@@ -166,18 +174,43 @@ public class CrimeSceneController {
   }
 
   @FXML
-  private void displayTigerCan() {}
+  private void displayTigerCan() {
+    showPane(tigerCanPane);
+  }
 
   @FXML
-  private void displayCokeZeroCan() {}
+  private void displayCokeZeroCan() {
+    showPane(cokeZeroPane);
+  }
 
   @FXML
-  private void displayHopCan() {}
+  private void displayHopCan() {
+    showPane(hopCanPane);
+  }
 
   @FXML
-  private void displayTigerBottle() {}
+  private void displayTigerBottle() {
+    showPane(tigerBottlePane);
+  }
 
   public void decreaseOpacity(ImageView image) {
     image.setOpacity(image.getOpacity() - 0.005);
+  }
+
+  private void addAllItemPanes() {
+    itemPaneList.add(suspensePane);
+    itemPaneList.add(tigerCanPane);
+    itemPaneList.add(cokeZeroPane);
+    itemPaneList.add(hopCanPane);
+    itemPaneList.add(tigerBottlePane);
+  }
+
+  private void showPane(Pane paneToShow) {
+    for (Pane pane : itemPaneList) {
+      if (pane != paneToShow) {
+        pane.setVisible(false);
+      }
+    }
+    paneToShow.setVisible(true);
   }
 }
