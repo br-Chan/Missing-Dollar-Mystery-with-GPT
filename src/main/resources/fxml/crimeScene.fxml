@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.effect.ColorAdjust?>
@@ -87,6 +88,26 @@
                   </Text>
                </children>
             </Pane>
+            <Rectangle fx:id="tigerCanRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="67.0" layoutX="48.0" layoutY="53.0" onMouseClicked="#displayTigerCan" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="201.0">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Rectangle>
+            <Rectangle fx:id="cokeZeroCanRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="67.0" layoutX="40.0" layoutY="120.0" onMouseClicked="#displayCokeZeroCan" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="217.0">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Rectangle>
+            <Rectangle fx:id="hopCanRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="67.0" layoutX="40.0" layoutY="196.0" onMouseClicked="#displayHopCan" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="217.0">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Rectangle>
+            <Rectangle fx:id="tigerBottleRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="102.0" layoutX="42.0" layoutY="263.0" onMouseClicked="#displayTigerBottle" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="213.0">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Rectangle>
          </children>
       </Pane>
    </children>

@@ -27,6 +27,8 @@ public class CrimeSceneController {
   @FXML private ImageView pencilImage;
   @FXML private ImageView cleaningImage;
 
+  @FXML private Pane suspensePane;
+
   private boolean napkinOn;
   private boolean clothOn;
   private boolean rubberOn;
@@ -162,6 +164,18 @@ public class CrimeSceneController {
     System.out.println("Hiding case clue");
     casePane.setVisible(false);
   }
+
+  @FXML
+  private void displayTigerCan() {}
+
+  @FXML
+  private void displayCokeZeroCan() {}
+
+  @FXML
+  private void displayHopCan() {}
+
+  @FXML
+  private void displayTigerBottle() {}
 
   public void decreaseOpacity(ImageView image) {
     image.setOpacity(image.getOpacity() - 0.005);
