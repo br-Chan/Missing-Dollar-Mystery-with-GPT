@@ -22,13 +22,14 @@ public class CrimeSceneController {
 
   @FXML private Rectangle cardRectangle;
   @FXML private Rectangle caseRectangle;
+  @FXML private Pane aiCardCluePane;
   @FXML private Pane cardPane;
   @FXML private Pane casePane;
   @FXML private ImageView dirtImage;
   @FXML private ImageView debrisImage;
   @FXML private ImageView pencilImage;
   @FXML private ImageView cleaningImage;
-  @FXML private Label cardCleanedLabel;
+  @FXML private Label cardDirtyLabel;
 
   @FXML private Pane suspensePane;
   @FXML private Pane tigerCanPane;
@@ -204,7 +205,8 @@ public class CrimeSceneController {
         && debrisImage.getOpacity() < 0.1
         && pencilImage.getOpacity() < 0.1) {
       cardCleaned = true;
-      cardCleanedLabel.setVisible(cardCleaned);
+      cardDirtyLabel.setVisible(false);
+      aiCardCluePane.setVisible(true);
     }
   }
 
