@@ -1,5 +1,6 @@
 package nz.ac.auckland.se206;
 
+import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 import javafx.application.Platform;
@@ -8,7 +9,7 @@ import nz.ac.auckland.se206.SceneManager.AppUi;
 
 public class AppTimer {
 
-  public static final int GAMETIME = 10;
+  public static final int GAMETIME = 5 * 60;
   public static final int GUESSTIME = 1 * 60;
 
   private Label timerLabel;
@@ -51,7 +52,12 @@ public class AppTimer {
                   // Stop the timer if 0 is reached and handle it.
                   if (timeLeft <= 0) {
                     timer.cancel();
-                    handleTimeUp();
+                    try {
+                      handleTimeUp();
+                    } catch (IOException e) {
+                      e.printStackTrace();
+                      System.err.println("Could not find FXML to switch to when handling time up.");
+                    }
                   }
                 });
           }
@@ -60,10 +66,12 @@ public class AppTimer {
     timer.scheduleAtFixedRate(task, 1000, 1000);
   }
 
-  private void handleTimeUp() {
+  private void handleTimeUp() throws IOException {
     if (startingTime == GAMETIME) {
+      SceneManager.addUi(AppUi.GUESS, App.loadFxml("guess"));
       App.getScene().setRoot(SceneManager.getUiRoot(AppUi.GUESS));
     } else if (startingTime == GUESSTIME) {
+      SceneManager.addUi(AppUi.RESULT, App.loadFxml("result"));
       App.getScene().setRoot(SceneManager.getUiRoot(AppUi.RESULT));
     }
   }

@@ -33,7 +33,7 @@
    <right>
       <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="140.0" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="timerLabel" layoutX="7.0" layoutY="14.0" text="00:00">
+            <Label fx:id="timerLabel" layoutX="7.0" layoutY="14.0" text="05:00">
                <font>
                   <Font size="53.0" />
                </font></Label>
