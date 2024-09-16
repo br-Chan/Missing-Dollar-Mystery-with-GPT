@@ -1,9 +1,7 @@
 package nz.ac.auckland.se206.states;
 
 import java.io.IOException;
-import javafx.scene.input.MouseEvent;
 import nz.ac.auckland.se206.GameStateContext;
-import nz.ac.auckland.se206.controllers.AbstractSuspectController;
 import nz.ac.auckland.se206.speech.TextToSpeech;
 
 
@@ -14,30 +12,14 @@ import nz.ac.auckland.se206.speech.TextToSpeech;
 public class GameStarted implements GameState {
 
   private final GameStateContext context;
-  private final AbstractSuspectController suspectController;
 
   /**
    * Constructs a new GameStarted state with the given game state context.
    *
    * @param context the context of the game state
    */
-  public GameStarted(GameStateContext context, AbstractSuspectController suspectController) {
+  public GameStarted(GameStateContext context) {
     this.context = context;
-    this.suspectController = suspectController;
-  }
-
-  /**
-   * Handles the event when a rectangle is clicked. Depending on the clicked rectangle, it either
-   * provides an introduction or transitions to the chat view.
-   *
-   * @param event the mouse event triggered by clicking a rectangle
-   * @param rectangleId the ID of the clicked rectangle
-   * @throws IOException if there is an I/O error
-   */
-  @Override
-  public void handleRectangleClick(MouseEvent event, String rectangleId) throws IOException {
-    //App.openChat(event, context.getProfession(rectangleId));
-    suspectController.setProfession(context.getProfession(rectangleId));
   }
 
   /**
@@ -48,7 +30,7 @@ public class GameStarted implements GameState {
    */
   @Override
   public void handleGuessClick() throws IOException {
-    TextToSpeech.speak("Make a guess, click on the " + context.getProfessionToGuess());
+    TextToSpeech.speak("Make a guess, click on the context.getProfessionToGuess()");
     context.setState(context.getGuessingState());
   }
 }

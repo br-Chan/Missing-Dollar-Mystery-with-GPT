@@ -1,12 +1,11 @@
 package nz.ac.auckland.se206.controllers;
 
-/**
- * Controller class for the suspect2 view. Handles user interactions within the suspect2 scene where
- * the user can chat with suspect 2 and guess their profession.
- */
+/** Controller class for the suspect2 view. Sets suspect2's data. */
 public class Suspect2Controller extends AbstractSuspectController {
 
   public Suspect2Controller() {
-    suspectId = "rectPerson2";
+    suspectId = "suspect2";
+    suspectName = "Dewey";
+    promptFilename = "suspect2.txt";
   }
 }

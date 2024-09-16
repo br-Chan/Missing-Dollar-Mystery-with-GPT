@@ -21,6 +21,9 @@ import nz.ac.auckland.se206.speech.FreeTextToSpeech;
 /**
  * Controller class for the chat view. Handles user interactions and communication with the GPT
  * model via the API proxy.
+ *
+ * <p>NOTE:THIS IS A DUMMY/USELESS CLASS ONLY LEFT IN TO AVOID POTENTIAL MERGE CONFLICTS FROM
+ * BRANCHES THAT BRANCHED OFF THE TEMPLATE CODE.
  */
 public class ChatController {
 

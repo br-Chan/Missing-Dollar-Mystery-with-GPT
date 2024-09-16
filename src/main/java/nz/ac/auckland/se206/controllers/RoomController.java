@@ -39,11 +39,9 @@ public class RoomController {
   public void initialize() {
     if (isFirstTimeInit) {
       TextToSpeech.speak(
-          "Chat with the three customers, and guess who is the "
-              + context.getProfessionToGuess());
+          "Chat with the three customers, and guess who is the context.getProfessionToGuess()");
       isFirstTimeInit = false;
     }
-    lblProfession.setText(context.getProfessionToGuess());
   }
 
   /**
@@ -75,7 +73,7 @@ public class RoomController {
   @FXML
   private void handleRectangleClick(MouseEvent event) throws IOException {
     Rectangle clickedRectangle = (Rectangle) event.getSource();
-    context.handleRectangleClick(event, clickedRectangle.getId());
+    // context.handleRectangleClick(event, clickedRectangle.getId());
   }
 
   /**

@@ -7,7 +7,6 @@ import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -21,7 +20,6 @@ import nz.ac.auckland.apiproxy.config.ApiProxyConfig;
 import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameStateContext;
-import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.prompts.PromptEngineering;
 import nz.ac.auckland.se206.speech.TextToSpeech;
 
@@ -31,17 +29,16 @@ public abstract class AbstractSuspectController {
   @FXML private TextField txtInput;
   @FXML private Button btnSend;
 
-  // @FXML protected Button btnToSwitch;
-  @FXML private Label lblProfession;
-
   @FXML private ImageView chatBubbleImage;
 
-  protected String suspectId;
-  private ChatCompletionRequest chatCompletionRequest;
-  private String profession;
+  protected ChatCompletionRequest chatCompletionRequest;
 
-  protected static boolean isFirstTimeInit = true;
+  protected boolean isFirstTimeInit = true;
   protected static GameStateContext context;
+
+  protected String suspectId;
+  protected String suspectName;
+  protected String promptFilename;
 
   public AbstractSuspectController() {
     context = new GameStateContext(this);
@@ -55,54 +52,10 @@ public abstract class AbstractSuspectController {
   public void initialize() {
     System.out.println("Initialise is being run from the abstract class!");
     if (isFirstTimeInit) {
-      TextToSpeech.speak(
-          "Chat with the three customers, and guess who is the " + context.getProfessionToGuess());
+      TextToSpeech.speak("Chat with " + suspectName);
       isFirstTimeInit = false;
     }
-    lblProfession.setText(context.getProfessionToGuess());
-    setProfession(context.getProfession(suspectId));
-  }
-
-  /**
-   * Switches the displayed scene based on what the current scene is. This is done by comparing its
-   * suspect ID.
-   */
-  @FXML
-  public void handleSwitchButtonAClick() {
-    try {
-
-      if (!suspectId.equals("rectPerson1")) {
-        App.setRoot(AppUi.SUSPECT1);
-      } else if (!suspectId.equals("rectPerson2")) {
-        App.setRoot(AppUi.SUSPECT2);
-      } else {
-        App.setRoot(AppUi.SUSPECT3);
-      }
-
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-  }
-
-  /**
-   * Switches the displayed scene based on what the current scene is. This is done by comparing its
-   * suspect ID.
-   */
-  @FXML
-  public void handleSwitchButtonBClick() {
-    try {
-
-      if (!suspectId.equals("rectPerson3")) {
-        App.setRoot(AppUi.SUSPECT3);
-      } else if (!suspectId.equals("rectPerson2")) {
-        App.setRoot(AppUi.SUSPECT2);
-      } else {
-        App.setRoot(AppUi.SUSPECT1);
-      }
-
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
+    initialiseChatCompletionRequest();
   }
 
   /**
@@ -112,7 +65,6 @@ public abstract class AbstractSuspectController {
    */
   @FXML
   public void onKeyPressed(KeyEvent event) throws ApiProxyException {
-    // Check if the key pressed was ENTER.
     if (event.getCode().toString().equals("ENTER")) {
       sendMessage();
     }
@@ -127,23 +79,21 @@ public abstract class AbstractSuspectController {
   public void onKeyReleased(KeyEvent event) {}
 
   /**
-   * Generates the system prompt based on the profession.
+   * Generates the system prompt based on the suspect's data.
    *
    * @return the system prompt string
    */
   private String getSystemPrompt() {
-    Map<String, String> map = new HashMap<>();
-    map.put("profession", profession);
-    return PromptEngineering.getPrompt("chat.txt", map);
+    Map<String, String> dataMap = new HashMap<>();
+    dataMap.put("suspectName", suspectName);
+    return PromptEngineering.getPrompt(promptFilename, dataMap);
   }
 
   /**
-   * Sets the profession for the chat context and initializes the ChatCompletionRequest.
-   *
-   * @param profession the profession to set
+   * Initialises the chat completion request and fetches the initial response to display to the user
+   * in the chat bubble.
    */
-  public void setProfession(String profession) {
-    this.profession = profession;
+  public void initialiseChatCompletionRequest() {
     try {
       ApiProxyConfig config = ApiProxyConfig.readConfig();
       chatCompletionRequest =
@@ -152,19 +102,11 @@ public abstract class AbstractSuspectController {
               .setTemperature(0.2)
               .setTopP(0.5)
               .setMaxTokens(100);
-      runGpt(new ChatMessage("system", getSystemPrompt()));
+
+      setChatting(runGpt(new ChatMessage("system", getSystemPrompt())));
     } catch (ApiProxyException e) {
       e.printStackTrace();
     }
-  }
-
-  /**
-   * Appends a chat message to the chat text area.
-   *
-   * @param msg the chat message to append
-   */
-  private void appendChatMessage(ChatMessage msg) {
-    txtaChat.appendText(msg.getRole() + ": " + msg.getContent() + "\n\n");
   }
 
   /**
@@ -177,21 +119,14 @@ public abstract class AbstractSuspectController {
   private ChatMessage runGpt(ChatMessage msg) throws ApiProxyException {
     chatCompletionRequest.addMessage(msg);
     try {
+      // Fetch ChatGPT's response.
       ChatCompletionResult chatCompletionResult = chatCompletionRequest.execute();
       Choice result = chatCompletionResult.getChoices().iterator().next();
       chatCompletionRequest.addMessage(result.getChatMessage());
-      appendChatMessage(result.getChatMessage());
-      Task<Void> backgroundTask =
-          new Task<Void>() {
-            @Override
-            protected Void call() throws Exception {
-              TextToSpeech.speak(result.getChatMessage().getContent());
-              return null;
-            }
-          };
-      Thread backgroundThread = new Thread(backgroundTask);
-      backgroundThread.start();
-      setChatting(chatBubbleImage);
+
+      // TODO: delete print statement before release.
+      System.out.println(result.getChatMessage().getContent());
+
       return result.getChatMessage();
     } catch (ApiProxyException e) {
       e.printStackTrace();
@@ -217,36 +152,48 @@ public abstract class AbstractSuspectController {
    * @throws ApiProxyException
    */
   private void sendMessage() throws ApiProxyException {
+    // Process user's input.
     String message = txtInput.getText().trim();
     if (message.isEmpty()) {
       return;
     }
-    setThinking(chatBubbleImage);
     txtInput.clear();
-    ChatMessage msg = new ChatMessage("user", message);
-    appendChatMessage(msg);
+
+    setThinking();
+
+    // Switch the chat bubble's state to chatting with ChatGPT's response to the user.
+    ChatMessage userInput = new ChatMessage("user", message);
     Task<Void> backgroundTask =
         new Task<Void>() {
-
           @Override
           protected Void call() throws Exception {
-            // Runs the chatgpt tool
-            runGpt(msg);
-
+            setChatting(runGpt(userInput));
             return null;
           }
         };
-
     Thread backgroundThread = new Thread(backgroundTask);
-    // Starts the thread to run the tool
     backgroundThread.start();
   }
 
-  private void setThinking(ImageView image) {
-    image.setImage(new Image(App.class.getResource("/images/thoughtbubblepixel.png").toString()));
+  /**
+   * Handles switching the chat bubble image to a thought bubble and replacing its text with
+   * ellipses so that the user knows that the ChatGPT API is processing their input.
+   */
+  private void setThinking() {
+    chatBubbleImage.setImage(
+        new Image(App.class.getResource("/images/thoughtbubblepixel.png").toString()));
+    txtaChat.setText("...");
   }
 
-  private void setChatting(ImageView image) {
-    image.setImage(new Image(App.class.getResource("/images/chatbubblepixel.png").toString()));
+  /**
+   * Handles switching the chat bubble image to a speech bubble and replacing its text with
+   * ChatGPT's response to the user.
+   *
+   * @param response the chat message to display to the user
+   */
+  private void setChatting(ChatMessage response) {
+    chatBubbleImage.setImage(
+        new Image(App.class.getResource("/images/chatbubblepixel.png").toString()));
+    txtaChat.setText(response.getContent());
   }
 }
