@@ -44,6 +44,12 @@ public class CrimeSceneController {
   @FXML private Pane yellowDrinkPane;
   @FXML private Pane logPane;
   @FXML private Pane stockPane;
+  @FXML private Pane errorStockPane;
+  @FXML private Pane redStockPane;
+  @FXML private Pane blueStockPane;
+  @FXML private Pane greenStockPane;
+  @FXML private Pane pinkStockPane;
+  @FXML private Pane yellowStockPane;
 
   private boolean napkinOn;
   private boolean brushOn;
@@ -51,6 +57,7 @@ public class CrimeSceneController {
   private boolean cardCleaned = false;
 
   private ArrayList<Pane> itemPaneList = new ArrayList<>();
+  private ArrayList<Pane> stockPaneList = new ArrayList<>();
 
   /**
    * TODO: Fill in this JavaDoc comment.
@@ -65,6 +72,7 @@ public class CrimeSceneController {
     computerPane.setVisible(false);
     cleaningImage.setVisible(false);
     addAllItemPanes();
+    addAllStockPanes();
   }
 
   /**
@@ -245,8 +253,28 @@ public class CrimeSceneController {
 
   @FXML
   public void searchStock() {
-    String query = searchStockField.getText().trim();
-    System.out.println(query);
+    String query = searchStockField.getText().trim().toLowerCase();
+    searchStockField.clear();
+    switch (query) {
+      case "cola crush":
+        showStock(redStockPane);
+        break;
+      case "coffee craze":
+        showStock(blueStockPane);
+        break;
+      case "elite energy":
+        showStock(greenStockPane);
+        break;
+      case "berry burst":
+        showStock(pinkStockPane);
+        break;
+      case "lemon lift":
+        showStock(yellowStockPane);
+        break;
+      default:
+        showStock(errorStockPane);
+        break;
+    }
   }
 
   public void checkCardCleaned() {
@@ -273,8 +301,26 @@ public class CrimeSceneController {
     itemPaneList.add(yellowDrinkPane);
   }
 
+  private void addAllStockPanes() {
+    stockPaneList.add(errorStockPane);
+    stockPaneList.add(redStockPane);
+    stockPaneList.add(blueStockPane);
+    stockPaneList.add(greenStockPane);
+    stockPaneList.add(pinkStockPane);
+    stockPaneList.add(yellowStockPane);
+  }
+
   private void showPane(Pane paneToShow) {
     for (Pane pane : itemPaneList) {
+      if (pane != paneToShow) {
+        pane.setVisible(false);
+      }
+    }
+    paneToShow.setVisible(true);
+  }
+
+  private void showStock(Pane paneToShow) {
+    for (Pane pane : stockPaneList) {
       if (pane != paneToShow) {
         pane.setVisible(false);
       }

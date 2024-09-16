@@ -4,6 +4,7 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextField?>
+<?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
@@ -246,14 +247,112 @@
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#000000b2" height="24.0" layoutX="77.0" layoutY="314.0" stroke="TRANSPARENT" strokeType="INSIDE" width="344.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#838383" height="24.0" layoutX="209.0" layoutY="314.0" onMouseClicked="#openLogs" stroke="TRANSPARENT" strokeType="INSIDE" width="24.0" />
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#838383" height="24.0" layoutX="233.0" layoutY="314.0" onMouseClicked="#openStock" stroke="TRANSPARENT" strokeType="INSIDE" width="24.0" />
-            <Pane fx:id="stockPane" layoutX="77.0" layoutY="125.0" prefHeight="213.0" prefWidth="344.0">
+            <Pane fx:id="stockPane" layoutX="77.0" layoutY="125.0" prefHeight="213.0" prefWidth="344.0" visible="false">
                <children>
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d0b296" height="189.0" stroke="TRANSPARENT" strokeType="INSIDE" width="344.0" />
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d0b296" height="30.0" layoutX="156.0" layoutY="183.0" onMouseClicked="#openStock" stroke="TRANSPARENT" strokeType="INSIDE" width="24.0" />
-                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#838383" height="24.0" layoutX="132.0" layoutY="189.0" onMouseClicked="#openLogs" stroke="TRANSPARENT" strokeType="INSIDE" width="24.0" />
                   <Text layoutX="7.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search for an item to show stock levels" />
+                  <Pane fx:id="redStockPane" layoutX="-50.0" layoutY="-5.0" prefHeight="368.0" prefWidth="349.0" visible="false">
+                     <children>
+                        <ImageView fitHeight="110.0" fitWidth="116.0" layoutX="55.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/crimeScene/displayCaseClue/redDrink.png" />
+                           </image>
+                        </ImageView>
+                        <Text fill="WHITE" layoutX="162.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cola Crush" wrappingWidth="177.800048828125">
+                           <font>
+                              <Font size="29.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" layoutX="164.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Stock: 15 Last Stocked: 15/9/24" wrappingWidth="112.20001220703125" />
+                        <Text fill="#75e15a" layoutX="164.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="In Stock  ✔" wrappingWidth="112.20001220703125" />
+                     </children>
+                  </Pane>
+                  <Pane fx:id="blueStockPane" layoutX="-50.0" layoutY="-5.0" prefHeight="368.0" prefWidth="349.0" visible="false">
+                     <children>
+                        <ImageView fitHeight="110.0" fitWidth="116.0" layoutX="55.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/crimeScene/displayCaseClue/blueDrink.png" />
+                           </image>
+                        </ImageView>
+                        <Text fill="WHITE" layoutX="162.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Coffee Craze" wrappingWidth="177.800048828125">
+                           <font>
+                              <Font size="29.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" layoutX="164.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Stock: 12 Last Stocked: 14/9/24" wrappingWidth="112.20001220703125" />
+                        <Text fill="#75e15a" layoutX="164.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="In Stock  ✔" wrappingWidth="112.20001220703125" />
+                     </children>
+                  </Pane>
+                  <Pane fx:id="greenStockPane" layoutX="-50.0" layoutY="-5.0" prefHeight="368.0" prefWidth="349.0" visible="false">
+                     <children>
+                        <ImageView fitHeight="110.0" fitWidth="116.0" layoutX="55.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/crimeScene/displayCaseClue/greenDrink.png" />
+                           </image>
+                        </ImageView>
+                        <Text fill="WHITE" layoutX="162.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Elite Energy" wrappingWidth="177.800048828125">
+                           <font>
+                              <Font size="29.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" layoutX="164.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Stock: 23 Last Stocked: 16/9/24" wrappingWidth="112.20001220703125" />
+                        <Text fill="#75e15a" layoutX="164.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="In Stock  ✔" wrappingWidth="112.20001220703125" />
+                     </children>
+                  </Pane>
+                  <Pane fx:id="pinkStockPane" layoutX="-50.0" layoutY="-5.0" prefHeight="368.0" prefWidth="349.0" visible="false">
+                     <children>
+                        <ImageView fitHeight="110.0" fitWidth="116.0" layoutX="55.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/crimeScene/displayCaseClue/pinkDrink.png" />
+                           </image>
+                        </ImageView>
+                        <Text fill="WHITE" layoutX="162.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Berry Burst" wrappingWidth="177.800048828125">
+                           <font>
+                              <Font size="29.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" layoutX="164.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Stock: 15 Last Stocked: 15/9/24" wrappingWidth="112.20001220703125" />
+                        <Text fill="#75e15a" layoutX="164.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="In Stock  ✔" wrappingWidth="112.20001220703125" />
+                     </children>
+                  </Pane>
+                  <Pane fx:id="yellowStockPane" layoutX="-50.0" layoutY="-5.0" prefHeight="368.0" prefWidth="349.0" visible="false">
+                     <children>
+                        <ImageView fitHeight="110.0" fitWidth="116.0" layoutX="55.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/crimeScene/displayCaseClue/yellowDrink.png" />
+                           </image>
+                        </ImageView>
+                        <Text fill="WHITE" layoutX="162.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lemon Lift" wrappingWidth="177.800048828125">
+                           <font>
+                              <Font size="29.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" layoutX="164.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Stock: 13 Last Stocked: 14/9/24" wrappingWidth="112.20001220703125" />
+                        <Text fill="#75e15a" layoutX="164.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="In Stock  ✔" wrappingWidth="112.20001220703125" />
+                     </children>
+                  </Pane>
+                  <Pane fx:id="errorStockPane" layoutX="-50.0" layoutY="-5.0" prefHeight="368.0" prefWidth="349.0" visible="false">
+                     <children>
+                        <ImageView fitHeight="110.0" fitWidth="116.0" layoutX="55.0" layoutY="64.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/crimeScene/displayCaseClue/redDrink.png" />
+                           </image>
+                           <effect>
+                              <ColorAdjust brightness="1.0" contrast="-1.0" saturation="-1.0" />
+                           </effect>
+                        </ImageView>
+                        <Text fill="WHITE" layoutX="162.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Item not found!" wrappingWidth="208.0">
+                           <font>
+                              <Font size="29.0" />
+                           </font>
+                        </Text>
+                        <Text fill="WHITE" layoutX="164.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Make sure item name is correct" wrappingWidth="176.0" />
+                     </children>
+                  </Pane>
                   <TextField fx:id="searchStockField" layoutX="7.0" layoutY="25.0" prefHeight="25.0" prefWidth="208.0" promptText="Search item name" />
                   <Button fx:id="searchStockButton" layoutX="217.0" layoutY="25.0" mnemonicParsing="false" onAction="#searchStock" text="Search" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#838383" height="24.0" layoutX="132.0" layoutY="189.0" onMouseClicked="#openLogs" stroke="TRANSPARENT" strokeType="INSIDE" width="24.0" />
                </children></Pane>
             <Pane fx:id="logPane" layoutX="77.0" layoutY="125.0" prefHeight="213.0" prefWidth="344.0" visible="false">
                <children>
