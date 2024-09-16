@@ -7,7 +7,6 @@ import javafx.concurrent.Task;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
-import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
@@ -21,7 +20,6 @@ import nz.ac.auckland.apiproxy.config.ApiProxyConfig;
 import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GameStateContext;
-import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.prompts.PromptEngineering;
 import nz.ac.auckland.se206.speech.TextToSpeech;
 
@@ -30,9 +28,6 @@ public abstract class AbstractSuspectController {
   @FXML private TextArea txtaChat;
   @FXML private TextField txtInput;
   @FXML private Button btnSend;
-
-  // @FXML protected Button btnToSwitch;
-  @FXML private Label lblProfession;
 
   @FXML private ImageView chatBubbleImage;
 
@@ -59,50 +54,7 @@ public abstract class AbstractSuspectController {
           "Chat with the three customers, and guess who is the " + context.getProfessionToGuess());
       isFirstTimeInit = false;
     }
-    lblProfession.setText(context.getProfessionToGuess());
     setProfession(context.getProfession(suspectId));
-  }
-
-  /**
-   * Switches the displayed scene based on what the current scene is. This is done by comparing its
-   * suspect ID.
-   */
-  @FXML
-  public void handleSwitchButtonAClick() {
-    try {
-
-      if (!suspectId.equals("rectPerson1")) {
-        App.setRoot(AppUi.SUSPECT1);
-      } else if (!suspectId.equals("rectPerson2")) {
-        App.setRoot(AppUi.SUSPECT2);
-      } else {
-        App.setRoot(AppUi.SUSPECT3);
-      }
-
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
-  }
-
-  /**
-   * Switches the displayed scene based on what the current scene is. This is done by comparing its
-   * suspect ID.
-   */
-  @FXML
-  public void handleSwitchButtonBClick() {
-    try {
-
-      if (!suspectId.equals("rectPerson3")) {
-        App.setRoot(AppUi.SUSPECT3);
-      } else if (!suspectId.equals("rectPerson2")) {
-        App.setRoot(AppUi.SUSPECT2);
-      } else {
-        App.setRoot(AppUi.SUSPECT1);
-      }
-
-    } catch (IOException e) {
-      e.printStackTrace();
-    }
   }
 
   /**

@@ -9,37 +9,25 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane fx:id="room" focusTraversable="true" onKeyPressed="#onKeyPressed" onKeyReleased="#onKeyReleased" prefHeight="599.0" prefWidth="789.0" style="-fx-background-color: #A9A9A9;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.Suspect1Controller">
+<Pane fx:id="room" focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#onKeyPressed" onKeyReleased="#onKeyReleased" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: #A9A9A9;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.Suspect1Controller">
    <children>
-      <ImageView fitHeight="271.0" fitWidth="618.0" layoutX="115.0" layoutY="145.0" preserveRatio="true">
+      <ImageView fitHeight="271.0" fitWidth="618.0" layoutX="14.0" layoutY="69.0" preserveRatio="true">
          <image>
             <Image url="@../images/cafe.png" />
          </image>
       </ImageView>
-      <Label layoutX="244.0" layoutY="14.0" text="SUSPECT 1 SCENE">
+      <Label layoutX="99.0" layoutY="14.0" text="SUSPECT 1 SCENE">
          <font>
             <Font size="38.0" />
          </font>
       </Label>
-      <Label layoutX="43.0" layoutY="61.0" text="Chat with the three customers, and guess who is the ">
-         <font>
-            <Font size="21.0" />
-         </font>
-      </Label>
-      <Label fx:id="lblProfession" layoutX="536.0" layoutY="61.0" prefHeight="31.0" prefWidth="253.0" wrapText="true">
-         <font>
-            <Font size="21.0" />
-         </font>
-      </Label>
-      <ImageView fx:id="chatBubbleImage" fitHeight="260.0" fitWidth="216.0" layoutX="587.0" layoutY="113.0" pickOnBounds="true">
+      <ImageView fx:id="chatBubbleImage" fitHeight="260.0" fitWidth="216.0" layoutX="14.0" layoutY="74.0" pickOnBounds="true">
          <image>
             <Image url="@../images/chatbubblepixel.png" />
          </image>
       </ImageView>
-      <TextArea fx:id="txtaChat" editable="false" layoutX="624.0" layoutY="179.0" prefHeight="124.0" prefWidth="145.0" wrapText="true" />
-      <TextField fx:id="txtInput" layoutX="611.0" layoutY="348.0" prefHeight="26.0" prefWidth="123.0" />
-      <Button fx:id="btnSend" layoutX="742.0" layoutY="348.0" mnemonicParsing="false" onAction="#onSendMessage" text="Send" />
-      <Button fx:id="switchButtonA" layoutX="14.0" layoutY="225.0" mnemonicParsing="false" onAction="#handleSwitchButtonAClick" text="go to susp 2" />
-      <Button fx:id="switchButtonB" layoutX="14.0" layoutY="270.0" mnemonicParsing="false" onAction="#handleSwitchButtonBClick" text="go to susp 3" />
+      <TextArea fx:id="txtaChat" editable="false" layoutX="51.0" layoutY="140.0" prefHeight="124.0" prefWidth="145.0" wrapText="true" />
+      <TextField fx:id="txtInput" layoutX="38.0" layoutY="309.0" prefHeight="26.0" prefWidth="123.0" />
+      <Button fx:id="btnSend" layoutX="169.0" layoutY="309.0" mnemonicParsing="false" onAction="#onSendMessage" text="Send" />
    </children>
 </Pane>
