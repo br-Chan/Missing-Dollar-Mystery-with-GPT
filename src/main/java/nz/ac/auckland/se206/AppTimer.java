@@ -8,22 +8,24 @@ import nz.ac.auckland.se206.SceneManager.AppUi;
 
 public class AppTimer {
 
-  public static final int GAMETIME = 5 * 60;
+  public static final int GAMETIME = 10;
   public static final int GUESSTIME = 1 * 60;
 
   private Label timerLabel;
 
   private Timer timer;
-  private int timeToElapse;
+  private int startingTime;
+  private int timeLeft;
 
-  public AppTimer(Label timerLabel, int timeToElapse) {
+  public AppTimer(Label timerLabel, int startingTime) {
     if (timerLabel == null) {
       System.out.println("TimerLabel is null!");
     }
 
     this.timerLabel = timerLabel;
     timer = new Timer();
-    this.timeToElapse = timeToElapse;
+    this.startingTime = startingTime;
+    timeLeft = startingTime;
   }
 
   public void beginCountdown() {
@@ -34,20 +36,20 @@ public class AppTimer {
             Platform.runLater(
                 () -> {
                   // Decrement the time left and update the label.
-                  timeToElapse--;
-                  int minutesLeft = timeToElapse / 60;
-                  int secondsLeft = timeToElapse - 60 * minutesLeft;
-                  String digitaltimeToElapse = null;
+                  timeLeft--;
+                  int minutesLeft = timeLeft / 60;
+                  int secondsLeft = timeLeft - 60 * minutesLeft;
+                  String digitaltimeLeft = null;
                   if (secondsLeft < 10) {
-                    digitaltimeToElapse = "0" + minutesLeft + ":0" + secondsLeft;
+                    digitaltimeLeft = "0" + minutesLeft + ":0" + secondsLeft;
                   } else {
-                    digitaltimeToElapse = "0" + minutesLeft + ":" + secondsLeft;
+                    digitaltimeLeft = "0" + minutesLeft + ":" + secondsLeft;
                   }
-                  timerLabel.setText(digitaltimeToElapse);
-                  System.out.println(digitaltimeToElapse);
+                  timerLabel.setText(digitaltimeLeft);
+                  System.out.println(digitaltimeLeft);
 
                   // Stop the timer if 0 is reached and handle it.
-                  if (timeToElapse <= 0) {
+                  if (timeLeft <= 0) {
                     timer.cancel();
                     handleTimeUp();
                   }
@@ -59,9 +61,9 @@ public class AppTimer {
   }
 
   private void handleTimeUp() {
-    if (timeToElapse == GAMETIME) {
+    if (startingTime == GAMETIME) {
       App.getScene().setRoot(SceneManager.getUiRoot(AppUi.GUESS));
-    } else if (timeToElapse == GUESSTIME) {
+    } else if (startingTime == GUESSTIME) {
       App.getScene().setRoot(SceneManager.getUiRoot(AppUi.RESULT));
     }
   }
