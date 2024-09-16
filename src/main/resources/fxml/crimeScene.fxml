@@ -40,7 +40,7 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Rectangle>
-      <Pane fx:id="cardPane" layoutY="176.0" prefHeight="426.0" prefWidth="789.0" visible="false">
+      <Pane fx:id="cardPane" layoutY="176.0" prefHeight="426.0" prefWidth="789.0">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#000000b2" height="470.0" layoutX="161.0" layoutY="-82.0" stroke="TRANSPARENT" strokeType="INSIDE" width="469.0" />
             <Button fx:id="cardBackButton" layoutX="567.0" layoutY="-64.0" mnemonicParsing="false" onMouseClicked="#hideCardClue" text="Back" />
@@ -51,17 +51,17 @@
             </ImageView>
             <ImageView fx:id="pencilImage" fitHeight="93.0" fitWidth="101.0" layoutX="358.0" layoutY="-47.0" onMouseMoved="#decreasePencilOpacity" pickOnBounds="true">
                <image>
-                  <Image url="@../images/crimeScene/pencil.png" />
+                  <Image url="@../images/crimeScene/cardClue/pencil.png" />
                </image>
             </ImageView>
             <ImageView fx:id="dirtImage" fitHeight="82.0" fitWidth="89.0" layoutX="324.0" layoutY="47.0" onMouseMoved="#decreaseDirtOpacity" pickOnBounds="true">
                <image>
-                  <Image url="@../images/crimeScene/dust.png" />
+                  <Image url="@../images/crimeScene/cardClue/dust.png" />
                </image>
             </ImageView>
             <ImageView fx:id="debrisImage" fitHeight="82.0" fitWidth="104.0" layoutX="201.0" layoutY="-35.0" onMouseMoved="#decreaseDebrisOpacity" pickOnBounds="true">
                <image>
-                  <Image url="@../images/crimeScene/dirt.png" />
+                  <Image url="@../images/crimeScene/cardClue/dirt.png" />
                </image>
             </ImageView>
             <ImageView fx:id="cleaningImage" fitHeight="55.0" fitWidth="50.0" layoutX="133.0" layoutY="189.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
@@ -101,7 +101,7 @@
                <children>
                   <ImageView fitHeight="193.0" fitWidth="165.0" layoutX="14.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../images/crimeScene/redDrink.png" />
+                        <Image url="@../images/crimeScene/displayCaseClue/redDrink.png" />
                      </image>
                   </ImageView>
                   <Text fill="WHITE" layoutX="22.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cola Crush" wrappingWidth="177.800048828125">
@@ -116,7 +116,7 @@
                <children>
                   <ImageView fitHeight="193.0" fitWidth="165.0" layoutX="14.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../images/crimeScene/blueDrink.png" />
+                        <Image url="@../images/crimeScene/displayCaseClue/blueDrink.png" />
                      </image>
                   </ImageView>
                   <Text fill="WHITE" layoutX="22.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Coffee Craze" wrappingWidth="209.00006103515625">
@@ -131,7 +131,7 @@
                <children>
                   <ImageView fitHeight="193.0" fitWidth="165.0" layoutX="14.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../images/crimeScene/greenDrink.png" />
+                        <Image url="@../images/crimeScene/displayCaseClue/greenDrink.png" />
                      </image>
                   </ImageView>
                   <Text fill="WHITE" layoutX="22.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Stock: 23 Last Stocked: 16/9/24" wrappingWidth="112.20001220703125" />
@@ -146,7 +146,7 @@
                <children>
                   <ImageView fitHeight="193.0" fitWidth="165.0" layoutX="14.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../images/crimeScene/pinkDrink.png" />
+                        <Image url="@../images/crimeScene/displayCaseClue/pinkDrink.png" />
                      </image>
                   </ImageView>
                   <Text fill="WHITE" layoutX="22.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Berry Burst" wrappingWidth="177.800048828125">
@@ -161,7 +161,7 @@
                <children>
                   <ImageView fitHeight="193.0" fitWidth="165.0" layoutX="14.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../images/crimeScene/yellowDrink.png" />
+                        <Image url="@../images/crimeScene/displayCaseClue/yellowDrink.png" />
                      </image>
                   </ImageView>
                   <Text fill="WHITE" layoutX="22.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lemon Lift" wrappingWidth="177.800048828125">

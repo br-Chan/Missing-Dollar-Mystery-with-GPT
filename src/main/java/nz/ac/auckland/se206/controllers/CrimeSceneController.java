@@ -132,7 +132,7 @@ public class CrimeSceneController {
     } else {
       cleaningImage.setVisible(true);
       cleaningImage.setImage(
-          new Image((App.class.getResource("/images/crimeScene/napkin.png")).toString()));
+          new Image((App.class.getResource("/images/crimeScene/cardClue/napkin.png")).toString()));
       napkinOn = true;
       brushOn = false;
       rubberOn = false;
@@ -147,7 +147,7 @@ public class CrimeSceneController {
     } else {
       cleaningImage.setVisible(true);
       cleaningImage.setImage(
-          new Image((App.class.getResource("/images/crimeScene/brush.png")).toString()));
+          new Image((App.class.getResource("/images/crimeScene/cardClue/brush.png")).toString()));
       napkinOn = false;
       brushOn = true;
       rubberOn = false;
@@ -162,7 +162,7 @@ public class CrimeSceneController {
     } else {
       cleaningImage.setVisible(true);
       cleaningImage.setImage(
-          new Image((App.class.getResource("/images/crimeScene/rubber.png")).toString()));
+          new Image((App.class.getResource("/images/crimeScene/cardClue/rubber.png")).toString()));
       napkinOn = false;
       brushOn = false;
       rubberOn = true;
