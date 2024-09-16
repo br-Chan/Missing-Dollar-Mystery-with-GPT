@@ -2,6 +2,7 @@ package nz.ac.auckland.se206.controllers;
 
 import java.util.ArrayList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
@@ -27,6 +28,7 @@ public class CrimeSceneController {
   @FXML private ImageView debrisImage;
   @FXML private ImageView pencilImage;
   @FXML private ImageView cleaningImage;
+  @FXML private Label cardCleanedLabel;
 
   @FXML private Pane suspensePane;
   @FXML private Pane tigerCanPane;
@@ -37,6 +39,7 @@ public class CrimeSceneController {
   private boolean napkinOn;
   private boolean brushOn;
   private boolean rubberOn;
+  private boolean cardCleaned = false;
 
   private ArrayList<Pane> itemPaneList = new ArrayList<>();
 
@@ -196,8 +199,18 @@ public class CrimeSceneController {
     showPane(tigerBottlePane);
   }
 
+  public void checkCardCleaned() {
+    if (dirtImage.getOpacity() < 0.1
+        && debrisImage.getOpacity() < 0.1
+        && pencilImage.getOpacity() < 0.1) {
+      cardCleaned = true;
+      cardCleanedLabel.setVisible(cardCleaned);
+    }
+  }
+
   public void decreaseOpacity(ImageView image) {
     image.setOpacity(image.getOpacity() - 0.005);
+    checkCardCleaned();
   }
 
   private void addAllItemPanes() {

@@ -43,6 +43,11 @@
       <Pane fx:id="cardPane" layoutY="176.0" prefHeight="426.0" prefWidth="789.0">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#000000b2" height="470.0" layoutX="161.0" layoutY="-82.0" stroke="TRANSPARENT" strokeType="INSIDE" width="469.0" />
+            <Label fx:id="cardCleanedLabel" layoutX="301.0" layoutY="4.0" text="Card Cleaned!" textFill="WHITE" visible="false">
+               <font>
+                  <Font size="25.0" />
+               </font>
+            </Label>
             <Button fx:id="cardBackButton" layoutX="573.0" layoutY="18.0" mnemonicParsing="false" onMouseClicked="#hideCardClue" text="Back" />
             <ImageView fitHeight="280.0" fitWidth="342.0" layoutX="256.0" layoutY="23.0" pickOnBounds="true" preserveRatio="true">
                <image>
