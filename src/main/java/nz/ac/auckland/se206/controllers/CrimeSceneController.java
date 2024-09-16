@@ -32,10 +32,11 @@ public class CrimeSceneController {
   @FXML private Label cardDirtyLabel;
 
   @FXML private Pane suspensePane;
-  @FXML private Pane tigerCanPane;
-  @FXML private Pane cokeZeroPane;
-  @FXML private Pane hopCanPane;
-  @FXML private Pane tigerBottlePane;
+  @FXML private Pane redDrinkPane;
+  @FXML private Pane blueDrinkPane;
+  @FXML private Pane greenDrinkPane;
+  @FXML private Pane pinkDrinkPane;
+  @FXML private Pane yellowDrinkPane;
 
   private boolean napkinOn;
   private boolean brushOn;
@@ -181,23 +182,28 @@ public class CrimeSceneController {
   }
 
   @FXML
-  private void displayTigerCan() {
-    showPane(tigerCanPane);
+  private void displayRedDrink() {
+    showPane(redDrinkPane);
   }
 
   @FXML
-  private void displayCokeZeroCan() {
-    showPane(cokeZeroPane);
+  private void displayBlueDrink() {
+    showPane(blueDrinkPane);
   }
 
   @FXML
-  private void displayHopCan() {
-    showPane(hopCanPane);
+  private void displayGreenDrink() {
+    showPane(greenDrinkPane);
   }
 
   @FXML
-  private void displayTigerBottle() {
-    showPane(tigerBottlePane);
+  private void displayPinkDrink() {
+    showPane(pinkDrinkPane);
+  }
+
+  @FXML
+  private void displayYellowDrink() {
+    showPane(yellowDrinkPane);
   }
 
   public void checkCardCleaned() {
@@ -217,10 +223,11 @@ public class CrimeSceneController {
 
   private void addAllItemPanes() {
     itemPaneList.add(suspensePane);
-    itemPaneList.add(tigerCanPane);
-    itemPaneList.add(cokeZeroPane);
-    itemPaneList.add(hopCanPane);
-    itemPaneList.add(tigerBottlePane);
+    itemPaneList.add(redDrinkPane);
+    itemPaneList.add(blueDrinkPane);
+    itemPaneList.add(greenDrinkPane);
+    itemPaneList.add(pinkDrinkPane);
+    itemPaneList.add(yellowDrinkPane);
   }
 
   private void showPane(Pane paneToShow) {

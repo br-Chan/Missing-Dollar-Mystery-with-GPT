@@ -97,7 +97,7 @@
                </image>
             </ImageView>
             <Button fx:id="caseBackButton" layoutX="422.0" layoutY="3.0" mnemonicParsing="false" onMouseClicked="#hideCaseClue" text="Back" />
-            <Pane fx:id="tigerCanPane" layoutX="226.0" layoutY="34.0" prefHeight="368.0" prefWidth="319.0" visible="false">
+            <Pane fx:id="redDrinkPane" layoutX="226.0" layoutY="34.0" prefHeight="368.0" prefWidth="319.0" visible="false">
                <children>
                   <ImageView fitHeight="193.0" fitWidth="165.0" layoutX="14.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -112,7 +112,7 @@
                   <Text fill="WHITE" layoutX="22.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Stock: 15 Last Stocked: 15/9/24" wrappingWidth="112.20001220703125" />
                </children>
             </Pane>
-            <Pane fx:id="cokeZeroPane" layoutX="226.0" layoutY="34.0" prefHeight="368.0" prefWidth="319.0" visible="false">
+            <Pane fx:id="blueDrinkPane" layoutX="226.0" layoutY="34.0" prefHeight="368.0" prefWidth="319.0" visible="false">
                <children>
                   <ImageView fitHeight="193.0" fitWidth="165.0" layoutX="14.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -127,7 +127,7 @@
                   <Text fill="WHITE" layoutX="22.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Stock: 15 Last Stocked: 15/9/24" wrappingWidth="112.20001220703125" />
                </children>
             </Pane>
-            <Pane fx:id="hopCanPane" layoutX="226.0" layoutY="34.0" prefHeight="368.0" prefWidth="319.0" visible="false">
+            <Pane fx:id="greenDrinkPane" layoutX="226.0" layoutY="34.0" prefHeight="368.0" prefWidth="319.0" visible="false">
                <children>
                   <ImageView fitHeight="193.0" fitWidth="165.0" layoutX="14.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -142,7 +142,7 @@
                   <Text fill="WHITE" layoutX="22.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Stock: 15 Last Stocked: 15/9/24" wrappingWidth="112.20001220703125" />
                </children>
             </Pane>
-            <Pane fx:id="tigerBottlePane" layoutX="226.0" layoutY="34.0" prefHeight="368.0" prefWidth="319.0" visible="false">
+            <Pane fx:id="pinkDrinkPane" layoutX="226.0" layoutY="34.0" prefHeight="368.0" prefWidth="319.0" visible="false">
                <children>
                   <ImageView fitHeight="193.0" fitWidth="165.0" layoutX="14.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -157,7 +157,7 @@
                   <Text fill="WHITE" layoutX="22.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Stock: 15 Last Stocked: 15/9/24" wrappingWidth="112.20001220703125" />
                </children>
             </Pane>
-            <Pane fx:id="tigerCanPane111" layoutX="226.0" layoutY="34.0" prefHeight="368.0" prefWidth="319.0" visible="false">
+            <Pane fx:id="yellowDrinkPane" layoutX="226.0" layoutY="34.0" prefHeight="368.0" prefWidth="319.0" visible="false">
                <children>
                   <ImageView fitHeight="193.0" fitWidth="165.0" layoutX="14.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -184,27 +184,27 @@
                   </Text>
                </children>
             </Pane>
-            <Rectangle fx:id="tigerCanRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="50.0" layoutX="57.0" layoutY="60.0" onMouseClicked="#displayTigerCan" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="134.0">
+            <Rectangle fx:id="redDrinkRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="50.0" layoutX="57.0" layoutY="60.0" onMouseClicked="#displayRedDrink" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="134.0">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Rectangle>
-            <Rectangle fx:id="cokeZeroCanRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="43.0" layoutX="55.0" layoutY="120.0" onMouseClicked="#displayCokeZeroCan" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="134.0">
+            <Rectangle fx:id="blueDrinkRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="43.0" layoutX="55.0" layoutY="120.0" onMouseClicked="#displayBlueDrink" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="134.0">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Rectangle>
-            <Rectangle fx:id="hopCanRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="42.0" layoutX="55.0" layoutY="171.0" onMouseClicked="#displayHopCan" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="134.0">
+            <Rectangle fx:id="greenDrinkRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="42.0" layoutX="55.0" layoutY="171.0" onMouseClicked="#displayGreenDrink" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="134.0">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Rectangle>
-            <Rectangle fx:id="tigerBottleRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="40.0" layoutX="53.0" layoutY="223.0" onMouseClicked="#displayTigerBottle" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="134.0">
+            <Rectangle fx:id="pinkDrinkRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="40.0" layoutX="53.0" layoutY="223.0" onMouseClicked="#displayPinkDrink" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="134.0">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Rectangle>
-            <Rectangle fx:id="tigerBottleRectangle1" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="39.0" layoutX="58.0" layoutY="277.0" onMouseClicked="#displayTigerBottle" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="134.0">
+            <Rectangle fx:id="yellowDrinkRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="39.0" layoutX="58.0" layoutY="277.0" onMouseClicked="#displayYellowDrink" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="134.0">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
