@@ -23,7 +23,7 @@ public class AppTimer {
     }
 
     this.timerLabel = timerLabel;
-    timer = new Timer();
+    timer = new Timer(true);
     this.startingTime = startingTime;
     timeLeft = startingTime;
   }
