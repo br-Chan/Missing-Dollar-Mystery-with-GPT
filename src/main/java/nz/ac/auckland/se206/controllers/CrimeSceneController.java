@@ -2,7 +2,9 @@ package nz.ac.auckland.se206.controllers;
 
 import java.util.ArrayList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
@@ -31,6 +33,8 @@ public class CrimeSceneController {
   @FXML private ImageView pencilImage;
   @FXML private ImageView cleaningImage;
   @FXML private Label cardDirtyLabel;
+  @FXML private Button searchStockButton;
+  @FXML private TextField searchStockField;
 
   @FXML private Pane suspensePane;
   @FXML private Pane redDrinkPane;
@@ -237,6 +241,12 @@ public class CrimeSceneController {
   public void openStock() {
     logPane.setVisible(false);
     stockPane.setVisible(true);
+  }
+
+  @FXML
+  public void searchStock() {
+    String query = searchStockField.getText().trim();
+    System.out.println(query);
   }
 
   public void checkCardCleaned() {
