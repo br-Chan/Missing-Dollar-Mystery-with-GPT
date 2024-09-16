@@ -51,17 +51,17 @@
             </ImageView>
             <ImageView fx:id="pencilImage" fitHeight="93.0" fitWidth="101.0" layoutX="358.0" layoutY="-47.0" onMouseDragged="#decreasePencilOpacity" onMouseMoved="#decreasePencilOpacity" pickOnBounds="true">
                <image>
-                  <Image url="@../images/crimeScene/pencil.png" />
+                  <Image url="@../images/crimeScene/cardClue/pencil.png" />
                </image>
             </ImageView>
             <ImageView fx:id="dirtImage" fitHeight="82.0" fitWidth="89.0" layoutX="324.0" layoutY="47.0" onMouseDragged="#decreaseDirtOpacity" onMouseMoved="#decreaseDirtOpacity" pickOnBounds="true">
                <image>
-                  <Image url="@../images/crimeScene/dust.png" />
+                  <Image url="@../images/crimeScene/cardClue/dust.png" />
                </image>
             </ImageView>
             <ImageView fx:id="debrisImage" fitHeight="82.0" fitWidth="104.0" layoutX="201.0" layoutY="-35.0" onMouseDragged="#decreaseDebrisOpacity" onMouseMoved="#decreaseDebrisOpacity" pickOnBounds="true">
                <image>
-                  <Image url="@../images/crimeScene/dirt.png" />
+                  <Image url="@../images/crimeScene/cardClue/dirt.png" />
                </image>
             </ImageView>
             <ImageView fx:id="cleaningImage" fitHeight="55.0" fitWidth="50.0" layoutX="133.0" layoutY="189.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
@@ -88,103 +88,123 @@
             </Label>
          </children>
       </Pane>
-      <Pane fx:id="casePane" layoutY="173.0" prefHeight="426.0" prefWidth="789.0" visible="false">
+      <Pane fx:id="casePane" layoutX="161.0" layoutY="94.0" prefHeight="426.0" prefWidth="789.0">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="426.0" stroke="BLACK" strokeType="INSIDE" width="789.0" />
-            <Button fx:id="caseBackButton" layoutX="723.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#hideCaseClue" text="Back" />
-            <ImageView fitHeight="400.0" fitWidth="390.0" layoutX="14.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#000000b2" height="470.0" stroke="TRANSPARENT" strokeType="INSIDE" width="469.0" />
+            <ImageView fitHeight="408.0" fitWidth="479.0" layoutX="-80.0" layoutY="-24.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/displayCase/display.png" />
+                  <Image url="@../images/crimeScene/Drinks%20Case.png" />
                </image>
             </ImageView>
-            <Pane fx:id="tigerCanPane" layoutX="293.0" layoutY="15.0" prefHeight="378.0" prefWidth="319.0" visible="false">
+            <Button fx:id="caseBackButton" layoutX="422.0" layoutY="3.0" mnemonicParsing="false" onMouseClicked="#hideCaseClue" text="Back" />
+            <Pane fx:id="redDrinkPane" layoutX="226.0" layoutY="34.0" prefHeight="368.0" prefWidth="319.0" visible="false">
                <children>
-                  <ImageView fitHeight="193.0" fitWidth="165.0" layoutX="133.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="193.0" fitWidth="165.0" layoutX="14.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../images/displayCase/tigercan.jpg" />
+                        <Image url="@../images/crimeScene/displayCaseClue/redDrink.png" />
                      </image>
                   </ImageView>
-                  <Text layoutX="14.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tiger Can" wrappingWidth="112.20001220703125">
+                  <Text fill="WHITE" layoutX="22.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cola Crush" wrappingWidth="177.800048828125">
                      <font>
                         <Font size="36.0" />
                      </font>
                   </Text>
-                  <Text layoutX="14.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Stock: 15 Last Stocked: 15/9/24" wrappingWidth="112.20001220703125" />
+                  <Text fill="WHITE" layoutX="22.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Stock: 15 Last Stocked: 15/9/24" wrappingWidth="112.20001220703125" />
                </children>
             </Pane>
-            <Pane fx:id="cokeZeroPane" layoutX="293.0" layoutY="15.0" prefHeight="378.0" prefWidth="319.0" visible="false">
+            <Pane fx:id="blueDrinkPane" layoutX="226.0" layoutY="34.0" prefHeight="368.0" prefWidth="319.0" visible="false">
                <children>
-                  <ImageView fitHeight="193.0" fitWidth="165.0" layoutX="133.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="193.0" fitWidth="165.0" layoutX="14.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../images/displayCase/cokezerocan.jpg" />
+                        <Image url="@../images/crimeScene/displayCaseClue/blueDrink.png" />
                      </image>
                   </ImageView>
-                  <Text layoutX="14.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Coke Can" wrappingWidth="112.20001220703125">
+                  <Text fill="WHITE" layoutX="22.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Coffee Craze" wrappingWidth="209.00006103515625">
                      <font>
                         <Font size="36.0" />
                      </font>
                   </Text>
-                  <Text layoutX="14.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Stock: 20 Last Stocked: 15/9/24" wrappingWidth="112.20001220703125" />
+                  <Text fill="WHITE" layoutX="22.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Stock: 12 Last Stocked: 14/9/24" wrappingWidth="112.20001220703125" />
                </children>
             </Pane>
-            <Pane fx:id="hopCanPane" layoutX="293.0" layoutY="15.0" prefHeight="378.0" prefWidth="319.0" visible="false">
+            <Pane fx:id="greenDrinkPane" layoutX="226.0" layoutY="34.0" prefHeight="368.0" prefWidth="319.0" visible="false">
                <children>
-                  <ImageView fitHeight="193.0" fitWidth="165.0" layoutX="133.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="193.0" fitWidth="165.0" layoutX="14.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../images/displayCase/hopleafcan.png" />
+                        <Image url="@../images/crimeScene/displayCaseClue/greenDrink.png" />
                      </image>
                   </ImageView>
-                  <Text layoutX="14.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Hopleaf Can" wrappingWidth="112.20001220703125">
+                  <Text fill="WHITE" layoutX="22.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Stock: 23 Last Stocked: 16/9/24" wrappingWidth="112.20001220703125" />
+                  <Text fill="WHITE" layoutX="20.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Elite Energy" wrappingWidth="195.4000244140625">
                      <font>
                         <Font size="36.0" />
                      </font>
                   </Text>
-                  <Text layoutX="14.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Stock: 16 Last Stocked: 15/9/24" wrappingWidth="112.20001220703125" />
                </children>
             </Pane>
-            <Pane fx:id="tigerBottlePane" layoutX="293.0" layoutY="15.0" prefHeight="378.0" prefWidth="319.0" visible="false">
+            <Pane fx:id="pinkDrinkPane" layoutX="226.0" layoutY="34.0" prefHeight="368.0" prefWidth="319.0" visible="false">
                <children>
-                  <ImageView fitHeight="193.0" fitWidth="165.0" layoutX="133.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="193.0" fitWidth="165.0" layoutX="14.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../images/displayCase/tigerbottle.jpg" />
+                        <Image url="@../images/crimeScene/displayCaseClue/pinkDrink.png" />
                      </image>
                   </ImageView>
-                  <Text layoutX="14.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tiger Bottle" wrappingWidth="112.20001220703125">
+                  <Text fill="WHITE" layoutX="22.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Berry Burst" wrappingWidth="177.800048828125">
                      <font>
                         <Font size="36.0" />
                      </font>
                   </Text>
-                  <Text layoutX="14.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Stock: 14 Last Stocked: 15/9/24" wrappingWidth="112.20001220703125" />
+                  <Text fill="WHITE" layoutX="22.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Stock: 16 Last Stocked: 15/9/24" wrappingWidth="112.20001220703125" />
                </children>
             </Pane>
-            <Pane fx:id="suspensePane" layoutX="293.0" layoutY="15.0" prefHeight="378.0" prefWidth="319.0">
+            <Pane fx:id="yellowDrinkPane" layoutX="226.0" layoutY="34.0" prefHeight="368.0" prefWidth="319.0" visible="false">
                <children>
-                  <Rectangle arcWidth="5.0" fill="#d7d7d7" height="96.0" layoutX="6.0" layoutY="13.0" opacity="0.2" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="118.0" />
-                  <Rectangle arcWidth="5.0" fill="#d7d7d7" height="62.0" layoutX="6.0" layoutY="117.0" opacity="0.2" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="118.0" />
-                  <Rectangle arcWidth="5.0" fill="#d7d7d7" height="165.0" layoutX="133.0" layoutY="14.0" opacity="0.2" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="165.0" />
-                  <Text fill="#8c8c8c" layoutX="7.0" layoutY="214.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Click on a drink for more information" wrappingWidth="264.79754638671875">
+                  <ImageView fitHeight="193.0" fitWidth="165.0" layoutX="14.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/crimeScene/displayCaseClue/yellowDrink.png" />
+                     </image>
+                  </ImageView>
+                  <Text fill="WHITE" layoutX="22.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lemon Lift" wrappingWidth="177.800048828125">
                      <font>
-                        <Font size="25.0" />
+                        <Font size="36.0" />
+                     </font>
+                  </Text>
+                  <Text fill="WHITE" layoutX="22.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Stock: 13 Last Stocked: 14/9/24" wrappingWidth="112.20001220703125" />
+               </children>
+            </Pane>
+            <Pane fx:id="suspensePane" layoutX="226.0" layoutY="34.0" prefHeight="368.0" prefWidth="319.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a4a4a4" height="165.0" layoutX="14.0" layoutY="19.0" opacity="0.6" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="178.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a4a4a4" height="43.0" layoutX="14.0" layoutY="192.0" opacity="0.6" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="178.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#a4a4a4" height="61.0" layoutX="14.0" layoutY="242.0" opacity="0.6" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="123.0" />
+                  <Text fill="WHITE" layoutX="14.0" layoutY="319.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Click on a drink to display more information!" wrappingWidth="177.800048828125">
+                     <font>
+                        <Font size="15.0" />
                      </font>
                   </Text>
                </children>
             </Pane>
-            <Rectangle fx:id="tigerCanRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="67.0" layoutX="48.0" layoutY="53.0" onMouseClicked="#displayTigerCan" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="201.0">
+            <Rectangle fx:id="redDrinkRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="50.0" layoutX="57.0" layoutY="60.0" onMouseClicked="#displayRedDrink" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="134.0">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Rectangle>
-            <Rectangle fx:id="cokeZeroCanRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="67.0" layoutX="40.0" layoutY="120.0" onMouseClicked="#displayCokeZeroCan" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="217.0">
+            <Rectangle fx:id="blueDrinkRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="43.0" layoutX="55.0" layoutY="120.0" onMouseClicked="#displayBlueDrink" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="134.0">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Rectangle>
-            <Rectangle fx:id="hopCanRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="67.0" layoutX="40.0" layoutY="196.0" onMouseClicked="#displayHopCan" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="217.0">
+            <Rectangle fx:id="greenDrinkRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="42.0" layoutX="55.0" layoutY="171.0" onMouseClicked="#displayGreenDrink" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="134.0">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Rectangle>
-            <Rectangle fx:id="tigerBottleRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="102.0" layoutX="42.0" layoutY="263.0" onMouseClicked="#displayTigerBottle" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="213.0">
+            <Rectangle fx:id="pinkDrinkRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="40.0" layoutX="53.0" layoutY="223.0" onMouseClicked="#displayPinkDrink" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="134.0">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Rectangle>
+            <Rectangle fx:id="yellowDrinkRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="39.0" layoutX="58.0" layoutY="277.0" onMouseClicked="#displayYellowDrink" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="134.0">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
