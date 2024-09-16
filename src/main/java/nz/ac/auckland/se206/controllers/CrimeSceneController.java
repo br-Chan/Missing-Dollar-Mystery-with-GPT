@@ -38,6 +38,8 @@ public class CrimeSceneController {
   @FXML private Pane greenDrinkPane;
   @FXML private Pane pinkDrinkPane;
   @FXML private Pane yellowDrinkPane;
+  @FXML private Pane logPane;
+  @FXML private Pane stockPane;
 
   private boolean napkinOn;
   private boolean brushOn;
@@ -223,6 +225,18 @@ public class CrimeSceneController {
   public void hideComputerClue() {
     System.out.println("Hiding computer clue");
     computerPane.setVisible(false);
+  }
+
+  @FXML
+  public void openLogs() {
+    logPane.setVisible(true);
+    stockPane.setVisible(false);
+  }
+
+  @FXML
+  public void openStock() {
+    logPane.setVisible(false);
+    stockPane.setVisible(true);
   }
 
   public void checkCardCleaned() {

@@ -6,6 +6,9 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.paint.Color?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
@@ -216,6 +219,45 @@
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#000000b2" height="500.0" layoutX="-1.0" layoutY="-1.0" stroke="TRANSPARENT" strokeType="INSIDE" width="500.0" />
             <Button fx:id="cardBackButton1" layoutX="450.0" layoutY="13.0" mnemonicParsing="false" onMouseClicked="#hideComputerClue" text="Back" />
+            <ImageView fitHeight="488.0" fitWidth="530.0" layoutX="5.0" layoutY="48.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/crimeScene/Computer.png" />
+               </image>
+            </ImageView>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" height="213.0" layoutX="77.0" layoutY="125.0" stroke="TRANSPARENT" strokeType="INSIDE" width="344.0">
+               <fill>
+                  <LinearGradient endX="1.0" endY="1.0">
+                     <stops>
+                        <Stop>
+                           <color>
+                              <Color red="0.2959917187690735" green="0.5657894611358643" blue="0.42639395594596863" />
+                           </color>
+                        </Stop>
+                        <Stop offset="1.0">
+                           <color>
+                              <Color red="0.37280702590942383" green="0.5815789699554443" blue="0.6710526347160339" />
+                           </color>
+                        </Stop>
+                     </stops>
+                  </LinearGradient>
+               </fill>
+            </Rectangle>
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#000000b2" height="24.0" layoutX="77.0" layoutY="314.0" stroke="TRANSPARENT" strokeType="INSIDE" width="344.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#838383" height="24.0" layoutX="209.0" layoutY="314.0" onMouseClicked="#openLogs" stroke="TRANSPARENT" strokeType="INSIDE" width="24.0" />
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#838383" height="24.0" layoutX="233.0" layoutY="314.0" onMouseClicked="#openStock" stroke="TRANSPARENT" strokeType="INSIDE" width="24.0" />
+            <Pane fx:id="stockPane" layoutX="77.0" layoutY="125.0" prefHeight="213.0" prefWidth="344.0" visible="false">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d0b296" height="189.0" stroke="TRANSPARENT" strokeType="INSIDE" width="344.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d0b296" height="30.0" layoutX="156.0" layoutY="183.0" onMouseClicked="#openStock" stroke="TRANSPARENT" strokeType="INSIDE" width="24.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#838383" height="24.0" layoutX="132.0" layoutY="189.0" onMouseClicked="#openLogs" stroke="TRANSPARENT" strokeType="INSIDE" width="24.0" />
+               </children></Pane>
+            <Pane fx:id="logPane" layoutX="77.0" layoutY="125.0" prefHeight="213.0" prefWidth="344.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#bc9cb4" height="189.0" stroke="TRANSPARENT" strokeType="INSIDE" width="344.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#bc9cb4" height="30.0" layoutX="132.0" layoutY="183.0" onMouseClicked="#openStock" stroke="TRANSPARENT" strokeType="INSIDE" width="24.0" />
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#838383" height="24.0" layoutX="156.0" layoutY="189.0" onMouseClicked="#openStock" stroke="TRANSPARENT" strokeType="INSIDE" width="24.0" />
+               </children>
+            </Pane>
          </children>
       </Pane>
    </children>
