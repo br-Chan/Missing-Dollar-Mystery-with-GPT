@@ -13,23 +13,34 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#onKeyPressed" onKeyReleased="#onKeyReleased" prefHeight="599.0" prefWidth="789.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.CrimeSceneController">
    <children>
-      <Label layoutX="280.0" layoutY="104.0" text="CRIME SCENE SCENE">
+      <ImageView fitHeight="468.0" fitWidth="509.0" layoutX="161.0" layoutY="95.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/crimeScene/Restauant.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="20.0" fitWidth="16.0" layoutX="498.0" layoutY="406.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/crimeScene/ID%20Card.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="96.0" fitWidth="104.0" layoutX="135.0" layoutY="95.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/crimeScene/Drinks%20Case.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="219.0" layoutY="27.0" text="CRIME SCENE SCENE">
          <font>
             <Font size="38.0" />
          </font>
       </Label>
-      <Text layoutX="127.0" layoutY="321.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Card">
-         <font>
-            <Font size="30.0" />
-         </font>
-      </Text>
-      <Rectangle fx:id="cardRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="140.0" layoutX="97.0" layoutY="338.0" onMouseClicked="#showCardClue" stroke="BLACK" strokeType="INSIDE" width="121.0" />
-      <Text layoutX="322.0" layoutY="321.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Display Case">
-         <font>
-            <Font size="30.0" />
-         </font>
-      </Text>
-      <Rectangle fx:id="caseRectangle" arcHeight="5.0" arcWidth="5.0" fill="#b2ff1f" height="140.0" layoutX="326.0" layoutY="336.0" onMouseClicked="#showCaseClue" stroke="BLACK" strokeType="INSIDE" width="142.0" />
+      <Rectangle fx:id="cardRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="15.0" layoutX="497.0" layoutY="406.0" onMouseClicked="#showCardClue" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="18.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Rectangle>
+      <Rectangle fx:id="caseRectangle" arcHeight="5.0" arcWidth="5.0" fill="#b2ff1f" height="81.0" layoutX="162.0" layoutY="111.0" onMouseClicked="#showCaseClue" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="44.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Rectangle>
       <Pane fx:id="cardPane" layoutY="176.0" prefHeight="426.0" prefWidth="789.0" visible="false">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="426.0" stroke="BLACK" strokeType="INSIDE" width="789.0" />
@@ -67,7 +78,7 @@
             <Button layoutX="429.0" layoutY="299.0" mnemonicParsing="false" onMouseClicked="#rubberSelected" prefHeight="25.0" prefWidth="121.0" text="Rubber" />
          </children>
       </Pane>
-      <Pane fx:id="casePane" layoutY="173.0" prefHeight="426.0" prefWidth="789.0">
+      <Pane fx:id="casePane" layoutY="173.0" prefHeight="426.0" prefWidth="789.0" visible="false">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="426.0" stroke="BLACK" strokeType="INSIDE" width="789.0" />
             <Button fx:id="caseBackButton" layoutX="723.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#hideCaseClue" text="Back" />
