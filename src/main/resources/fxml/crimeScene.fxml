@@ -3,7 +3,6 @@
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.effect.ColorAdjust?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
@@ -13,61 +12,83 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#onKeyPressed" onKeyReleased="#onKeyReleased" prefHeight="599.0" prefWidth="789.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.CrimeSceneController">
    <children>
-      <Label layoutX="280.0" layoutY="104.0" text="CRIME SCENE SCENE">
+      <ImageView fitHeight="468.0" fitWidth="509.0" layoutX="161.0" layoutY="95.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/crimeScene/Restauant.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="20.0" fitWidth="16.0" layoutX="498.0" layoutY="406.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/crimeScene/ID%20Card.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="96.0" fitWidth="104.0" layoutX="135.0" layoutY="95.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/crimeScene/Drinks%20Case.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="219.0" layoutY="27.0" text="CRIME SCENE SCENE">
          <font>
             <Font size="38.0" />
          </font>
       </Label>
-      <Text layoutX="127.0" layoutY="321.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Card">
-         <font>
-            <Font size="30.0" />
-         </font>
-      </Text>
-      <Rectangle fx:id="cardRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="140.0" layoutX="97.0" layoutY="338.0" onMouseClicked="#showCardClue" stroke="BLACK" strokeType="INSIDE" width="121.0" />
-      <Text layoutX="322.0" layoutY="321.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Display Case">
-         <font>
-            <Font size="30.0" />
-         </font>
-      </Text>
-      <Rectangle fx:id="caseRectangle" arcHeight="5.0" arcWidth="5.0" fill="#b2ff1f" height="140.0" layoutX="326.0" layoutY="336.0" onMouseClicked="#showCaseClue" stroke="BLACK" strokeType="INSIDE" width="142.0" />
-      <Pane fx:id="cardPane" layoutY="176.0" prefHeight="426.0" prefWidth="789.0" visible="false">
+      <Rectangle fx:id="cardRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="15.0" layoutX="497.0" layoutY="406.0" onMouseClicked="#showCardClue" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="18.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Rectangle>
+      <Rectangle fx:id="caseRectangle" arcHeight="5.0" arcWidth="5.0" fill="#b2ff1f" height="81.0" layoutX="162.0" layoutY="111.0" onMouseClicked="#showCaseClue" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="44.0">
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor></Rectangle>
+      <Pane fx:id="cardPane" layoutY="176.0" prefHeight="426.0" prefWidth="789.0">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="426.0" stroke="BLACK" strokeType="INSIDE" width="789.0" />
-            <Button fx:id="cardBackButton" layoutX="723.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#hideCardClue" text="Back" />
-            <ImageView fitHeight="175.0" fitWidth="275.0" layoutX="257.0" layoutY="39.0" pickOnBounds="true" preserveRatio="true">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#000000b2" height="470.0" layoutX="161.0" layoutY="-82.0" stroke="TRANSPARENT" strokeType="INSIDE" width="469.0" />
+            <Button fx:id="cardBackButton" layoutX="567.0" layoutY="-64.0" mnemonicParsing="false" onMouseClicked="#hideCardClue" text="Back" />
+            <ImageView fitHeight="280.0" fitWidth="342.0" layoutX="203.0" layoutY="-76.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/mclovin.jpg" />
+                  <Image url="@../images/crimeScene/ID%20Card.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="pencilImage" fitHeight="92.0" fitWidth="153.0" layoutX="372.0" layoutY="54.0" onMouseMoved="#decreasePencilOpacity" pickOnBounds="true">
+            <ImageView fx:id="pencilImage" fitHeight="93.0" fitWidth="101.0" layoutX="358.0" layoutY="-47.0" onMouseDragged="#decreasePencilOpacity" onMouseMoved="#decreasePencilOpacity" pickOnBounds="true">
                <image>
-                  <Image url="@../images/pencil.png" />
+                  <Image url="@../images/crimeScene/pencil.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="dirtImage" fitHeight="105.0" fitWidth="86.0" layoutX="267.0" layoutY="46.0" onMouseMoved="#decreaseDirtOpacity" pickOnBounds="true">
+            <ImageView fx:id="dirtImage" fitHeight="82.0" fitWidth="89.0" layoutX="324.0" layoutY="47.0" onMouseDragged="#decreaseDirtOpacity" onMouseMoved="#decreaseDirtOpacity" pickOnBounds="true">
                <image>
-                  <Image url="@../images/dirt.png" />
+                  <Image url="@../images/crimeScene/dust.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="scratchImage" fitHeight="55.0" fitWidth="104.0" layoutX="267.0" layoutY="158.0" onMouseMoved="#decreaseScratchOpacity" pickOnBounds="true">
+            <ImageView fx:id="debrisImage" fitHeight="82.0" fitWidth="104.0" layoutX="201.0" layoutY="-35.0" onMouseDragged="#decreaseDebrisOpacity" onMouseMoved="#decreaseDebrisOpacity" pickOnBounds="true">
                <image>
-                  <Image url="@../images/scratch.png" />
+                  <Image url="@../images/crimeScene/dirt.png" />
                </image>
-               <effect>
-                  <ColorAdjust brightness="1.0" />
-               </effect>
             </ImageView>
-            <ImageView fx:id="cleaningImage" fitHeight="55.0" fitWidth="50.0" layoutX="133.0" layoutY="189.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="cleaningImage" fitHeight="55.0" fitWidth="50.0" layoutX="133.0" layoutY="189.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
                <image>
                   <Image url="@../images/napkin.png" />
                </image>
             </ImageView>
-            <Button layoutX="157.0" layoutY="299.0" mnemonicParsing="false" onMouseClicked="#napkinSelected" prefHeight="25.0" prefWidth="121.0" text="Napkin" />
-            <Button layoutX="292.0" layoutY="299.0" mnemonicParsing="false" onMouseClicked="#clothSelected" prefHeight="25.0" prefWidth="121.0" text="Cloth" />
-            <Button layoutX="429.0" layoutY="299.0" mnemonicParsing="false" onMouseClicked="#rubberSelected" prefHeight="25.0" prefWidth="121.0" text="Rubber" />
+            <Button layoutX="202.0" layoutY="167.0" mnemonicParsing="false" onMouseClicked="#napkinSelected" prefHeight="25.0" prefWidth="67.0" text="Napkin" />
+            <Button layoutX="289.0" layoutY="167.0" mnemonicParsing="false" onMouseClicked="#brushSelected" prefHeight="25.0" prefWidth="76.0" text="Brush" />
+            <Button layoutX="386.0" layoutY="167.0" mnemonicParsing="false" onMouseClicked="#rubberSelected" prefHeight="25.0" prefWidth="88.0" text="Rubber" />
+            <Pane fx:id="aiCardCluePane" layoutX="188.0" layoutY="206.0" prefHeight="150.0" prefWidth="407.0" visible="false">
+               <children>
+                  <Label fx:id="cardCleanedLabel" layoutX="72.0" layoutY="52.0" prefHeight="61.0" prefWidth="239.0" text="Card Cleaned!" textFill="WHITE">
+                     <font>
+                        <Font size="33.0" />
+                     </font>
+                  </Label>
+               </children>
+            </Pane>
+            <Label fx:id="cardDirtyLabel" layoutX="227.0" layoutY="268.0" text="Too dirty to investigate!" textFill="WHITE">
+               <font>
+                  <Font size="31.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
-      <Pane fx:id="casePane" layoutY="173.0" prefHeight="426.0" prefWidth="789.0">
+      <Pane fx:id="casePane" layoutY="173.0" prefHeight="426.0" prefWidth="789.0" visible="false">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="426.0" stroke="BLACK" strokeType="INSIDE" width="789.0" />
             <Button fx:id="caseBackButton" layoutX="723.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#hideCaseClue" text="Back" />

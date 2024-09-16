@@ -2,6 +2,7 @@ package nz.ac.auckland.se206.controllers;
 
 import java.util.ArrayList;
 import javafx.fxml.FXML;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
@@ -21,12 +22,14 @@ public class CrimeSceneController {
 
   @FXML private Rectangle cardRectangle;
   @FXML private Rectangle caseRectangle;
+  @FXML private Pane aiCardCluePane;
   @FXML private Pane cardPane;
   @FXML private Pane casePane;
   @FXML private ImageView dirtImage;
-  @FXML private ImageView scratchImage;
+  @FXML private ImageView debrisImage;
   @FXML private ImageView pencilImage;
   @FXML private ImageView cleaningImage;
+  @FXML private Label cardDirtyLabel;
 
   @FXML private Pane suspensePane;
   @FXML private Pane tigerCanPane;
@@ -35,8 +38,9 @@ public class CrimeSceneController {
   @FXML private Pane tigerBottlePane;
 
   private boolean napkinOn;
-  private boolean clothOn;
+  private boolean brushOn;
   private boolean rubberOn;
+  private boolean cardCleaned = false;
 
   private ArrayList<Pane> itemPaneList = new ArrayList<>();
 
@@ -83,8 +87,13 @@ public class CrimeSceneController {
           cleaningImage.setX(event.getX() - 160);
           cleaningImage.setY(event.getY() - 215);
         });
+    cardPane.setOnMouseDragged(
+        event -> {
+          cleaningImage.setX(event.getX() - 160);
+          cleaningImage.setY(event.getY() - 215);
+        });
     napkinOn = false;
-    clothOn = false;
+    brushOn = false;
     rubberOn = false;
   }
 
@@ -94,21 +103,21 @@ public class CrimeSceneController {
     cardPane.setVisible(false);
     cleaningImage.setVisible(false);
     napkinOn = false;
-    clothOn = false;
+    brushOn = false;
     rubberOn = false;
   }
 
   @FXML
   public void decreaseDirtOpacity() {
-    if (napkinOn) {
+    if (brushOn) {
       decreaseOpacity(dirtImage);
     }
   }
 
   @FXML
-  public void decreaseScratchOpacity() {
-    if (clothOn) {
-      decreaseOpacity(scratchImage);
+  public void decreaseDebrisOpacity() {
+    if (napkinOn) {
+      decreaseOpacity(debrisImage);
     }
   }
 
@@ -126,23 +135,25 @@ public class CrimeSceneController {
       napkinOn = false;
     } else {
       cleaningImage.setVisible(true);
-      cleaningImage.setImage(new Image((App.class.getResource("/images/napkin.png")).toString()));
+      cleaningImage.setImage(
+          new Image((App.class.getResource("/images/crimeScene/napkin.png")).toString()));
       napkinOn = true;
-      clothOn = false;
+      brushOn = false;
       rubberOn = false;
     }
   }
 
   @FXML
-  void clothSelected() {
-    if (clothOn) {
+  void brushSelected() {
+    if (brushOn) {
       cleaningImage.setVisible(false);
-      clothOn = false;
+      brushOn = false;
     } else {
       cleaningImage.setVisible(true);
-      cleaningImage.setImage(new Image((App.class.getResource("/images/cloth.png")).toString()));
+      cleaningImage.setImage(
+          new Image((App.class.getResource("/images/crimeScene/brush.png")).toString()));
       napkinOn = false;
-      clothOn = true;
+      brushOn = true;
       rubberOn = false;
     }
   }
@@ -154,9 +165,10 @@ public class CrimeSceneController {
       rubberOn = false;
     } else {
       cleaningImage.setVisible(true);
-      cleaningImage.setImage(new Image((App.class.getResource("/images/rubber.png")).toString()));
+      cleaningImage.setImage(
+          new Image((App.class.getResource("/images/crimeScene/rubber.png")).toString()));
       napkinOn = false;
-      clothOn = false;
+      brushOn = false;
       rubberOn = true;
     }
   }
@@ -193,8 +205,19 @@ public class CrimeSceneController {
     showPane(tigerBottlePane);
   }
 
+  public void checkCardCleaned() {
+    if (dirtImage.getOpacity() < 0.1
+        && debrisImage.getOpacity() < 0.1
+        && pencilImage.getOpacity() < 0.1) {
+      cardCleaned = true;
+      cardDirtyLabel.setVisible(false);
+      aiCardCluePane.setVisible(true);
+    }
+  }
+
   public void decreaseOpacity(ImageView image) {
     image.setOpacity(image.getOpacity() - 0.005);
+    checkCardCleaned();
   }
 
   private void addAllItemPanes() {
