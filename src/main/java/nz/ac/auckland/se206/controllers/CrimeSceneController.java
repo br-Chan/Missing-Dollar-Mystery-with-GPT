@@ -25,6 +25,7 @@ public class CrimeSceneController {
   @FXML private Pane aiCardCluePane;
   @FXML private Pane cardPane;
   @FXML private Pane casePane;
+  @FXML private Pane computerPane;
   @FXML private ImageView dirtImage;
   @FXML private ImageView debrisImage;
   @FXML private ImageView pencilImage;
@@ -55,6 +56,7 @@ public class CrimeSceneController {
     System.out.println("Initialising...");
     cardPane.setVisible(false);
     casePane.setVisible(false);
+    computerPane.setVisible(false);
     cleaningImage.setVisible(false);
     addAllItemPanes();
   }
@@ -209,6 +211,18 @@ public class CrimeSceneController {
   @FXML
   private void displayYellowDrink() {
     showPane(yellowDrinkPane);
+  }
+
+  @FXML
+  public void showComputerClue() {
+    System.out.println("Showing computer clue");
+    computerPane.setVisible(true);
+  }
+
+  @FXML
+  public void hideComputerClue() {
+    System.out.println("Hiding computer clue");
+    computerPane.setVisible(false);
   }
 
   public void checkCardCleaned() {
