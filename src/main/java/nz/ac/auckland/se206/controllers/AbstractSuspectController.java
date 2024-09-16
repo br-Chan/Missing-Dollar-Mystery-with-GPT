@@ -89,7 +89,10 @@ public abstract class AbstractSuspectController {
     return PromptEngineering.getPrompt(promptFilename, dataMap);
   }
 
-  /** Initialises the chat completion request. */
+  /**
+   * Initialises the chat completion request and fetches the initial response to display to the user
+   * in the chat bubble.
+   */
   public void initialiseChatCompletionRequest() {
     try {
       ApiProxyConfig config = ApiProxyConfig.readConfig();
@@ -99,19 +102,11 @@ public abstract class AbstractSuspectController {
               .setTemperature(0.2)
               .setTopP(0.5)
               .setMaxTokens(100);
-      runGpt(new ChatMessage("system", getSystemPrompt()));
+
+      setChatting(runGpt(new ChatMessage("system", getSystemPrompt())));
     } catch (ApiProxyException e) {
       e.printStackTrace();
     }
-  }
-
-  /**
-   * Appends a chat message to the chat text area.
-   *
-   * @param msg the chat message to append
-   */
-  private void appendChatMessage(ChatMessage msg) {
-    txtaChat.appendText(msg.getRole() + ": " + msg.getContent() + "\n\n");
   }
 
   /**
@@ -124,21 +119,14 @@ public abstract class AbstractSuspectController {
   private ChatMessage runGpt(ChatMessage msg) throws ApiProxyException {
     chatCompletionRequest.addMessage(msg);
     try {
+      // Fetch ChatGPT's response.
       ChatCompletionResult chatCompletionResult = chatCompletionRequest.execute();
       Choice result = chatCompletionResult.getChoices().iterator().next();
       chatCompletionRequest.addMessage(result.getChatMessage());
-      appendChatMessage(result.getChatMessage());
-      Task<Void> backgroundTask =
-          new Task<Void>() {
-            @Override
-            protected Void call() throws Exception {
-              TextToSpeech.speak(result.getChatMessage().getContent());
-              return null;
-            }
-          };
-      Thread backgroundThread = new Thread(backgroundTask);
-      backgroundThread.start();
-      setChatting(chatBubbleImage);
+
+      // TODO: delete print statement before release.
+      System.out.println(result.getChatMessage().getContent());
+
       return result.getChatMessage();
     } catch (ApiProxyException e) {
       e.printStackTrace();
@@ -164,36 +152,48 @@ public abstract class AbstractSuspectController {
    * @throws ApiProxyException
    */
   private void sendMessage() throws ApiProxyException {
+    // Process user's input.
     String message = txtInput.getText().trim();
     if (message.isEmpty()) {
       return;
     }
-    setThinking(chatBubbleImage);
     txtInput.clear();
-    ChatMessage msg = new ChatMessage("user", message);
-    appendChatMessage(msg);
+
+    setThinking();
+
+    // Switch the chat bubble's state to chatting with ChatGPT's response to the user.
+    ChatMessage userInput = new ChatMessage("user", message);
     Task<Void> backgroundTask =
         new Task<Void>() {
-
           @Override
           protected Void call() throws Exception {
-            // Runs the chatgpt tool
-            runGpt(msg);
-
+            setChatting(runGpt(userInput));
             return null;
           }
         };
-
     Thread backgroundThread = new Thread(backgroundTask);
-    // Starts the thread to run the tool
     backgroundThread.start();
   }
 
-  private void setThinking(ImageView image) {
-    image.setImage(new Image(App.class.getResource("/images/thoughtbubblepixel.png").toString()));
+  /**
+   * Handles switching the chat bubble image to a thought bubble and replacing its text with
+   * ellipses so that the user knows that the ChatGPT API is processing their input.
+   */
+  private void setThinking() {
+    chatBubbleImage.setImage(
+        new Image(App.class.getResource("/images/thoughtbubblepixel.png").toString()));
+    txtaChat.setText("...");
   }
 
-  private void setChatting(ImageView image) {
-    image.setImage(new Image(App.class.getResource("/images/chatbubblepixel.png").toString()));
+  /**
+   * Handles switching the chat bubble image to a speech bubble and replacing its text with
+   * ChatGPT's response to the user.
+   *
+   * @param response the chat message to display to the user
+   */
+  private void setChatting(ChatMessage response) {
+    chatBubbleImage.setImage(
+        new Image(App.class.getResource("/images/chatbubblepixel.png").toString()));
+    txtaChat.setText(response.getContent());
   }
 }
