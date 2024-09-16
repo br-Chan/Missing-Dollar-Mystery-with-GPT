@@ -1,8 +1,6 @@
 package nz.ac.auckland.se206.states;
 
 import java.io.IOException;
-import javafx.scene.input.MouseEvent;
-import nz.ac.auckland.se206.GameStateContext;
 import nz.ac.auckland.se206.speech.TextToSpeech;
 
 /**
@@ -11,34 +9,12 @@ import nz.ac.auckland.se206.speech.TextToSpeech;
  */
 public class Guessing implements GameState {
 
-  private final GameStateContext context;
-
   /**
    * Constructs a new Guessing state with the given game state context.
    *
    * @param context the context of the game state
    */
-  public Guessing(GameStateContext context) {
-    this.context = context;
-  }
-
-  /**
-   * Handles the event when a rectangle is clicked. Checks if the clicked rectangle is a customer
-   * and updates the game state accordingly.
-   *
-   * @param event the mouse event triggered by clicking a rectangle
-   * @param rectangleId the ID of the clicked rectangle
-   * @throws IOException if there is an I/O error
-   */
-  @Override
-  public void handleRectangleClick(MouseEvent event, String rectangleId) throws IOException {
-    String clickedProfession = context.getProfession(rectangleId);
-    if (rectangleId.equals(context.getRectIdToGuess())) {
-      TextToSpeech.speak("Correct! You won! This is the " + clickedProfession);
-    } else {
-      TextToSpeech.speak("You lost! This is the " + clickedProfession);
-    }
-    context.setState(context.getGameOverState());
+  public Guessing() {
   }
 
   /**

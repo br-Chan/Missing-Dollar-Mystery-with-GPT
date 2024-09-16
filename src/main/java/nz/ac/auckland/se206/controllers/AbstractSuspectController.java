@@ -52,8 +52,7 @@ public abstract class AbstractSuspectController {
   public void initialize() {
     System.out.println("Initialise is being run from the abstract class!");
     if (isFirstTimeInit) {
-      TextToSpeech.speak(
-          "Chat with the three customers, and guess who is the " + context.getProfessionToGuess());
+      TextToSpeech.speak("Chat with " + suspectName);
       isFirstTimeInit = false;
     }
     initialiseChatCompletionRequest();
@@ -90,8 +89,8 @@ public abstract class AbstractSuspectController {
     return PromptEngineering.getPrompt(promptFilename, dataMap);
   }
 
-   /** Initialises the chat completion request. */
-   public void initialiseChatCompletionRequest() {
+  /** Initialises the chat completion request. */
+  public void initialiseChatCompletionRequest() {
     try {
       ApiProxyConfig config = ApiProxyConfig.readConfig();
       chatCompletionRequest =
