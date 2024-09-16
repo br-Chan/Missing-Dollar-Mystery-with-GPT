@@ -31,12 +31,14 @@ public abstract class AbstractSuspectController {
 
   @FXML private ImageView chatBubbleImage;
 
-  protected String suspectId;
-  private ChatCompletionRequest chatCompletionRequest;
-  private String profession;
+  protected ChatCompletionRequest chatCompletionRequest;
 
-  protected static boolean isFirstTimeInit = true;
+  protected boolean isFirstTimeInit = true;
   protected static GameStateContext context;
+
+  protected String suspectId;
+  protected String suspectName;
+  protected String promptFilename;
 
   public AbstractSuspectController() {
     context = new GameStateContext(this);
@@ -54,7 +56,7 @@ public abstract class AbstractSuspectController {
           "Chat with the three customers, and guess who is the " + context.getProfessionToGuess());
       isFirstTimeInit = false;
     }
-    setProfession(context.getProfession(suspectId));
+    initialiseChatCompletionRequest();
   }
 
   /**
@@ -64,7 +66,6 @@ public abstract class AbstractSuspectController {
    */
   @FXML
   public void onKeyPressed(KeyEvent event) throws ApiProxyException {
-    // Check if the key pressed was ENTER.
     if (event.getCode().toString().equals("ENTER")) {
       sendMessage();
     }
@@ -79,23 +80,18 @@ public abstract class AbstractSuspectController {
   public void onKeyReleased(KeyEvent event) {}
 
   /**
-   * Generates the system prompt based on the profession.
+   * Generates the system prompt based on the suspect's data.
    *
    * @return the system prompt string
    */
   private String getSystemPrompt() {
-    Map<String, String> map = new HashMap<>();
-    map.put("profession", profession);
-    return PromptEngineering.getPrompt("chat.txt", map);
+    Map<String, String> dataMap = new HashMap<>();
+    dataMap.put("suspectName", suspectName);
+    return PromptEngineering.getPrompt(promptFilename, dataMap);
   }
 
-  /**
-   * Sets the profession for the chat context and initializes the ChatCompletionRequest.
-   *
-   * @param profession the profession to set
-   */
-  public void setProfession(String profession) {
-    this.profession = profession;
+   /** Initialises the chat completion request. */
+   public void initialiseChatCompletionRequest() {
     try {
       ApiProxyConfig config = ApiProxyConfig.readConfig();
       chatCompletionRequest =

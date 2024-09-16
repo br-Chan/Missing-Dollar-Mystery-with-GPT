@@ -33,7 +33,7 @@ public class GameStateContext {
 
   /** Constructs a new GameStateContext and initializes the game states and professions. */
   public GameStateContext(AbstractSuspectController suspectController) {
-    gameStartedState = new GameStarted(this, suspectController);
+    gameStartedState = new GameStarted(this);
     guessingState = new Guessing(this);
     gameOverState = new GameOver(this);
 
@@ -62,13 +62,13 @@ public class GameStateContext {
 
     String[] randomProfessionsArray = randomProfessions.toArray(new String[3]);
     rectanglesToProfession = new HashMap<>();
-    rectanglesToProfession.put("rectPerson1", randomProfessionsArray[0]);
-    rectanglesToProfession.put("rectPerson2", randomProfessionsArray[1]);
-    rectanglesToProfession.put("rectPerson3", randomProfessionsArray[2]);
+    rectanglesToProfession.put("suspect1", randomProfessionsArray[0]);
+    rectanglesToProfession.put("suspect2", randomProfessionsArray[1]);
+    rectanglesToProfession.put("suspect3", randomProfessionsArray[2]);
 
     int randomNumber = random.nextInt(3);
     rectIdToGuess =
-        randomNumber == 0 ? "rectPerson1" : ((randomNumber == 1) ? "rectPerson2" : "rectPerson3");
+        randomNumber == 0 ? "suspect1" : ((randomNumber == 1) ? "suspect2" : "suspect3");
     professionToGuess = rectanglesToProfession.get(rectIdToGuess);
   }
 

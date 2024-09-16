@@ -14,16 +14,14 @@ import nz.ac.auckland.se206.speech.TextToSpeech;
 public class GameStarted implements GameState {
 
   private final GameStateContext context;
-  private final AbstractSuspectController suspectController;
 
   /**
    * Constructs a new GameStarted state with the given game state context.
    *
    * @param context the context of the game state
    */
-  public GameStarted(GameStateContext context, AbstractSuspectController suspectController) {
+  public GameStarted(GameStateContext context) {
     this.context = context;
-    this.suspectController = suspectController;
   }
 
   /**
@@ -37,7 +35,7 @@ public class GameStarted implements GameState {
   @Override
   public void handleRectangleClick(MouseEvent event, String rectangleId) throws IOException {
     //App.openChat(event, context.getProfession(rectangleId));
-    suspectController.setProfession(context.getProfession(rectangleId));
+    // suspectController.setProfession(context.getProfession(rectangleId));
   }
 
   /**

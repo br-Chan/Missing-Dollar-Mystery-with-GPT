@@ -7,6 +7,8 @@ package nz.ac.auckland.se206.controllers;
 public class Suspect3Controller extends AbstractSuspectController {
 
   public Suspect3Controller() {
-    suspectId = "rectPerson3";
+    suspectId = "suspect3";
+    suspectName = "Louie";
+    promptFilename = "suspect3.txt";
   }
 }
