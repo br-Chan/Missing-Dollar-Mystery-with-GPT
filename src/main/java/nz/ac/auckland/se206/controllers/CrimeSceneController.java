@@ -35,7 +35,10 @@ public class CrimeSceneController {
   @FXML private ImageView cleaningImage;
   @FXML private Label cardDirtyLabel;
   @FXML private Button searchStockButton;
+  @FXML private Button searchLogsButton;
   @FXML private TextField searchStockField;
+  @FXML private TextField searchLogsStart;
+  @FXML private TextField searchLogsEnd;
 
   @FXML private Pane suspensePane;
   @FXML private Pane redDrinkPane;
@@ -88,6 +91,8 @@ public class CrimeSceneController {
     System.out.println("Key " + event.getCode() + " pressed");
     if (event.getCode().toString().equals("ENTER") && stockAppOpen) {
       searchStock();
+    } else if (event.getCode().toString().equals("ENTER") && logsAppOpen) {
+      searchLogs();
     }
   }
 
@@ -285,6 +290,15 @@ public class CrimeSceneController {
         showStock(errorStockPane);
         break;
     }
+  }
+
+  @FXML
+  public void searchLogs() {
+    String start = searchLogsStart.getText().trim();
+    String end = searchLogsEnd.getText().trim();
+    searchLogsStart.clear();
+    searchLogsEnd.clear();
+    System.out.println(start + end);
   }
 
   public void checkCardCleaned() {

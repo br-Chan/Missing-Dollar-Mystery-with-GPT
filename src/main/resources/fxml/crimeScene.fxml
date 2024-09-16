@@ -359,6 +359,11 @@
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#bc9cb4" height="189.0" stroke="TRANSPARENT" strokeType="INSIDE" width="344.0" />
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#bc9cb4" height="30.0" layoutX="132.0" layoutY="183.0" onMouseClicked="#openStock" stroke="TRANSPARENT" strokeType="INSIDE" width="24.0" />
                   <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#838383" height="24.0" layoutX="156.0" layoutY="189.0" onMouseClicked="#openStock" stroke="TRANSPARENT" strokeType="INSIDE" width="24.0" />
+                  <Text layoutX="7.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search for a time period (hours) to show entry/exit logs" />
+                  <Button fx:id="searchLogsButton" layoutX="217.0" layoutY="25.0" mnemonicParsing="false" onAction="#searchLogs" text="Search" />
+                  <Text layoutX="7.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="From                           To" />
+                  <TextField fx:id="searchLogsEnd" layoutX="143.0" layoutY="25.0" prefHeight="25.0" prefWidth="72.0" promptText="eg 4, 8, 21" />
+                  <TextField fx:id="searchLogsStart" layoutX="40.0" layoutY="25.0" prefHeight="25.0" prefWidth="78.0" promptText="eg 0, 3, 14" />
                </children>
             </Pane>
          </children>
