@@ -1,8 +1,12 @@
 package nz.ac.auckland.se206.controllers;
 
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
+import nz.ac.auckland.se206.SceneManager;
+import nz.ac.auckland.se206.SceneManager.AppUi;
 
 /**
  * TODO: Fill in this JavaDoc comment.
@@ -18,6 +22,11 @@ import javafx.scene.layout.Pane;
 public class GameController {
 
   @FXML private Pane gameView;
+
+  @FXML private Button suspect1Button;
+  @FXML private Button suspect2Button;
+  @FXML private Button suspect3Button;
+  @FXML private Button crimeSceneButton;
 
   /**
    * TODO: Fill in this JavaDoc comment.
@@ -47,5 +56,25 @@ public class GameController {
   @FXML
   public void onKeyReleased(KeyEvent event) {
     System.out.println("Key " + event.getCode() + " released");
+  }
+
+  @FXML
+  public void handleSuspect1ButtonClick(ActionEvent event) {
+    gameView.getChildren().setAll(SceneManager.getUiRoot(AppUi.SUSPECT1));
+  }
+
+  @FXML
+  public void handleSuspect2ButtonClick(ActionEvent event) {
+    gameView.getChildren().setAll(SceneManager.getUiRoot(AppUi.SUSPECT2));
+  }
+
+  @FXML
+  public void handleSuspect3ButtonClick(ActionEvent event) {
+    gameView.getChildren().setAll(SceneManager.getUiRoot(AppUi.SUSPECT3));
+  }
+
+  @FXML
+  public void handleCrimeSceneButtonClick(ActionEvent event) {
+    gameView.getChildren().setAll(SceneManager.getUiRoot(AppUi.CRIME_SCENE));
   }
 }
