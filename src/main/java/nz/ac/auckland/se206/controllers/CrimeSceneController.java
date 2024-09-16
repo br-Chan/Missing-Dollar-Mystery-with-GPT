@@ -87,6 +87,11 @@ public class CrimeSceneController {
           cleaningImage.setX(event.getX() - 160);
           cleaningImage.setY(event.getY() - 215);
         });
+    cardPane.setOnMouseDragged(
+        event -> {
+          cleaningImage.setX(event.getX() - 160);
+          cleaningImage.setY(event.getY() - 215);
+        });
     napkinOn = false;
     brushOn = false;
     rubberOn = false;

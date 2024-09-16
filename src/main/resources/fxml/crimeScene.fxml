@@ -49,17 +49,17 @@
                   <Image url="@../images/crimeScene/ID%20Card.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="pencilImage" fitHeight="93.0" fitWidth="101.0" layoutX="358.0" layoutY="-47.0" onMouseMoved="#decreasePencilOpacity" pickOnBounds="true">
+            <ImageView fx:id="pencilImage" fitHeight="93.0" fitWidth="101.0" layoutX="358.0" layoutY="-47.0" onMouseDragged="#decreasePencilOpacity" onMouseMoved="#decreasePencilOpacity" pickOnBounds="true">
                <image>
                   <Image url="@../images/crimeScene/pencil.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="dirtImage" fitHeight="82.0" fitWidth="89.0" layoutX="324.0" layoutY="47.0" onMouseMoved="#decreaseDirtOpacity" pickOnBounds="true">
+            <ImageView fx:id="dirtImage" fitHeight="82.0" fitWidth="89.0" layoutX="324.0" layoutY="47.0" onMouseDragged="#decreaseDirtOpacity" onMouseMoved="#decreaseDirtOpacity" pickOnBounds="true">
                <image>
                   <Image url="@../images/crimeScene/dust.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="debrisImage" fitHeight="82.0" fitWidth="104.0" layoutX="201.0" layoutY="-35.0" onMouseMoved="#decreaseDebrisOpacity" pickOnBounds="true">
+            <ImageView fx:id="debrisImage" fitHeight="82.0" fitWidth="104.0" layoutX="201.0" layoutY="-35.0" onMouseDragged="#decreaseDebrisOpacity" onMouseMoved="#decreaseDebrisOpacity" pickOnBounds="true">
                <image>
                   <Image url="@../images/crimeScene/dirt.png" />
                </image>
