@@ -126,7 +126,8 @@ public class CrimeSceneController {
       napkinOn = false;
     } else {
       cleaningImage.setVisible(true);
-      cleaningImage.setImage(new Image((App.class.getResource("/images/napkin.png")).toString()));
+      cleaningImage.setImage(
+          new Image((App.class.getResource("/images/crimeScene/napkin.png")).toString()));
       napkinOn = true;
       clothOn = false;
       rubberOn = false;
@@ -140,7 +141,8 @@ public class CrimeSceneController {
       clothOn = false;
     } else {
       cleaningImage.setVisible(true);
-      cleaningImage.setImage(new Image((App.class.getResource("/images/cloth.png")).toString()));
+      cleaningImage.setImage(
+          new Image((App.class.getResource("/images/crimeScene/brush.png")).toString()));
       napkinOn = false;
       clothOn = true;
       rubberOn = false;
@@ -154,7 +156,8 @@ public class CrimeSceneController {
       rubberOn = false;
     } else {
       cleaningImage.setVisible(true);
-      cleaningImage.setImage(new Image((App.class.getResource("/images/rubber.png")).toString()));
+      cleaningImage.setImage(
+          new Image((App.class.getResource("/images/crimeScene/rubber.png")).toString()));
       napkinOn = false;
       clothOn = false;
       rubberOn = true;
