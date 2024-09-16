@@ -76,13 +76,13 @@ public class App extends Application {
    * @throws IOException if a FXML file is not found
    */
   private void addAllUi() throws IOException {
-    SceneManager.addUi(AppUi.MENU, loadFxml("menu"));
-    SceneManager.addUi(AppUi.GAME, loadFxml("game"));
-
     SceneManager.addUi(AppUi.CRIME_SCENE, loadFxml("crimeScene"));
     SceneManager.addUi(AppUi.SUSPECT1, loadFxml("suspect1"));
     SceneManager.addUi(AppUi.SUSPECT2, loadFxml("suspect2"));
     SceneManager.addUi(AppUi.SUSPECT3, loadFxml("suspect3"));
+
+    SceneManager.addUi(AppUi.MENU, loadFxml("menu"));
+    SceneManager.addUi(AppUi.GAME, loadFxml("game"));
 
     SceneManager.addUi(AppUi.GUESS, loadFxml("guess"));
     SceneManager.addUi(AppUi.RESULT, loadFxml("result"));
@@ -107,8 +107,13 @@ public class App extends Application {
    * @throws IOException if the FXML file is not found
    */
   @Override
-  public void start(final Stage stage) throws IOException {
-    addAllUi();
+  public void start(final Stage stage) {
+    try {
+      addAllUi();
+    } catch (IOException e) {
+      System.err.println("Could not find FXML file in scene manager.");
+      e.printStackTrace();
+    }
 
     showFirstScene(stage, firstAppUi);
   }

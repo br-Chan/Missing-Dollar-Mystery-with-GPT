@@ -29,13 +29,12 @@ public class GameController {
   @FXML private Button crimeSceneButton;
 
   /**
-   * TODO: Fill in this JavaDoc comment.
-   *
-   * <p>Initializes the scene view.
+   * Initializes the game scene and sets the initial game view.
    */
   @FXML
   public void initialize() {
-    System.out.println("Initialising...");
+    System.out.println("Initialising game scene...");
+    setGameView(AppUi.SUSPECT1);
   }
 
   /**
@@ -58,23 +57,26 @@ public class GameController {
     System.out.println("Key " + event.getCode() + " released");
   }
 
+  private void setGameView(AppUi appUi) {
+    gameView.getChildren().setAll(SceneManager.getUiRoot(appUi));
+  }
   @FXML
   public void handleSuspect1ButtonClick(ActionEvent event) {
-    gameView.getChildren().setAll(SceneManager.getUiRoot(AppUi.SUSPECT1));
+    setGameView(AppUi.SUSPECT1);
   }
 
   @FXML
   public void handleSuspect2ButtonClick(ActionEvent event) {
-    gameView.getChildren().setAll(SceneManager.getUiRoot(AppUi.SUSPECT2));
+    setGameView(AppUi.SUSPECT2);
   }
 
   @FXML
   public void handleSuspect3ButtonClick(ActionEvent event) {
-    gameView.getChildren().setAll(SceneManager.getUiRoot(AppUi.SUSPECT3));
+    setGameView(AppUi.SUSPECT3);
   }
 
   @FXML
   public void handleCrimeSceneButtonClick(ActionEvent event) {
-    gameView.getChildren().setAll(SceneManager.getUiRoot(AppUi.CRIME_SCENE));
+    setGameView(AppUi.CRIME_SCENE);
   }
 }
