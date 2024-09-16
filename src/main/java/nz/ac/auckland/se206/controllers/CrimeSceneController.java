@@ -10,6 +10,7 @@ import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
+import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
 import nz.ac.auckland.se206.App;
 
 /**
@@ -55,6 +56,8 @@ public class CrimeSceneController {
   private boolean brushOn;
   private boolean rubberOn;
   private boolean cardCleaned = false;
+  private boolean stockAppOpen = false;
+  private boolean logsAppOpen = false;
 
   private ArrayList<Pane> itemPaneList = new ArrayList<>();
   private ArrayList<Pane> stockPaneList = new ArrayList<>();
@@ -76,13 +79,16 @@ public class CrimeSceneController {
   }
 
   /**
-   * Handles the key pressed event.
+   * Handles the key pressed event, sending a message if the user presses ENTER.
    *
    * @param event the key event
    */
   @FXML
-  public void onKeyPressed(KeyEvent event) {
+  public void onKeyPressed(KeyEvent event) throws ApiProxyException {
     System.out.println("Key " + event.getCode() + " pressed");
+    if (event.getCode().toString().equals("ENTER") && stockAppOpen) {
+      searchStock();
+    }
   }
 
   /**
@@ -243,12 +249,16 @@ public class CrimeSceneController {
   public void openLogs() {
     logPane.setVisible(true);
     stockPane.setVisible(false);
+    stockAppOpen = false;
+    logsAppOpen = true;
   }
 
   @FXML
   public void openStock() {
     logPane.setVisible(false);
     stockPane.setVisible(true);
+    stockAppOpen = true;
+    logsAppOpen = false;
   }
 
   @FXML
