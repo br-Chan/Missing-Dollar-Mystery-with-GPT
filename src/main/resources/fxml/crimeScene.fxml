@@ -104,7 +104,7 @@
                         <Image url="@../images/crimeScene/redDrink.png" />
                      </image>
                   </ImageView>
-                  <Text fill="WHITE" layoutX="22.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tiger Can" wrappingWidth="177.800048828125">
+                  <Text fill="WHITE" layoutX="22.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Cola Crush" wrappingWidth="177.800048828125">
                      <font>
                         <Font size="36.0" />
                      </font>
@@ -119,12 +119,12 @@
                         <Image url="@../images/crimeScene/blueDrink.png" />
                      </image>
                   </ImageView>
-                  <Text fill="WHITE" layoutX="22.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tiger Can" wrappingWidth="177.800048828125">
+                  <Text fill="WHITE" layoutX="22.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Coffee Craze" wrappingWidth="209.00006103515625">
                      <font>
                         <Font size="36.0" />
                      </font>
                   </Text>
-                  <Text fill="WHITE" layoutX="22.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Stock: 15 Last Stocked: 15/9/24" wrappingWidth="112.20001220703125" />
+                  <Text fill="WHITE" layoutX="22.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Stock: 12 Last Stocked: 14/9/24" wrappingWidth="112.20001220703125" />
                </children>
             </Pane>
             <Pane fx:id="greenDrinkPane" layoutX="226.0" layoutY="34.0" prefHeight="368.0" prefWidth="319.0" visible="false">
@@ -134,12 +134,12 @@
                         <Image url="@../images/crimeScene/greenDrink.png" />
                      </image>
                   </ImageView>
-                  <Text fill="WHITE" layoutX="22.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tiger Can" wrappingWidth="177.800048828125">
+                  <Text fill="WHITE" layoutX="22.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Stock: 23 Last Stocked: 16/9/24" wrappingWidth="112.20001220703125" />
+                  <Text fill="WHITE" layoutX="20.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Elite Energy" wrappingWidth="195.4000244140625">
                      <font>
                         <Font size="36.0" />
                      </font>
                   </Text>
-                  <Text fill="WHITE" layoutX="22.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Stock: 15 Last Stocked: 15/9/24" wrappingWidth="112.20001220703125" />
                </children>
             </Pane>
             <Pane fx:id="pinkDrinkPane" layoutX="226.0" layoutY="34.0" prefHeight="368.0" prefWidth="319.0" visible="false">
@@ -149,12 +149,12 @@
                         <Image url="@../images/crimeScene/pinkDrink.png" />
                      </image>
                   </ImageView>
-                  <Text fill="WHITE" layoutX="22.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tiger Can" wrappingWidth="177.800048828125">
+                  <Text fill="WHITE" layoutX="22.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Berry Burst" wrappingWidth="177.800048828125">
                      <font>
                         <Font size="36.0" />
                      </font>
                   </Text>
-                  <Text fill="WHITE" layoutX="22.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Stock: 15 Last Stocked: 15/9/24" wrappingWidth="112.20001220703125" />
+                  <Text fill="WHITE" layoutX="22.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Stock: 16 Last Stocked: 15/9/24" wrappingWidth="112.20001220703125" />
                </children>
             </Pane>
             <Pane fx:id="yellowDrinkPane" layoutX="226.0" layoutY="34.0" prefHeight="368.0" prefWidth="319.0" visible="false">
@@ -164,12 +164,12 @@
                         <Image url="@../images/crimeScene/yellowDrink.png" />
                      </image>
                   </ImageView>
-                  <Text fill="WHITE" layoutX="22.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tiger Can" wrappingWidth="177.800048828125">
+                  <Text fill="WHITE" layoutX="22.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lemon Lift" wrappingWidth="177.800048828125">
                      <font>
                         <Font size="36.0" />
                      </font>
                   </Text>
-                  <Text fill="WHITE" layoutX="22.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Stock: 15 Last Stocked: 15/9/24" wrappingWidth="112.20001220703125" />
+                  <Text fill="WHITE" layoutX="22.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Stock: 13 Last Stocked: 14/9/24" wrappingWidth="112.20001220703125" />
                </children>
             </Pane>
             <Pane fx:id="suspensePane" layoutX="226.0" layoutY="34.0" prefHeight="368.0" prefWidth="319.0">
