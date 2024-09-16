@@ -59,18 +59,18 @@
                   <Image url="@../images/crimeScene/dust.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="scratchImage" fitHeight="82.0" fitWidth="104.0" layoutX="261.0" layoutY="78.0" onMouseMoved="#decreaseScratchOpacity" pickOnBounds="true">
+            <ImageView fx:id="debrisImage" fitHeight="82.0" fitWidth="104.0" layoutX="261.0" layoutY="78.0" onMouseMoved="#decreaseDebrisOpacity" pickOnBounds="true">
                <image>
                   <Image url="@../images/crimeScene/dirt.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="cleaningImage" fitHeight="55.0" fitWidth="50.0" layoutX="133.0" layoutY="189.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="cleaningImage" fitHeight="55.0" fitWidth="50.0" layoutX="133.0" layoutY="189.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
                <image>
                   <Image url="@../images/napkin.png" />
                </image>
             </ImageView>
             <Button layoutX="195.0" layoutY="298.0" mnemonicParsing="false" onMouseClicked="#napkinSelected" prefHeight="25.0" prefWidth="121.0" text="Napkin" />
-            <Button layoutX="329.0" layoutY="298.0" mnemonicParsing="false" onMouseClicked="#clothSelected" prefHeight="25.0" prefWidth="121.0" text="Cloth" />
+            <Button layoutX="329.0" layoutY="298.0" mnemonicParsing="false" onMouseClicked="#brushSelected" prefHeight="25.0" prefWidth="121.0" text="Brush" />
             <Button layoutX="462.0" layoutY="298.0" mnemonicParsing="false" onMouseClicked="#rubberSelected" prefHeight="25.0" prefWidth="121.0" text="Rubber" />
          </children>
       </Pane>

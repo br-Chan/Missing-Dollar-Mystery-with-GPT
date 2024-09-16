@@ -24,7 +24,7 @@ public class CrimeSceneController {
   @FXML private Pane cardPane;
   @FXML private Pane casePane;
   @FXML private ImageView dirtImage;
-  @FXML private ImageView scratchImage;
+  @FXML private ImageView debrisImage;
   @FXML private ImageView pencilImage;
   @FXML private ImageView cleaningImage;
 
@@ -35,7 +35,7 @@ public class CrimeSceneController {
   @FXML private Pane tigerBottlePane;
 
   private boolean napkinOn;
-  private boolean clothOn;
+  private boolean brushOn;
   private boolean rubberOn;
 
   private ArrayList<Pane> itemPaneList = new ArrayList<>();
@@ -84,7 +84,7 @@ public class CrimeSceneController {
           cleaningImage.setY(event.getY() - 215);
         });
     napkinOn = false;
-    clothOn = false;
+    brushOn = false;
     rubberOn = false;
   }
 
@@ -94,21 +94,21 @@ public class CrimeSceneController {
     cardPane.setVisible(false);
     cleaningImage.setVisible(false);
     napkinOn = false;
-    clothOn = false;
+    brushOn = false;
     rubberOn = false;
   }
 
   @FXML
   public void decreaseDirtOpacity() {
-    if (napkinOn) {
+    if (brushOn) {
       decreaseOpacity(dirtImage);
     }
   }
 
   @FXML
-  public void decreaseScratchOpacity() {
-    if (clothOn) {
-      decreaseOpacity(scratchImage);
+  public void decreaseDebrisOpacity() {
+    if (napkinOn) {
+      decreaseOpacity(debrisImage);
     }
   }
 
@@ -129,22 +129,22 @@ public class CrimeSceneController {
       cleaningImage.setImage(
           new Image((App.class.getResource("/images/crimeScene/napkin.png")).toString()));
       napkinOn = true;
-      clothOn = false;
+      brushOn = false;
       rubberOn = false;
     }
   }
 
   @FXML
-  void clothSelected() {
-    if (clothOn) {
+  void brushSelected() {
+    if (brushOn) {
       cleaningImage.setVisible(false);
-      clothOn = false;
+      brushOn = false;
     } else {
       cleaningImage.setVisible(true);
       cleaningImage.setImage(
           new Image((App.class.getResource("/images/crimeScene/brush.png")).toString()));
       napkinOn = false;
-      clothOn = true;
+      brushOn = true;
       rubberOn = false;
     }
   }
@@ -159,7 +159,7 @@ public class CrimeSceneController {
       cleaningImage.setImage(
           new Image((App.class.getResource("/images/crimeScene/rubber.png")).toString()));
       napkinOn = false;
-      clothOn = false;
+      brushOn = false;
       rubberOn = true;
     }
   }
