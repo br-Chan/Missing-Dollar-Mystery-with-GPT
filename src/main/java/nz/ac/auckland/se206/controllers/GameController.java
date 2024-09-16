@@ -10,6 +10,7 @@ import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import nz.ac.auckland.se206.App;
+import nz.ac.auckland.se206.AppTimer;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
@@ -26,8 +27,6 @@ import nz.ac.auckland.se206.SceneManager.AppUi;
  */
 public class GameController {
 
-  public static final int GAMETIME = 7;
-
   @FXML private Pane gameView;
 
   @FXML private Button suspect1Button;
@@ -37,54 +36,16 @@ public class GameController {
 
   @FXML private Label timerLabel;
 
-  private Timer timer;
-  private int timeLeft;
+  AppTimer appTimer;
 
   /** Initializes the game scene and sets the initial game view. */
   @FXML
   public void initialize() {
     System.out.println("Initialising game scene...");
     setGameView(AppUi.SUSPECT1);
-    beginCountdown(GAMETIME);
-  }
 
-  public void beginCountdown(int startingTime) {
-    timeLeft = startingTime;
-    timer = new Timer();
-
-    TimerTask task =
-        new TimerTask() {
-          @Override
-          public void run() {
-            Platform.runLater(
-                () -> {
-                  // Decrement the time left and update the label.
-                  timeLeft--;
-                  int minutesLeft = timeLeft / 60;
-                  int secondsLeft = timeLeft - 60 * minutesLeft;
-                  String digitalTimeLeft = null;
-                  if (secondsLeft < 10) {
-                    digitalTimeLeft = "0" + minutesLeft + ":0" + secondsLeft;
-                  } else {
-                    digitalTimeLeft = "0" + minutesLeft + ":" + secondsLeft;
-                  }
-                  timerLabel.setText(digitalTimeLeft);
-                  System.out.println(digitalTimeLeft);
-
-                  // Stop the timer if 0 is reached and handle it.
-                  if (timeLeft <= 0) {
-                    timer.cancel();
-                    handleTimeUp(startingTime);
-                  }
-                });
-          }
-        };
-
-    timer.scheduleAtFixedRate(task, 1000, 1000);
-  }
-
-  private void handleTimeUp(int startingTime) {
-    App.getScene().setRoot(SceneManager.getUiRoot(AppUi.GUESS));
+    appTimer = new AppTimer(timerLabel, AppTimer.GAMETIME);
+    appTimer.beginCountdown();
   }
 
   /**
