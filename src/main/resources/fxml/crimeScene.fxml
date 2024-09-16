@@ -40,7 +40,7 @@
          <cursor>
             <Cursor fx:constant="HAND" />
          </cursor></Rectangle>
-      <Pane fx:id="cardPane" layoutY="176.0" prefHeight="426.0" prefWidth="789.0">
+      <Pane fx:id="cardPane" layoutY="176.0" prefHeight="426.0" prefWidth="789.0" visible="false">
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#000000b2" height="470.0" layoutX="161.0" layoutY="-82.0" stroke="TRANSPARENT" strokeType="INSIDE" width="469.0" />
             <Button fx:id="cardBackButton" layoutX="567.0" layoutY="-64.0" mnemonicParsing="false" onMouseClicked="#hideCardClue" text="Back" />
@@ -88,31 +88,31 @@
             </Label>
          </children>
       </Pane>
-      <Pane fx:id="casePane" layoutY="173.0" prefHeight="426.0" prefWidth="789.0" visible="false">
+      <Pane fx:id="casePane" layoutX="161.0" layoutY="94.0" prefHeight="426.0" prefWidth="789.0">
          <children>
-            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="WHITE" height="426.0" stroke="BLACK" strokeType="INSIDE" width="789.0" />
-            <Button fx:id="caseBackButton" layoutX="723.0" layoutY="14.0" mnemonicParsing="false" onMouseClicked="#hideCaseClue" text="Back" />
-            <ImageView fitHeight="400.0" fitWidth="390.0" layoutX="14.0" layoutY="13.0" pickOnBounds="true" preserveRatio="true">
+            <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#000000b2" height="470.0" stroke="TRANSPARENT" strokeType="INSIDE" width="469.0" />
+            <ImageView fitHeight="408.0" fitWidth="479.0" layoutX="-80.0" layoutY="-24.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../images/displayCase/display.png" />
+                  <Image url="@../images/crimeScene/Drinks%20Case.png" />
                </image>
             </ImageView>
-            <Pane fx:id="tigerCanPane" layoutX="293.0" layoutY="15.0" prefHeight="378.0" prefWidth="319.0" visible="false">
+            <Button fx:id="caseBackButton" layoutX="422.0" layoutY="3.0" mnemonicParsing="false" onMouseClicked="#hideCaseClue" text="Back" />
+            <Pane fx:id="tigerCanPane" layoutX="226.0" layoutY="24.0" prefHeight="378.0" prefWidth="319.0" visible="false">
                <children>
-                  <ImageView fitHeight="193.0" fitWidth="165.0" layoutX="133.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fitHeight="193.0" fitWidth="165.0" layoutX="14.0" layoutY="24.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../images/displayCase/tigercan.jpg" />
+                        <Image url="@../images/crimeScene/redDrink.png" />
                      </image>
                   </ImageView>
-                  <Text layoutX="14.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tiger Can" wrappingWidth="112.20001220703125">
+                  <Text fill="WHITE" layoutX="20.0" layoutY="247.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tiger Can" wrappingWidth="112.20001220703125">
                      <font>
                         <Font size="36.0" />
                      </font>
                   </Text>
-                  <Text layoutX="14.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Stock: 15 Last Stocked: 15/9/24" wrappingWidth="112.20001220703125" />
+                  <Text fill="WHITE" layoutX="20.0" layoutY="326.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Stock: 15 Last Stocked: 15/9/24" wrappingWidth="112.20001220703125" />
                </children>
             </Pane>
-            <Pane fx:id="cokeZeroPane" layoutX="293.0" layoutY="15.0" prefHeight="378.0" prefWidth="319.0" visible="false">
+            <Pane fx:id="cokeZeroPane" layoutX="293.0" layoutY="15.0" prefHeight="378.0" prefWidth="319.0">
                <children>
                   <ImageView fitHeight="193.0" fitWidth="165.0" layoutX="133.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
                      <image>
@@ -157,7 +157,22 @@
                   <Text layoutX="14.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Stock: 14 Last Stocked: 15/9/24" wrappingWidth="112.20001220703125" />
                </children>
             </Pane>
-            <Pane fx:id="suspensePane" layoutX="293.0" layoutY="15.0" prefHeight="378.0" prefWidth="319.0">
+            <Pane fx:id="tigerBottlePane1" layoutX="303.0" layoutY="25.0" prefHeight="378.0" prefWidth="319.0" visible="false">
+               <children>
+                  <ImageView fitHeight="193.0" fitWidth="165.0" layoutX="133.0" layoutY="14.0" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../images/displayCase/tigerbottle.jpg" />
+                     </image>
+                  </ImageView>
+                  <Text layoutX="14.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Tiger Bottle" wrappingWidth="112.20001220703125">
+                     <font>
+                        <Font size="36.0" />
+                     </font>
+                  </Text>
+                  <Text layoutX="14.0" layoutY="132.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Stock: 14 Last Stocked: 15/9/24" wrappingWidth="112.20001220703125" />
+               </children>
+            </Pane>
+            <Pane fx:id="suspensePane" layoutX="293.0" layoutY="15.0" prefHeight="378.0" prefWidth="319.0" visible="false">
                <children>
                   <Rectangle arcWidth="5.0" fill="#d7d7d7" height="96.0" layoutX="6.0" layoutY="13.0" opacity="0.2" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="118.0" />
                   <Rectangle arcWidth="5.0" fill="#d7d7d7" height="62.0" layoutX="6.0" layoutY="117.0" opacity="0.2" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="118.0" />
@@ -169,22 +184,27 @@
                   </Text>
                </children>
             </Pane>
-            <Rectangle fx:id="tigerCanRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="67.0" layoutX="48.0" layoutY="53.0" onMouseClicked="#displayTigerCan" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="201.0">
+            <Rectangle fx:id="tigerCanRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="50.0" layoutX="57.0" layoutY="60.0" onMouseClicked="#displayTigerCan" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="134.0">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Rectangle>
-            <Rectangle fx:id="cokeZeroCanRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="67.0" layoutX="40.0" layoutY="120.0" onMouseClicked="#displayCokeZeroCan" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="217.0">
+            <Rectangle fx:id="cokeZeroCanRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="43.0" layoutX="55.0" layoutY="120.0" onMouseClicked="#displayCokeZeroCan" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="134.0">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Rectangle>
-            <Rectangle fx:id="hopCanRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="67.0" layoutX="40.0" layoutY="196.0" onMouseClicked="#displayHopCan" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="217.0">
+            <Rectangle fx:id="hopCanRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="42.0" layoutX="55.0" layoutY="171.0" onMouseClicked="#displayHopCan" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="134.0">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
             </Rectangle>
-            <Rectangle fx:id="tigerBottleRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="102.0" layoutX="42.0" layoutY="263.0" onMouseClicked="#displayTigerBottle" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="213.0">
+            <Rectangle fx:id="tigerBottleRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="40.0" layoutX="53.0" layoutY="223.0" onMouseClicked="#displayTigerBottle" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="134.0">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </Rectangle>
+            <Rectangle fx:id="tigerBottleRectangle1" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="39.0" layoutX="58.0" layoutY="277.0" onMouseClicked="#displayTigerBottle" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="134.0">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor>
