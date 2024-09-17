@@ -304,6 +304,9 @@ public class CrimeSceneController {
   public void searchLogs() {
     String start = searchLogsStart.getText().trim();
     String end = searchLogsEnd.getText().trim();
+    if(start.isEmpty() || end.isEmpty()){
+      return;
+    }
     searchLogsStart.clear();
     searchLogsEnd.clear();
 
