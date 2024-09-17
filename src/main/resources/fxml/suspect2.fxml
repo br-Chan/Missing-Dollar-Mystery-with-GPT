@@ -11,9 +11,9 @@
 
 <Pane fx:id="room" focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#onKeyPressed" onKeyReleased="#onKeyReleased" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: #A9A9A9;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.Suspect2Controller">
    <children>
-      <ImageView fitHeight="271.0" fitWidth="618.0" layoutX="13.0" layoutY="69.0" preserveRatio="true">
+      <ImageView fitHeight="500.0" fitWidth="500.0" preserveRatio="true">
          <image>
-            <Image url="@../images/cafe.png" />
+            <Image url="@../images/suspects/Suspect%20House%203.png" />
          </image>
       </ImageView>
       <Label layoutX="99.0" layoutY="14.0" text="SUSPECT 2 SCENE">
