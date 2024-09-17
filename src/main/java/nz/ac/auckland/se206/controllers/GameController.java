@@ -37,6 +37,10 @@ public class GameController {
   @FXML private ImageView suspectThreeSelected;
   @FXML private ImageView crimeSceneSelected;
 
+  @FXML private ImageView suspectOneAlert;
+  @FXML private ImageView suspectTwoAlert;
+  @FXML private ImageView suspectThreeAlert;
+
   @FXML private Label timerLabel;
 
   AppTimer appTimer;
@@ -46,8 +50,8 @@ public class GameController {
   @FXML
   public void initialize() {
     System.out.println("Initialising game scene...");
-    setGameView(AppUi.SUSPECT1);
-    showSelected(suspectOneSelected);
+    setGameView(AppUi.CRIME_SCENE);
+    showSelected(crimeSceneSelected);
 
     appTimer = new AppTimer(timerLabel, AppTimer.GAMETIME);
     appTimer.beginCountdown();
@@ -82,18 +86,21 @@ public class GameController {
   public void handleSuspect1ButtonClick(ActionEvent event) {
     setGameView(AppUi.SUSPECT1);
     showSelected(suspectOneSelected);
+    hideAlert(suspectOneAlert);
   }
 
   @FXML
   public void handleSuspect2ButtonClick(ActionEvent event) {
     setGameView(AppUi.SUSPECT2);
     showSelected(suspectTwoSelected);
+    hideAlert(suspectTwoAlert);
   }
 
   @FXML
   public void handleSuspect3ButtonClick(ActionEvent event) {
     setGameView(AppUi.SUSPECT3);
     showSelected(suspectThreeSelected);
+    hideAlert(suspectThreeAlert);
   }
 
   @FXML
@@ -114,5 +121,9 @@ public class GameController {
     selectedList.add(suspectOneSelected);
     selectedList.add(suspectTwoSelected);
     selectedList.add(suspectThreeSelected);
+  }
+
+  public void hideAlert(ImageView image) {
+    image.setVisible(false);
   }
 }
