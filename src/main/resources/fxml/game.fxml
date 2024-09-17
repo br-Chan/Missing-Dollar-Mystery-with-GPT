@@ -31,22 +31,6 @@
                   <Image url="@../images/Map.png" />
                </image>
             </ImageView>
-            <Button fx:id="suspect1Button" layoutX="99.0" layoutY="59.0" mnemonicParsing="false" onAction="#handleSuspect1ButtonClick" opacity="0.0" prefHeight="29.0" prefWidth="29.0" text="suspect 1">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></Button>
-            <Button fx:id="suspect2Button" layoutX="80.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleSuspect2ButtonClick" opacity="0.0" prefHeight="29.0" prefWidth="28.0" text="suspect 2">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></Button>
-            <Button fx:id="suspect3Button" layoutX="48.0" layoutY="73.0" mnemonicParsing="false" onAction="#handleSuspect3ButtonClick" opacity="0.0" prefHeight="40.0" prefWidth="18.0" text="suspect 3">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></Button>
-            <Button fx:id="crimeSceneButton" layoutX="10.0" layoutY="24.0" mnemonicParsing="false" onAction="#handleCrimeSceneButtonClick" opacity="0.0" prefHeight="25.0" prefWidth="27.0" text="crime scene">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor></Button>
             <ImageView fx:id="crimeSceneSelected" fitHeight="31.0" fitWidth="31.0" layoutX="9.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true" visible="false">
                <image>
                   <Image url="@../images/Selected.png" />
@@ -82,6 +66,22 @@
                   <Image url="@../images/Exclamation.png" />
                </image>
             </ImageView>
+            <Button fx:id="suspect1Button" layoutX="99.0" layoutY="59.0" mnemonicParsing="false" onAction="#handleSuspect1ButtonClick" opacity="0.0" prefHeight="29.0" prefWidth="29.0" text="suspect 1">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button fx:id="suspect2Button" layoutX="80.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleSuspect2ButtonClick" opacity="0.0" prefHeight="29.0" prefWidth="28.0" text="suspect 2">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button fx:id="suspect3Button" layoutX="48.0" layoutY="73.0" mnemonicParsing="false" onAction="#handleSuspect3ButtonClick" opacity="0.0" prefHeight="40.0" prefWidth="18.0" text="suspect 3">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
+            <Button fx:id="crimeSceneButton" layoutX="10.0" layoutY="24.0" mnemonicParsing="false" onAction="#handleCrimeSceneButtonClick" opacity="0.0" prefHeight="25.0" prefWidth="27.0" text="crime scene">
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
          </children>
       </Pane>
    </left>
