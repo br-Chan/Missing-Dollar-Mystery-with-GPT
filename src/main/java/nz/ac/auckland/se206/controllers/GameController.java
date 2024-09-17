@@ -5,9 +5,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
+import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.AppTimer;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
@@ -86,21 +88,24 @@ public class GameController {
   public void handleSuspect1ButtonClick(ActionEvent event) {
     setGameView(AppUi.SUSPECT1);
     showSelected(suspectOneSelected);
-    hideAlert(suspectOneAlert);
+    suspectOneAlert.setImage(
+        new Image(App.class.getResource("/images/suspects/Louie Avatar.png").toString()));
   }
 
   @FXML
   public void handleSuspect2ButtonClick(ActionEvent event) {
     setGameView(AppUi.SUSPECT2);
     showSelected(suspectTwoSelected);
-    hideAlert(suspectTwoAlert);
+    suspectTwoAlert.setImage(
+        new Image(App.class.getResource("/images/suspects/Huey Avatar.png").toString()));
   }
 
   @FXML
   public void handleSuspect3ButtonClick(ActionEvent event) {
     setGameView(AppUi.SUSPECT3);
     showSelected(suspectThreeSelected);
-    hideAlert(suspectThreeAlert);
+    suspectThreeAlert.setImage(
+        new Image(App.class.getResource("/images/suspects/Dewey Avatar.png").toString()));
   }
 
   @FXML
@@ -121,9 +126,5 @@ public class GameController {
     selectedList.add(suspectOneSelected);
     selectedList.add(suspectTwoSelected);
     selectedList.add(suspectThreeSelected);
-  }
-
-  public void hideAlert(ImageView image) {
-    image.setVisible(false);
   }
 }
