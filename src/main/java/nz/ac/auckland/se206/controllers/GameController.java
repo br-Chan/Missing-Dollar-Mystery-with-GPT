@@ -1,10 +1,16 @@
 package nz.ac.auckland.se206.controllers;
 
+import java.util.Timer;
+import java.util.TimerTask;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
+import nz.ac.auckland.se206.App;
+import nz.ac.auckland.se206.AppTimer;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 
@@ -28,13 +34,18 @@ public class GameController {
   @FXML private Button suspect3Button;
   @FXML private Button crimeSceneButton;
 
-  /**
-   * Initializes the game scene and sets the initial game view.
-   */
+  @FXML private Label timerLabel;
+
+  AppTimer appTimer;
+
+  /** Initializes the game scene and sets the initial game view. */
   @FXML
   public void initialize() {
     System.out.println("Initialising game scene...");
     setGameView(AppUi.SUSPECT1);
+
+    appTimer = new AppTimer(timerLabel, AppTimer.GAMETIME);
+    appTimer.beginCountdown();
   }
 
   /**
@@ -60,6 +71,7 @@ public class GameController {
   private void setGameView(AppUi appUi) {
     gameView.getChildren().setAll(SceneManager.getUiRoot(appUi));
   }
+
   @FXML
   public void handleSuspect1ButtonClick(ActionEvent event) {
     setGameView(AppUi.SUSPECT1);

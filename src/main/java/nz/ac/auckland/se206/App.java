@@ -66,26 +66,26 @@ public class App extends Application {
    * @return the root node of the FXML file
    * @throws IOException if the FXML file is not found
    */
-  private static Parent loadFxml(final String fxml) throws IOException {
+  public static Parent loadFxml(final String fxml) throws IOException {
     return new FXMLLoader(App.class.getResource("/fxml/" + fxml + ".fxml")).load();
   }
 
   /**
-   * Adds all FXML UI roots to the scene manager.
+   * Pre-adds FXML UI roots to the scene manager. Note that not all scenes are added in this method.
+   * For example, the game scene is loaded and added to the scene manager in the MenuController when
+   * the start button is clicked.
+   * 
+   * <p> Some scenes here can be loaded elsewhere if needed.
    *
    * @throws IOException if a FXML file is not found
    */
-  private void addAllUi() throws IOException {
+  private void preAddUi() throws IOException {
     SceneManager.addUi(AppUi.CRIME_SCENE, loadFxml("crimeScene"));
     SceneManager.addUi(AppUi.SUSPECT1, loadFxml("suspect1"));
     SceneManager.addUi(AppUi.SUSPECT2, loadFxml("suspect2"));
     SceneManager.addUi(AppUi.SUSPECT3, loadFxml("suspect3"));
 
     SceneManager.addUi(AppUi.MENU, loadFxml("menu"));
-    SceneManager.addUi(AppUi.GAME, loadFxml("game"));
-
-    SceneManager.addUi(AppUi.GUESS, loadFxml("guess"));
-    SceneManager.addUi(AppUi.RESULT, loadFxml("result"));
   }
 
   /**
@@ -109,7 +109,7 @@ public class App extends Application {
   @Override
   public void start(final Stage stage) {
     try {
-      addAllUi();
+      preAddUi();
     } catch (IOException e) {
       System.err.println("Could not find FXML file in scene manager.");
       e.printStackTrace();
