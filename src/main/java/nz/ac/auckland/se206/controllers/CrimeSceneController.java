@@ -1,9 +1,14 @@
 package nz.ac.auckland.se206.controllers;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 import java.util.ArrayList;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -39,6 +44,7 @@ public class CrimeSceneController {
   @FXML private TextField searchStockField;
   @FXML private TextField searchLogsStart;
   @FXML private TextField searchLogsEnd;
+  @FXML private TextArea logsArea;
 
   @FXML private Pane suspensePane;
   @FXML private Pane redDrinkPane;
@@ -64,6 +70,7 @@ public class CrimeSceneController {
 
   private ArrayList<Pane> itemPaneList = new ArrayList<>();
   private ArrayList<Pane> stockPaneList = new ArrayList<>();
+  private ArrayList<String> logsList = new ArrayList<>();
 
   /**
    * TODO: Fill in this JavaDoc comment.
@@ -79,6 +86,7 @@ public class CrimeSceneController {
     cleaningImage.setVisible(false);
     addAllItemPanes();
     addAllStockPanes();
+    addAllLogs();
   }
 
   /**
@@ -299,6 +307,7 @@ public class CrimeSceneController {
     searchLogsStart.clear();
     searchLogsEnd.clear();
     System.out.println(start + end);
+    updateLogs(1, 2);
   }
 
   public void checkCardCleaned() {
@@ -350,5 +359,21 @@ public class CrimeSceneController {
       }
     }
     paneToShow.setVisible(true);
+  }
+
+  private void updateLogs(Integer start, Integer end) {
+    logsArea.setText("".replaceAll(",", "\n"));
+  }
+
+  private void addAllLogs() {
+    InputStream inputStream = App.class.getResourceAsStream("/data/logs.txt");
+    try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
+      String line;
+      while ((line = reader.readLine()) != null) {
+        logsList.add(line);
+      }
+    } catch (IOException e) {
+      e.printStackTrace();
+    }
   }
 }
