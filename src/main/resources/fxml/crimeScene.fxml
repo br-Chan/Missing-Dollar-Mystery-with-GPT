@@ -79,13 +79,9 @@
             <Button layoutX="38.0" layoutY="281.0" mnemonicParsing="false" onMouseClicked="#napkinSelected" prefHeight="25.0" prefWidth="67.0" text="Napkin" />
             <Button layoutX="125.0" layoutY="281.0" mnemonicParsing="false" onMouseClicked="#brushSelected" prefHeight="25.0" prefWidth="76.0" text="Brush" />
             <Button layoutX="222.0" layoutY="281.0" mnemonicParsing="false" onMouseClicked="#rubberSelected" prefHeight="25.0" prefWidth="88.0" text="Rubber" />
-            <Pane fx:id="aiCardCluePane" layoutX="37.0" layoutY="318.0" prefHeight="150.0" prefWidth="407.0" visible="false">
+            <Pane fx:id="cardChatPane" layoutX="37.0" layoutY="318.0" prefHeight="150.0" prefWidth="407.0" visible="false">
                <children>
-                  <Label fx:id="cardCleanedLabel" layoutX="72.0" layoutY="52.0" prefHeight="61.0" prefWidth="239.0" text="Card Cleaned!" textFill="WHITE">
-                     <font>
-                        <Font size="33.0" />
-                     </font>
-                  </Label>
+                  <fx:include fx:id="gameView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="150.0" prefWidth="407.0" source="cardClueChat.fxml" />
                </children>
             </Pane>
             <Label fx:id="cardDirtyLabel" layoutX="76.0" layoutY="379.0" text="Too dirty to investigate!" textFill="WHITE">
