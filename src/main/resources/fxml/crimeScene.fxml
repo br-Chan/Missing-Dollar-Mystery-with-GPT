@@ -365,7 +365,7 @@
                   <Text layoutX="7.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="From                           To" />
                   <TextField fx:id="searchLogsEnd" layoutX="143.0" layoutY="25.0" prefHeight="25.0" prefWidth="72.0" promptText="eg 4, 8, 21" />
                   <TextField fx:id="searchLogsStart" layoutX="40.0" layoutY="25.0" prefHeight="25.0" prefWidth="78.0" promptText="eg 0, 3, 14" />
-                  <TextArea fx:id="logsArea" layoutX="8.0" layoutY="57.0" prefHeight="122.0" prefWidth="259.0" />
+                  <TextArea fx:id="logsArea" editable="false" layoutX="8.0" layoutY="57.0" prefHeight="122.0" prefWidth="259.0" />
                </children>
             </Pane>
          </children>
