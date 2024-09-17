@@ -306,8 +306,35 @@ public class CrimeSceneController {
     String end = searchLogsEnd.getText().trim();
     searchLogsStart.clear();
     searchLogsEnd.clear();
-    System.out.println(start + end);
-    updateLogs(1, 2);
+
+    if (!checkLogsInteger(start, end)) {
+      logsArea.setText("Invalid input!\nPlease enter an integer.");
+    } else if (!checkValidInput(start, end)) {
+      logsArea.setText("Invalid input!\nPlease enter a number from 0 to 24.");
+    } else if (Integer.parseInt(start) > Integer.parseInt(end)) {
+      logsArea.setText("Invalid input!\nStart time must be earlier than end time.");
+    } else {
+      updateLogs(Integer.parseInt(start), Integer.parseInt(end));
+    }
+  }
+
+  private boolean checkValidInput(String start, String end) {
+    if (Integer.parseInt(start) > 24 || Integer.parseInt(end) > 24) {
+      return false;
+    } else if (Integer.parseInt(start) < 0 || Integer.parseInt(end) < 0) {
+      return false;
+    }
+    return true;
+  }
+
+  private boolean checkLogsInteger(String start, String end) {
+    try {
+      Integer.parseInt(start);
+      Integer.parseInt(end);
+      return true;
+    } catch (NumberFormatException e) {
+      return false;
+    }
   }
 
   public void checkCardCleaned() {
@@ -362,7 +389,18 @@ public class CrimeSceneController {
   }
 
   private void updateLogs(Integer start, Integer end) {
-    logsArea.setText("".replaceAll(",", "\n"));
+    String logsString = "";
+    if (start == end) {
+      logsString += "Showing logs during " + start + ":00,";
+      logsString = logsList.get(start);
+    } else {
+      logsString += "Showing logs from " + start + ":00 to " + end + ":00,";
+      for (int i = start; i < end; i++) {
+        logsString += logsList.get(i);
+      }
+    }
+
+    logsArea.setText(logsString.replaceAll(",", "\n"));
   }
 
   private void addAllLogs() {
