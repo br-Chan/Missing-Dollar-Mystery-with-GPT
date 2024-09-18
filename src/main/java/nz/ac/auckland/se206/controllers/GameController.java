@@ -8,6 +8,12 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.Background;
+import javafx.scene.layout.BackgroundImage;
+import javafx.scene.layout.BackgroundPosition;
+import javafx.scene.layout.BackgroundRepeat;
+import javafx.scene.layout.BackgroundSize;
+import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.AppTimer;
@@ -51,6 +57,7 @@ public class GameController {
   @FXML private Pane deweyPane;
   @FXML private Pane leftPane;
   @FXML private Pane rightPane;
+  @FXML private BorderPane borderPane;
 
   @FXML private Label timerLabel;
 
@@ -71,6 +78,7 @@ public class GameController {
     appTimer = new AppTimer(timerLabel, AppTimer.GAMETIME);
     appTimer.beginCountdown();
     addAllSelected();
+    setBackgroundImage();
   }
 
   /**
@@ -157,5 +165,18 @@ public class GameController {
 
   public static void showComputerCluePane() {
     computerCluePane.setVisible(false);
+  }
+
+  public void setBackgroundImage() {
+    Image image = new Image(App.class.getResource("/images/Background Border.png").toString());
+
+    BackgroundImage backgroundImage =
+        new BackgroundImage(
+            image,
+            BackgroundRepeat.NO_REPEAT,
+            BackgroundRepeat.NO_REPEAT,
+            BackgroundPosition.CENTER,
+            BackgroundSize.DEFAULT);
+    borderPane.setBackground(new Background(backgroundImage));
   }
 }
