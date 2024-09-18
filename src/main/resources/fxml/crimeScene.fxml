@@ -263,12 +263,6 @@
                 <Button fx:id="cardBackButton1" layoutX="450.0" layoutY="13.0" mnemonicParsing="false"
                         onMouseClicked="#hideComputerClue" text="Back"/>
                 <Sprite  spriteUrl="@../images/crimeScene/Computer.png" layoutX="5.0" layoutY="48.0" scale="30.5" />
-<!--                <ImageView fitHeight="488.0" fitWidth="530.0"  pickOnBounds="true"-->
-<!--                           preserveRatio="true">-->
-<!--                    <image>-->
-<!--                        <Image url=""/>-->
-<!--                    </image>-->
-<!--                </ImageView>-->
                 <Rectangle arcHeight="5.0" arcWidth="5.0" height="213.0" layoutX="77.0" layoutY="125.0"
                            stroke="TRANSPARENT" strokeType="INSIDE" width="344.0">
                     <fill>
@@ -309,12 +303,7 @@
                         <Pane fx:id="redStockPane" layoutX="-50.0" layoutY="-5.0" prefHeight="368.0" prefWidth="349.0"
                               visible="false">
                             <children>
-                                <ImageView fitHeight="110.0" fitWidth="116.0" layoutX="55.0" layoutY="64.0"
-                                           pickOnBounds="true" preserveRatio="true">
-                                    <image>
-                                        <Image url="@../images/crimeScene/displayCaseClue/redDrink.png"/>
-                                    </image>
-                                </ImageView>
+                                <Sprite spriteUrl="@../images/crimeScene/displayCaseClue/redDrink.png" scale="7.25" layoutX="55.0" layoutY="64.0"/>
                                 <Text fill="WHITE" layoutX="162.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0"
                                       text="Cola Crush" wrappingWidth="177.800048828125">
                                     <font>
