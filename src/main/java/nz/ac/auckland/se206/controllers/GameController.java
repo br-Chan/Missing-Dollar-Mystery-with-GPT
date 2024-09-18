@@ -43,10 +43,23 @@ public class GameController {
   @FXML private ImageView suspectTwoAlert;
   @FXML private ImageView suspectThreeAlert;
 
+  @FXML private static Pane displayCaseCluePane;
+  @FXML private static Pane computerCluePane;
+  @FXML private static Pane idCardCluePane;
+  @FXML private Pane hueyPane;
+  @FXML private Pane louiePane;
+  @FXML private Pane deweyPane;
+  @FXML private Pane leftPane;
+  @FXML private Pane rightPane;
+
   @FXML private Label timerLabel;
 
   AppTimer appTimer;
   ArrayList<ImageView> selectedList = new ArrayList<>();
+
+  private Boolean hueyVisited = false;
+  private Boolean louieVisited = false;
+  private Boolean deweyVisited = false;
 
   /** Initializes the game scene and sets the initial game view. */
   @FXML
@@ -90,6 +103,8 @@ public class GameController {
     showSelected(suspectOneSelected);
     suspectOneAlert.setImage(
         new Image(App.class.getResource("/images/suspects/Louie Avatar.png").toString()));
+    louieVisited = true;
+    louiePane.setVisible(false);
   }
 
   @FXML
@@ -98,6 +113,8 @@ public class GameController {
     showSelected(suspectTwoSelected);
     suspectTwoAlert.setImage(
         new Image(App.class.getResource("/images/suspects/Huey Avatar.png").toString()));
+    hueyVisited = true;
+    hueyPane.setVisible(false);
   }
 
   @FXML
@@ -106,6 +123,8 @@ public class GameController {
     showSelected(suspectThreeSelected);
     suspectThreeAlert.setImage(
         new Image(App.class.getResource("/images/suspects/Dewey Avatar.png").toString()));
+    deweyVisited = true;
+    deweyPane.setVisible(false);
   }
 
   @FXML
@@ -126,5 +145,17 @@ public class GameController {
     selectedList.add(suspectOneSelected);
     selectedList.add(suspectTwoSelected);
     selectedList.add(suspectThreeSelected);
+  }
+
+  public static void showCardCluePane() {
+    idCardCluePane.setVisible(false);
+  }
+
+  public static void showDisplayCaseCluePane() {
+    displayCaseCluePane.setVisible(false);
+  }
+
+  public static void showComputerCluePane() {
+    computerCluePane.setVisible(false);
   }
 }
