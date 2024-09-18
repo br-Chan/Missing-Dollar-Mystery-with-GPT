@@ -65,7 +65,7 @@
                 <Sprite fx:id="debrisImage" layoutX="37.0" layoutY="79.0"
                         spriteUrl="@../images/crimeScene/cardClue/dust.png" scale="6.5"
                         onMouseDragged="#decreaseDebrisOpacity" onMouseMoved="#decreaseDebrisOpacity"/>
-                <Sprite fx:id="cleaningImage" scale="3.125" mouseTransparent="true" layoutX="133.0" layoutY="189.0" />
+                <Sprite fx:id="cleaningImage" scale="3.125" mouseTransparent="true" layoutX="133.0" layoutY="189.0"/>
                 <Button layoutX="38.0" layoutY="281.0" mnemonicParsing="false" onMouseClicked="#napkinSelected"
                         prefHeight="25.0" prefWidth="67.0" text="Napkin"/>
                 <Button layoutX="125.0" layoutY="281.0" mnemonicParsing="false" onMouseClicked="#brushSelected"
@@ -96,25 +96,17 @@
             <children>
                 <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#000000b2" height="500.0" stroke="TRANSPARENT"
                            strokeType="INSIDE" width="500.0"/>
-                <ImageView fitHeight="408.0" fitWidth="479.0" layoutX="-81.0" layoutY="22.0" pickOnBounds="true"
-                           preserveRatio="true">
-                    <image>
-                        <Image url="@../images/crimeScene/Drinks%20Case.png"/>
-                    </image>
-                </ImageView>
+                <Sprite spriteUrl="@../images/crimeScene/Drinks%20Case.png" scale="12.75" layoutX="-81.0"
+                        layoutY="22.0"/>
                 <Button fx:id="caseBackButton" layoutX="451.0" layoutY="22.0" mnemonicParsing="false"
                         onMouseClicked="#hideCaseClue" text="Back"/>
                 <Pane fx:id="redDrinkPane" layoutX="225.0" layoutY="80.0" prefHeight="368.0" prefWidth="319.0"
                       visible="false">
                     <children>
-                        <ImageView fitHeight="193.0" fitWidth="165.0" layoutX="14.0" layoutY="24.0" pickOnBounds="true"
-                                   preserveRatio="true">
-                            <image>
-                                <Image url="@../images/crimeScene/displayCaseClue/redDrink.png"/>
-                            </image>
-                        </ImageView>
+                        <Sprite spriteUrl="@../images/crimeScene/displayCaseClue/redDrink.png" scale="10.3125"
+                                layoutX="14.0" layoutY="24.0"/>
                         <Text fill="WHITE" layoutX="22.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0"
-                              text="Cola Crush" wrappingWidth="177.800048828125">
+                              text="Cola Crush" wrappingWidth="200">
                             <font>
                                 <Font size="36.0"/>
                             </font>
@@ -126,14 +118,10 @@
                 <Pane fx:id="blueDrinkPane" layoutX="225.0" layoutY="80.0" prefHeight="368.0" prefWidth="319.0"
                       visible="false">
                     <children>
-                        <ImageView fitHeight="193.0" fitWidth="165.0" layoutX="14.0" layoutY="24.0" pickOnBounds="true"
-                                   preserveRatio="true">
-                            <image>
-                                <Image url="@../images/crimeScene/displayCaseClue/blueDrink.png"/>
-                            </image>
-                        </ImageView>
+                        <Sprite spriteUrl="@../images/crimeScene/displayCaseClue/blueDrink.png" scale="10.3125"
+                                layoutX="14.0" layoutY="24.0"/>
                         <Text fill="WHITE" layoutX="22.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0"
-                              text="Coffee Craze" wrappingWidth="209.00006103515625">
+                              text="Coffee Craze" wrappingWidth="250">
                             <font>
                                 <Font size="36.0"/>
                             </font>
@@ -145,16 +133,12 @@
                 <Pane fx:id="greenDrinkPane" layoutX="225.0" layoutY="80.0" prefHeight="368.0" prefWidth="319.0"
                       visible="false">
                     <children>
-                        <ImageView fitHeight="193.0" fitWidth="165.0" layoutX="14.0" layoutY="24.0" pickOnBounds="true"
-                                   preserveRatio="true">
-                            <image>
-                                <Image url="@../images/crimeScene/displayCaseClue/greenDrink.png"/>
-                            </image>
-                        </ImageView>
+                        <Sprite spriteUrl="@../images/crimeScene/displayCaseClue/greenDrink.png" scale="10.3125"
+                                layoutX="14.0" layoutY="24.0"/>
                         <Text fill="WHITE" layoutX="22.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0"
                               text="Current Stock: 23 Last Stocked: 16/9/24" wrappingWidth="112.20001220703125"/>
                         <Text fill="WHITE" layoutX="20.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0"
-                              text="Elite Energy" wrappingWidth="195.4000244140625">
+                              text="Elite Energy" wrappingWidth="250">
                             <font>
                                 <Font size="36.0"/>
                             </font>
@@ -164,14 +148,10 @@
                 <Pane fx:id="pinkDrinkPane" layoutX="225.0" layoutY="80.0" prefHeight="368.0" prefWidth="319.0"
                       visible="false">
                     <children>
-                        <ImageView fitHeight="193.0" fitWidth="165.0" layoutX="14.0" layoutY="24.0" pickOnBounds="true"
-                                   preserveRatio="true">
-                            <image>
-                                <Image url="@../images/crimeScene/displayCaseClue/pinkDrink.png"/>
-                            </image>
-                        </ImageView>
+                        <Sprite spriteUrl="@../images/crimeScene/displayCaseClue/pinkDrink.png" scale="10.3125"
+                                layoutX="14.0" layoutY="24.0"/>
                         <Text fill="WHITE" layoutX="22.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0"
-                              text="Berry Burst" wrappingWidth="177.800048828125">
+                              text="Berry Burst" wrappingWidth="250">
                             <font>
                                 <Font size="36.0"/>
                             </font>
@@ -183,14 +163,10 @@
                 <Pane fx:id="yellowDrinkPane" layoutX="225.0" layoutY="80.0" prefHeight="368.0" prefWidth="319.0"
                       visible="false">
                     <children>
-                        <ImageView fitHeight="193.0" fitWidth="165.0" layoutX="14.0" layoutY="24.0" pickOnBounds="true"
-                                   preserveRatio="true">
-                            <image>
-                                <Image url="@../images/crimeScene/displayCaseClue/yellowDrink.png"/>
-                            </image>
-                        </ImageView>
+                        <Sprite spriteUrl="@../images/crimeScene/displayCaseClue/yellowDrink.png" scale="10.3125"
+                                layoutX="14.0" layoutY="24.0"/>
                         <Text fill="WHITE" layoutX="22.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0"
-                              text="Lemon Lift" wrappingWidth="177.800048828125">
+                              text="Lemon Lift" wrappingWidth="250">
                             <font>
                                 <Font size="36.0"/>
                             </font>
@@ -262,7 +238,7 @@
                            stroke="TRANSPARENT" strokeType="INSIDE" width="500.0"/>
                 <Button fx:id="cardBackButton1" layoutX="450.0" layoutY="13.0" mnemonicParsing="false"
                         onMouseClicked="#hideComputerClue" text="Back"/>
-                <Sprite  spriteUrl="@../images/crimeScene/Computer.png" layoutX="5.0" layoutY="48.0" scale="30.5" />
+                <Sprite spriteUrl="@../images/crimeScene/Computer.png" layoutX="5.0" layoutY="48.0" scale="30.5"/>
                 <Rectangle arcHeight="5.0" arcWidth="5.0" height="213.0" layoutX="77.0" layoutY="125.0"
                            stroke="TRANSPARENT" strokeType="INSIDE" width="344.0">
                     <fill>
@@ -303,7 +279,8 @@
                         <Pane fx:id="redStockPane" layoutX="-50.0" layoutY="-5.0" prefHeight="368.0" prefWidth="349.0"
                               visible="false">
                             <children>
-                                <Sprite spriteUrl="@../images/crimeScene/displayCaseClue/redDrink.png" scale="7.25" layoutX="55.0" layoutY="64.0"/>
+                                <Sprite spriteUrl="@../images/crimeScene/displayCaseClue/redDrink.png" scale="7.25"
+                                        layoutX="55.0" layoutY="64.0"/>
                                 <Text fill="WHITE" layoutX="162.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0"
                                       text="Cola Crush" wrappingWidth="177.800048828125">
                                     <font>
@@ -320,7 +297,8 @@
                         <Pane fx:id="blueStockPane" layoutX="-50.0" layoutY="-5.0" prefHeight="368.0" prefWidth="349.0"
                               visible="false">
                             <children>
-                                <Sprite spriteUrl="@../images/crimeScene/displayCaseClue/blueDrink.png" scale="7.25" layoutX="55.0" layoutY="64.0"/>
+                                <Sprite spriteUrl="@../images/crimeScene/displayCaseClue/blueDrink.png" scale="7.25"
+                                        layoutX="55.0" layoutY="64.0"/>
                                 <Text fill="WHITE" layoutX="162.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0"
                                       text="Coffee Craze" wrappingWidth="177.800048828125">
                                     <font>
@@ -337,7 +315,8 @@
                         <Pane fx:id="greenStockPane" layoutX="-50.0" layoutY="-5.0" prefHeight="368.0" prefWidth="349.0"
                               visible="false">
                             <children>
-                                <Sprite spriteUrl="@../images/crimeScene/displayCaseClue/greenDrink.png" scale="7.25" layoutX="55.0" layoutY="64.0"/>
+                                <Sprite spriteUrl="@../images/crimeScene/displayCaseClue/greenDrink.png" scale="7.25"
+                                        layoutX="55.0" layoutY="64.0"/>
                                 <Text fill="WHITE" layoutX="162.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0"
                                       text="Elite Energy" wrappingWidth="177.800048828125">
                                     <font>
@@ -354,7 +333,8 @@
                         <Pane fx:id="pinkStockPane" layoutX="-50.0" layoutY="-5.0" prefHeight="368.0" prefWidth="349.0"
                               visible="false">
                             <children>
-                                <Sprite spriteUrl="@../images/crimeScene/displayCaseClue/pinkDrink.png" scale="7.25" layoutX="55.0" layoutY="64.0"/>
+                                <Sprite spriteUrl="@../images/crimeScene/displayCaseClue/pinkDrink.png" scale="7.25"
+                                        layoutX="55.0" layoutY="64.0"/>
                                 <Text fill="WHITE" layoutX="162.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0"
                                       text="Berry Burst" wrappingWidth="177.800048828125">
                                     <font>
@@ -371,7 +351,8 @@
                         <Pane fx:id="yellowStockPane" layoutX="-50.0" layoutY="-5.0" prefHeight="368.0"
                               prefWidth="349.0" visible="false">
                             <children>
-                                <Sprite spriteUrl="@../images/crimeScene/displayCaseClue/yellowDrink.png" scale="7.25" layoutX="55.0" layoutY="64.0"/>
+                                <Sprite spriteUrl="@../images/crimeScene/displayCaseClue/yellowDrink.png" scale="7.25"
+                                        layoutX="55.0" layoutY="64.0"/>
                                 <Text fill="WHITE" layoutX="162.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0"
                                       text="Lemon Lift" wrappingWidth="177.800048828125">
                                     <font>
@@ -388,7 +369,8 @@
                         <Pane fx:id="errorStockPane" layoutX="-50.0" layoutY="-5.0" prefHeight="368.0" prefWidth="349.0"
                               visible="false">
                             <children>
-                                <Sprite spriteUrl="@../images/crimeScene/displayCaseClue/nullDrink.png"  scale="7.25" layoutX="55.0" layoutY="64.0"/>
+                                <Sprite spriteUrl="@../images/crimeScene/displayCaseClue/nullDrink.png" scale="7.25"
+                                        layoutX="55.0" layoutY="64.0"/>
                                 <Text fill="WHITE" layoutX="162.0" layoutY="97.0" strokeType="OUTSIDE" strokeWidth="0.0"
                                       text="Item not found!" wrappingWidth="208.0">
                                     <font>
