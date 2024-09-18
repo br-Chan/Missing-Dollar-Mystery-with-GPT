@@ -1,5 +1,6 @@
 package nz.ac.auckland.se206.controllers;
 
+import java.io.IOException;
 import java.util.ArrayList;
 import javafx.animation.FadeTransition;
 import javafx.application.Platform;
@@ -149,9 +150,12 @@ public class GameController {
   }
 
   @FXML
-  public void handleGuessClick() {
+  public void handleGuessClick() throws IOException {
     if (!hueyVisited || !louieVisited || !deweyVisited) {
       flashUnvisitedPanes();
+    } else {
+      SceneManager.addUi(AppUi.GUESS, App.loadFxml("guess"));
+      App.getScene().setRoot(SceneManager.getUiRoot(AppUi.GUESS));
     }
   }
 
@@ -231,7 +235,7 @@ public class GameController {
                     currentFadeTransition.setFromValue(1.0); // Start fully visible
                     currentFadeTransition.setToValue(0.0); // Fade out to fully transparent
 
-                    // Optionally, hide the pane after the fade-out completes
+                    // Hide the pane after the fade-out completes
                     currentFadeTransition.setOnFinished(
                         event -> {
                           myPane.setVisible(false);
