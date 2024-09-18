@@ -14,10 +14,17 @@
       <fx:include fx:id="gameView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0" source="loading.fxml" />
    </center>
    <top>
-      <Label text="top" BorderPane.alignment="CENTER">
+      <Label layoutY="100.0" prefHeight="51.0" prefWidth="486.0" BorderPane.alignment="CENTER">
          <font>
-            <Font size="35.0" />
+            <Font name="Consolas" size="25.0" />
          </font>
+         <graphic>
+            <Label alignment="CENTER" prefHeight="18.0" prefWidth="472.0" text="Guess Who Stole the First Dollar!">
+               <font>
+                  <Font name="Consolas" size="26.0" />
+               </font>
+            </Label>
+         </graphic>
       </Label>
    </top>
    <bottom>
@@ -26,29 +33,44 @@
    <left>
       <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="140.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView fitHeight="140.0" fitWidth="140.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fitHeight="599.0" fitWidth="789.0" layoutY="-67.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/Outer%20Border.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="510.0" fitWidth="510.0" layoutX="140.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/Inner%20Border.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="119.0" fitWidth="119.0" layoutX="17.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/Map.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="crimeSceneSelected" fitHeight="31.0" fitWidth="31.0" layoutX="9.0" layoutY="18.0" pickOnBounds="true" preserveRatio="true" visible="false">
+            <ImageView fx:id="crimeSceneSelected" fitHeight="31.0" fitWidth="31.0" layoutX="22.0" layoutY="17.0" pickOnBounds="true" preserveRatio="true" visible="false">
                <image>
                   <Image url="@../images/Selected.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="suspectTwoSelected" fitHeight="31.0" fitWidth="31.0" layoutX="79.0" layoutY="11.0" pickOnBounds="true" preserveRatio="true" visible="false">
+            <ImageView fx:id="suspectTwoSelected" fitHeight="31.0" fitWidth="31.0" layoutX="82.0" layoutY="8.0" pickOnBounds="true" preserveRatio="true" visible="false">
                <image>
                   <Image url="@../images/Selected.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="suspectOneSelected" fitHeight="31.0" fitWidth="31.0" layoutX="98.0" layoutY="59.0" pickOnBounds="true" preserveRatio="true" visible="false">
+            <ImageView fx:id="suspectOneSelected" fitHeight="31.0" fitWidth="31.0" layoutX="98.0" layoutY="51.0" pickOnBounds="true" preserveRatio="true" visible="false">
                <image>
                   <Image url="@../images/Selected.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="suspectThreeSelected" fitHeight="31.0" fitWidth="31.0" layoutX="43.0" layoutY="81.0" pickOnBounds="true" preserveRatio="true" visible="false">
+            <ImageView fx:id="suspectThreeSelected" fitHeight="31.0" fitWidth="31.0" layoutX="51.0" layoutY="68.0" pickOnBounds="true" preserveRatio="true" visible="false">
                <image>
                   <Image url="@../images/Selected.png" />
+               </image>
+            </ImageView>
+            <ImageView fitHeight="123.0" fitWidth="123.0" layoutX="15.0" layoutY="-1.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/Inner%20Border.png" />
                </image>
             </ImageView>
             <ImageView fx:id="suspectTwoAlert" fitHeight="23.0" fitWidth="19.0" layoutX="95.0" layoutY="7.0" pickOnBounds="true" preserveRatio="true">
@@ -56,41 +78,51 @@
                   <Image url="@../images/Exclamation.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="suspectOneAlert" fitHeight="23.0" fitWidth="19.0" layoutX="99.0" layoutY="52.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="suspectOneAlert" fitHeight="23.0" fitWidth="19.0" layoutX="100.0" layoutY="44.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/Exclamation.png" />
                </image>
             </ImageView>
-            <ImageView fx:id="suspectThreeAlert" fitHeight="23.0" fitWidth="19.0" layoutX="58.0" layoutY="69.0" pickOnBounds="true" preserveRatio="true">
+            <ImageView fx:id="suspectThreeAlert" fitHeight="23.0" fitWidth="19.0" layoutX="49.0" layoutY="62.0" pickOnBounds="true" preserveRatio="true">
                <image>
                   <Image url="@../images/Exclamation.png" />
                </image>
             </ImageView>
-            <Button fx:id="suspect1Button" layoutX="99.0" layoutY="59.0" mnemonicParsing="false" onAction="#handleSuspect1ButtonClick" opacity="0.0" prefHeight="29.0" prefWidth="29.0" text="suspect 1">
+            <Button fx:id="suspect1Button" layoutX="99.0" layoutY="52.0" mnemonicParsing="false" onAction="#handleSuspect1ButtonClick" opacity="0.0" prefHeight="29.0" prefWidth="29.0" text="suspect 1">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
-            <Button fx:id="suspect2Button" layoutX="80.0" layoutY="10.0" mnemonicParsing="false" onAction="#handleSuspect2ButtonClick" opacity="0.0" prefHeight="29.0" prefWidth="28.0" text="suspect 2">
+            <Button fx:id="suspect2Button" layoutX="83.0" layoutY="9.0" mnemonicParsing="false" onAction="#handleSuspect2ButtonClick" opacity="0.0" prefHeight="29.0" prefWidth="28.0" text="suspect 2">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
-            <Button fx:id="suspect3Button" layoutX="48.0" layoutY="73.0" mnemonicParsing="false" onAction="#handleSuspect3ButtonClick" opacity="0.0" prefHeight="40.0" prefWidth="18.0" text="suspect 3">
+            <Button fx:id="suspect3Button" layoutX="55.0" layoutY="62.0" mnemonicParsing="false" onAction="#handleSuspect3ButtonClick" opacity="0.0" prefHeight="40.0" prefWidth="18.0" text="suspect 3">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
-            <Button fx:id="crimeSceneButton" layoutX="10.0" layoutY="24.0" mnemonicParsing="false" onAction="#handleCrimeSceneButtonClick" opacity="0.0" prefHeight="25.0" prefWidth="27.0" text="crime scene">
+            <Button fx:id="crimeSceneButton" layoutX="24.0" layoutY="20.0" mnemonicParsing="false" onAction="#handleCrimeSceneButtonClick" opacity="0.0" prefHeight="25.0" prefWidth="27.0" text="crime scene">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
+            <Label layoutX="149.0" layoutY="-25.0" text="Interrogate the three suspects, find some clues, and make your guess!">
+               <font>
+                  <Font name="Consolas" size="13.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
    </left>
    <right>
       <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="140.0" BorderPane.alignment="CENTER">
          <children>
-            <Label fx:id="timerLabel" layoutX="7.0" layoutY="14.0" text="05:00">
+            <ImageView fitHeight="196.0" fitWidth="196.0" layoutX="-33.0" layoutY="14.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../images/TimerPixel.png" />
+               </image>
+            </ImageView>
+            <Label fx:id="timerLabel" layoutX="17.0" layoutY="96.0" text="05:00" textFill="RED">
                <font>
-                  <Font size="53.0" />
+                  <Font name="Consolas" size="34.0" />
                </font></Label>
          </children>
       </Pane>
