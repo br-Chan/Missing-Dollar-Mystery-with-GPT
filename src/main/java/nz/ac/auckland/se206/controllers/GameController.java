@@ -81,11 +81,11 @@ public class GameController {
   public void initialize() {
     System.out.println("Initialising game scene...");
     setGameView(AppUi.CRIME_SCENE);
-    showSelected(crimeSceneSelected);
+    showSelected(crimeSceneSelected); // Shows the selection box for the crimescene in minimap
 
     appTimer = new AppTimer(timerLabel, AppTimer.GAMETIME);
     appTimer.beginCountdown();
-    addAllSelected();
+    addAllSelected(); // Adds selection images to an arraylist
     setBackgroundImage();
   }
 
@@ -118,7 +118,10 @@ public class GameController {
     setGameView(AppUi.SUSPECT1);
     showSelected(suspectOneSelected);
     suspectOneAlert.setImage(
-        new Image(App.class.getResource("/images/suspects/Louie Avatar.png").toString()));
+        new Image(
+            App.class
+                .getResource("/images/suspects/Louie Avatar.png")
+                .toString())); // Updates alert image to Louies avatar
     louieVisited = true;
     louiePane.setVisible(false);
   }
@@ -128,7 +131,10 @@ public class GameController {
     setGameView(AppUi.SUSPECT2);
     showSelected(suspectTwoSelected);
     suspectTwoAlert.setImage(
-        new Image(App.class.getResource("/images/suspects/Huey Avatar.png").toString()));
+        new Image(
+            App.class
+                .getResource("/images/suspects/Huey Avatar.png")
+                .toString())); // Updates alert image to Hueys avatar
     hueyVisited = true;
     hueyPane.setVisible(false);
   }
@@ -138,7 +144,10 @@ public class GameController {
     setGameView(AppUi.SUSPECT3);
     showSelected(suspectThreeSelected);
     suspectThreeAlert.setImage(
-        new Image(App.class.getResource("/images/suspects/Dewey Avatar.png").toString()));
+        new Image(
+            App.class
+                .getResource("/images/suspects/Dewey Avatar.png")
+                .toString())); // Updates alert image to Deweys avatar
     deweyVisited = true;
     deweyPane.setVisible(false);
   }
@@ -152,32 +161,39 @@ public class GameController {
   @FXML
   public void handleGuessClick() throws IOException {
     if (!hueyVisited || !louieVisited || !deweyVisited) {
-      flashUnvisitedPanes();
+      flashUnvisitedPanes(); // Flash all unvisited corresponding panes
     } else {
       SceneManager.addUi(AppUi.GUESS, App.loadFxml("guess"));
-      App.getScene().setRoot(SceneManager.getUiRoot(AppUi.GUESS));
+      App.getScene().setRoot(SceneManager.getUiRoot(AppUi.GUESS)); // Switches to guessing scene
     }
   }
 
+  /** Flashes the panes of the suspects which have not been visited. */
   private void flashUnvisitedPanes() {
     if (!hueyVisited) {
-      showAndFade(hueyFadePane);
+      showAndFade(hueyFadePane); // Shows hueys fade pane if he hasnt been visited
     }
     if (!louieVisited) {
-      showAndFade(louieFadePane);
+      showAndFade(louieFadePane); // Shows louies fade pane if he hasnt been visited
     }
     if (!deweyVisited) {
-      showAndFade(deweyFadePane);
+      showAndFade(deweyFadePane); // Shows deweys fade pane if he hasnt been visited
     }
   }
 
+  /**
+   * Shows one image out of a list of images, and hides the rest.
+   *
+   * @param image the image to be shown
+   */
   public void showSelected(ImageView image) {
     for (ImageView imageView : selectedList) {
-      imageView.setVisible(false);
+      imageView.setVisible(false); // Sets all images in the arraylist invisible
     }
-    image.setVisible(true);
+    image.setVisible(true); // Sets the selected image visible
   }
 
+  /** Adds all selection box images to an arraylist. */
   public void addAllSelected() {
     selectedList.add(crimeSceneSelected);
     selectedList.add(suspectOneSelected);
@@ -185,21 +201,26 @@ public class GameController {
     selectedList.add(suspectThreeSelected);
   }
 
+  /** Reveals the ID card clue in the game window when clicked. */
   public static void showCardCluePane() {
     idCardCluePane.setVisible(false);
   }
 
+  /** Reveals the display case clue in the game window when clicked. */
   public static void showDisplayCaseCluePane() {
     displayCaseCluePane.setVisible(false);
   }
 
+  /** Reveals the computer clue in the game window when clicked. */
   public static void showComputerCluePane() {
     computerCluePane.setVisible(false);
   }
 
+  /** Sets the background of the border pane to be an image. */
   public void setBackgroundImage() {
     Image image = new Image(App.class.getResource("/images/Background Border.png").toString());
 
+    // Handles settings for the background image
     BackgroundImage backgroundImage =
         new BackgroundImage(
             image,
@@ -210,6 +231,11 @@ public class GameController {
     borderPane.setBackground(new Background(backgroundImage));
   }
 
+  /**
+   * Briefly shows, then fades out a given pane.
+   *
+   * @param myPane the pane to be shown then faded
+   */
   public void showAndFade(Pane myPane) {
     myPane.setVisible(true);
 
