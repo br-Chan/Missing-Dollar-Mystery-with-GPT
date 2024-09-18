@@ -15,29 +15,15 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
+<?import nz.ac.auckland.se206.components.Sprite?>
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#onKeyPressed" onKeyReleased="#onKeyReleased" prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.CrimeSceneController">
    <children>
-      <ImageView fitHeight="500.0" fitWidth="500.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/crimeScene/Restauant.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="20.0" fitWidth="16.0" layoutX="354.0" layoutY="333.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/crimeScene/ID%20Card.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="96.0" fitWidth="104.0" layoutX="-19.0" layoutY="25.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/crimeScene/Drinks%20Case.png" />
-         </image>
-      </ImageView>
-      <ImageView fitHeight="39.0" fitWidth="40.0" layoutX="77.0" layoutY="122.0" pickOnBounds="true" preserveRatio="true">
-         <image>
-            <Image url="@../images/crimeScene/Computer.png" />
-         </image>
-      </ImageView>
+      <Sprite pickOnBounds="ture" scale="4" spriteUrl="@../images/crimeScene/Restauant.png" />
+      <Sprite layoutX="354.0" layoutY="333.0" pickOnBounds="ture" scale="1" spriteUrl="@../images/crimeScene/ID%20Card.png" />
+      <Sprite layoutX="-19.0" pickOnBounds="ture" scale="4" spriteUrl="@../images/crimeScene/Drinks%20Case.png" />
+      <Sprite spriteUrl="@../images/crimeScene/Computer.png" layoutX="77.0" layoutY="122.0" scale="4" />
+
       <Rectangle fx:id="cardRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="15.0" layoutX="353.0" layoutY="333.0" onMouseClicked="#showCardClue" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="18.0">
          <cursor>
             <Cursor fx:constant="HAND" />
@@ -45,7 +31,8 @@
       <Rectangle fx:id="caseRectangle" arcHeight="5.0" arcWidth="5.0" fill="#b2ff1f" height="81.0" layoutX="8.0" layoutY="41.0" onMouseClicked="#showCaseClue" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="44.0">
          <cursor>
             <Cursor fx:constant="HAND" />
-         </cursor></Rectangle>
+         </cursor>
+      </Rectangle>
       <Rectangle fx:id="computerRectangle" arcHeight="5.0" arcWidth="5.0" fill="#b2ff1f" height="39.0" layoutX="76.0" layoutY="120.0" onMouseClicked="#showComputerClue" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="42.0">
          <cursor>
             <Cursor fx:constant="HAND" />
@@ -55,16 +42,13 @@
          <children>
             <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#000000b2" height="500.0" layoutX="-1.0" layoutY="-1.0" stroke="TRANSPARENT" strokeType="INSIDE" width="500.0" />
             <Button fx:id="cardBackButton" layoutX="450.0" layoutY="13.0" mnemonicParsing="false" onMouseClicked="#hideCardClue" text="Back" />
-            <ImageView fitHeight="280.0" fitWidth="342.0" layoutX="39.0" layoutY="38.0" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/crimeScene/ID%20Card.png" />
-               </image>
-            </ImageView>
+            <Sprite pickOnBounds="true" layoutX="39.0" layoutY="38.0" spriteUrl="@../images/crimeScene/ID%20Card.png" scale="17.5"/>
             <ImageView fx:id="pencilImage" fitHeight="93.0" fitWidth="101.0" layoutX="194.0" layoutY="67.0" onMouseDragged="#decreasePencilOpacity" onMouseMoved="#decreasePencilOpacity" pickOnBounds="true">
                <image>
                   <Image url="@../images/crimeScene/cardClue/pencil.png" />
                </image>
             </ImageView>
+            <Sprite pickOnBounds="true" layoutX="194.0" layoutY="67.0" spriteUrl="@../images/crimeScene/cardClue/pencil.png" scale="5.125"/>
             <ImageView fx:id="dirtImage" fitHeight="82.0" fitWidth="89.0" layoutX="160.0" layoutY="161.0" onMouseDragged="#decreaseDirtOpacity" onMouseMoved="#decreaseDirtOpacity" pickOnBounds="true">
                <image>
                   <Image url="@../images/crimeScene/cardClue/dust.png" />
