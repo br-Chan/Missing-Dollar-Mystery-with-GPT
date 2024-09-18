@@ -262,12 +262,13 @@
                            stroke="TRANSPARENT" strokeType="INSIDE" width="500.0"/>
                 <Button fx:id="cardBackButton1" layoutX="450.0" layoutY="13.0" mnemonicParsing="false"
                         onMouseClicked="#hideComputerClue" text="Back"/>
-                <ImageView fitHeight="488.0" fitWidth="530.0" layoutX="5.0" layoutY="48.0" pickOnBounds="true"
-                           preserveRatio="true">
-                    <image>
-                        <Image url="@../images/crimeScene/Computer.png"/>
-                    </image>
-                </ImageView>
+                <Sprite  spriteUrl="@../images/crimeScene/Computer.png" layoutX="5.0" layoutY="48.0" scale="30.5" />
+<!--                <ImageView fitHeight="488.0" fitWidth="530.0"  pickOnBounds="true"-->
+<!--                           preserveRatio="true">-->
+<!--                    <image>-->
+<!--                        <Image url=""/>-->
+<!--                    </image>-->
+<!--                </ImageView>-->
                 <Rectangle arcHeight="5.0" arcWidth="5.0" height="213.0" layoutX="77.0" layoutY="125.0"
                            stroke="TRANSPARENT" strokeType="INSIDE" width="344.0">
                     <fill>
