@@ -47,9 +47,8 @@ public abstract class GptChatter {
               .setTopP(0.5)
               .setMaxTokens(100);
 
-      if (setChattingNow) {
-        setChatting(runGpt(new ChatMessage("system", getSystemPrompt())));
-      }
+      setChatting(runGpt(new ChatMessage("system", getSystemPrompt()), setChattingNow));
+
     } catch (ApiProxyException e) {
       e.printStackTrace();
     }
@@ -59,25 +58,30 @@ public abstract class GptChatter {
    * Runs the GPT model with a given chat message.
    *
    * @param msg the chat message to process
+   * @param getReply whether the GPT model is to be asked to send a response
    * @return the response chat message
    * @throws ApiProxyException if there is an error communicating with the API proxy
    */
-  protected ChatMessage runGpt(ChatMessage msg) throws ApiProxyException {
+  protected ChatMessage runGpt(ChatMessage msg, boolean getReply) throws ApiProxyException {
     chatCompletionRequest.addMessage(msg);
-    try {
-      // Fetch ChatGPT's response.
-      ChatCompletionResult chatCompletionResult = chatCompletionRequest.execute();
-      Choice result = chatCompletionResult.getChoices().iterator().next();
-      chatCompletionRequest.addMessage(result.getChatMessage());
+    if (getReply) {
+      try {
+        // Fetch ChatGPT's response.
+        ChatCompletionResult chatCompletionResult = chatCompletionRequest.execute();
+        Choice result = chatCompletionResult.getChoices().iterator().next();
+        chatCompletionRequest.addMessage(result.getChatMessage());
 
-      // TODO: delete print statement before release.
-      System.out.println(result.getChatMessage().getContent());
+        // TODO: delete print statement before release.
+        System.out.println(result.getChatMessage().getContent());
 
-      return result.getChatMessage();
-    } catch (ApiProxyException e) {
-      e.printStackTrace();
-      return null;
+        return result.getChatMessage();
+      } catch (ApiProxyException e) {
+        e.printStackTrace();
+        return null;
+      }
     }
+
+    return null;
   }
 
   /**
@@ -113,7 +117,7 @@ public abstract class GptChatter {
         new Task<Void>() {
           @Override
           protected Void call() throws Exception {
-            setChatting(runGpt(userInput));
+            setChatting(runGpt(userInput, true));
             return null;
           }
         };
@@ -132,9 +136,13 @@ public abstract class GptChatter {
   /**
    * Handles replacing the chat bubble's text with ChatGPT's response to the user.
    *
-   * @param response the chat message to display to the user
+   * @param response the chat message to display to the user (if this is null, don't change the
+   *     displayed text)
    */
   protected void setChatting(ChatMessage response) {
+    if (response == null) {
+      return;
+    }
     txtaChat.setText(response.getContent());
   }
 }
