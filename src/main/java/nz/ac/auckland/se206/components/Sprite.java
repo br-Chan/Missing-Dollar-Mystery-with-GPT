@@ -101,4 +101,12 @@ public class Sprite extends Pane {
         // Draw the image
         canvas.getGraphicsContext2D().drawImage(outputImage, 0, 0);
     }
+
+    public void setX(double x) {
+        translateXProperty().set(x);
+    }
+
+    public void setY(double y) {
+        translateYProperty().set(y);
+    }
 }
