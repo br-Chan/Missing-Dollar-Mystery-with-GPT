@@ -17,7 +17,6 @@ public abstract class AbstractSuspectController extends GptChatter {
 
   @FXML private ImageView chatBubbleImage;
 
-  protected boolean isFirstTimeInit = true;
   protected static GameStateContext context;
 
   protected String suspectId;
@@ -33,12 +32,12 @@ public abstract class AbstractSuspectController extends GptChatter {
    */
   @FXML
   public void initialize() {
-    System.out.println("Initialise is being run from the abstract class!");
+    System.out.println("Initialising AbstractSuspectController...");
     if (isFirstTimeInit) {
       TextToSpeech.speak("Chat with " + suspectName);
       isFirstTimeInit = false;
     }
-    initialiseChatCompletionRequest();
+    initialiseChatCompletionRequest(true);
   }
 
   /**
@@ -81,7 +80,7 @@ public abstract class AbstractSuspectController extends GptChatter {
   protected void setThinking() {
     chatBubbleImage.setImage(
         new Image(App.class.getResource("/images/thoughtbubblepixel.png").toString()));
-    txtaChat.setText("...");
+    super.setThinking();
   }
 
   /**
@@ -94,6 +93,6 @@ public abstract class AbstractSuspectController extends GptChatter {
   protected void setChatting(ChatMessage response) {
     chatBubbleImage.setImage(
         new Image(App.class.getResource("/images/chatbubblepixel.png").toString()));
-    txtaChat.setText(response.getContent());
+    super.setChatting(response);
   }
 }

@@ -1,26 +1,70 @@
 package nz.ac.auckland.se206.controllers;
 
+import java.util.HashMap;
+import java.util.Map;
+import javafx.fxml.FXML;
+import javafx.scene.input.KeyEvent;
 import nz.ac.auckland.apiproxy.chat.openai.ChatMessage;
+import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
+import nz.ac.auckland.se206.prompts.PromptEngineering;
 
 public class CardClueChatController extends GptChatter {
 
+  public CardClueChatController() {
+    promptFilename = "cardClueChat.txt";
+  }
+
+  /**
+   * Initializes the suspect view. If it's the first time initialization, it will provide
+   * instructions via text-to-speech.
+   */
+  @FXML
+  public void initialize() {
+    System.out.println("Initialising AbstractSuspectController...");
+    if (isFirstTimeInit) {
+      setChatting(
+          new ChatMessage(
+              "assistant",
+              "Card can now be investigated! Type actions to investigate the card. Examples:"
+                  + " \"observe front side\", \"look for name of owner\", etc."));
+      isFirstTimeInit = false;
+    }
+    initialiseChatCompletionRequest(false);
+  }
+
+  /**
+   * Handles the key pressed event, sending a message if the user presses ENTER.
+   *
+   * @param event the key event
+   */
+  @FXML
+  public void onKeyPressed(KeyEvent event) throws ApiProxyException {
+    if (event.getCode().toString().equals("ENTER")) {
+      sendMessage();
+    }
+  }
+
+  /**
+   * Handles the key released event.
+   *
+   * @param event the key event
+   */
+  @FXML
+  public void onKeyReleased(KeyEvent event) {}
+
   @Override
   protected String getSystemPrompt() {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'getSystemPrompt'");
+    Map<String, String> dataMap = new HashMap<>();
+    return PromptEngineering.getPrompt(promptFilename, dataMap);
   }
 
   @Override
   protected void setThinking() {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'setThinking'");
+    super.setThinking();
   }
 
   @Override
   protected void setChatting(ChatMessage response) {
-    // TODO Auto-generated method stub
-    throw new UnsupportedOperationException("Unimplemented method 'setChatting'");
+    super.setChatting(response);
   }
-
-  
 }

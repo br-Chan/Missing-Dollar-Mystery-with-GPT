@@ -22,6 +22,8 @@ public abstract class GptChatter {
 
   protected ChatCompletionRequest chatCompletionRequest;
 
+  protected boolean isFirstTimeInit = true;
+
   protected String promptFilename;
 
   /**
@@ -35,7 +37,7 @@ public abstract class GptChatter {
    * Initialises the chat completion request and fetches the initial response to display to the user
    * in the chat bubble.
    */
-  public void initialiseChatCompletionRequest() {
+  public void initialiseChatCompletionRequest(boolean setChattingNow) {
     try {
       ApiProxyConfig config = ApiProxyConfig.readConfig();
       chatCompletionRequest =
@@ -45,7 +47,9 @@ public abstract class GptChatter {
               .setTopP(0.5)
               .setMaxTokens(100);
 
-      setChatting(runGpt(new ChatMessage("system", getSystemPrompt())));
+      if (setChattingNow) {
+        setChatting(runGpt(new ChatMessage("system", getSystemPrompt())));
+      }
     } catch (ApiProxyException e) {
       e.printStackTrace();
     }
@@ -117,7 +121,20 @@ public abstract class GptChatter {
     backgroundThread.start();
   }
 
-  protected abstract void setThinking();
+  /**
+   * Handles replacing the chat bubble's text with ellipses so that the user knows that the ChatGPT
+   * API is processing their input.
+   */
+  protected void setThinking() {
+    txtaChat.setText("...");
+  }
 
-  protected abstract void setChatting(ChatMessage response);
+  /**
+   * Handles replacing the chat bubble's text with ChatGPT's response to the user.
+   *
+   * @param response the chat message to display to the user
+   */
+  protected void setChatting(ChatMessage response) {
+    txtaChat.setText(response.getContent());
+  }
 }
