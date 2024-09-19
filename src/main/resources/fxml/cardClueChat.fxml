@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.Pane?>
+
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#onKeyPressed" onKeyReleased="#onKeyReleased" prefHeight="150.0" prefWidth="407.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.CardClueChatController">
+   <children>
+      <Button fx:id="btnSend" layoutX="333.0" layoutY="124.0" mnemonicParsing="false" onAction="#onSendMessage" text="Investigate" />
+      <TextField fx:id="txtInput" layoutY="124.0" prefHeight="25.0" prefWidth="329.0" />
+      <TextArea fx:id="txtaChat" editable="false" prefHeight="119.0" prefWidth="407.0" wrapText="true" />
+   </children>
+</Pane>
