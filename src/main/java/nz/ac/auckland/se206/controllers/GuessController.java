@@ -7,6 +7,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.AppTimer;
 import nz.ac.auckland.se206.GameStateContext;
@@ -31,8 +32,15 @@ public class GuessController {
   @FXML private Button suspect3Button;
   @FXML private Button sendReportButton;
 
+  @FXML private Rectangle suspect1Bg;
+  @FXML private Rectangle suspect2Bg;
+  @FXML private Rectangle suspect3Bg;
+
+
   @FXML private Label startingLabel;
   @FXML private TextArea reportTextArea;
+
+  private Suspect chosenSuspect;
 
   @FXML private Label timerLabel;
 
@@ -114,5 +122,17 @@ public class GuessController {
       SceneManager.addUi(AppUi.RESULT, App.loadFxml("result"));
       App.getScene().setRoot(SceneManager.getUiRoot(AppUi.RESULT));
     }
+  }
+
+  private void onSuspect1Click() {
+
+  }
+
+  private void onSuspect2Click() {
+
+  }
+
+  private void onSuspect3Click() {
+
   }
 }

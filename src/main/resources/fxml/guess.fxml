@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
@@ -7,6 +8,7 @@
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
@@ -18,7 +20,7 @@
             <Font name="Consolas" size="25.0" />
          </font>
          <graphic>
-            <Label alignment="CENTER" prefHeight="31.0" prefWidth="645.0" text="Accuse a Suspect and Write your Report!">
+            <Label alignment="CENTER" prefHeight="31.0" prefWidth="645.0" text="Guess who stole the first dollar">
                <font>
                   <Font name="Consolas" size="26.0" />
                </font>
@@ -29,91 +31,6 @@
    <bottom>
       <Label BorderPane.alignment="CENTER" />
    </bottom>
-   <left>
-      <Pane fx:id="leftPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="140.0" BorderPane.alignment="CENTER">
-         <children>
-            <Rectangle arcHeight="1.0" arcWidth="5.0" disable="true" fill="#bfbfbf" height="385.0" layoutX="15.0" layoutY="125.0" mouseTransparent="true" opacity="0.74" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="123.0" />
-            <Pane layoutX="17.0" layoutY="129.0" mouseTransparent="true" prefHeight="124.0" prefWidth="119.0">
-               <children>
-                  <Rectangle arcHeight="1.0" arcWidth="5.0" fill="#bfbfbf" height="124.0" opacity="0.74" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="119.0" />
-                  <ImageView fitHeight="54.0" fitWidth="54.0" layoutX="-1.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/suspects/Huey.png" />
-                     </image>
-                  </ImageView>
-                  <Label layoutX="46.0" layoutY="8.0" prefHeight="45.0" prefWidth="65.0" text="Huey" wrapText="true">
-                     <font>
-                        <Font name="Consolas" size="27.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="20.0" layoutY="52.0" prefHeight="61.0" prefWidth="94.0" text="Restaurant Worker" wrapText="true">
-                     <font>
-                        <Font name="Consolas" size="16.0" />
-                     </font>
-                  </Label>
-               </children>
-            </Pane>
-            <Button fx:id="suspect2Button" layoutX="17.0" layoutY="129.0" mnemonicParsing="false" onAction="#handleSuspect2ButtonClick" opacity="0.0" prefHeight="124.0" prefWidth="119.0" text="suspect 2">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-            <Pane layoutX="17.0" layoutY="256.0" mouseTransparent="true" prefHeight="124.0" prefWidth="119.0">
-               <children>
-                  <Rectangle arcHeight="1.0" arcWidth="5.0" fill="#bfbfbf" height="124.0" opacity="0.74" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="119.0" />
-                  <ImageView fitHeight="54.0" fitWidth="54.0" layoutX="-1.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/suspects/Louie.png" />
-                     </image>
-                  </ImageView>
-                  <Label layoutX="40.0" layoutY="8.0" prefHeight="45.0" prefWidth="76.0" text="Louie" wrapText="true">
-                     <font>
-                        <Font name="Consolas" size="27.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="19.0" layoutY="53.0" prefHeight="61.0" prefWidth="80.0" text="Office Clerk" wrapText="true">
-                     <font>
-                        <Font name="Consolas" size="16.0" />
-                     </font>
-                  </Label>
-               </children>
-            </Pane>
-            <Button fx:id="suspect1Button" layoutX="17.0" layoutY="256.0" mnemonicParsing="false" onAction="#handleSuspect1ButtonClick" opacity="0.0" prefHeight="124.0" prefWidth="119.0" text="suspect 1">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-            <Pane layoutX="17.0" layoutY="383.0" mouseTransparent="true" prefHeight="124.0" prefWidth="119.0">
-               <children>
-                  <Rectangle arcHeight="1.0" arcWidth="5.0" fill="#bfbfbf" height="124.0" opacity="0.74" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="119.0" />
-                  <ImageView fitHeight="54.0" fitWidth="54.0" layoutX="-2.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
-                     <image>
-                        <Image url="@../images/suspects/Dewey.png" />
-                     </image>
-                  </ImageView>
-                  <Label layoutX="41.0" layoutY="8.0" prefHeight="45.0" prefWidth="77.0" text="Dewey" wrapText="true">
-                     <font>
-                        <Font name="Consolas" size="27.0" />
-                     </font>
-                  </Label>
-                  <Label layoutX="18.0" layoutY="54.0" prefHeight="61.0" prefWidth="80.0" text="Local Tradesman" wrapText="true">
-                     <font>
-                        <Font name="Consolas" size="16.0" />
-                     </font>
-                  </Label>
-               </children>
-            </Pane>
-            <Button fx:id="suspect3Button" layoutX="17.0" layoutY="383.0" mnemonicParsing="false" onAction="#handleSuspect3ButtonClick" opacity="0.0" prefHeight="124.0" prefWidth="119.0" text="suspect 3">
-               <cursor>
-                  <Cursor fx:constant="HAND" />
-               </cursor>
-            </Button>
-         </children>
-         <cursor>
-            <Cursor fx:constant="DEFAULT" />
-         </cursor>
-      </Pane>
-   </left>
    <right>
       <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="140.0" BorderPane.alignment="CENTER">
          <children>
@@ -132,23 +49,100 @@
       </Pane>
    </right>
    <center>
-      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+      <Pane prefHeight="530.0" prefWidth="589.0" BorderPane.alignment="CENTER">
          <children>
-            <TextArea fx:id="reportTextArea" layoutX="3.0" layoutY="70.0" prefHeight="454.0" prefWidth="504.0" promptText="Write your report!">
+            <TextArea fx:id="reportTextArea" layoutX="10.0" layoutY="230.0" prefHeight="294.0" prefWidth="619.0" promptText="Write your report!">
                <font>
                   <Font name="Bradley Hand ITC" size="27.0" />
                </font>
             </TextArea>
-            <Label alignment="CENTER" layoutY="-5.0" prefHeight="38.0" prefWidth="510.0" text="PI Masters needs to have solid proof of your claims!">
-               <font>
-                  <Font name="Consolas" size="17.0" />
-               </font>
-            </Label>
-            <Label fx:id="startingLabel" layoutX="20.0" layoutY="33.0" prefHeight="38.0" prefWidth="321.0" text="_____ was the thief because...">
+            <Label fx:id="startingLabel" layoutX="101.0" layoutY="180.0" prefHeight="38.0" prefWidth="448.0" text="Give evidence to support you guess" textAlignment="CENTER">
                <font>
                   <Font name="Bradley Hand ITC" size="26.0" />
                </font>
             </Label>
+            <HBox layoutX="15.0" layoutY="32.0" prefHeight="124.0" prefWidth="619.0" spacing="15.0">
+               <children>
+                  <Pane mouseTransparent="true" prefHeight="124.0" prefWidth="174.0">
+                     <children>
+                        <Rectangle fx:id="suspect1Bg" arcHeight="1.0" arcWidth="5.0" fill="#bfbfbf" height="124.0" opacity="0.74" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="174.0" />
+                        <ImageView fitHeight="54.0" fitWidth="54.0" layoutX="-1.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/suspects/Louie.png" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="40.0" layoutY="8.0" prefHeight="45.0" prefWidth="76.0" text="Louie" wrapText="true">
+                           <font>
+                              <Font name="Consolas" size="27.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="19.0" layoutY="53.0" prefHeight="61.0" prefWidth="80.0" text="Office Clerk" wrapText="true">
+                           <font>
+                              <Font name="Consolas" size="16.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="suspect1Button" mnemonicParsing="false" onAction="#handleSuspect1ButtonClick" opacity="0.0" prefHeight="124.0" prefWidth="174.0" text="suspect 1">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                     </children>
+                  </Pane>
+                  <Pane mouseTransparent="true" prefHeight="124.0" prefWidth="174.0">
+                     <children>
+                        <Rectangle fx:id="suspect2Bg" arcHeight="1.0" arcWidth="5.0" fill="#bfbfbf" height="124.0" opacity="0.74" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="174.0" />
+                        <ImageView fitHeight="54.0" fitWidth="54.0" layoutX="-1.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/suspects/Huey.png" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="46.0" layoutY="8.0" prefHeight="45.0" prefWidth="108.0" text="Huey" wrapText="true">
+                           <font>
+                              <Font name="Consolas" size="27.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="20.0" layoutY="52.0" prefHeight="61.0" prefWidth="94.0" text="Restaurant Worker" wrapText="true">
+                           <font>
+                              <Font name="Consolas" size="16.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="suspect2Button" mnemonicParsing="false" onAction="#handleSuspect2ButtonClick" opacity="0.0" prefHeight="124.0" prefWidth="174.0" text="suspect 2">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                     </children>
+                  </Pane>
+                  <Pane mouseTransparent="true" prefHeight="131.0" prefWidth="174.0">
+                     <children>
+                        <Rectangle fx:id="suspect3Bg" arcHeight="1.0" arcWidth="5.0" fill="#bfbfbf" height="124.0" opacity="0.74" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="173.0" />
+                        <ImageView fitHeight="54.0" fitWidth="54.0" layoutX="-2.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
+                           <image>
+                              <Image url="@../images/suspects/Dewey.png" />
+                           </image>
+                        </ImageView>
+                        <Label layoutX="41.0" layoutY="8.0" prefHeight="45.0" prefWidth="113.0" text="Dewey" wrapText="true">
+                           <font>
+                              <Font name="Consolas" size="27.0" />
+                           </font>
+                        </Label>
+                        <Label layoutX="18.0" layoutY="54.0" prefHeight="61.0" prefWidth="109.0" text="Local Tradesman" wrapText="true">
+                           <font>
+                              <Font name="Consolas" size="16.0" />
+                           </font>
+                        </Label>
+                        <Button fx:id="suspect3Button" mnemonicParsing="false" onAction="#handleSuspect3ButtonClick" opacity="0.0" prefHeight="124.0" prefWidth="173.0" text="suspect 3">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </Button>
+                     </children>
+                  </Pane>
+               </children>
+               <padding>
+                  <Insets left="35.0" />
+               </padding>
+            </HBox>
          </children>
       </Pane>
    </center>
