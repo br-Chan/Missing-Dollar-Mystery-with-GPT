@@ -67,7 +67,7 @@ public class GameController {
 
   private FadeTransition currentFadeTransition;
   AppTimer appTimer;
-  ArrayList<ImageView> selectedList = new ArrayList<>();
+  private ArrayList<ImageView> selectedList = new ArrayList<>();
 
   private Boolean hueyVisited = false;
   private Boolean louieVisited = false;
