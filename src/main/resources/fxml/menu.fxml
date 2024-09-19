@@ -9,22 +9,27 @@
 
 <Pane prefHeight="599.0" prefWidth="789.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.MenuController">
    <children>
+      <ImageView fitHeight="599.0" fitWidth="827.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Start%20Menu%20Border.png" />
+         </image>
+      </ImageView>
       <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fitHeight="599.0" fitWidth="840.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="599.0" fitWidth="840.0" layoutX="-2.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true">
          <image>
             <Image url="@../images/Framed%20Dollar.png" />
          </image></ImageView>
-      <Label alignment="CENTER" layoutX="70.0" layoutY="-30.0" prefHeight="239.0" prefWidth="650.0" text="The Missing Dollar Mystery" textAlignment="CENTER" wrapText="true">
+      <Label alignment="CENTER" graphicTextGap="2.0" layoutX="70.0" layoutY="-18.0" prefHeight="239.0" prefWidth="650.0" text="The Missing Dollar Mystery" textAlignment="CENTER" wrapText="true">
          <font>
-            <Font name="Consolas Bold" size="45.0" />
+            <Font name="Consolas Bold" size="65.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="326.0" layoutY="148.0" prefHeight="298.0" prefWidth="399.0" text="Greetings investigator, and welcome to your first case! A restaurants framed first dollar bill was stolen, and the thief has been narrowed down to three suspects. Find clues, interrogate the suspects, and make a guess on who stole the dollar!" wrapText="true">
+      <Label alignment="CENTER" layoutX="332.0" layoutY="202.0" prefHeight="298.0" prefWidth="399.0" text="Greetings investigator, and welcome to your first case! A restaurants framed first dollar bill was stolen, and the thief has been narrowed down to three suspects. Find clues, interrogate the suspects, and make a guess on who stole the dollar!" wrapText="true">
          <font>
-            <Font name="System Bold" size="24.0" />
+            <Font name="Consolas" size="24.0" />
          </font>
       </Label>
-      <Button fx:id="startButton" alignment="CENTER" contentDisplay="CENTER" layoutX="340.0" layoutY="488.0" mnemonicParsing="false" onAction="#handleStartButtonClick" text="START">
+      <Button fx:id="startButton" alignment="CENTER" contentDisplay="CENTER" layoutX="340.0" layoutY="511.0" mnemonicParsing="false" onAction="#handleStartButtonClick" text="START">
          <font>
             <Font name="Consolas" size="27.0" />
          </font>
