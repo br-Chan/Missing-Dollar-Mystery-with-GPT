@@ -37,7 +37,9 @@
    <left>
       <Pane fx:id="leftPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="140.0" BorderPane.alignment="CENTER">
          <children>
-            <Sprite spriteUrl="@../images/Map.png" scale="4.375" />
+            <Pane prefHeight="119.0" prefWidth="119.0" layoutX="17.0" layoutY="3.0">
+              <Sprite spriteUrl="@../images/Map.png" scale="3.7" />
+            </Pane>
             <ImageView fx:id="crimeSceneSelected" disable="true" fitHeight="31.0" fitWidth="31.0" layoutX="22.0" layoutY="17.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
                <image>
                   <Image url="@../images/Selected.png" />
