@@ -29,6 +29,10 @@ public class AppTimer {
     timeLeft = startingTime;
   }
 
+  /**
+   * Starts the countdown from the given starting time, and automatically handles when the timer
+   * runs out.
+   */
   public void beginCountdown() {
     TimerTask task =
         new TimerTask() {
@@ -65,6 +69,10 @@ public class AppTimer {
     timer.scheduleAtFixedRate(task, 1000, 1000);
   }
 
+  /**
+   * Switches the scene to either the guess scene or results scene depending on how much total time
+   * the timer was counting down from.
+   */
   private void handleTimeUp() throws IOException {
     if (startingTime == GAMETIME) {
       SceneManager.addUi(AppUi.GUESS, App.loadFxml("guess"));
@@ -75,6 +83,15 @@ public class AppTimer {
     }
   }
 
+  /**
+   * Cancels the timer; particularly useful when clicking a button to switch the scene while the
+   * timer is still going, and therefore need to cancel the timer on its own.
+   *
+   * <p>Suggestion: Could possibly just call handleTimeUp() instead of this, and timer.cancel() is
+   * called at the start of handleTimeUp() and nowhere else. So when you click the guess button in
+   * the game scene for example, handleTimeUp() is called and it's as if the timer had run out, and
+   * everything works as expected without the need for this method.
+   */
   public void cancelTimer() {
     timer.cancel();
   }
