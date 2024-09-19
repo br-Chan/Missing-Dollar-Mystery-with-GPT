@@ -22,7 +22,7 @@
         <Sprite layoutX="354.0" layoutY="333.0" pickOnBounds="true" scale="1"
                 spriteUrl="@../images/crimeScene/ID%20Card.png"/>
         <Sprite layoutX="-21.0" layoutY="25.0" pickOnBounds="true" scale="3" spriteUrl="@../images/crimeScene/Drinks%20Case.png"/>
-        <Sprite spriteUrl="@../images/crimeScene/Computer.png" layoutX="77.0" layoutY="122.0" scale="4"/>
+        <Sprite spriteUrl="@../images/crimeScene/Computer.png" layoutX="77.0" layoutY="122.0" scale="3"/>
 
         <Rectangle fx:id="cardRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="15.0" layoutX="353.0"
                    layoutY="333.0" onMouseClicked="#showCardClue" opacity="0.0" stroke="BLACK" strokeType="INSIDE"
