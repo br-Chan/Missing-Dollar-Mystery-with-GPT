@@ -163,6 +163,7 @@ public class GameController {
     if (!hueyVisited || !louieVisited || !deweyVisited) {
       flashUnvisitedPanes(); // Flash all unvisited corresponding panes
     } else {
+      appTimer.cancelTimer();
       SceneManager.addUi(AppUi.GUESS, App.loadFxml("guess"));
       App.getScene().setRoot(SceneManager.getUiRoot(AppUi.GUESS)); // Switches to guessing scene
     }
