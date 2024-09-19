@@ -78,7 +78,7 @@ public class CrimeSceneController {
    */
   @FXML
   public void initialize() {
-    System.out.println("Initialising...");
+    System.out.println("Initialising crime scene scene...");
     // Hides all panes relating to clues
     cardPane.setVisible(false);
     casePane.setVisible(false);
@@ -116,7 +116,6 @@ public class CrimeSceneController {
   /** Sets the card clue to be visible, allows for mouse tracking with the cleaning tool. */
   @FXML
   public void showCardClue() {
-    System.out.println("Showing card clue");
     cardPane.setVisible(true);
     // Tracks the cleaning tool on mouse move or drag
     cardPane.setOnMouseMoved(
@@ -137,7 +136,6 @@ public class CrimeSceneController {
   @FXML
   public void hideCardClue() {
     // Sets the card clue pane invisible
-    System.out.println("Hiding card clue");
     cardPane.setVisible(false);
     cleaningImage.setVisible(false);
     // Turns off all cleaning images
@@ -232,15 +230,11 @@ public class CrimeSceneController {
 
   @FXML
   public void showCaseClue() {
-    // Shows the case clue
-    System.out.println("Showing case clue");
     casePane.setVisible(true);
   }
 
   @FXML
   public void hideCaseClue() {
-    // Hides the case clue
-    System.out.println("Hiding case clue");
     casePane.setVisible(false);
   }
 
@@ -271,15 +265,11 @@ public class CrimeSceneController {
 
   @FXML
   public void showComputerClue() {
-    // Shows the computer clue
-    System.out.println("Showing computer clue");
     computerPane.setVisible(true);
   }
 
   @FXML
   public void hideComputerClue() {
-    // Hides the computer clue
-    System.out.println("Hiding computer clue");
     computerPane.setVisible(false);
   }
 

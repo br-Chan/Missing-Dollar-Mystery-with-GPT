@@ -29,8 +29,7 @@ public class ResultController {
    * @param event the key event
    */
   @FXML
-  public void onKeyPressed(KeyEvent event) {
-  }
+  public void onKeyPressed(KeyEvent event) {}
 
   /**
    * Handles the key released event.
@@ -38,6 +37,5 @@ public class ResultController {
    * @param event the key event
    */
   @FXML
-  public void onKeyReleased(KeyEvent event) {
-  }
+  public void onKeyReleased(KeyEvent event) {}
 }
