@@ -11,8 +11,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
-import javafx.scene.image.Image;
-import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
@@ -66,11 +64,10 @@ public class CrimeSceneController {
   private boolean napkinOn;
   private boolean brushOn;
   private boolean rubberOn;
-  private boolean cardCleaned = false;
   private boolean stockAppOpen = false;
   private boolean logsAppOpen = false;
 
-  private ArrayList<Pane> itemPaneList = new ArrayList<>();
+  private ArrayList<Pane  > itemPaneList = new ArrayList<>();
   private ArrayList<Pane> stockPaneList = new ArrayList<>();
   private ArrayList<String> logsList = new ArrayList<>();
 
@@ -82,10 +79,12 @@ public class CrimeSceneController {
   @FXML
   public void initialize() {
     System.out.println("Initialising...");
+    // Hides all panes relating to clues
     cardPane.setVisible(false);
     casePane.setVisible(false);
     computerPane.setVisible(false);
     cleaningImage.setVisible(false);
+    // Adds all panes and logs lines to their respective arraylists
     addAllItemPanes();
     addAllStockPanes();
     addAllLogs();
@@ -99,6 +98,7 @@ public class CrimeSceneController {
   @FXML
   public void onKeyPressed(KeyEvent event) throws ApiProxyException {
     System.out.println("Key " + event.getCode() + " pressed");
+    // Searches either stock or logs, depending on which app is open
     if (event.getCode().toString().equals("ENTER") && stockAppOpen) {
       searchStock();
     } else if (event.getCode().toString().equals("ENTER") && logsAppOpen) {
@@ -116,10 +116,12 @@ public class CrimeSceneController {
     System.out.println("Key " + event.getCode() + " released");
   }
 
+  /** Sets the card clue to be visible, allows for mouse tracking with the cleaning tool. */
   @FXML
   public void showCardClue() {
     System.out.println("Showing card clue");
     cardPane.setVisible(true);
+    // Tracks the cleaning tool on mouse move or drag
     cardPane.setOnMouseMoved(
         event -> {
           cleaningImage.setX(event.getX() - 160);
@@ -137,9 +139,11 @@ public class CrimeSceneController {
 
   @FXML
   public void hideCardClue() {
+    // Sets the card clue pane invisible
     System.out.println("Hiding card clue");
     cardPane.setVisible(false);
     cleaningImage.setVisible(false);
+    // Turns off all cleaning images
     napkinOn = false;
     brushOn = false;
     rubberOn = false;
@@ -168,12 +172,19 @@ public class CrimeSceneController {
 
   @FXML
   void napkinSelected() {
+    // Toggles naplin on and off
     if (napkinOn) {
-      cleaningImage.setVisible(false);
+      cleaningImage.setVisible(false); // Sets the napkin as invisible
       napkinOn = false;
     } else {
+      // Changes current cleaning image to the napkin
       cleaningImage.setVisible(true);
-      cleaningImage.spriteUrlProperty().set(CrimeSceneController.class.getResource("/images/crimeScene/cardClue/napkin.png").toString());
+      cleaningImage
+          .spriteUrlProperty()
+          .set(
+              CrimeSceneController.class
+                  .getResource("/images/crimeScene/cardClue/napkin.png")
+                  .toString());
       napkinOn = true;
       brushOn = false;
       rubberOn = false;
@@ -182,12 +193,19 @@ public class CrimeSceneController {
 
   @FXML
   void brushSelected() {
+    // Toggles brush on and off
     if (brushOn) {
-      cleaningImage.setVisible(false);
+      cleaningImage.setVisible(false); // Sets the brush invisible
       brushOn = false;
     } else {
+      // Changes current cleaning image to the brush
       cleaningImage.setVisible(true);
-      cleaningImage.spriteUrlProperty().set(CrimeSceneController.class.getResource("/images/crimeScene/cardClue/brush.png").toString());
+      cleaningImage
+          .spriteUrlProperty()
+          .set(
+              CrimeSceneController.class
+                  .getResource("/images/crimeScene/cardClue/brush.png")
+                  .toString());
       napkinOn = false;
       brushOn = true;
       rubberOn = false;
@@ -196,12 +214,19 @@ public class CrimeSceneController {
 
   @FXML
   void rubberSelected() {
+    // Toggles rubber on and off
     if (rubberOn) {
-      cleaningImage.setVisible(false);
+      cleaningImage.setVisible(false); // Sets the rubber invisible
       rubberOn = false;
     } else {
+      // Changes current cleaning images to the rubber
       cleaningImage.setVisible(true);
-      cleaningImage.spriteUrlProperty().set(CrimeSceneController.class.getResource("/images/crimeScene/cardClue/rubber.png").toString());
+      cleaningImage
+          .spriteUrlProperty()
+          .set(
+              CrimeSceneController.class
+                  .getResource("/images/crimeScene/cardClue/rubber.png")
+                  .toString());
       napkinOn = false;
       brushOn = false;
       rubberOn = true;
@@ -210,12 +235,14 @@ public class CrimeSceneController {
 
   @FXML
   public void showCaseClue() {
+    // Shows the case clue
     System.out.println("Showing case clue");
     casePane.setVisible(true);
   }
 
   @FXML
   public void hideCaseClue() {
+    // Hides the case clue
     System.out.println("Hiding case clue");
     casePane.setVisible(false);
   }
@@ -247,36 +274,44 @@ public class CrimeSceneController {
 
   @FXML
   public void showComputerClue() {
+    // Shows the computer clue
     System.out.println("Showing computer clue");
     computerPane.setVisible(true);
   }
 
   @FXML
   public void hideComputerClue() {
+    // Hides the computer clue
     System.out.println("Hiding computer clue");
     computerPane.setVisible(false);
   }
 
   @FXML
   public void openLogs() {
+    // Makes the logs app visible
     logPane.setVisible(true);
     stockPane.setVisible(false);
+    // Turns on the logs app for search feature
     stockAppOpen = false;
     logsAppOpen = true;
   }
 
   @FXML
   public void openStock() {
+    // Makes the stock app visible
     logPane.setVisible(false);
     stockPane.setVisible(true);
+    // Turns on the stock app for search feature
     stockAppOpen = true;
     logsAppOpen = false;
   }
 
   @FXML
   public void searchStock() {
+    // Recieves the input in the search bar
     String query = searchStockField.getText().trim().toLowerCase();
     searchStockField.clear();
+    // Shows corresponding item depending on the text input
     switch (query) {
       case "cola crush":
         showStock(redStockPane);
@@ -301,26 +336,33 @@ public class CrimeSceneController {
 
   @FXML
   public void searchLogs() {
+    // Recieves input from the search bar
     String start = searchLogsStart.getText().trim();
     String end = searchLogsEnd.getText().trim();
+    // Returns nothing if either is empty
     if (start.isEmpty() || end.isEmpty()) {
       return;
     }
     searchLogsStart.clear();
     searchLogsEnd.clear();
 
+    // Runs checks for different errors
     if (!checkLogsInteger(start, end)) {
-      logsArea.setText("Invalid input!\nPlease enter an integer.");
+      logsArea.setText("Invalid input!\nPlease enter an integer."); // If the input isnt an integer
     } else if (!checkValidInput(start, end)) {
-      logsArea.setText("Invalid input!\nPlease enter a number from 0 to 24.");
+      logsArea.setText(
+          "Invalid input!\nPlease enter a number from 0 to 24."); // If the input is out of bounds
     } else if (Integer.parseInt(start) > Integer.parseInt(end)) {
-      logsArea.setText("Invalid input!\nStart time must be earlier than end time.");
+      logsArea.setText(
+          "Invalid input!\nStart time must be earlier than end time."); // If the input order is
+      // wrong
     } else {
       updateLogs(Integer.parseInt(start), Integer.parseInt(end));
     }
   }
 
   private boolean checkValidInput(String start, String end) {
+    // Checks the integer value of the start and end input
     if (Integer.parseInt(start) > 24 || Integer.parseInt(end) > 24) {
       return false;
     } else if (Integer.parseInt(start) < 0 || Integer.parseInt(end) < 0) {
@@ -330,6 +372,7 @@ public class CrimeSceneController {
   }
 
   private boolean checkLogsInteger(String start, String end) {
+    // Checks the validity of the start and end input
     try {
       Integer.parseInt(start);
       Integer.parseInt(end);
@@ -340,21 +383,23 @@ public class CrimeSceneController {
   }
 
   public void checkCardCleaned() {
+    // Check if thing on the card has been cleaning
     if (dirtImage.getOpacity() < 0.1
         && debrisImage.getOpacity() < 0.1
         && pencilImage.getOpacity() < 0.1) {
-      cardCleaned = true;
       cardDirtyLabel.setVisible(false);
       cardChatPane.setVisible(true);
     }
   }
 
   public void decreaseOpacity(Node image) {
+    // Decrease the opacity of an image by a set amount
     image.setOpacity(image.getOpacity() - 0.005);
     checkCardCleaned();
   }
 
   private void addAllItemPanes() {
+    // Adds all item panes to an arraylist
     itemPaneList.add(suspensePane);
     itemPaneList.add(redDrinkPane);
     itemPaneList.add(blueDrinkPane);
@@ -364,6 +409,7 @@ public class CrimeSceneController {
   }
 
   private void addAllStockPanes() {
+    // Adds all stock app panes to an arraylist
     stockPaneList.add(errorStockPane);
     stockPaneList.add(redStockPane);
     stockPaneList.add(blueStockPane);
@@ -373,41 +419,58 @@ public class CrimeSceneController {
   }
 
   private void showPane(Pane paneToShow) {
+    // Hides all panes in an arraylist
     for (Pane pane : itemPaneList) {
       if (pane != paneToShow) {
         pane.setVisible(false);
       }
     }
+    // Sets the pane to show to be visible
     paneToShow.setVisible(true);
   }
 
   private void showStock(Pane paneToShow) {
+    // Hides all stock panes in the stock pane list
     for (Pane pane : stockPaneList) {
       if (pane != paneToShow) {
         pane.setVisible(false);
       }
     }
+    // Shows the given stock pane
     paneToShow.setVisible(true);
   }
 
   private void updateLogs(Integer start, Integer end) {
+    // Initialises an empty log
     String logsString = "";
+
+    // Different cases for different start and end inputs
     if (start == end) {
-      logsString += "Showing logs during " + start + ":00,";
+      logsString +=
+          "Showing logs during "
+              + start
+              + ":00,"; // Shows the start time if both start and end are the same
       logsString = logsList.get(start);
     } else {
-      logsString += "Showing logs from " + start + ":00 to " + end + ":00,";
+      logsString +=
+          "Showing logs from "
+              + start
+              + ":00 to "
+              + end
+              + ":00,"; // Shows a time period if different
       for (int i = start; i < end; i++) {
         logsString += logsList.get(i);
       }
     }
-
+    // Replaces commas with a newlien character for formatting
     logsArea.setText(logsString.replaceAll(",", "\n"));
   }
 
   private void addAllLogs() {
+    // Inports all logs from a txt file
     InputStream inputStream = App.class.getResourceAsStream("/data/logs.txt");
     try (BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream))) {
+      // Reads each line and adds to an arraylist
       String line;
       while ((line = reader.readLine()) != null) {
         logsList.add(line);

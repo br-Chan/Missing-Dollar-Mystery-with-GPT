@@ -46,7 +46,7 @@ public class GameController {
   @FXML private Label timerLabel;
 
   AppTimer appTimer;
-  ArrayList<ImageView> selectedList = new ArrayList<>();
+  private ArrayList<ImageView> selectedList = new ArrayList<>();
 
   /** Initializes the game scene and sets the initial game view. */
   @FXML
