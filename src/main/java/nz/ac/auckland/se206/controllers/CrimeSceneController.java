@@ -131,7 +131,6 @@ public class CrimeSceneController {
     napkinOn = false;
     brushOn = false;
     rubberOn = false;
-    GameController.showCardCluePane();
   }
 
   @FXML
@@ -214,7 +213,6 @@ public class CrimeSceneController {
   public void showCaseClue() {
     System.out.println("Showing case clue");
     casePane.setVisible(true);
-    GameController.showDisplayCaseCluePane();
   }
 
   @FXML
@@ -252,7 +250,6 @@ public class CrimeSceneController {
   public void showComputerClue() {
     System.out.println("Showing computer clue");
     computerPane.setVisible(true);
-    GameController.showComputerCluePane();
   }
 
   @FXML

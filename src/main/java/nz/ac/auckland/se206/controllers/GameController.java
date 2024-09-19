@@ -53,9 +53,6 @@ public class GameController {
   @FXML private ImageView suspectTwoAlert;
   @FXML private ImageView suspectThreeAlert;
 
-  @FXML private static Pane displayCaseCluePane;
-  @FXML private static Pane computerCluePane;
-  @FXML private static Pane idCardCluePane;
   @FXML private Pane hueyPane;
   @FXML private Pane louiePane;
   @FXML private Pane deweyPane;
@@ -202,21 +199,6 @@ public class GameController {
     selectedList.add(suspectThreeSelected);
   }
 
-  /** Reveals the ID card clue in the game window when clicked. */
-  public static void showCardCluePane() {
-    idCardCluePane.setVisible(false);
-  }
-
-  /** Reveals the display case clue in the game window when clicked. */
-  public static void showDisplayCaseCluePane() {
-    displayCaseCluePane.setVisible(false);
-  }
-
-  /** Reveals the computer clue in the game window when clicked. */
-  public static void showComputerCluePane() {
-    computerCluePane.setVisible(false);
-  }
-
   /** Sets the background of the border pane to be an image. */
   public void setBackgroundImage() {
     Image image = new Image(App.class.getResource("/images/Background Border.png").toString());
@@ -258,7 +240,7 @@ public class GameController {
               Platform.runLater(
                   () -> {
                     // Create a new FadeTransition
-                    currentFadeTransition = new FadeTransition(Duration.millis(1000), myPane);
+                    currentFadeTransition = new FadeTransition(Duration.millis(500), myPane);
                     currentFadeTransition.setFromValue(1.0); // Start fully visible
                     currentFadeTransition.setToValue(0.0); // Fade out to fully transparent
 
