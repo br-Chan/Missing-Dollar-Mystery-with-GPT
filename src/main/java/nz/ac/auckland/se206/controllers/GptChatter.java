@@ -74,8 +74,7 @@ public abstract class GptChatter {
               + " GptChatter, remove the command setting disableNormalPrompt to true in its"
               + " constructor.");
 
-      chatCompletionRequest.addMessage(
-          new ChatMessage("user", "Make a short shrill shriek! Aa!"));
+      chatCompletionRequest.addMessage(new ChatMessage("user", "Make a short shrill shriek! Aa!"));
     } else {
       chatCompletionRequest.addMessage(msg);
     }
