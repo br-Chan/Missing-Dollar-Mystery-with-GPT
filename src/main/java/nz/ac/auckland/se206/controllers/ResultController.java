@@ -30,7 +30,6 @@ public class ResultController {
    */
   @FXML
   public void onKeyPressed(KeyEvent event) {
-    System.out.println("Key " + event.getCode() + " pressed");
   }
 
   /**
@@ -40,6 +39,5 @@ public class ResultController {
    */
   @FXML
   public void onKeyReleased(KeyEvent event) {
-    System.out.println("Key " + event.getCode() + " released");
   }
 }

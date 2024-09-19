@@ -29,9 +29,7 @@ public class GuessController {
    * @param event the key event
    */
   @FXML
-  public void onKeyPressed(KeyEvent event) {
-    System.out.println("Key " + event.getCode() + " pressed");
-  }
+  public void onKeyPressed(KeyEvent event) {}
 
   /**
    * Handles the key released event.
@@ -39,7 +37,5 @@ public class GuessController {
    * @param event the key event
    */
   @FXML
-  public void onKeyReleased(KeyEvent event) {
-    System.out.println("Key " + event.getCode() + " released");
-  }
+  public void onKeyReleased(KeyEvent event) {}
 }

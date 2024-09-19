@@ -67,7 +67,7 @@ public class CrimeSceneController {
   private boolean stockAppOpen = false;
   private boolean logsAppOpen = false;
 
-  private ArrayList<Pane  > itemPaneList = new ArrayList<>();
+  private ArrayList<Pane> itemPaneList = new ArrayList<>();
   private ArrayList<Pane> stockPaneList = new ArrayList<>();
   private ArrayList<String> logsList = new ArrayList<>();
 
@@ -97,7 +97,6 @@ public class CrimeSceneController {
    */
   @FXML
   public void onKeyPressed(KeyEvent event) throws ApiProxyException {
-    System.out.println("Key " + event.getCode() + " pressed");
     // Searches either stock or logs, depending on which app is open
     if (event.getCode().toString().equals("ENTER") && stockAppOpen) {
       searchStock();
@@ -112,9 +111,7 @@ public class CrimeSceneController {
    * @param event the key event
    */
   @FXML
-  public void onKeyReleased(KeyEvent event) {
-    System.out.println("Key " + event.getCode() + " released");
-  }
+  public void onKeyReleased(KeyEvent event) {}
 
   /** Sets the card clue to be visible, allows for mouse tracking with the cleaning tool. */
   @FXML
