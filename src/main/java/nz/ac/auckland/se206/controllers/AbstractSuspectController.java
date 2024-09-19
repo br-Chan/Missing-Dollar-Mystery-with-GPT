@@ -21,6 +21,7 @@ public abstract class AbstractSuspectController extends GptChatter {
 
   protected String suspectId;
   protected String suspectName;
+  protected Boolean secondTimeTalking = false;
 
   public AbstractSuspectController() {
     context = new GameStateContext(this);
@@ -94,5 +95,11 @@ public abstract class AbstractSuspectController extends GptChatter {
     chatBubbleImage.setImage(
         new Image(App.class.getResource("/images/chatbubblepixel.png").toString()));
     super.setChatting(response);
+    if (!secondTimeTalking) {
+      secondTimeTalking = true;
+    } else if (secondTimeTalking) {
+      System.out.println(suspectName);
+      GameController.setVisited(suspectName);
+    }
   }
 }
