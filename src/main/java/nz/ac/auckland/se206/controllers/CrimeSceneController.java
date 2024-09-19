@@ -30,7 +30,7 @@ public class CrimeSceneController {
 
   @FXML private Rectangle cardRectangle;
   @FXML private Rectangle caseRectangle;
-  @FXML private Pane aiCardCluePane;
+  @FXML private Pane cardChatPane;
   @FXML private Pane cardPane;
   @FXML private Pane casePane;
   @FXML private Pane computerPane;
@@ -304,7 +304,7 @@ public class CrimeSceneController {
   public void searchLogs() {
     String start = searchLogsStart.getText().trim();
     String end = searchLogsEnd.getText().trim();
-    if(start.isEmpty() || end.isEmpty()){
+    if (start.isEmpty() || end.isEmpty()) {
       return;
     }
     searchLogsStart.clear();
@@ -346,7 +346,7 @@ public class CrimeSceneController {
         && pencilImage.getOpacity() < 0.1) {
       cardCleaned = true;
       cardDirtyLabel.setVisible(false);
-      aiCardCluePane.setVisible(true);
+      cardChatPane.setVisible(true);
     }
   }
 

@@ -47,7 +47,6 @@ public class AppTimer {
                     digitaltimeLeft = "0" + minutesLeft + ":" + secondsLeft;
                   }
                   timerLabel.setText(digitaltimeLeft);
-                  System.out.println(digitaltimeLeft);
 
                   // Stop the timer if 0 is reached and handle it.
                   if (timeLeft <= 0) {
