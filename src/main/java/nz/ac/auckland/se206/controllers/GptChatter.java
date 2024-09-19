@@ -26,6 +26,10 @@ public abstract class GptChatter {
 
   protected String promptFilename;
 
+  // This boolean is used for us to not use the large prompts for each suspect. When set to true, a
+  // dummy chat message will be sent to the GPT model every time a system or user prompt is sent.
+  protected boolean disableNormalPrompt = false;
+
   /**
    * Generates the system prompt.
    *
@@ -63,7 +67,19 @@ public abstract class GptChatter {
    * @throws ApiProxyException if there is an error communicating with the API proxy
    */
   protected ChatMessage runGpt(ChatMessage msg, boolean getReply) throws ApiProxyException {
-    chatCompletionRequest.addMessage(msg);
+    if (disableNormalPrompt) {
+      System.out.println(
+          "Normal prompts have been disabled for this chat so that tokens are not wasted on long"
+              + " prompts that aren't being tested. To enable this for a certain subclass of"
+              + " GptChatter, remove the command setting disableNormalPrompt to true in its"
+              + " constructor.");
+
+      chatCompletionRequest.addMessage(
+          new ChatMessage("user", "Make a short shrill shriek! Aa!"));
+    } else {
+      chatCompletionRequest.addMessage(msg);
+    }
+
     if (getReply) {
       try {
         // Fetch ChatGPT's response.
