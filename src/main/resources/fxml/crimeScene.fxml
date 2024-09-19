@@ -18,11 +18,11 @@
       onKeyReleased="#onKeyReleased" prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/22"
       xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.CrimeSceneController">
     <children>
-        <Sprite pickOnBounds="ture" scale="3.90625" spriteUrl="@../images/crimeScene/Restauant.png"/>
-        <Sprite layoutX="354.0" layoutY="333.0" pickOnBounds="ture" scale="1"
+        <Sprite pickOnBounds="true" scale="3.90625" spriteUrl="@../images/crimeScene/Restauant.png"/>
+        <Sprite layoutX="354.0" layoutY="333.0" pickOnBounds="true" scale="1"
                 spriteUrl="@../images/crimeScene/ID%20Card.png"/>
-        <Sprite layoutX="-19.0" pickOnBounds="ture" scale="4" spriteUrl="@../images/crimeScene/Drinks%20Case.png"/>
-        <Sprite spriteUrl="@../images/crimeScene/Computer.png" layoutX="77.0" layoutY="122.0" scale="4"/>
+        <Sprite layoutX="-21.0" layoutY="25.0" pickOnBounds="true" scale="3" spriteUrl="@../images/crimeScene/Drinks%20Case.png"/>
+        <Sprite spriteUrl="@../images/crimeScene/Computer.png" layoutX="77.0" layoutY="122.0" scale="3"/>
 
         <Rectangle fx:id="cardRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="15.0" layoutX="353.0"
                    layoutY="333.0" onMouseClicked="#showCardClue" opacity="0.0" stroke="BLACK" strokeType="INSIDE"
@@ -57,10 +57,10 @@
                         spriteUrl="@../images/crimeScene/cardClue/pencil.png" scale="6.3125"
                         onMouseDragged="#decreasePencilOpacity" onMouseMoved="#decreasePencilOpacity"/>
                 <Sprite fx:id="dirtImage" layoutX="160.0" layoutY="161.0"
-                        spriteUrl="@../images/crimeScene/cardClue/dirt.png" scale="5.5625"
+                        spriteUrl="@../images/crimeScene/cardClue/dust.png" scale="5.5625"
                         onMouseDragged="#decreaseDirtOpacity" onMouseMoved="#decreaseDirtOpacity"/>
                 <Sprite fx:id="debrisImage" layoutX="37.0" layoutY="79.0"
-                        spriteUrl="@../images/crimeScene/cardClue/dust.png" scale="6.5"
+                        spriteUrl="@../images/crimeScene/cardClue/dirt.png" scale="6.5"
                         onMouseDragged="#decreaseDebrisOpacity" onMouseMoved="#decreaseDebrisOpacity"/>
                 <Sprite fx:id="cleaningImage" scale="3.125" mouseTransparent="true" layoutX="133.0" layoutY="189.0"/>
                 <Button layoutX="38.0" layoutY="281.0" mnemonicParsing="false" onMouseClicked="#napkinSelected"
