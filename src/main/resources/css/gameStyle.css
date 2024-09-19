@@ -1,0 +1,50 @@
+.text-area {
+  -fx-background-color: transparent;
+  -fx-font-family: 'Consolas';
+  -fx-font-size: 10px;
+  -fx-text-fill: rgb(92, 92, 92);
+}
+
+.text-area .scroll-pane {
+  -fx-background-color: transparent;
+}
+
+.text-area .scroll-pane .viewport{
+  -fx-background-color: transparent;
+}
+
+
+.text-area .scroll-pane .content{
+  -fx-background-color: transparent;
+}
+
+.text-area .scroll-bar {
+  -fx-background-color: transparent; /* Transparent background for the scroll area */
+  -fx-opacity: 0.5; /* Set the opacity of the entire scrollbar */
+}
+
+.text-area .scroll-bar .thumb {
+  -fx-background-color: grey;  /* Simple grey rectangle for the scrollbar thumb */
+  -fx-background-insets: 0;  /* Remove any insets to keep it rectangular */
+  -fx-background-radius: 0;  /* No rounded corners */
+}
+
+.text-area .scroll-bar:horizontal .thumb,
+.text-area .scroll-bar:vertical .thumb {
+    -fx-background-color: grey;  /* Simple grey thumb */
+    -fx-background-insets: 0;
+    -fx-background-radius: 0;
+    -fx-pref-width: 6px;  /* Thinner horizontal scrollbar */
+    -fx-pref-height: 6px;  /* Thinner vertical scrollbar */
+}
+
+.text-area .scroll-bar:horizontal .track,
+.text-area .scroll-bar:vertical .track {
+    -fx-background-color: transparent;  /* Make the track transparent */
+}
+
+.text-area .scroll-bar:horizontal,
+.text-area .scroll-bar:vertical {
+    -fx-pref-width: 6px; /* Width of vertical scrollbar */
+    -fx-pref-height: 6px; /* Height of horizontal scrollbar */
+}

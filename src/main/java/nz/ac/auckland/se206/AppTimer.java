@@ -74,4 +74,8 @@ public class AppTimer {
       App.getScene().setRoot(SceneManager.getUiRoot(AppUi.RESULT));
     }
   }
+
+  public void cancelTimer() {
+    timer.cancel();
+  }
 }
