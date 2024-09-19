@@ -69,9 +69,9 @@ public class GameController {
   AppTimer appTimer;
   private ArrayList<ImageView> selectedList = new ArrayList<>();
 
-  private Boolean hueyVisited = false;
-  private Boolean louieVisited = false;
-  private Boolean deweyVisited = false;
+  private static Boolean hueyVisited = false;
+  private static Boolean louieVisited = false;
+  private static Boolean deweyVisited = false;
 
   /** Initializes the game scene and sets the initial game view. */
   @FXML
@@ -119,7 +119,6 @@ public class GameController {
             App.class
                 .getResource("/images/suspects/Louie Avatar.png")
                 .toString())); // Updates alert image to Louies avatar
-    louieVisited = true;
     louiePane.setVisible(false);
   }
 
@@ -132,7 +131,6 @@ public class GameController {
             App.class
                 .getResource("/images/suspects/Huey Avatar.png")
                 .toString())); // Updates alert image to Hueys avatar
-    hueyVisited = true;
     hueyPane.setVisible(false);
   }
 
@@ -145,7 +143,6 @@ public class GameController {
             App.class
                 .getResource("/images/suspects/Dewey Avatar.png")
                 .toString())); // Updates alert image to Deweys avatar
-    deweyVisited = true;
     deweyPane.setVisible(false);
   }
 
@@ -256,5 +253,21 @@ public class GameController {
                   });
             })
         .start(); // Start the thread
+  }
+
+  public static void setVisited(String suspect) {
+    switch (suspect) {
+      case "Huey":
+        hueyVisited = true;
+        break;
+      case "Louie":
+        louieVisited = true;
+        break;
+      case "Dewey":
+        deweyVisited = true;
+        break;
+      default:
+        break;
+    }
   }
 }
