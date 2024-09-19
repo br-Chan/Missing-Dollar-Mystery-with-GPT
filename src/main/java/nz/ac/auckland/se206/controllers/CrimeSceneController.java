@@ -6,6 +6,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.util.ArrayList;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
@@ -17,6 +18,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
 import nz.ac.auckland.se206.App;
+import nz.ac.auckland.se206.components.Sprite;
 
 /**
  * TODO: Fill in this JavaDoc comment.
@@ -30,14 +32,14 @@ public class CrimeSceneController {
 
   @FXML private Rectangle cardRectangle;
   @FXML private Rectangle caseRectangle;
-  @FXML private Pane aiCardCluePane;
+  @FXML private Pane cardChatPane;
   @FXML private Pane cardPane;
   @FXML private Pane casePane;
   @FXML private Pane computerPane;
-  @FXML private ImageView dirtImage;
-  @FXML private ImageView debrisImage;
-  @FXML private ImageView pencilImage;
-  @FXML private ImageView cleaningImage;
+  @FXML private Sprite dirtImage;
+  @FXML private Sprite debrisImage;
+  @FXML private Sprite pencilImage;
+  @FXML private Sprite cleaningImage;
   @FXML private Label cardDirtyLabel;
   @FXML private Button searchStockButton;
   @FXML private Button searchLogsButton;
@@ -171,8 +173,7 @@ public class CrimeSceneController {
       napkinOn = false;
     } else {
       cleaningImage.setVisible(true);
-      cleaningImage.setImage(
-          new Image((App.class.getResource("/images/crimeScene/cardClue/napkin.png")).toString()));
+      cleaningImage.spriteUrlProperty().set(CrimeSceneController.class.getResource("/images/crimeScene/cardClue/napkin.png").toString());
       napkinOn = true;
       brushOn = false;
       rubberOn = false;
@@ -186,8 +187,7 @@ public class CrimeSceneController {
       brushOn = false;
     } else {
       cleaningImage.setVisible(true);
-      cleaningImage.setImage(
-          new Image((App.class.getResource("/images/crimeScene/cardClue/brush.png")).toString()));
+      cleaningImage.spriteUrlProperty().set(CrimeSceneController.class.getResource("/images/crimeScene/cardClue/brush.png").toString());
       napkinOn = false;
       brushOn = true;
       rubberOn = false;
@@ -201,8 +201,7 @@ public class CrimeSceneController {
       rubberOn = false;
     } else {
       cleaningImage.setVisible(true);
-      cleaningImage.setImage(
-          new Image((App.class.getResource("/images/crimeScene/cardClue/rubber.png")).toString()));
+      cleaningImage.spriteUrlProperty().set(CrimeSceneController.class.getResource("/images/crimeScene/cardClue/rubber.png").toString());
       napkinOn = false;
       brushOn = false;
       rubberOn = true;
@@ -346,11 +345,11 @@ public class CrimeSceneController {
         && pencilImage.getOpacity() < 0.1) {
       cardCleaned = true;
       cardDirtyLabel.setVisible(false);
-      aiCardCluePane.setVisible(true);
+      cardChatPane.setVisible(true);
     }
   }
 
-  public void decreaseOpacity(ImageView image) {
+  public void decreaseOpacity(Node image) {
     image.setOpacity(image.getOpacity() - 0.005);
     checkCardCleaned();
   }

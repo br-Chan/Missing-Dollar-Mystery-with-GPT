@@ -5,7 +5,7 @@ public class Suspect3Controller extends AbstractSuspectController {
 
   public Suspect3Controller() {
     suspectId = "suspect3";
-    suspectName = "Louie";
+    suspectName = "Dewey";
     promptFilename = "suspect3.txt";
   }
 }

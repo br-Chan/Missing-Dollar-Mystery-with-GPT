@@ -12,7 +12,8 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="599.0" prefWidth="789.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.GameController">
+<?import nz.ac.auckland.se206.components.Sprite?>
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#onKeyPressed" onKeyReleased="#onKeyReleased" prefHeight="599.0" prefWidth="789.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.GameController">
    <center>
       <fx:include fx:id="gameView" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0" source="loading.fxml" />
    </center>
@@ -36,11 +37,7 @@
    <left>
       <Pane fx:id="leftPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="140.0" BorderPane.alignment="CENTER">
          <children>
-            <ImageView disable="true" fitHeight="119.0" fitWidth="119.0" layoutX="17.0" layoutY="3.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
-               <image>
-                  <Image url="@../images/Map.png" />
-               </image>
-            </ImageView>
+            <Sprite spriteUrl="@../images/Map.png" scale="4.375" />
             <ImageView fx:id="crimeSceneSelected" disable="true" fitHeight="31.0" fitWidth="31.0" layoutX="22.0" layoutY="17.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true" visible="false">
                <image>
                   <Image url="@../images/Selected.png" />

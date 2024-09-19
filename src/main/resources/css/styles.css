@@ -1,0 +1,20 @@
+.text-area {
+  -fx-background-color: white;
+  -fx-border-color: transparent;
+  -fx-border-width: 0;
+  -fx-padding: 0;
+  -fx-effect: null;
+}
+
+.text-area .content {
+  -fx-background-color: white;
+  -fx-effect: null;
+}
+
+.text-area .scroll-pane {
+  -fx-background-color: white;
+  -fx-background-insets: 0;
+  -fx-padding: 0;
+  -fx-border-color: transparent;
+  -fx-effect: null;
+}
