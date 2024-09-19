@@ -95,6 +95,10 @@ public abstract class AbstractSuspectController extends GptChatter {
     chatBubbleImage.setImage(
         new Image(App.class.getResource("/images/chatbubblepixel.png").toString()));
     super.setChatting(response);
+    updateVisitedStatus();
+  }
+
+  private void updateVisitedStatus() {
     if (!secondTimeTalking) {
       secondTimeTalking = true;
     } else if (secondTimeTalking) {
