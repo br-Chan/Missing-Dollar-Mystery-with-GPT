@@ -1,6 +1,8 @@
 package nz.ac.auckland.se206.components;
 
 import javafx.beans.NamedArg;
+import javafx.beans.property.*;
+import javafx.beans.value.WritableValue;
 import javafx.scene.canvas.Canvas;
 import javafx.scene.image.WritableImage;
 import javafx.scene.layout.Pane;
@@ -12,43 +14,53 @@ import java.net.URL;
 
 public class Sprite extends Pane {
     private Canvas canvas;
-//     private final BufferedImage image = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB);
-    private final BufferedImage image;
+    //     private final BufferedImage image = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB);
+    private BufferedImage image;
+    private SimpleStringProperty spriteUrl;
+    private SimpleDoubleProperty scale;
 
-    public Sprite(@NamedArg("spriteUrl") String spriteUrl) {
+
+    public SimpleStringProperty spriteUrlProperty() {
+        return spriteUrl;
+    }
+
+
+    public SimpleDoubleProperty scaleProperty() {
+        return scale;
+    }
+
+    public Sprite(@NamedArg("spriteUrl") String spriteUrl, @NamedArg("scale") double scale) {
         super();
         // Temporary variable to store image into so I can make the image final
         canvas = new Canvas();
         this.getChildren().add(canvas);
-        BufferedImage image;
 
+        this.spriteUrl = new SimpleStringProperty(spriteUrl);
+        this.scale = new SimpleDoubleProperty(scale);
+
+        scaleProperty().addListener((_event) -> renderImage());
+        spriteUrlProperty().addListener((_event) -> loadImage());
+
+        loadImage();
+    }
+
+    private void loadImage() {
         try {
-            image = ImageIO.read(new URL(spriteUrl));
+            image = ImageIO.read(new URL(spriteUrl.get()));
         } catch (IOException ex) {
             ex.printStackTrace();
             System.err.println("Failed to load sprite: " + ex.getMessage());
             image = new BufferedImage(2, 2, BufferedImage.TYPE_INT_ARGB);
         }
 
-        this.image = image;
-
-        sceneProperty().addListener((event) -> {
-            if (getScene() == null) {
-                return;
-            }
-
-            getScene().widthProperty().addListener((_event) -> renderImage());
-            getScene().heightProperty().addListener((_event) -> renderImage());
-        });
+        renderImage();
     }
 
 
     private void renderImage() {
-        var widowScale = Math.min(getScene().getWidth(), getScene().getHeight()) / 128d;
-
         // Resize the image
-        var width = (int) Math.floor(image.getWidth() * widowScale);
-        var height = (int) Math.floor(image.getHeight() * widowScale);
+        var width = (int) Math.floor(image.getWidth() * scale.get());
+        var height = (int) Math.floor(image.getHeight() * scale.get());
 
         setWidth(width);
         setHeight(height);
@@ -88,5 +100,13 @@ public class Sprite extends Pane {
 
         // Draw the image
         canvas.getGraphicsContext2D().drawImage(outputImage, 0, 0);
+    }
+
+    public void setX(double x) {
+        translateXProperty().set(x);
+    }
+
+    public void setY(double y) {
+        translateYProperty().set(y);
     }
 }
