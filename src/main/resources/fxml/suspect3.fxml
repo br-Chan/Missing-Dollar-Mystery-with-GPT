@@ -35,7 +35,7 @@
         <TextArea fx:id="txtaChat" editable="false" layoutX="270.0" layoutY="75.0" prefHeight="109.0" prefWidth="135.0"
                   style="-fx-background-color: white; -fx-border-color: transparent; -fx-border-width: 0; -fx-effect: null;"
                   stylesheets="@../css/styles.css" wrapText="true"/>
-        <TextField fx:id="txtInput" layoutX="9.0" layoutY="465.0" opacity="0.7" prefHeight="26.0" prefWidth="404.0"/>
+        <TextField fx:id="txtInput" layoutX="9.0" layoutY="465.0" opacity="0.85" prefHeight="26.0" prefWidth="404.0" style="-fx-border-color: black; -fx-border-width: 1px;"/>
         <Button fx:id="btnSend" layoutX="415.0" layoutY="465.0" mnemonicParsing="false" onAction="#onSendMessage"
                 prefHeight="25.0" prefWidth="76.0" text="Send"/>
     </children>
