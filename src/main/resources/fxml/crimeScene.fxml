@@ -291,18 +291,19 @@
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></Rectangle>
-                  <Label alignment="TOP_LEFT" layoutX="275.0" prefHeight="104.0" prefWidth="88.0" rotate="-10.0" style="-fx-background-color: D7CF9D;" text="to staff: chg amount of stock to match display case values so we know if any are stolen" textAlignment="CENTER" wrapText="true">
-                     <font>
-                        <Font name="Bradley Hand ITC" size="12.0" />
-                     </font>
-                  </Label>
                     </children>
                 </Pane>
                 <Pane fx:id="logPane" layoutX="77.0" layoutY="125.0" prefHeight="213.0" prefWidth="344.0" visible="false">
                     <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#bc9cb4" height="189.0" stroke="TRANSPARENT" strokeType="INSIDE" width="344.0" />
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#bc9cb4" height="30.0" layoutX="132.0" layoutY="183.0" onMouseClicked="#openStock" stroke="TRANSPARENT" strokeType="INSIDE" width="24.0" />
-                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#838383" height="24.0" layoutX="156.0" layoutY="189.0" onMouseClicked="#openStock" stroke="TRANSPARENT" strokeType="INSIDE" width="24.0" />
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#bc9cb4" height="30.0" layoutX="132.0" layoutY="183.0" onMouseClicked="#openStock" stroke="TRANSPARENT" strokeType="INSIDE" width="24.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Rectangle>
+                        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#838383" height="24.0" layoutX="156.0" layoutY="189.0" onMouseClicked="#openStock" stroke="TRANSPARENT" strokeType="INSIDE" width="24.0">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor></Rectangle>
                         <Text layoutX="7.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search for a time period (hours) to show entry/exit logs" />
                         <Button fx:id="searchLogsButton" layoutX="217.0" layoutY="25.0" mnemonicParsing="false" onAction="#onHandleSearchLogs" text="Search" />
                         <Text layoutX="7.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0" text="From                           To" />
@@ -311,6 +312,11 @@
                         <TextArea fx:id="logsArea" editable="false" layoutX="8.0" layoutY="57.0" prefHeight="122.0" prefWidth="259.0" />
                     </children>
                 </Pane>
+            <Label alignment="TOP_LEFT" layoutX="386.0" layoutY="93.0" prefHeight="104.0" prefWidth="88.0" rotate="-10.0" style="-fx-background-color: D7CF9D;" text="to staff: chg amount of stock to match display case values so we know if any are stolen" textAlignment="CENTER" wrapText="true">
+               <font>
+                  <Font name="Bradley Hand ITC" size="12.0" />
+               </font>
+            </Label>
             </children>
         </Pane>
     </children>
