@@ -100,9 +100,9 @@ public class CrimeSceneController {
     System.out.println("Key " + event.getCode() + " pressed");
     // Searches either stock or logs, depending on which app is open
     if (event.getCode().toString().equals("ENTER") && stockAppOpen) {
-      searchStock();
+      onHandleSearchStock();
     } else if (event.getCode().toString().equals("ENTER") && logsAppOpen) {
-      searchLogs();
+      onHandleSearchLogs();
     }
   }
 
@@ -307,7 +307,7 @@ public class CrimeSceneController {
   }
 
   @FXML
-  public void searchStock() {
+  private void onHandleSearchStock() {
     // Recieves the input in the search bar
     String query = searchStockField.getText().trim().toLowerCase();
     searchStockField.clear();
@@ -335,7 +335,7 @@ public class CrimeSceneController {
   }
 
   @FXML
-  public void searchLogs() {
+  private void onHandleSearchLogs() {
     // Recieves input from the search bar
     String start = searchLogsStart.getText().trim();
     String end = searchLogsEnd.getText().trim();

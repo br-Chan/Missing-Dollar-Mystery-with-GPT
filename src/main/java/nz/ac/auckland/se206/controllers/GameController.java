@@ -112,7 +112,7 @@ public class GameController {
   }
 
   @FXML
-  public void handleSuspect1ButtonClick(ActionEvent event) {
+  private void onHandleSuspectOneButtonClick(ActionEvent event) {
     setGameView(AppUi.SUSPECT1);
     showSelected(suspectOneSelected);
     suspectOneAlert.setImage(
@@ -124,7 +124,7 @@ public class GameController {
   }
 
   @FXML
-  public void handleSuspect2ButtonClick(ActionEvent event) {
+  private void onHandleSuspectTwoButtonClick(ActionEvent event) {
     setGameView(AppUi.SUSPECT2);
     showSelected(suspectTwoSelected);
     suspectTwoAlert.setImage(
@@ -136,7 +136,7 @@ public class GameController {
   }
 
   @FXML
-  public void handleSuspect3ButtonClick(ActionEvent event) {
+  private void onHandleSuspectThreeButtonClick(ActionEvent event) {
     setGameView(AppUi.SUSPECT3);
     showSelected(suspectThreeSelected);
     suspectThreeAlert.setImage(
@@ -148,13 +148,13 @@ public class GameController {
   }
 
   @FXML
-  public void handleCrimeSceneButtonClick(ActionEvent event) {
+  private void onHandleCrimeSceneButtonClick(ActionEvent event) {
     setGameView(AppUi.CRIME_SCENE);
     showSelected(crimeSceneSelected);
   }
 
   @FXML
-  public void handleGuessClick() throws IOException {
+  private void onHandleGuessClick() throws IOException {
     if (!hueyVisited || !louieVisited || !deweyVisited) {
       flashUnvisitedPanes(); // Flash all unvisited corresponding panes
     } else {

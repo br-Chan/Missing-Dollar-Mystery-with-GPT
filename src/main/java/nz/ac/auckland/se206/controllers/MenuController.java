@@ -19,7 +19,7 @@ public class MenuController {
    * @throws IOException if there is an I/O error
    */
   @FXML
-  private void handleStartButtonClick(ActionEvent event) throws IOException {
+  private void onHandleStartButtonClick(ActionEvent event) throws IOException {
     // Initialise the scene only when the start button is clicked so that the app timer starts
     // counting down at the right time.
     SceneManager.addUi(AppUi.GAME, App.loadFxml("game"));
