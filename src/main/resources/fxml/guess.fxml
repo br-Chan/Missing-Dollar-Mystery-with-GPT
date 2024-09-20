@@ -121,7 +121,10 @@
                                         <Font name="Consolas" size="16.0" />
                                     </font>
                                 </Label>
-                                <Button fx:id="handleSuspect3ButtonClick" mnemonicParsing="false" onAction="#handleSuspect3ButtonClick" opacity="0.0" prefHeight="131.0" prefWidth="174.0" text="Button" />
+                                <Button fx:id="handleSuspect3ButtonClick" mnemonicParsing="false" onAction="#handleSuspect3ButtonClick" opacity="0.0" prefHeight="131.0" prefWidth="174.0" text="Button">
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor></Button>
                             </children>
                         </Pane>
                     </children>
@@ -129,7 +132,7 @@
                         <Insets left="35.0" />
                     </padding>
                 </HBox>
-                <TextArea fx:id="reportTextArea" layoutX="10.0" layoutY="230.0" prefHeight="294.0" prefWidth="619.0" promptText="Write your report!" wrapText="true" onKeyPressed="#handleReportIssueKeyEvent">
+                <TextArea fx:id="reportTextArea" layoutX="10.0" layoutY="230.0" onKeyPressed="#handleReportIssueKeyEvent" prefHeight="294.0" prefWidth="619.0" promptText="Write your report!" wrapText="true">
                     <font>
                         <Font name="Bradley Hand ITC" size="27.0" />
                     </font>
