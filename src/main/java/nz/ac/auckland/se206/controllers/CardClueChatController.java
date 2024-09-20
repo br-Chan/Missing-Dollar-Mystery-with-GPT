@@ -20,7 +20,10 @@ public class CardClueChatController extends GptChatter {
    */
   @FXML
   public void initialize() {
+    // Debug statement
     System.out.println("Initialising AbstractSuspectController...");
+
+    // Checks if it is first time initialising
     if (isFirstTimeInit) {
       setChatting(
           new ChatMessage(

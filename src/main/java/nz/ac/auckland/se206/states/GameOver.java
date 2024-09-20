@@ -14,7 +14,9 @@ public class GameOver implements GameState {
    *
    * @param context the context of the game state
    */
-  public GameOver() {}
+  public GameOver() {
+    System.out.println("GameOver");
+  }
 
   /**
    * Handles the event when the guess button is clicked. Informs the player that the game is over

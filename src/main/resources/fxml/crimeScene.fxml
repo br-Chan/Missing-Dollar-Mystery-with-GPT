@@ -393,7 +393,7 @@
                         <TextField fx:id="searchStockField" layoutX="7.0" layoutY="25.0" prefHeight="25.0"
                                    prefWidth="208.0" promptText="Search item name"/>
                         <Button fx:id="searchStockButton" layoutX="217.0" layoutY="25.0" mnemonicParsing="false"
-                                onAction="#searchStock" text="Search"/>
+                                onAction="#onHandleSearchStock" text="Search"/>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#838383" height="24.0" layoutX="132.0"
                                    layoutY="189.0" onMouseClicked="#openLogs" stroke="TRANSPARENT" strokeType="INSIDE"
                                    width="24.0"/>
@@ -413,7 +413,7 @@
                         <Text layoutX="7.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0"
                               text="Search for a time period (hours) to show entry/exit logs"/>
                         <Button fx:id="searchLogsButton" layoutX="217.0" layoutY="25.0" mnemonicParsing="false"
-                                onAction="#searchLogs" text="Search"/>
+                                onAction="#onHandleSearchLogs" text="Search"/>
                         <Text layoutX="7.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0"
                               text="From                           To"/>
                         <TextField fx:id="searchLogsEnd" layoutX="143.0" layoutY="25.0" prefHeight="25.0"

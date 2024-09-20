@@ -37,8 +37,11 @@ import nz.ac.auckland.se206.SceneManager.AppUi;
  */
 public class GameController {
 
-  @FXML private Pane gameView;
+  private static Boolean hueyVisited = false;
+  private static Boolean louieVisited = false;
+  private static Boolean deweyVisited = false;
 
+  @FXML private BorderPane borderPane;
   @FXML private Button suspect1Button;
   @FXML private Button suspect2Button;
   @FXML private Button suspect3Button;
@@ -53,25 +56,23 @@ public class GameController {
   @FXML private ImageView suspectTwoAlert;
   @FXML private ImageView suspectThreeAlert;
 
+  @FXML private Label timerLabel;
+
   @FXML private Pane hueyPane;
   @FXML private Pane louiePane;
   @FXML private Pane deweyPane;
   @FXML private Pane leftPane;
   @FXML private Pane rightPane;
-  @FXML private BorderPane borderPane;
+  @FXML private Pane gameView;
   @FXML private Pane hueyFadePane;
   @FXML private Pane louieFadePane;
   @FXML private Pane deweyFadePane;
 
-  @FXML private Label timerLabel;
-
   private FadeTransition currentFadeTransition;
-  AppTimer appTimer;
+
   private ArrayList<ImageView> selectedList = new ArrayList<>();
 
-  private static Boolean hueyVisited = false;
-  private static Boolean louieVisited = false;
-  private static Boolean deweyVisited = false;
+  AppTimer appTimer;
 
   /** Initializes the game scene and sets the initial game view. */
   @FXML
@@ -111,7 +112,7 @@ public class GameController {
   }
 
   @FXML
-  public void handleSuspect1ButtonClick(ActionEvent event) {
+  private void onHandleSuspectOneButtonClick(ActionEvent event) {
     setGameView(AppUi.SUSPECT1);
     showSelected(suspectOneSelected);
     suspectOneAlert.setImage(
@@ -123,7 +124,7 @@ public class GameController {
   }
 
   @FXML
-  public void handleSuspect2ButtonClick(ActionEvent event) {
+  private void onHandleSuspectTwoButtonClick(ActionEvent event) {
     setGameView(AppUi.SUSPECT2);
     showSelected(suspectTwoSelected);
     suspectTwoAlert.setImage(
@@ -135,7 +136,7 @@ public class GameController {
   }
 
   @FXML
-  public void handleSuspect3ButtonClick(ActionEvent event) {
+  private void onHandleSuspectThreeButtonClick(ActionEvent event) {
     setGameView(AppUi.SUSPECT3);
     showSelected(suspectThreeSelected);
     suspectThreeAlert.setImage(
@@ -147,13 +148,13 @@ public class GameController {
   }
 
   @FXML
-  public void handleCrimeSceneButtonClick(ActionEvent event) {
+  private void onHandleCrimeSceneButtonClick(ActionEvent event) {
     setGameView(AppUi.CRIME_SCENE);
     showSelected(crimeSceneSelected);
   }
 
   @FXML
-  public void handleGuessClick() throws IOException {
+  private void onHandleGuessClick() throws IOException {
     if (!hueyVisited || !louieVisited || !deweyVisited) {
       flashUnvisitedPanes(); // Flash all unvisited corresponding panes
     } else {
@@ -256,15 +257,16 @@ public class GameController {
   }
 
   public static void setVisited(String suspect) {
+    // Switch case for setting visited booleans
     switch (suspect) {
       case "Huey":
-        hueyVisited = true;
+        hueyVisited = true; // Sets huey true
         break;
       case "Louie":
-        louieVisited = true;
+        louieVisited = true; // Sets louie true
         break;
       case "Dewey":
-        deweyVisited = true;
+        deweyVisited = true; // Sets dewey true
         break;
       default:
         break;

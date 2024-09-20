@@ -39,15 +39,18 @@ public abstract class GptChatter {
    */
   public void initialiseChatCompletionRequest(boolean setChattingNow) {
     try {
-      ApiProxyConfig config = ApiProxyConfig.readConfig();
+      ApiProxyConfig config = ApiProxyConfig.readConfig(); // Reads in the api config file
       chatCompletionRequest =
           new ChatCompletionRequest(config)
               .setN(1)
               .setTemperature(0.2)
               .setTopP(0.5)
-              .setMaxTokens(100);
+              .setMaxTokens(100); // Sets the settings for a general response
 
-      setChatting(runGpt(new ChatMessage("system", getSystemPrompt()), setChattingNow));
+      setChatting(
+          runGpt(
+              new ChatMessage("system", getSystemPrompt()),
+              setChattingNow)); // Starts the chat request
 
     } catch (ApiProxyException e) {
       e.printStackTrace();

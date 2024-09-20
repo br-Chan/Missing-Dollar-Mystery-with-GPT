@@ -29,7 +29,7 @@
             <Font name="Consolas" size="24.0" />
          </font>
       </Label>
-      <Button fx:id="startButton" alignment="CENTER" contentDisplay="CENTER" layoutX="340.0" layoutY="511.0" mnemonicParsing="false" onAction="#handleStartButtonClick" text="START">
+      <Button fx:id="startButton" alignment="CENTER" contentDisplay="CENTER" layoutX="340.0" layoutY="511.0" mnemonicParsing="false" onAction="#onHandleStartButtonClick" text="START">
          <font>
             <Font name="Consolas" size="27.0" />
          </font>
