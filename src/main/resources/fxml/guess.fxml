@@ -44,14 +44,14 @@
                         <Font name="Consolas" size="34.0" />
                     </font>
                 </Label>
-                <Button fx:id="sendReportButton" layoutX="14.0" layoutY="440.0" mnemonicParsing="false" onAction="#handleSendReportClick" prefHeight="39.0" prefWidth="109.0" text="SEND REPORT" />
+                <Button fx:id="sendReportButton" layoutX="14.0" layoutY="440.0" mnemonicParsing="false" onAction="#onHandleSendReportClick" prefHeight="39.0" prefWidth="109.0" text="SEND REPORT" />
             </children>
         </Pane>
     </right>
     <center>
         <Pane prefHeight="530.0" prefWidth="589.0" BorderPane.alignment="CENTER">
             <children>
-                <HBox layoutX="15.0" layoutY="32.0" onMouseClicked="#handleSuspect3ButtonClick" prefHeight="124.0" prefWidth="619.0" spacing="15.0">
+                <HBox layoutX="15.0" layoutY="32.0" onMouseClicked="#onHandleSuspect3ButtonClick" prefHeight="124.0" prefWidth="619.0" spacing="15.0">
                     <children>
                         <Pane prefHeight="124.0" prefWidth="174.0">
                             <children>
@@ -71,7 +71,7 @@
                                         <Font name="Consolas" size="16.0" />
                                     </font>
                                 </Label>
-                                <Button fx:id="suspect1Button" mnemonicParsing="false" onAction="#handleSuspect1ButtonClick" opacity="0.0" prefHeight="124.0" prefWidth="174.0" text="suspect 1">
+                                <Button fx:id="suspect1Button" mnemonicParsing="false" onAction="#onHandleSuspect1ButtonClick" opacity="0.0" prefHeight="124.0" prefWidth="174.0" text="suspect 1">
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
                                     </cursor>
@@ -96,7 +96,7 @@
                                         <Font name="Consolas" size="16.0" />
                                     </font>
                                 </Label>
-                                <Button fx:id="suspect2Button" mnemonicParsing="false" onAction="#handleSuspect2ButtonClick" opacity="0.0" prefHeight="124.0" prefWidth="174.0" text="suspect 2">
+                                <Button fx:id="suspect2Button" mnemonicParsing="false" onAction="#onHandleSuspect2ButtonClick" opacity="0.0" prefHeight="124.0" prefWidth="174.0" text="suspect 2">
                                     <cursor>
                                         <Cursor fx:constant="HAND" />
                                     </cursor>
@@ -121,7 +121,7 @@
                                         <Font name="Consolas" size="16.0" />
                                     </font>
                                 </Label>
-                                <Button fx:id="handleSuspect3ButtonClick" mnemonicParsing="false" onAction="#handleSuspect3ButtonClick" opacity="0.0" prefHeight="131.0" prefWidth="174.0" text="Button">
+                                <Button fx:id="onHandleSuspect3ButtonClick" mnemonicParsing="false" onAction="#onHandleSuspect3ButtonClick" opacity="0.0" prefHeight="131.0" prefWidth="174.0" text="Button">
                            <cursor>
                               <Cursor fx:constant="HAND" />
                            </cursor></Button>
@@ -132,7 +132,7 @@
                         <Insets left="35.0" />
                     </padding>
                 </HBox>
-                <TextArea fx:id="reportTextArea" layoutX="10.0" layoutY="230.0" onKeyPressed="#handleReportIssueKeyEvent" prefHeight="294.0" prefWidth="619.0" promptText="Write your report!" wrapText="true">
+                <TextArea fx:id="reportTextArea" layoutX="10.0" layoutY="230.0" onKeyPressed="#onHandleReportIssueKeyEvent" prefHeight="294.0" prefWidth="619.0" promptText="Write your report!" wrapText="true">
                     <font>
                         <Font name="Bradley Hand ITC" size="27.0" />
                     </font>

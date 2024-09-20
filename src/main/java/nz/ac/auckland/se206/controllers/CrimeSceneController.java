@@ -1,10 +1,5 @@
 package nz.ac.auckland.se206.controllers;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -18,6 +13,12 @@ import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.components.Sprite;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+
 /**
  * TODO: Fill in this JavaDoc comment.
  *
@@ -28,38 +29,69 @@ import nz.ac.auckland.se206.components.Sprite;
  */
 public class CrimeSceneController {
 
-  @FXML private Rectangle cardRectangle;
-  @FXML private Rectangle caseRectangle;
-  @FXML private Pane cardChatPane;
-  @FXML private Pane cardPane;
-  @FXML private Pane casePane;
-  @FXML private Pane computerPane;
-  @FXML private Sprite dirtImage;
-  @FXML private Sprite debrisImage;
-  @FXML private Sprite pencilImage;
-  @FXML private Sprite cleaningImage;
-  @FXML private Label cardDirtyLabel;
-  @FXML private Button searchStockButton;
-  @FXML private Button searchLogsButton;
-  @FXML private TextField searchStockField;
-  @FXML private TextField searchLogsStart;
-  @FXML private TextField searchLogsEnd;
-  @FXML private TextArea logsArea;
+  @FXML
+  private Rectangle cardRectangle;
+  @FXML
+  private Rectangle caseRectangle;
+  @FXML
+  private Pane cardChatPane;
+  @FXML
+  private Pane cardPane;
+  @FXML
+  private Pane casePane;
+  @FXML
+  private Pane computerPane;
+  @FXML
+  private Sprite dirtImage;
+  @FXML
+  private Sprite debrisImage;
+  @FXML
+  private Sprite pencilImage;
+  @FXML
+  private Sprite cleaningImage;
+  @FXML
+  private Label cardDirtyLabel;
+  @FXML
+  private Button searchStockButton;
+  @FXML
+  private Button searchLogsButton;
+  @FXML
+  private TextField searchStockField;
+  @FXML
+  private TextField searchLogsStart;
+  @FXML
+  private TextField searchLogsEnd;
+  @FXML
+  private TextArea logsArea;
 
-  @FXML private Pane suspensePane;
-  @FXML private Pane redDrinkPane;
-  @FXML private Pane blueDrinkPane;
-  @FXML private Pane greenDrinkPane;
-  @FXML private Pane pinkDrinkPane;
-  @FXML private Pane yellowDrinkPane;
-  @FXML private Pane logPane;
-  @FXML private Pane stockPane;
-  @FXML private Pane errorStockPane;
-  @FXML private Pane redStockPane;
-  @FXML private Pane blueStockPane;
-  @FXML private Pane greenStockPane;
-  @FXML private Pane pinkStockPane;
-  @FXML private Pane yellowStockPane;
+  @FXML
+  private Pane suspensePane;
+  @FXML
+  private Pane redDrinkPane;
+  @FXML
+  private Pane blueDrinkPane;
+  @FXML
+  private Pane greenDrinkPane;
+  @FXML
+  private Pane pinkDrinkPane;
+  @FXML
+  private Pane yellowDrinkPane;
+  @FXML
+  private Pane logPane;
+  @FXML
+  private Pane stockPane;
+  @FXML
+  private Pane errorStockPane;
+  @FXML
+  private Pane redStockPane;
+  @FXML
+  private Pane blueStockPane;
+  @FXML
+  private Pane greenStockPane;
+  @FXML
+  private Pane pinkStockPane;
+  @FXML
+  private Pane yellowStockPane;
 
   private boolean napkinOn;
   private boolean brushOn;
@@ -116,7 +148,9 @@ public class CrimeSceneController {
     System.out.println("Key " + event.getCode() + " released");
   }
 
-  /** Sets the card clue to be visible, allows for mouse tracking with the cleaning tool. */
+  /**
+   * Sets the card clue to be visible, allows for mouse tracking with the cleaning tool.
+   */
   @FXML
   public void showCardClue() {
     System.out.println("Showing card clue");
@@ -446,28 +480,21 @@ public class CrimeSceneController {
 
   private void updateLogs(Integer start, Integer end) {
     // Initialises an empty log
-    String logsString = "";
+    StringBuilder logsString = new StringBuilder();
 
     // Different cases for different start and end inputs
     if (start == end) {
-      logsString +=
-          "Showing logs during "
-              + start
-              + ":00,"; // Shows the start time if both start and end are the same
-      logsString = logsList.get(start);
+      logsString.append("Showing logs during ").append(start).append(":00,"); // Shows the start time if both start and end are the same
+
+      logsString.append(logsList.get(start));
     } else {
-      logsString +=
-          "Showing logs from "
-              + start
-              + ":00 to "
-              + end
-              + ":00,"; // Shows a time period if different
+      logsString.append("Showing logs from ").append(start).append(":00 to ").append(end).append(":00,"); // Shows a time period if different
       for (int i = start; i < end; i++) {
-        logsString += logsList.get(i);
+        logsString.append(logsList.get(i));
       }
     }
     // Replaces commas with a newlien character for formatting
-    logsArea.setText(logsString.replaceAll(",", "\n"));
+    logsArea.setText(logsString.toString().replaceAll(",", "\n"));
   }
 
   private void addAllLogs() {
