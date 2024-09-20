@@ -67,7 +67,7 @@ public class CrimeSceneController {
   private boolean stockAppOpen = false;
   private boolean logsAppOpen = false;
 
-  private ArrayList<Pane  > itemPaneList = new ArrayList<>();
+  private ArrayList<Pane> itemPaneList = new ArrayList<>();
   private ArrayList<Pane> stockPaneList = new ArrayList<>();
   private ArrayList<String> logsList = new ArrayList<>();
 
@@ -389,6 +389,10 @@ public class CrimeSceneController {
         && pencilImage.getOpacity() < 0.1) {
       cardDirtyLabel.setVisible(false);
       cardChatPane.setVisible(true);
+      cleaningImage.setVisible(false);
+      brushOn = false;
+      napkinOn = false;
+      rubberOn = false;
     }
   }
 
