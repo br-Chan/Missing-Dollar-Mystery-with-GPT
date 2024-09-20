@@ -29,7 +29,10 @@
       </TextArea>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="15.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
 
-        <Button text="Restart" />
+        <Button onAction="#onHandleRestart" text="Replay">
+         <font>
+            <Font size="15.0" />
+         </font></Button>
       <padding>
          <Insets top="45.0" />
       </padding>
