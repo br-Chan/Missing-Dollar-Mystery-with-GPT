@@ -1,7 +1,6 @@
 package nz.ac.auckland.se206;
 
 import java.io.IOException;
-
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -18,6 +17,8 @@ import nz.ac.auckland.se206.speech.FreeTextToSpeech;
 public class App extends Application {
 
   private static Scene scene;
+  private static Stage currentStage;
+  private static Stage oldStage;
 
   /**
    * NOTE TO DEVELOPERS: Edit this variable to change which scene is shown first when loading the
@@ -96,6 +97,7 @@ public class App extends Application {
   private void showFirstScene(final Stage stage, AppUi firstAppUi) {
     Parent root = SceneManager.getUiRoot(firstAppUi);
     scene = new Scene(root);
+    currentStage = stage;
     stage.setScene(scene);
     stage.show();
     stage.setOnCloseRequest(event -> handleWindowClose(event));
@@ -122,5 +124,15 @@ public class App extends Application {
 
   private void handleWindowClose(WindowEvent event) {
     FreeTextToSpeech.deallocateSynthesizer();
+  }
+
+  public static void restart() {
+    try {
+      oldStage = currentStage; // Initialises the old stage
+      new App().start(new Stage());
+      oldStage.close();
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
   }
 }
