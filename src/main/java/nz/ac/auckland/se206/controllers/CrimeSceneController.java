@@ -20,12 +20,6 @@ import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.components.Sprite;
 import nz.ac.auckland.se206.speech.TextToSpeech;
 
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.util.ArrayList;
-
 /**
  * TODO: Fill in this JavaDoc comment.
  *
@@ -36,69 +30,38 @@ import java.util.ArrayList;
  */
 public class CrimeSceneController {
 
-  @FXML
-  private Rectangle cardRectangle;
-  @FXML
-  private Rectangle caseRectangle;
-  @FXML
-  private Pane cardChatPane;
-  @FXML
-  private Pane cardPane;
-  @FXML
-  private Pane casePane;
-  @FXML
-  private Pane computerPane;
-  @FXML
-  private Sprite dirtImage;
-  @FXML
-  private Sprite debrisImage;
-  @FXML
-  private Sprite pencilImage;
-  @FXML
-  private Sprite cleaningImage;
-  @FXML
-  private Label cardDirtyLabel;
-  @FXML
-  private Button searchStockButton;
-  @FXML
-  private Button searchLogsButton;
-  @FXML
-  private TextField searchStockField;
-  @FXML
-  private TextField searchLogsStart;
-  @FXML
-  private TextField searchLogsEnd;
-  @FXML
-  private TextArea logsArea;
+  @FXML private Rectangle cardRectangle;
+  @FXML private Rectangle caseRectangle;
+  @FXML private Pane cardChatPane;
+  @FXML private Pane cardPane;
+  @FXML private Pane casePane;
+  @FXML private Pane computerPane;
+  @FXML private Sprite dirtImage;
+  @FXML private Sprite debrisImage;
+  @FXML private Sprite pencilImage;
+  @FXML private Sprite cleaningImage;
+  @FXML private Label cardDirtyLabel;
+  @FXML private Button searchStockButton;
+  @FXML private Button searchLogsButton;
+  @FXML private TextField searchStockField;
+  @FXML private TextField searchLogsStart;
+  @FXML private TextField searchLogsEnd;
+  @FXML private TextArea logsArea;
 
-  @FXML
-  private Pane suspensePane;
-  @FXML
-  private Pane redDrinkPane;
-  @FXML
-  private Pane blueDrinkPane;
-  @FXML
-  private Pane greenDrinkPane;
-  @FXML
-  private Pane pinkDrinkPane;
-  @FXML
-  private Pane yellowDrinkPane;
-  @FXML
-  private Pane logPane;
-  @FXML
-  private Pane stockPane;
-  @FXML
-  private Pane errorStockPane;
-  @FXML
-  private Pane redStockPane;
-  @FXML
-  private Pane blueStockPane;
-  @FXML
-  private Pane greenStockPane;
-  @FXML
-  private Pane pinkStockPane;
-  @FXML
-  private Pane yellowStockPane;
+  @FXML private Pane suspensePane;
+  @FXML private Pane redDrinkPane;
+  @FXML private Pane blueDrinkPane;
+  @FXML private Pane greenDrinkPane;
+  @FXML private Pane pinkDrinkPane;
+  @FXML private Pane yellowDrinkPane;
+  @FXML private Pane logPane;
+  @FXML private Pane stockPane;
+  @FXML private Pane errorStockPane;
+  @FXML private Pane redStockPane;
+  @FXML private Pane blueStockPane;
+  @FXML private Pane greenStockPane;
+  @FXML private Pane pinkStockPane;
+  @FXML private Pane yellowStockPane;
 
   private boolean napkinOn;
   private boolean brushOn;
@@ -501,11 +464,20 @@ public class CrimeSceneController {
 
     // Different cases for different start and end inputs
     if (start == end) {
-      logsString.append("Showing logs during ").append(start).append(":00,"); // Shows the start time if both start and end are the same
+      logsString
+          .append("Showing logs during ")
+          .append(start)
+          .append(":00,"); // Shows the start time if both start and end are the same
 
       logsString.append(logsList.get(start));
     } else {
-      logsString.append("Showing logs from ").append(start).append(":00 to ").append(end).append(":00,"); // Shows a time period if different
+      // Shows a time period if different
+      logsString
+          .append("Showing logs from ")
+          .append(start)
+          .append(":00 to ")
+          .append(end)
+          .append(":00,");
       for (int i = start; i < end; i++) {
         logsString.append(logsList.get(i));
       }

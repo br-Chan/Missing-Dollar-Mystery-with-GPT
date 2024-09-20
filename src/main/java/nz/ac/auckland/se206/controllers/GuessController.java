@@ -1,7 +1,7 @@
 package nz.ac.auckland.se206.controllers;
 
-import java.net.URISyntaxException;
 import java.io.IOException;
+import java.net.URISyntaxException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,7 +10,6 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.KeyEvent;
-import nz.ac.auckland.se206.speech.TextToSpeech;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.se206.App;
@@ -19,6 +18,7 @@ import nz.ac.auckland.se206.GameStateContext;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.Suspect;
+import nz.ac.auckland.se206.speech.TextToSpeech;
 
 /**
  * TODO: Fill in this JavaDoc comment.
@@ -52,7 +52,7 @@ public class GuessController {
   @FXML
   public void initialize() throws URISyntaxException {
     TextToSpeech.playVoiceline("MakeAGuess");
-    
+
     // Set the starting label to the default text
     System.out.println("Initialising guess scene...");
 
@@ -90,10 +90,11 @@ public class GuessController {
    */
   @FXML
   private void onHandleSuspect1ButtonClick(ActionEvent event) {
+    // sets chosen suspect as louie
     chosenSuspect = Suspect.LOUIE;
     sendDataToContext(null);
     suspect1Bg.setFill(selectedBg);
-
+    // sets the other backgrounds as unfilled
     suspect2Bg.setFill(notSelectedBug);
     suspect3Bg.setFill(notSelectedBug);
 
