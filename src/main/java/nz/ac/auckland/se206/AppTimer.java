@@ -4,8 +4,10 @@ import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 import javafx.application.Platform;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import nz.ac.auckland.se206.SceneManager.AppUi;
+import nz.ac.auckland.se206.controllers.ResultController;
 
 public class AppTimer {
 
@@ -78,7 +80,10 @@ public class AppTimer {
       SceneManager.addUi(AppUi.GUESS, App.loadFxml("guess"));
       App.getScene().setRoot(SceneManager.getUiRoot(AppUi.GUESS));
     } else if (startingTime == GUESSTIME) {
-      SceneManager.addUi(AppUi.RESULT, App.loadFxml("result"));
+      var loader = new FXMLLoader(AppTimer.class.getResource("/fxml/result.fxml"));
+      SceneManager.addUi(AppUi.RESULT, loader.load());
+      ResultController controller = loader.getController();
+      controller.setResult(false, null);
       App.getScene().setRoot(SceneManager.getUiRoot(AppUi.RESULT));
     }
   }
