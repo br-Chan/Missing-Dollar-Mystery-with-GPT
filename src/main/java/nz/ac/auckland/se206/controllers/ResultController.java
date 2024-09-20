@@ -11,6 +11,9 @@ import nz.ac.auckland.apiproxy.chat.openai.ChatCompletionRequest;
 import nz.ac.auckland.apiproxy.chat.openai.ChatCompletionResult;
 import nz.ac.auckland.apiproxy.config.ApiProxyConfig;
 import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
+import nz.ac.auckland.se206.GameStateContext;
+import nz.ac.auckland.se206.Suspect;
+import nz.ac.auckland.se206.states.GameState;
 
 /**
  * TODO: Fill in this JavaDoc comment.
@@ -46,6 +49,21 @@ public class ResultController {
       System.err.println("Could not read api proxy config");
       throw new RuntimeException(e);
     }
+  }
+
+  /**
+   * TODO: Fill in this JavaDoc comment.
+   *
+   * <p>Initializes the scene view.
+   */
+  @FXML
+  public void initialize() {
+    System.out.println("chose: " + GameStateContext.getChosenSuspect());
+    System.out.println(Suspect.LOUIE);
+    System.out.println(GameStateContext.getChosenSuspect().equals(Suspect.LOUIE));
+    System.out.println(GameStateContext.getReport());
+    setResult(
+        GameStateContext.getChosenSuspect().equals(Suspect.LOUIE), GameStateContext.getReport());
   }
 
   public void setResult(boolean isGuessCorrect, String reasoning) {
@@ -90,15 +108,5 @@ public class ResultController {
         };
 
     new Thread(task).start();
-  }
-
-  /**
-   * TODO: Fill in this JavaDoc comment.
-   *
-   * <p>Initializes the scene view.
-   */
-  @FXML
-  public void initialize() {
-    System.out.println("Initialising...");
   }
 }

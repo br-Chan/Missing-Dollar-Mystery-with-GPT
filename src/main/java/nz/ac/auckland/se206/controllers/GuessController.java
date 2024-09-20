@@ -39,7 +39,7 @@ public class GuessController {
 
   private Suspect chosenSuspect = Suspect.NONE;
 
-  GameStateContext gameStatecontext = new GameStateContext(null);
+  // GameStateContext gameStateContext = new GameStateContext(null);
 
   AppTimer appTimer;
 
@@ -56,6 +56,15 @@ public class GuessController {
     appTimer = new AppTimer(timerLabel, AppTimer.GUESSTIME);
     appTimer.beginCountdown();
     setupGuessButton();
+  }
+
+  @FXML
+  public void sendDataToContext(KeyEvent event) {
+    GameStateContext.setChosenSuspect(chosenSuspect);
+    System.out.println(GameStateContext.getChosenSuspect());
+
+    GameStateContext.setReport(reportTextArea.getText());
+    System.out.println(GameStateContext.getReport());
   }
 
   /**
@@ -78,6 +87,7 @@ public class GuessController {
   @FXML
   public void handleSuspect1ButtonClick(ActionEvent event) {
     chosenSuspect = Suspect.LOUIE;
+    sendDataToContext(null);
     suspect1Bg.setFill(selectedBg);
 
     suspect2Bg.setFill(notSelectedBug);
@@ -94,6 +104,7 @@ public class GuessController {
   public void handleSuspect2ButtonClick(ActionEvent event) {
     // Set the chosen suspect to Huey
     chosenSuspect = Suspect.HUEY;
+    sendDataToContext(null);
     suspect2Bg.setFill(selectedBg);
 
     // Set the other suspects to not selected
@@ -111,6 +122,7 @@ public class GuessController {
   public void handleSuspect3ButtonClick() {
     // Set the chosen suspect to Dewey
     chosenSuspect = Suspect.DEWEY;
+    sendDataToContext(null);
     suspect3Bg.setFill(selectedBg);
 
     // Set the other suspects to not selected
@@ -141,7 +153,7 @@ public class GuessController {
     Parent root = loader.load();
     ResultController controller = loader.getController();
     // Set the result of the guess
-    controller.setResult(chosenSuspect.equals(Suspect.LOUIE), reportTextArea.getText());
+    // controller.setResult(chosenSuspect.equals(Suspect.LOUIE), reportTextArea.getText());
     SceneManager.addUi(AppUi.RESULT, root);
 
     App.getScene().setRoot(SceneManager.getUiRoot(AppUi.RESULT));
