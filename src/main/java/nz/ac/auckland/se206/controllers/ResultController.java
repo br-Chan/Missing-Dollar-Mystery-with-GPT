@@ -13,12 +13,11 @@ import nz.ac.auckland.apiproxy.chat.openai.ChatCompletionRequest;
 import nz.ac.auckland.apiproxy.chat.openai.ChatCompletionResult;
 import nz.ac.auckland.apiproxy.config.ApiProxyConfig;
 import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
-import nz.ac.auckland.se206.GameStateContext;
-import nz.ac.auckland.se206.Suspect;
-import nz.ac.auckland.se206.states.GameState;
 import nz.ac.auckland.se206.App;
+import nz.ac.auckland.se206.GameStateContext;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
+import nz.ac.auckland.se206.Suspect;
 
 /**
  * TODO: Fill in this JavaDoc comment.
@@ -36,6 +35,7 @@ public class ResultController {
   private ChatCompletionRequest completionRequest;
 
   public ResultController() {
+    // tries this thing
     try {
       var systemPromptFile =
           new String(
@@ -46,6 +46,7 @@ public class ResultController {
           new ChatCompletionRequest(ApiProxyConfig.readConfig())
               .addMessage("system", systemPromptFile);
     } catch (NullPointerException e) {
+      // If doesnt load prompt
       System.err.println("Could not load prompt");
     } catch (IOException e) {
       System.err.println("Could not load system prompt");
@@ -63,15 +64,12 @@ public class ResultController {
    */
   @FXML
   public void initialize() {
-    System.out.println("chose: " + GameStateContext.getChosenSuspect());
-    System.out.println(Suspect.LOUIE);
-    System.out.println(GameStateContext.getChosenSuspect().equals(Suspect.LOUIE));
-    System.out.println(GameStateContext.getReport());
     setResult(
         GameStateContext.getChosenSuspect().equals(Suspect.LOUIE), GameStateContext.getReport());
   }
 
   public void setResult(boolean isGuessCorrect, String reasoning) {
+    // if guess is wrong does stuff
     if (!isGuessCorrect) {
       guessStatus.setText("You guessed wrong!");
       marking.setVisible(false);
@@ -80,7 +78,7 @@ public class ResultController {
     }
 
     guessStatus.setText("You guessed correctly!");
-
+    // spawn background task to do stuffff
     var task =
         new Task<Void>() {
           @Override
@@ -92,7 +90,7 @@ public class ResultController {
               System.err.println("Could not get chatgpt response " + e.getMessage());
               return null;
             }
-
+            // update the ui
             Platform.runLater(
                 () -> {
                   var message = result.getChoice(0).getChatMessage().getContent();
@@ -111,9 +109,10 @@ public class ResultController {
             return null;
           }
         };
-
+    // startes thread
     new Thread(task).start();
   }
+
   @FXML
   private void onHandleRestart() throws IOException {
     SceneManager.addUi(AppUi.RESTART, App.loadFxml("restart"));

@@ -20,6 +20,7 @@ public class CardClueChatController extends GptChatter {
    */
   @FXML
   public void initialize() {
+    // checks if first time initing
     if (isFirstTimeInit) {
       setChatting(
           new ChatMessage(
@@ -28,6 +29,7 @@ public class CardClueChatController extends GptChatter {
                   + " \"look at profile picture\", \"turn card around\", etc."));
       isFirstTimeInit = false;
     }
+    // calls chat request
     initialiseChatCompletionRequest(false);
   }
 
