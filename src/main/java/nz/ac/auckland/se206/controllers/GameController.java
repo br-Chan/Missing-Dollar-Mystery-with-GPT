@@ -41,6 +41,23 @@ public class GameController {
   private static Boolean louieVisited = false;
   private static Boolean deweyVisited = false;
 
+  public static void setVisited(String suspect) {
+    // Switch case for setting visited booleans
+    switch (suspect) {
+      case "Huey":
+        hueyVisited = true; // Sets huey true
+        break;
+      case "Louie":
+        louieVisited = true; // Sets louie true
+        break;
+      case "Dewey":
+        deweyVisited = true; // Sets dewey true
+        break;
+      default:
+        break;
+    }
+  }
+
   @FXML private BorderPane borderPane;
   @FXML private Button suspect1Button;
   @FXML private Button suspect2Button;
@@ -73,23 +90,6 @@ public class GameController {
   private ArrayList<ImageView> selectedList = new ArrayList<>();
 
   AppTimer appTimer;
-
-  public static void setVisited(String suspect) {
-    // Switch case for setting visited booleans
-    switch (suspect) {
-      case "Huey":
-        hueyVisited = true; // Sets huey true
-        break;
-      case "Louie":
-        louieVisited = true; // Sets louie true
-        break;
-      case "Dewey":
-        deweyVisited = true; // Sets dewey true
-        break;
-      default:
-        break;
-    }
-  }
 
   /** Initializes the game scene and sets the initial game view. */
   @FXML
