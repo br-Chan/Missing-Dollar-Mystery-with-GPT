@@ -16,14 +16,6 @@ public class Sprite extends Pane {
   private SimpleStringProperty spriteUrl;
   private SimpleDoubleProperty scale;
 
-  public SimpleStringProperty spriteUrlProperty() {
-    return spriteUrl;
-  }
-
-  public SimpleDoubleProperty scaleProperty() {
-    return scale;
-  }
-
   public Sprite(@NamedArg("spriteUrl") String spriteUrl, @NamedArg("scale") double scale) {
     super();
     // Temporary variable to store image into so I can make the image final
@@ -37,6 +29,14 @@ public class Sprite extends Pane {
     spriteUrlProperty().addListener((_event) -> loadImage());
 
     loadImage();
+  }
+
+  public SimpleStringProperty spriteUrlProperty() {
+    return spriteUrl;
+  }
+
+  public SimpleDoubleProperty scaleProperty() {
+    return scale;
   }
 
   private void loadImage() {
