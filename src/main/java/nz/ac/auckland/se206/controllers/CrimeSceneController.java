@@ -69,6 +69,10 @@ public class CrimeSceneController {
   private boolean stockAppOpen = false;
   private boolean logsAppOpen = false;
 
+  private boolean firstTimeCardClue = true;
+  private boolean firstTimeDisplayCaseClue = true;
+  private boolean firstTimeComputerClue = true;
+
   private ArrayList<Pane> itemPaneList = new ArrayList<>();
   private ArrayList<Pane> stockPaneList = new ArrayList<>();
   private ArrayList<String> logsList = new ArrayList<>();
@@ -117,9 +121,13 @@ public class CrimeSceneController {
   @FXML
   public void onKeyReleased(KeyEvent event) {}
 
-  /** Sets the card clue to be visible, allows for mouse tracking with the cleaning tool. */
+  /**
+   * Sets the card clue to be visible, allows for mouse tracking with the cleaning tool.
+   *
+   * @throws URISyntaxException
+   */
   @FXML
-  public void showCardClue() {
+  public void showCardClue() throws URISyntaxException {
     cardPane.setVisible(true);
     // Tracks the cleaning tool on mouse move or drag
     cardPane.setOnMouseMoved(
@@ -135,6 +143,11 @@ public class CrimeSceneController {
     napkinOn = false;
     brushOn = false;
     rubberOn = false;
+    // Play voiceline if first time
+    if (firstTimeCardClue) {
+      TextToSpeech.playVoiceline("IDCard");
+      firstTimeCardClue = false;
+    }
   }
 
   @FXML
@@ -233,8 +246,13 @@ public class CrimeSceneController {
   }
 
   @FXML
-  public void showCaseClue() {
+  public void showCaseClue() throws URISyntaxException {
     casePane.setVisible(true);
+    // Play voiceline if first time
+    if (firstTimeDisplayCaseClue) {
+      TextToSpeech.playVoiceline("DisplayCase");
+      firstTimeDisplayCaseClue = false;
+    }
   }
 
   @FXML
@@ -268,8 +286,13 @@ public class CrimeSceneController {
   }
 
   @FXML
-  public void showComputerClue() {
+  public void showComputerClue() throws URISyntaxException {
     computerPane.setVisible(true);
+    // Play voiceline if first time
+    if (firstTimeComputerClue) {
+      TextToSpeech.playVoiceline("Computer");
+      firstTimeComputerClue = false;
+    }
   }
 
   @FXML
