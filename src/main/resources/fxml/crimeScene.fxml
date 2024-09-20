@@ -50,6 +50,12 @@
             <children>
                 <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#000000b2" height="500.0" layoutX="-1.0" layoutY="-1.0"
                            stroke="TRANSPARENT" strokeType="INSIDE" width="500.0"/>
+                <Label layoutX="15" layoutY="10" text="ID CARD"
+                       textFill="WHITE">
+                    <font>
+                        <Font size="31.0"/>
+                    </font>
+                </Label>
                 <Button fx:id="cardBackButton" layoutX="450.0" layoutY="13.0" mnemonicParsing="false"
                         onMouseClicked="#hideCardClue" text="Back"/>
                 <Sprite layoutX="39.0" layoutY="38.0" spriteUrl="@../images/crimeScene/ID%20Card.png" scale="17.5"/>
@@ -87,9 +93,15 @@
             <children>
                 <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#000000b2" height="500.0" stroke="TRANSPARENT"
                            strokeType="INSIDE" width="500.0"/>
+                <Label layoutX="15" layoutY="10" text="Display Case"
+                       textFill="WHITE">
+                    <font>
+                        <Font size="31.0"/>
+                    </font>
+                </Label>
                 <Sprite spriteUrl="@../images/crimeScene/Drinks%20Case.png" scale="12.75" layoutX="-81.0"
                         layoutY="22.0"/>
-                <Button fx:id="caseBackButton" layoutX="451.0" layoutY="22.0" mnemonicParsing="false"
+                <Button fx:id="caseBackButton" layoutX="450.0" layoutY="13.0" mnemonicParsing="false"
                         onMouseClicked="#hideCaseClue" text="Back"/>
                 <Pane fx:id="redDrinkPane" layoutX="225.0" layoutY="80.0" prefHeight="368.0" prefWidth="319.0"
                       visible="false">
@@ -227,6 +239,12 @@
             <children>
                 <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#000000b2" height="500.0" layoutX="-1.0" layoutY="-1.0"
                            stroke="TRANSPARENT" strokeType="INSIDE" width="500.0"/>
+                <Label layoutX="15" layoutY="10" text="Computer"
+                       textFill="WHITE">
+                    <font>
+                        <Font size="31.0"/>
+                    </font>
+                </Label>
                 <Button fx:id="cardBackButton1" layoutX="450.0" layoutY="13.0" mnemonicParsing="false"
                         onMouseClicked="#hideComputerClue" text="Back"/>
                 <Sprite spriteUrl="@../images/crimeScene/Computer.png" layoutX="5.0" layoutY="48.0" scale="30.5"/>
