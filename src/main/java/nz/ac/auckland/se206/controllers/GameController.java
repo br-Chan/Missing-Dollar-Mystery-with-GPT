@@ -1,6 +1,7 @@
 package nz.ac.auckland.se206.controllers;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import javafx.animation.FadeTransition;
 import javafx.application.Platform;
@@ -23,6 +24,7 @@ import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.AppTimer;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
+import nz.ac.auckland.se206.speech.TextToSpeech;
 
 /**
  * TODO: Fill in this JavaDoc comment.
@@ -91,6 +93,10 @@ public class GameController {
 
   AppTimer appTimer;
 
+  private int hueyCount = 0;
+  private int louieCount = 0;
+  private int deweyCount = 0;
+
   /** Initializes the game scene and sets the initial game view. */
   @FXML
   public void initialize() {
@@ -114,9 +120,7 @@ public class GameController {
    * @param event the key event
    */
   @FXML
-  public void onKeyPressed(KeyEvent event) {
-    System.out.println("Key " + event.getCode() + " pressed");
-  }
+  public void onKeyPressed(KeyEvent event) {}
 
   /**
    * Handles the key released event.
@@ -124,16 +128,14 @@ public class GameController {
    * @param event the key event
    */
   @FXML
-  public void onKeyReleased(KeyEvent event) {
-    System.out.println("Key " + event.getCode() + " released");
-  }
+  public void onKeyReleased(KeyEvent event) {}
 
   private void setGameView(AppUi appUi) {
     gameView.getChildren().setAll(SceneManager.getUiRoot(appUi));
   }
 
   @FXML
-  private void onHandleSuspectOneButtonClick(ActionEvent event) {
+  private void onHandleSuspectOneButtonClick(ActionEvent event) throws URISyntaxException {
     setGameView(AppUi.SUSPECT1);
     showSelected(suspectOneSelected);
     suspectOneAlert.setImage(
@@ -142,10 +144,15 @@ public class GameController {
                 .getResource("/images/suspects/Louie Avatar.png")
                 .toString())); // Updates alert image to Louies avatar
     louiePane.setVisible(false);
+    louieCount++;
+    // Play voiceline if first time
+    if (louieCount == 1) {
+      TextToSpeech.playVoiceline("Louie");
+    }
   }
 
   @FXML
-  private void onHandleSuspectTwoButtonClick(ActionEvent event) {
+  private void onHandleSuspectTwoButtonClick(ActionEvent event) throws URISyntaxException {
     setGameView(AppUi.SUSPECT2);
     showSelected(suspectTwoSelected);
     suspectTwoAlert.setImage(
@@ -154,10 +161,15 @@ public class GameController {
                 .getResource("/images/suspects/Huey Avatar.png")
                 .toString())); // Updates alert image to Hueys avatar
     hueyPane.setVisible(false);
+    hueyCount++;
+    // Play voiceline if first time
+    if (hueyCount == 1) {
+      TextToSpeech.playVoiceline("Huey");
+    }
   }
 
   @FXML
-  private void onHandleSuspectThreeButtonClick(ActionEvent event) {
+  private void onHandleSuspectThreeButtonClick(ActionEvent event) throws URISyntaxException {
     setGameView(AppUi.SUSPECT3);
     showSelected(suspectThreeSelected);
     suspectThreeAlert.setImage(
@@ -166,6 +178,11 @@ public class GameController {
                 .getResource("/images/suspects/Dewey Avatar.png")
                 .toString())); // Updates alert image to Deweys avatar
     deweyPane.setVisible(false);
+    deweyCount++;
+    // Play voiceline if first time
+    if (deweyCount == 1) {
+      TextToSpeech.playVoiceline("Dewey");
+    }
   }
 
   @FXML

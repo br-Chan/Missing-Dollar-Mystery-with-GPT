@@ -21,10 +21,6 @@ public class AppTimer {
   private int timeLeft;
 
   public AppTimer(Label timerLabel, int startingTime) {
-    if (timerLabel == null) {
-      System.out.println("TimerLabel is null!");
-    }
-
     this.timerLabel = timerLabel;
     timer = new Timer(true);
     this.startingTime = startingTime;

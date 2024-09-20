@@ -1,5 +1,11 @@
 package nz.ac.auckland.se206.controllers;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.net.URISyntaxException;
+import java.util.ArrayList;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
@@ -12,6 +18,7 @@ import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.components.Sprite;
+import nz.ac.auckland.se206.speech.TextToSpeech;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -99,6 +106,10 @@ public class CrimeSceneController {
   private boolean stockAppOpen = false;
   private boolean logsAppOpen = false;
 
+  private boolean firstTimeCardClue = true;
+  private boolean firstTimeDisplayCaseClue = true;
+  private boolean firstTimeComputerClue = true;
+
   private ArrayList<Pane> itemPaneList = new ArrayList<>();
   private ArrayList<Pane> stockPaneList = new ArrayList<>();
   private ArrayList<String> logsList = new ArrayList<>();
@@ -107,10 +118,12 @@ public class CrimeSceneController {
    * TODO: Fill in this JavaDoc comment.
    *
    * <p>Initializes the scene view.
+   *
+   * @throws URISyntaxException
    */
   @FXML
-  public void initialize() {
-    System.out.println("Initialising...");
+  public void initialize() throws URISyntaxException {
+    System.out.println("Initialising crime scene scene...");
     // Hides all panes relating to clues
     cardPane.setVisible(false);
     casePane.setVisible(false);
@@ -129,7 +142,6 @@ public class CrimeSceneController {
    */
   @FXML
   public void onKeyPressed(KeyEvent event) throws ApiProxyException {
-    System.out.println("Key " + event.getCode() + " pressed");
     // Searches either stock or logs, depending on which app is open
     if (event.getCode().toString().equals("ENTER") && stockAppOpen) {
       onHandleSearchStock();
@@ -144,16 +156,15 @@ public class CrimeSceneController {
    * @param event the key event
    */
   @FXML
-  public void onKeyReleased(KeyEvent event) {
-    System.out.println("Key " + event.getCode() + " released");
-  }
+  public void onKeyReleased(KeyEvent event) {}
 
   /**
    * Sets the card clue to be visible, allows for mouse tracking with the cleaning tool.
+   *
+   * @throws URISyntaxException
    */
   @FXML
-  public void showCardClue() {
-    System.out.println("Showing card clue");
+  public void showCardClue() throws URISyntaxException {
     cardPane.setVisible(true);
     // Tracks the cleaning tool on mouse move or drag
     cardPane.setOnMouseMoved(
@@ -169,12 +180,16 @@ public class CrimeSceneController {
     napkinOn = false;
     brushOn = false;
     rubberOn = false;
+    // Play voiceline if first time
+    if (firstTimeCardClue) {
+      TextToSpeech.playVoiceline("IDCard");
+      firstTimeCardClue = false;
+    }
   }
 
   @FXML
   public void hideCardClue() {
     // Sets the card clue pane invisible
-    System.out.println("Hiding card clue");
     cardPane.setVisible(false);
     cleaningImage.setVisible(false);
     // Turns off all cleaning images
@@ -268,16 +283,17 @@ public class CrimeSceneController {
   }
 
   @FXML
-  public void showCaseClue() {
-    // Shows the case clue
-    System.out.println("Showing case clue");
+  public void showCaseClue() throws URISyntaxException {
     casePane.setVisible(true);
+    // Play voiceline if first time
+    if (firstTimeDisplayCaseClue) {
+      TextToSpeech.playVoiceline("DisplayCase");
+      firstTimeDisplayCaseClue = false;
+    }
   }
 
   @FXML
   public void hideCaseClue() {
-    // Hides the case clue
-    System.out.println("Hiding case clue");
     casePane.setVisible(false);
   }
 
@@ -307,16 +323,17 @@ public class CrimeSceneController {
   }
 
   @FXML
-  public void showComputerClue() {
-    // Shows the computer clue
-    System.out.println("Showing computer clue");
+  public void showComputerClue() throws URISyntaxException {
     computerPane.setVisible(true);
+    // Play voiceline if first time
+    if (firstTimeComputerClue) {
+      TextToSpeech.playVoiceline("Computer");
+      firstTimeComputerClue = false;
+    }
   }
 
   @FXML
   public void hideComputerClue() {
-    // Hides the computer clue
-    System.out.println("Hiding computer clue");
     computerPane.setVisible(false);
   }
 

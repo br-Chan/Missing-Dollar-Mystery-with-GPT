@@ -1,5 +1,6 @@
 package nz.ac.auckland.se206.controllers;
 
+import java.net.URISyntaxException;
 import java.io.IOException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
@@ -9,6 +10,7 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.KeyEvent;
+import nz.ac.auckland.se206.speech.TextToSpeech;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.se206.App;
@@ -48,7 +50,9 @@ public class GuessController {
 
   /** Initializes the guess scene. */
   @FXML
-  public void initialize() {
+  public void initialize() throws URISyntaxException {
+    TextToSpeech.playVoiceline("MakeAGuess");
+    
     // Set the starting label to the default text
     System.out.println("Initialising guess scene...");
 
