@@ -16,12 +16,15 @@
 
 <Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#onKeyPressed" onKeyReleased="#onKeyReleased" prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.CrimeSceneController">
     <children>
-        <Sprite pickOnBounds="true" scale="3.90625" spriteUrl="@../images/crimeScene/Restauant.png" />
-        <Sprite layoutX="354.0" layoutY="333.0" pickOnBounds="true" scale="1" spriteUrl="@../images/crimeScene/ID%20Card.png" />
-        <Sprite layoutX="-21.0" layoutY="25.0" pickOnBounds="true" scale="3" spriteUrl="@../images/crimeScene/Drinks%20Case.png" />
-        <Sprite layoutX="77.0" layoutY="122.0" scale="3" spriteUrl="@../images/crimeScene/Computer.png" />
+        <Sprite pickOnBounds="true" scale="3.90625" spriteUrl="@../images/crimeScene/Restauant.png"/>
+        <Sprite layoutX="354.0" layoutY="20.0" pickOnBounds="true" scale="1"
+                spriteUrl="@../images/crimeScene/ID%20Card.png"/>
+        <Sprite layoutX="-21.0" layoutY="25.0" pickOnBounds="true" scale="3" spriteUrl="@../images/crimeScene/Drinks%20Case.png"/>
+        <Sprite spriteUrl="@../images/crimeScene/Computer.png" layoutX="77.0" layoutY="122.0" scale="3"/>
 
-        <Rectangle fx:id="cardRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="15.0" layoutX="353.0" layoutY="333.0" onMouseClicked="#showCardClue" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="18.0">
+        <Rectangle fx:id="cardRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="15.0" layoutX="353.0"
+                   layoutY="20.0" onMouseClicked="#showCardClue" opacity="0.0" stroke="BLACK" strokeType="INSIDE"
+                   width="18.0">
             <cursor>
                 <Cursor fx:constant="HAND" />
             </cursor>

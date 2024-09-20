@@ -4,8 +4,10 @@ import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 import javafx.application.Platform;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
 import nz.ac.auckland.se206.SceneManager.AppUi;
+import nz.ac.auckland.se206.controllers.ResultController;
 
 public class AppTimer {
 
@@ -29,6 +31,10 @@ public class AppTimer {
     timeLeft = startingTime;
   }
 
+  /**
+   * Starts the countdown from the given starting time, and automatically handles when the timer
+   * runs out.
+   */
   public void beginCountdown() {
     TimerTask task =
         new TimerTask() {
@@ -65,16 +71,32 @@ public class AppTimer {
     timer.scheduleAtFixedRate(task, 1000, 1000);
   }
 
+  /**
+   * Switches the scene to either the guess scene or results scene depending on how much total time
+   * the timer was counting down from.
+   */
   private void handleTimeUp() throws IOException {
     if (startingTime == GAMETIME) {
       SceneManager.addUi(AppUi.GUESS, App.loadFxml("guess"));
       App.getScene().setRoot(SceneManager.getUiRoot(AppUi.GUESS));
     } else if (startingTime == GUESSTIME) {
-      SceneManager.addUi(AppUi.RESULT, App.loadFxml("result"));
+      var loader = new FXMLLoader(AppTimer.class.getResource("/fxml/result.fxml"));
+      SceneManager.addUi(AppUi.RESULT, loader.load());
+      ResultController controller = loader.getController();
+      controller.setResult(false, null);
       App.getScene().setRoot(SceneManager.getUiRoot(AppUi.RESULT));
     }
   }
 
+  /**
+   * Cancels the timer; particularly useful when clicking a button to switch the scene while the
+   * timer is still going, and therefore need to cancel the timer on its own.
+   *
+   * <p>Suggestion: Could possibly just call handleTimeUp() instead of this, and timer.cancel() is
+   * called at the start of handleTimeUp() and nowhere else. So when you click the guess button in
+   * the game scene for example, handleTimeUp() is called and it's as if the timer had run out, and
+   * everything works as expected without the need for this method.
+   */
   public void cancelTimer() {
     timer.cancel();
   }

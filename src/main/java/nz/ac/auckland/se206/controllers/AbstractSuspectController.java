@@ -15,9 +15,9 @@ import nz.ac.auckland.se206.speech.TextToSpeech;
 
 public abstract class AbstractSuspectController extends GptChatter {
 
-  @FXML private ImageView chatBubbleImage;
-
   protected static GameStateContext context;
+
+  @FXML private ImageView chatBubbleImage;
 
   protected String suspectId;
   protected String suspectName;
