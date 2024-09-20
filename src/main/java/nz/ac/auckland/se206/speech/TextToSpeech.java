@@ -34,14 +34,15 @@ public class TextToSpeech {
           protected Void call() {
             try {
               ApiProxyConfig config = ApiProxyConfig.readConfig();
-              Provider provider = Provider.GOOGLE;
-              Voice voice = Voice.GOOGLE_EN_US_STANDARD_H;
+              Provider provider = Provider.OPENAI;
+              Voice voice = Voice.OPENAI_ALLOY;
 
               TextToSpeechRequest ttsRequest = new TextToSpeechRequest(config);
               ttsRequest.setText(text).setProvider(provider).setVoice(voice);
 
               TextToSpeechResult ttsResult = ttsRequest.execute();
               String audioUrl = ttsResult.getAudioUrl();
+              System.out.println(audioUrl);
 
               try (InputStream inputStream =
                   new BufferedInputStream(new URL(audioUrl).openStream())) {
@@ -60,7 +61,7 @@ public class TextToSpeech {
 
     Thread backgroundThread = new Thread(backgroundTask);
     backgroundThread.setDaemon(true); // Ensure the thread does not prevent JVM shutdown
-    // backgroundThread.start(); // Comment out to turn of TTS.
+    backgroundThread.start(); // Comment out to turn of TTS.
     System.out.println(text);
   }
 }

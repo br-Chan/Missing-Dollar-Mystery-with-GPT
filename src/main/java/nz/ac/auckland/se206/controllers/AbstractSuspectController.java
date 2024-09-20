@@ -35,7 +35,6 @@ public abstract class AbstractSuspectController extends GptChatter {
   public void initialize() {
     System.out.println("Initialising AbstractSuspectController...");
     if (isFirstTimeInit) {
-      TextToSpeech.speak("Chat with " + suspectName);
       isFirstTimeInit = false;
     }
     initialiseChatCompletionRequest(true);
