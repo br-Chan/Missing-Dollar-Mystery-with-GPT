@@ -4,6 +4,7 @@ import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import nz.ac.auckland.apiproxy.chat.openai.ChatCompletionRequest;
@@ -26,15 +27,11 @@ import java.util.Objects;
  */
 public class ResultController {
   @FXML
-  private Pane correctGuessPane;
-  @FXML
-  private Pane incorrectGuessPane;
+  private Label guessStatus;
   @FXML
   private Label marking;
   @FXML
-  private Label responseMarked;
-  @FXML
-  private Label markingResult;
+  private TextArea markingResult;
 
   private ChatCompletionRequest completionRequest;
 
@@ -55,17 +52,15 @@ public class ResultController {
 
   public void setResult(boolean isGuessCorrect, String reasoning) {
     if (!isGuessCorrect) {
-      incorrectGuessPane.setVisible(true);
-      correctGuessPane.setVisible(false);
-
+      guessStatus.setText("You guessed wrong!");
+      marking.setVisible(false);
+      markingResult.setVisible(false);
       return;
     }
 
-    incorrectGuessPane.setVisible(false);
-    correctGuessPane.setVisible(true);
+    guessStatus.setText("You guessed correctly!");
 
     var task = new Task<Void>() {
-
       @Override
       protected Void call() throws Exception {
         ChatCompletionResult result;
@@ -76,24 +71,18 @@ public class ResultController {
           return null;
         }
 
-
         Platform.runLater(() -> {
-          marking.setVisible(false);
-
           var message = result.getChoice(0).getChatMessage().getContent();
 
           if (message.contains("--yes")) {
             message = message.replace("--yes", "");
 
-            responseMarked.setText("You were spot on, here is the feedback on your response");
+            marking.setText("You were spot on, here is the feedback on your response");
           } else {
-            responseMarked.setText("Not quite, here is the feedback on your response");
+            marking.setText("Not quite, here is the feedback on your response");
           }
 
           markingResult.setText(message);
-
-          responseMarked.setVisible(true);
-          markingResult.setVisible(true);
         });
 
 

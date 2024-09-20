@@ -1,26 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.layout.Pane?>
-<?import javafx.scene.layout.VBox?>
-
+<?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-      prefHeight="599.0" prefWidth="789.0" xmlns="http://javafx.com/javafx/22"
-      xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.ResultController">
-    <VBox>
-        <Pane fx:id="correctGuessPane">
-            <Label text="You guess correctly"/>
-            <Label fx:id="marking" layoutY="50" text="Marking your response"/>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.shape.Rectangle?>
+<?import javafx.scene.text.Font?>
 
-            <Label fx:id="responseMarked" layoutY="50" visible="false"/>
-            <Label fx:id="markingResult" layoutY="100" visible="false" maxWidth="760.0" wrapText="true" />
-        </Pane>
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="599.0" prefWidth="789.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.ResultController">
+    <VBox alignment="CENTER" prefHeight="599.0" prefWidth="789.0">
+         <Label fx:id="guessStatus" alignment="CENTER" prefHeight="18.0" prefWidth="813.0" text="You guess correctly" textAlignment="CENTER">
+         <font>
+            <Font name="System Bold" size="36.0" />
+         </font>
+      </Label>
+         <Label fx:id="marking" text="Marking your response">
+         <font>
+            <Font size="27.0" />
+         </font>
+      </Label>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="20.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
+      <TextArea fx:id="markingResult" editable="false" prefHeight="200.0" prefWidth="557.0" wrapText="true">
+         <VBox.margin>
+            <Insets left="50.0" right="50.0" />
+         </VBox.margin>
+      </TextArea>
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="15.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
 
-        <Pane fx:id="incorrectGuessPane">
-            <Label text="You guessed wrong" />
-        </Pane>
-
-        <Button text="Restart"/>
+        <Button text="Restart" />
+      <padding>
+         <Insets top="45.0" />
+      </padding>
     </VBox>
 </Pane>
