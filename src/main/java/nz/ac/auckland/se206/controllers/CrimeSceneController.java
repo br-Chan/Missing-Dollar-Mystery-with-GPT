@@ -20,6 +20,12 @@ import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.components.Sprite;
 import nz.ac.auckland.se206.speech.TextToSpeech;
 
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.util.ArrayList;
+
 /**
  * TODO: Fill in this JavaDoc comment.
  *
@@ -30,38 +36,69 @@ import nz.ac.auckland.se206.speech.TextToSpeech;
  */
 public class CrimeSceneController {
 
-  @FXML private Rectangle cardRectangle;
-  @FXML private Rectangle caseRectangle;
-  @FXML private Pane cardChatPane;
-  @FXML private Pane cardPane;
-  @FXML private Pane casePane;
-  @FXML private Pane computerPane;
-  @FXML private Sprite dirtImage;
-  @FXML private Sprite debrisImage;
-  @FXML private Sprite pencilImage;
-  @FXML private Sprite cleaningImage;
-  @FXML private Label cardDirtyLabel;
-  @FXML private Button searchStockButton;
-  @FXML private Button searchLogsButton;
-  @FXML private TextField searchStockField;
-  @FXML private TextField searchLogsStart;
-  @FXML private TextField searchLogsEnd;
-  @FXML private TextArea logsArea;
+  @FXML
+  private Rectangle cardRectangle;
+  @FXML
+  private Rectangle caseRectangle;
+  @FXML
+  private Pane cardChatPane;
+  @FXML
+  private Pane cardPane;
+  @FXML
+  private Pane casePane;
+  @FXML
+  private Pane computerPane;
+  @FXML
+  private Sprite dirtImage;
+  @FXML
+  private Sprite debrisImage;
+  @FXML
+  private Sprite pencilImage;
+  @FXML
+  private Sprite cleaningImage;
+  @FXML
+  private Label cardDirtyLabel;
+  @FXML
+  private Button searchStockButton;
+  @FXML
+  private Button searchLogsButton;
+  @FXML
+  private TextField searchStockField;
+  @FXML
+  private TextField searchLogsStart;
+  @FXML
+  private TextField searchLogsEnd;
+  @FXML
+  private TextArea logsArea;
 
-  @FXML private Pane suspensePane;
-  @FXML private Pane redDrinkPane;
-  @FXML private Pane blueDrinkPane;
-  @FXML private Pane greenDrinkPane;
-  @FXML private Pane pinkDrinkPane;
-  @FXML private Pane yellowDrinkPane;
-  @FXML private Pane logPane;
-  @FXML private Pane stockPane;
-  @FXML private Pane errorStockPane;
-  @FXML private Pane redStockPane;
-  @FXML private Pane blueStockPane;
-  @FXML private Pane greenStockPane;
-  @FXML private Pane pinkStockPane;
-  @FXML private Pane yellowStockPane;
+  @FXML
+  private Pane suspensePane;
+  @FXML
+  private Pane redDrinkPane;
+  @FXML
+  private Pane blueDrinkPane;
+  @FXML
+  private Pane greenDrinkPane;
+  @FXML
+  private Pane pinkDrinkPane;
+  @FXML
+  private Pane yellowDrinkPane;
+  @FXML
+  private Pane logPane;
+  @FXML
+  private Pane stockPane;
+  @FXML
+  private Pane errorStockPane;
+  @FXML
+  private Pane redStockPane;
+  @FXML
+  private Pane blueStockPane;
+  @FXML
+  private Pane greenStockPane;
+  @FXML
+  private Pane pinkStockPane;
+  @FXML
+  private Pane yellowStockPane;
 
   private boolean napkinOn;
   private boolean brushOn;
@@ -107,9 +144,9 @@ public class CrimeSceneController {
   public void onKeyPressed(KeyEvent event) throws ApiProxyException {
     // Searches either stock or logs, depending on which app is open
     if (event.getCode().toString().equals("ENTER") && stockAppOpen) {
-      searchStock();
+      onHandleSearchStock();
     } else if (event.getCode().toString().equals("ENTER") && logsAppOpen) {
-      searchLogs();
+      onHandleSearchLogs();
     }
   }
 
@@ -321,7 +358,7 @@ public class CrimeSceneController {
   }
 
   @FXML
-  public void searchStock() {
+  private void onHandleSearchStock() {
     // Recieves the input in the search bar
     String query = searchStockField.getText().trim().toLowerCase();
     searchStockField.clear();
@@ -349,7 +386,7 @@ public class CrimeSceneController {
   }
 
   @FXML
-  public void searchLogs() {
+  private void onHandleSearchLogs() {
     // Recieves input from the search bar
     String start = searchLogsStart.getText().trim();
     String end = searchLogsEnd.getText().trim();
@@ -403,6 +440,10 @@ public class CrimeSceneController {
         && pencilImage.getOpacity() < 0.1) {
       cardDirtyLabel.setVisible(false);
       cardChatPane.setVisible(true);
+      cleaningImage.setVisible(false);
+      brushOn = false;
+      napkinOn = false;
+      rubberOn = false;
     }
   }
 
@@ -456,28 +497,21 @@ public class CrimeSceneController {
 
   private void updateLogs(Integer start, Integer end) {
     // Initialises an empty log
-    String logsString = "";
+    StringBuilder logsString = new StringBuilder();
 
     // Different cases for different start and end inputs
     if (start == end) {
-      logsString +=
-          "Showing logs during "
-              + start
-              + ":00,"; // Shows the start time if both start and end are the same
-      logsString = logsList.get(start);
+      logsString.append("Showing logs during ").append(start).append(":00,"); // Shows the start time if both start and end are the same
+
+      logsString.append(logsList.get(start));
     } else {
-      logsString +=
-          "Showing logs from "
-              + start
-              + ":00 to "
-              + end
-              + ":00,"; // Shows a time period if different
+      logsString.append("Showing logs from ").append(start).append(":00 to ").append(end).append(":00,"); // Shows a time period if different
       for (int i = start; i < end; i++) {
-        logsString += logsList.get(i);
+        logsString.append(logsList.get(i));
       }
     }
     // Replaces commas with a newlien character for formatting
-    logsArea.setText(logsString.replaceAll(",", "\n"));
+    logsArea.setText(logsString.toString().replaceAll(",", "\n"));
   }
 
   private void addAllLogs() {

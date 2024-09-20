@@ -80,19 +80,19 @@
                   <Image url="@../images/Exclamation.png" />
                </image>
             </ImageView>
-            <Button fx:id="suspect1Button" layoutX="99.0" layoutY="52.0" mnemonicParsing="false" onAction="#handleSuspect1ButtonClick" opacity="0.0" prefHeight="29.0" prefWidth="29.0" text="suspect 1">
+            <Button fx:id="suspect1Button" layoutX="99.0" layoutY="52.0" mnemonicParsing="false" onAction="#onHandleSuspectOneButtonClick" opacity="0.0" prefHeight="29.0" prefWidth="29.0" text="suspect 1">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
-            <Button fx:id="suspect2Button" layoutX="83.0" layoutY="9.0" mnemonicParsing="false" onAction="#handleSuspect2ButtonClick" opacity="0.0" prefHeight="29.0" prefWidth="28.0" text="suspect 2">
+            <Button fx:id="suspect2Button" layoutX="83.0" layoutY="9.0" mnemonicParsing="false" onAction="#onHandleSuspectTwoButtonClick" opacity="0.0" prefHeight="29.0" prefWidth="28.0" text="suspect 2">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
-            <Button fx:id="suspect3Button" layoutX="55.0" layoutY="62.0" mnemonicParsing="false" onAction="#handleSuspect3ButtonClick" opacity="0.0" prefHeight="40.0" prefWidth="18.0" text="suspect 3">
+            <Button fx:id="suspect3Button" layoutX="55.0" layoutY="62.0" mnemonicParsing="false" onAction="#onHandleSuspectThreeButtonClick" opacity="0.0" prefHeight="40.0" prefWidth="18.0" text="suspect 3">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
-            <Button fx:id="crimeSceneButton" layoutX="24.0" layoutY="20.0" mnemonicParsing="false" onAction="#handleCrimeSceneButtonClick" opacity="0.0" prefHeight="25.0" prefWidth="27.0" text="crime scene">
+            <Button fx:id="crimeSceneButton" layoutX="24.0" layoutY="20.0" mnemonicParsing="false" onAction="#onHandleCrimeSceneButtonClick" opacity="0.0" prefHeight="25.0" prefWidth="27.0" text="crime scene">
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
@@ -289,7 +289,7 @@
                <font>
                   <Font name="Consolas" size="34.0" />
                </font></Label>
-            <Button fx:id="guessButton" layoutX="10.0" layoutY="1.0" mnemonicParsing="false" onAction="#handleGuessClick" prefHeight="39.0" prefWidth="109.0" text="Guess" />
+            <Button fx:id="guessButton" layoutX="10.0" layoutY="1.0" mnemonicParsing="false" onAction="#onHandleGuessClick" prefHeight="39.0" prefWidth="109.0" text="Guess" />
          </children>
       </Pane>
    </right>

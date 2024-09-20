@@ -39,8 +39,28 @@ import nz.ac.auckland.se206.speech.TextToSpeech;
  */
 public class GameController {
 
-  @FXML private Pane gameView;
+  private static Boolean hueyVisited = false;
+  private static Boolean louieVisited = false;
+  private static Boolean deweyVisited = false;
 
+  public static void setVisited(String suspect) {
+    // Switch case for setting visited booleans
+    switch (suspect) {
+      case "Huey":
+        hueyVisited = true; // Sets huey true
+        break;
+      case "Louie":
+        louieVisited = true; // Sets louie true
+        break;
+      case "Dewey":
+        deweyVisited = true; // Sets dewey true
+        break;
+      default:
+        break;
+    }
+  }
+
+  @FXML private BorderPane borderPane;
   @FXML private Button suspect1Button;
   @FXML private Button suspect2Button;
   @FXML private Button suspect3Button;
@@ -55,25 +75,23 @@ public class GameController {
   @FXML private ImageView suspectTwoAlert;
   @FXML private ImageView suspectThreeAlert;
 
+  @FXML private Label timerLabel;
+
   @FXML private Pane hueyPane;
   @FXML private Pane louiePane;
   @FXML private Pane deweyPane;
   @FXML private Pane leftPane;
   @FXML private Pane rightPane;
-  @FXML private BorderPane borderPane;
+  @FXML private Pane gameView;
   @FXML private Pane hueyFadePane;
   @FXML private Pane louieFadePane;
   @FXML private Pane deweyFadePane;
 
-  @FXML private Label timerLabel;
-
   private FadeTransition currentFadeTransition;
-  AppTimer appTimer;
+
   private ArrayList<ImageView> selectedList = new ArrayList<>();
 
-  private static Boolean hueyVisited = false;
-  private static Boolean louieVisited = false;
-  private static Boolean deweyVisited = false;
+  AppTimer appTimer;
 
   private int hueyCount = 0;
   private int louieCount = 0;
@@ -85,6 +103,10 @@ public class GameController {
     System.out.println("Initialising game scene...");
     setGameView(AppUi.CRIME_SCENE);
     showSelected(crimeSceneSelected); // Shows the selection box for the crimescene in minimap
+
+    hueyVisited = false;
+    louieVisited = false;
+    deweyVisited = false;
 
     appTimer = new AppTimer(timerLabel, AppTimer.GAMETIME);
     appTimer.beginCountdown();
@@ -113,7 +135,7 @@ public class GameController {
   }
 
   @FXML
-  public void handleSuspect1ButtonClick(ActionEvent event) throws URISyntaxException {
+  private void onHandleSuspectOneButtonClick(ActionEvent event) throws URISyntaxException {
     setGameView(AppUi.SUSPECT1);
     showSelected(suspectOneSelected);
     suspectOneAlert.setImage(
@@ -130,7 +152,7 @@ public class GameController {
   }
 
   @FXML
-  public void handleSuspect2ButtonClick(ActionEvent event) throws URISyntaxException {
+  private void onHandleSuspectTwoButtonClick(ActionEvent event) throws URISyntaxException {
     setGameView(AppUi.SUSPECT2);
     showSelected(suspectTwoSelected);
     suspectTwoAlert.setImage(
@@ -147,7 +169,7 @@ public class GameController {
   }
 
   @FXML
-  public void handleSuspect3ButtonClick(ActionEvent event) throws URISyntaxException {
+  private void onHandleSuspectThreeButtonClick(ActionEvent event) throws URISyntaxException {
     setGameView(AppUi.SUSPECT3);
     showSelected(suspectThreeSelected);
     suspectThreeAlert.setImage(
@@ -164,13 +186,13 @@ public class GameController {
   }
 
   @FXML
-  public void handleCrimeSceneButtonClick(ActionEvent event) {
+  private void onHandleCrimeSceneButtonClick(ActionEvent event) {
     setGameView(AppUi.CRIME_SCENE);
     showSelected(crimeSceneSelected);
   }
 
   @FXML
-  public void handleGuessClick() throws IOException {
+  private void onHandleGuessClick() throws IOException {
     if (!hueyVisited || !louieVisited || !deweyVisited) {
       flashUnvisitedPanes(); // Flash all unvisited corresponding panes
     } else {
@@ -270,21 +292,5 @@ public class GameController {
                   });
             })
         .start(); // Start the thread
-  }
-
-  public static void setVisited(String suspect) {
-    switch (suspect) {
-      case "Huey":
-        hueyVisited = true;
-        break;
-      case "Louie":
-        louieVisited = true;
-        break;
-      case "Dewey":
-        deweyVisited = true;
-        break;
-      default:
-        break;
-    }
   }
 }

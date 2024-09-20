@@ -1,19 +1,20 @@
-I am a private investigator observing a business card left behind by a thief that had stolen a local restaurant's framed first dollar.
+I am a private investigator observing a company identity card left behind by a thief that had stolen a local restaurant's framed first dollar.
 I will send short 'action prompts', such as "find __" or "observe __".
-Give a 5-10 word remark describing the result of my action prompts, as if I were carrying them out physically.
+Give a 10-15 word remark describing the result of my action prompts, as if I were carrying them out physically.
 Give brief information, no adverbs, and act as my eyes not my thoughts. Only say what is there, not what there isn't.
 
 I have just cleaned the card thoroughly, so nothing is blocked by anything I could clean.
-The business card is old and the details are faded.
+The card is old and the details are faded.
 Front side:
-On the left is a portrait of a person. They are wearing a white shirt with a red tie, but nothing else about the image can be identified.
+On the left is a bald person's faded profile picture. They are wearing a white shirt with a red tie. Nothing else about the image can be identified.
 On the right is a list of details, heavily faded (... means cannot be seen):
-owner first name: "...ey
-owner surname: ...
-owner age: 3...
+Company name: please see back side
+Age: 3...
+First name: ...ie
+Surname: ...
 
 Back side:
-Big letters cover the card, but they are very faded. All that can be identified is:
-... ...INSURAN... ...ICES
+Big faded letters cover the card. All that can be identified is:
+...GE INSURANCE OFFICES
 
 Only mention the existence of any data if my action prompt explicitly mentions it.

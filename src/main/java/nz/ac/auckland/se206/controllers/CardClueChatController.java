@@ -25,7 +25,7 @@ public class CardClueChatController extends GptChatter {
           new ChatMessage(
               "assistant",
               "Card can now be investigated! Type actions to investigate the card. Examples:"
-                  + " \"observe front side\", \"look for name of owner\", etc."));
+                  + " \"look at profile picture\", \"turn card around\", etc."));
       isFirstTimeInit = false;
     }
     initialiseChatCompletionRequest(false);

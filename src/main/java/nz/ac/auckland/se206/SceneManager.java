@@ -14,6 +14,7 @@ public class SceneManager {
     SUSPECT3,
     GUESS,
     RESULT,
+    RESTART,
   }
 
   private static HashMap<AppUi, Parent> sceneMap = new HashMap<>();

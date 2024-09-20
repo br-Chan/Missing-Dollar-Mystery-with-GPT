@@ -18,12 +18,33 @@ public class GameStateContext {
   private final GameOver gameOverState;
   private GameState gameState;
 
+  private static Suspect chosenSuspect;
+  private static String report;
+
   /** Constructs a new GameStateContext and initializes the game states. */
   public GameStateContext(AbstractSuspectController suspectController) {
     gameStartedState = new GameStarted(this);
     guessingState = new Guessing();
     gameOverState = new GameOver();
     gameState = gameStartedState; // Initial state
+
+    chosenSuspect = Suspect.NONE;
+  }
+
+  public static void setReport(String report) {
+    GameStateContext.report = report;
+  }
+
+  public static void setChosenSuspect(Suspect suspect) {
+    chosenSuspect = suspect;
+  }
+
+  public static String getReport() {
+    return report;
+  }
+
+  public static Suspect getChosenSuspect() {
+    return chosenSuspect;
   }
 
   /**
@@ -62,12 +83,4 @@ public class GameStateContext {
     return gameOverState;
   }
 
-  /**
-   * Handles the event when the guess button is clicked.
-   *
-   * @throws IOException if there is an I/O error
-   */
-  public void handleGuessClick() throws IOException {
-    gameState.handleGuessClick();
-  }
 }

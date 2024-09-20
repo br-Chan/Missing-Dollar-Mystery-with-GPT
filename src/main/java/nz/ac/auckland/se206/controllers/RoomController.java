@@ -14,9 +14,9 @@ import nz.ac.auckland.se206.speech.TextToSpeech;
 /**
  * Controller class for the room view. Handles user interactions within the room where the user can
  * chat with customers and guess their profession.
- * 
- * NOTE:THIS IS A DUMMY/USELESS CLASS ONLY LEFT IN TO AVOID POTENTIAL MERGE CONFLICTS FROM BRANCHES
- * THAT BRANCHED OFF THE TEMPLATE CODE.
+ *
+ * <p>NOTE:THIS IS A DUMMY/USELESS CLASS ONLY LEFT IN TO AVOID POTENTIAL MERGE CONFLICTS FROM
+ * BRANCHES THAT BRANCHED OFF THE TEMPLATE CODE.
  */
 public class RoomController {
 
@@ -71,10 +71,7 @@ public class RoomController {
    * @throws IOException if there is an I/O error
    */
   @FXML
-  private void handleRectangleClick(MouseEvent event) throws IOException {
-    Rectangle clickedRectangle = (Rectangle) event.getSource();
-    // context.handleRectangleClick(event, clickedRectangle.getId());
-  }
+  private void handleRectangleClick(MouseEvent event) throws IOException {}
 
   /**
    * Handles the guess button click event.
@@ -84,6 +81,6 @@ public class RoomController {
    */
   @FXML
   private void handleGuessClick(ActionEvent event) throws IOException {
-    context.handleGuessClick();
+    // context.handleGuessClick();
   }
 }

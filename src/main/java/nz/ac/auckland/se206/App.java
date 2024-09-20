@@ -17,6 +17,8 @@ import nz.ac.auckland.se206.speech.FreeTextToSpeech;
 public class App extends Application {
 
   private static Scene scene;
+  private static Stage currentStage;
+  private static Stage oldStage;
 
   /**
    * NOTE TO DEVELOPERS: Edit this variable to change which scene is shown first when loading the
@@ -74,8 +76,8 @@ public class App extends Application {
    * Pre-adds FXML UI roots to the scene manager. Note that not all scenes are added in this method.
    * For example, the game scene is loaded and added to the scene manager in the MenuController when
    * the start button is clicked.
-   * 
-   * <p> Some scenes here can be loaded elsewhere if needed.
+   *
+   * <p>Some scenes here can be loaded elsewhere if needed.
    *
    * @throws IOException if a FXML file is not found
    */
@@ -95,6 +97,7 @@ public class App extends Application {
   private void showFirstScene(final Stage stage, AppUi firstAppUi) {
     Parent root = SceneManager.getUiRoot(firstAppUi);
     scene = new Scene(root);
+    currentStage = stage;
     stage.setScene(scene);
     stage.show();
     stage.setOnCloseRequest(event -> handleWindowClose(event));
@@ -109,16 +112,27 @@ public class App extends Application {
   @Override
   public void start(final Stage stage) {
     try {
+      // Pre adds all user interface
       preAddUi();
     } catch (IOException e) {
       System.err.println("Could not find FXML file in scene manager.");
       e.printStackTrace();
     }
-
+    // Shows the first scene that we set (start)
     showFirstScene(stage, firstAppUi);
   }
 
   private void handleWindowClose(WindowEvent event) {
     FreeTextToSpeech.deallocateSynthesizer();
+  }
+
+  public static void restart() {
+    try {
+      oldStage = currentStage; // Initialises the old stage
+      new App().start(new Stage());
+      oldStage.close();
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
   }
 }
