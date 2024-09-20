@@ -15,6 +15,7 @@ public class Guessing implements GameState {
    * @param context the context of the game state
    */
   public Guessing() {
+    System.out.println("Guessing");
   }
 
   /**

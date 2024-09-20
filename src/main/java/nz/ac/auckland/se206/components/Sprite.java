@@ -1,5 +1,4 @@
 package nz.ac.auckland.se206.components;
-
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
@@ -11,9 +10,10 @@ import javafx.scene.layout.Pane;
 import javax.imageio.ImageIO;
 
 public class Sprite extends Pane {
+  private BufferedImage image;
   private Canvas canvas;
   //     private final BufferedImage image = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB);
-  private BufferedImage image;
+
   private SimpleStringProperty spriteUrl;
   private SimpleDoubleProperty scale;
 

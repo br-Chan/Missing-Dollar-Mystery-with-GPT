@@ -10,9 +10,6 @@ import nz.ac.auckland.se206.SceneManager.AppUi;
 
 public class MenuController {
 
-  @FXML
-  private void initialize() {}
-
   @FXML private Button startButton;
 
   /**
@@ -28,4 +25,7 @@ public class MenuController {
     SceneManager.addUi(AppUi.GAME, App.loadFxml("game"));
     App.getScene().setRoot(SceneManager.getUiRoot(AppUi.GAME));
   }
+
+  @FXML
+  private void initialize() {}
 }
