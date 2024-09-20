@@ -3,8 +3,11 @@ package nz.ac.auckland.se206.speech;
 import java.io.BufferedInputStream;
 import java.io.IOException;
 import java.io.InputStream;
+import java.net.URISyntaxException;
 import java.net.URL;
 import javafx.concurrent.Task;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javazoom.jl.decoder.JavaLayerException;
 import javazoom.jl.player.Player;
 import nz.ac.auckland.apiproxy.config.ApiProxyConfig;
@@ -13,9 +16,13 @@ import nz.ac.auckland.apiproxy.tts.TextToSpeechRequest;
 import nz.ac.auckland.apiproxy.tts.TextToSpeechRequest.Provider;
 import nz.ac.auckland.apiproxy.tts.TextToSpeechRequest.Voice;
 import nz.ac.auckland.apiproxy.tts.TextToSpeechResult;
+import nz.ac.auckland.se206.App;
 
 /** A utility class for converting text to speech using the specified API proxy. */
 public class TextToSpeech {
+
+  static Media sound;
+  static MediaPlayer player;
 
   /**
    * Converts the given text to speech and plays the audio.
@@ -63,5 +70,16 @@ public class TextToSpeech {
     backgroundThread.setDaemon(true); // Ensure the thread does not prevent JVM shutdown
     backgroundThread.start(); // Comment out to turn of TTS.
     System.out.println(text);
+  }
+
+  public static void playVoiceline(String voiceline) throws URISyntaxException {
+    // Stops sound if one is already playing
+    if (player != null) {
+      player.stop();
+    }
+    // Plays sound
+    sound = new Media(App.class.getResource("/sounds/" + voiceline + ".mp3").toURI().toString());
+    player = new MediaPlayer(sound);
+    player.play();
   }
 }

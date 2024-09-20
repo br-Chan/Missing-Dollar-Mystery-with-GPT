@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
@@ -17,6 +18,7 @@ import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.components.Sprite;
+import nz.ac.auckland.se206.speech.TextToSpeech;
 
 /**
  * TODO: Fill in this JavaDoc comment.
@@ -75,9 +77,11 @@ public class CrimeSceneController {
    * TODO: Fill in this JavaDoc comment.
    *
    * <p>Initializes the scene view.
+   *
+   * @throws URISyntaxException
    */
   @FXML
-  public void initialize() {
+  public void initialize() throws URISyntaxException {
     System.out.println("Initialising crime scene scene...");
     // Hides all panes relating to clues
     cardPane.setVisible(false);
