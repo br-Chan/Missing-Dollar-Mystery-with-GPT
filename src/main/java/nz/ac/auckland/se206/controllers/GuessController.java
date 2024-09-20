@@ -1,7 +1,6 @@
 package nz.ac.auckland.se206.controllers;
 
 import java.io.IOException;
-
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -10,8 +9,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.shape.Rectangle;
 import javafx.scene.paint.Color;
+import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.AppTimer;
 import nz.ac.auckland.se206.SceneManager;
@@ -27,23 +26,15 @@ import nz.ac.auckland.se206.Suspect;
  * <p>This is a controller class for the guess fxml scene.
  */
 public class GuessController {
-  @FXML
-  private Button sendReportButton;
+  @FXML private Button sendReportButton;
 
-  @FXML
-  private Rectangle suspect1Bg;
-  @FXML
-  private Rectangle suspect2Bg;
-  @FXML
-  private Rectangle suspect3Bg;
+  @FXML private Rectangle suspect1Bg;
+  @FXML private Rectangle suspect2Bg;
+  @FXML private Rectangle suspect3Bg;
 
-
-  @FXML
-  private Label startingLabel;
-  @FXML
-  private TextArea reportTextArea;
-  @FXML
-  private Label timerLabel;
+  @FXML private Label startingLabel;
+  @FXML private TextArea reportTextArea;
+  @FXML private Label timerLabel;
 
   private Suspect chosenSuspect = Suspect.NONE;
 
@@ -52,9 +43,7 @@ public class GuessController {
   private final Color selectedBg = Color.rgb(255, 255, 255);
   private final Color notSelectedBug = Color.rgb(150, 150, 150);
 
-  /**
-   * Initializes the guess scene.
-   */
+  /** Initializes the guess scene. */
   @FXML
   public void initialize() {
     System.out.println("Initialising guess scene...");
@@ -83,10 +72,10 @@ public class GuessController {
   @FXML
   public void handleSuspect1ButtonClick(ActionEvent event) {
     chosenSuspect = Suspect.LOUIE;
-    suspect1Bg.setFill(Color.rgb(255, 255, 255));
+    suspect1Bg.setFill(selectedBg);
 
-    suspect2Bg.setFill(Color.rgb(191, 191, 191));
-    suspect3Bg.setFill(Color.rgb(191, 191, 191));
+    suspect2Bg.setFill(notSelectedBug);
+    suspect3Bg.setFill(notSelectedBug);
 
     setupGuessButton();
   }
