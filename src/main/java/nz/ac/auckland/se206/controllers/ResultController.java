@@ -2,11 +2,13 @@ package nz.ac.auckland.se206.controllers;
 
 import java.io.IOException;
 import java.util.Objects;
+import javafx.animation.PauseTransition;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
+import javafx.util.Duration;
 import nz.ac.auckland.apiproxy.chat.openai.ChatCompletionRequest;
 import nz.ac.auckland.apiproxy.chat.openai.ChatCompletionResult;
 import nz.ac.auckland.apiproxy.config.ApiProxyConfig;
@@ -14,6 +16,9 @@ import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
 import nz.ac.auckland.se206.GameStateContext;
 import nz.ac.auckland.se206.Suspect;
 import nz.ac.auckland.se206.states.GameState;
+import nz.ac.auckland.se206.App;
+import nz.ac.auckland.se206.SceneManager;
+import nz.ac.auckland.se206.SceneManager.AppUi;
 
 /**
  * TODO: Fill in this JavaDoc comment.
@@ -108,5 +113,18 @@ public class ResultController {
         };
 
     new Thread(task).start();
+  }
+  @FXML
+  private void onHandleRestart() throws IOException {
+    SceneManager.addUi(AppUi.RESTART, App.loadFxml("restart"));
+    App.getScene().setRoot(SceneManager.getUiRoot(AppUi.RESTART));
+    // Set what to do after the pause
+    PauseTransition pause = new PauseTransition(Duration.millis(500));
+    pause.setOnFinished(
+        event -> {
+          App.restart();
+        });
+    // Start the pause
+    pause.play();
   }
 }

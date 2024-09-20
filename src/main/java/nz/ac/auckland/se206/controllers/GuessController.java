@@ -73,7 +73,7 @@ public class GuessController {
    * @param event the key event
    */
   @FXML
-  public void handleReportIssueKeyEvent(KeyEvent event) {
+  public void onHandleReportIssueKeyEvent(KeyEvent event) {
     // If the report text area is empty, disable the send report button
     setupGuessButton();
   }
@@ -85,7 +85,7 @@ public class GuessController {
    * @param event the mouse event triggered by clicking the button
    */
   @FXML
-  public void handleSuspect1ButtonClick(ActionEvent event) {
+  private void onHandleSuspect1ButtonClick(ActionEvent event) {
     chosenSuspect = Suspect.LOUIE;
     sendDataToContext(null);
     suspect1Bg.setFill(selectedBg);
@@ -101,7 +101,7 @@ public class GuessController {
    * updating the starting label.
    */
   @FXML
-  public void handleSuspect2ButtonClick(ActionEvent event) {
+  private void onHandleSuspect2ButtonClick(ActionEvent event) {
     // Set the chosen suspect to Huey
     chosenSuspect = Suspect.HUEY;
     sendDataToContext(null);
@@ -119,7 +119,7 @@ public class GuessController {
    * updating the starting label.
    */
   @FXML
-  public void handleSuspect3ButtonClick() {
+  private void onHandleSuspect3ButtonClick() {
     // Set the chosen suspect to Dewey
     chosenSuspect = Suspect.DEWEY;
     sendDataToContext(null);
@@ -140,7 +140,7 @@ public class GuessController {
    * @throws IOException
    */
   @FXML
-  public void handleSendReportClick(ActionEvent event) throws IOException {
+  private void onHandleSendReportClick(ActionEvent event) throws IOException {
     if (chosenSuspect.equals(Suspect.NONE) || reportTextArea.getText().isEmpty()) {
       // Don't go to results scene because you need to pick a suspect & write a report.
       System.out.println("Can't send report, pick suspect & write report!");

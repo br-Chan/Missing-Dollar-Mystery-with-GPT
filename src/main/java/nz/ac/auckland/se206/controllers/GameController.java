@@ -6,7 +6,6 @@ import javafx.animation.FadeTransition;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
@@ -98,6 +97,10 @@ public class GameController {
     System.out.println("Initialising game scene...");
     setGameView(AppUi.CRIME_SCENE);
     showSelected(crimeSceneSelected); // Shows the selection box for the crimescene in minimap
+
+    hueyVisited = false;
+    louieVisited = false;
+    deweyVisited = false;
 
     appTimer = new AppTimer(timerLabel, AppTimer.GAMETIME);
     appTimer.beginCountdown();
