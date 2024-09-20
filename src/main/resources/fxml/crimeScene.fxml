@@ -148,7 +148,7 @@
                             </font>
                         </Text>
                         <Text fill="WHITE" layoutX="22.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0"
-                              text="Current Stock: 16 Last Stocked: 15/9/24" wrappingWidth="112.20001220703125"/>
+                              text="Current Stock: 15 Last Stocked: 15/9/24" wrappingWidth="112.20001220703125"/>
                     </children>
                 </Pane>
                 <Pane fx:id="yellowDrinkPane" layoutX="225.0" layoutY="80.0" prefHeight="368.0" prefWidth="319.0"
@@ -333,7 +333,7 @@
                                     </font>
                                 </Text>
                                 <Text fill="WHITE" layoutX="164.0" layoutY="136.0" strokeType="OUTSIDE"
-                                      strokeWidth="0.0" text="Current Stock: 15 Last Stocked: 15/9/24"
+                                      strokeWidth="0.0" text="Current Stock: 16 Last Stocked: 15/9/24"
                                       wrappingWidth="112.20001220703125"/>
                                 <Text fill="#75e15a" layoutX="164.0" layoutY="117.0" strokeType="OUTSIDE"
                                       strokeWidth="0.0" text="In Stock  ✔" wrappingWidth="112.20001220703125"/>
