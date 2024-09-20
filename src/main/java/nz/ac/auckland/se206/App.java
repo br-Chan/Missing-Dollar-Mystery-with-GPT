@@ -72,6 +72,16 @@ public class App extends Application {
     return new FXMLLoader(App.class.getResource("/fxml/" + fxml + ".fxml")).load();
   }
 
+  public static void restart() {
+    try {
+      oldStage = currentStage; // Initialises the old stage
+      new App().start(new Stage());
+      oldStage.close();
+    } catch (Exception e) {
+      e.printStackTrace();
+    }
+  }
+
   /**
    * Pre-adds FXML UI roots to the scene manager. Note that not all scenes are added in this method.
    * For example, the game scene is loaded and added to the scene manager in the MenuController when
@@ -124,15 +134,5 @@ public class App extends Application {
 
   private void handleWindowClose(WindowEvent event) {
     FreeTextToSpeech.deallocateSynthesizer();
-  }
-
-  public static void restart() {
-    try {
-      oldStage = currentStage; // Initialises the old stage
-      new App().start(new Stage());
-      oldStage.close();
-    } catch (Exception e) {
-      e.printStackTrace();
-    }
   }
 }

@@ -78,8 +78,6 @@ public class AppTimer {
     } else if (startingTime == GUESSTIME) {
       var loader = new FXMLLoader(AppTimer.class.getResource("/fxml/result.fxml"));
       SceneManager.addUi(AppUi.RESULT, loader.load());
-      ResultController controller = loader.getController();
-      // controller.setResult(false, null);
       App.getScene().setRoot(SceneManager.getUiRoot(AppUi.RESULT));
     }
   }
