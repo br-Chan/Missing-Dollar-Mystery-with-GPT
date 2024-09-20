@@ -23,7 +23,7 @@ public class App extends Application {
    * game during testing. firstAppUi should be Appui.MENU upon merging with main (ideally) and upon
    * release (must).
    */
-  private static final AppUi firstAppUi = AppUi.MENU;
+  private static final AppUi firstAppUi = AppUi.GUESS;
 
   /**
    * The main method that launches the JavaFX application.
@@ -81,11 +81,12 @@ public class App extends Application {
    */
   private void preAddUi() throws IOException {
     SceneManager.addUi(AppUi.CRIME_SCENE, loadFxml("crimeScene"));
-    SceneManager.addUi(AppUi.SUSPECT1, loadFxml("suspect1"));
-    SceneManager.addUi(AppUi.SUSPECT2, loadFxml("suspect2"));
-    SceneManager.addUi(AppUi.SUSPECT3, loadFxml("suspect3"));
+//    SceneManager.addUi(AppUi.SUSPECT1, loadFxml("suspect1"));
+//    SceneManager.addUi(AppUi.SUSPECT2, loadFxml("suspect2"));
+//    SceneManager.addUi(AppUi.SUSPECT3, loadFxml("suspect3"));
 
     SceneManager.addUi(AppUi.MENU, loadFxml("menu"));
+    SceneManager.addUi(AppUi.GUESS, loadFxml("guess"));
   }
 
   /**
