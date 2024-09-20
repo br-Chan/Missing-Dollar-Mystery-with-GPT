@@ -1,33 +1,20 @@
 package nz.ac.auckland.se206.components;
-
-import javafx.beans.NamedArg;
-import javafx.beans.property.*;
-import javafx.beans.value.WritableValue;
-import javafx.scene.canvas.Canvas;
-import javafx.scene.image.WritableImage;
-import javafx.scene.layout.Pane;
-
-import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
+import javafx.beans.NamedArg;
+import javafx.beans.property.*;
+import javafx.scene.canvas.Canvas;
+import javafx.scene.image.WritableImage;
+import javafx.scene.layout.Pane;
+import javax.imageio.ImageIO;
 
 public class Sprite extends Pane {
-  private Canvas canvas;
-  //     private final BufferedImage image = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB);
   private BufferedImage image;
+  private Canvas canvas;
+
   private SimpleStringProperty spriteUrl;
   private SimpleDoubleProperty scale;
-
-
-  public SimpleStringProperty spriteUrlProperty() {
-    return spriteUrl;
-  }
-
-
-  public SimpleDoubleProperty scaleProperty() {
-    return scale;
-  }
 
   public Sprite(@NamedArg("spriteUrl") String spriteUrl, @NamedArg("scale") double scale) {
     super();
@@ -44,18 +31,25 @@ public class Sprite extends Pane {
     loadImage();
   }
 
+  public SimpleStringProperty spriteUrlProperty() {
+    return spriteUrl;
+  }
+
+  public SimpleDoubleProperty scaleProperty() {
+    return scale;
+  }
+
   private void loadImage() {
     try {
-      image = ImageIO.read(new URL(spriteUrl.get()));
+      image = ImageIO.read(new URL(spriteUrl.get())); // Initialises sprite url for the image
     } catch (IOException ex) {
       ex.printStackTrace();
       System.err.println("Failed to load sprite: " + ex.getMessage());
       image = new BufferedImage(2, 2, BufferedImage.TYPE_INT_ARGB);
     }
 
-    renderImage();
+    renderImage(); // Outputs the image render
   }
-
 
   private void renderImage() {
     // Resize the image

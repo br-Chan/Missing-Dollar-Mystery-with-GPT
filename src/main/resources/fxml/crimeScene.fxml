@@ -19,13 +19,13 @@
       xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.CrimeSceneController">
     <children>
         <Sprite pickOnBounds="true" scale="3.90625" spriteUrl="@../images/crimeScene/Restauant.png"/>
-        <Sprite layoutX="354.0" layoutY="333.0" pickOnBounds="true" scale="1"
+        <Sprite layoutX="354.0" layoutY="20.0" pickOnBounds="true" scale="1"
                 spriteUrl="@../images/crimeScene/ID%20Card.png"/>
         <Sprite layoutX="-21.0" layoutY="25.0" pickOnBounds="true" scale="3" spriteUrl="@../images/crimeScene/Drinks%20Case.png"/>
         <Sprite spriteUrl="@../images/crimeScene/Computer.png" layoutX="77.0" layoutY="122.0" scale="3"/>
 
         <Rectangle fx:id="cardRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="15.0" layoutX="353.0"
-                   layoutY="333.0" onMouseClicked="#showCardClue" opacity="0.0" stroke="BLACK" strokeType="INSIDE"
+                   layoutY="20.0" onMouseClicked="#showCardClue" opacity="0.0" stroke="BLACK" strokeType="INSIDE"
                    width="18.0">
             <cursor>
                 <Cursor fx:constant="HAND"/>
@@ -50,6 +50,12 @@
             <children>
                 <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#000000b2" height="500.0" layoutX="-1.0" layoutY="-1.0"
                            stroke="TRANSPARENT" strokeType="INSIDE" width="500.0"/>
+                <Label layoutX="15" layoutY="10" text="ID CARD"
+                       textFill="WHITE">
+                    <font>
+                        <Font size="31.0"/>
+                    </font>
+                </Label>
                 <Button fx:id="cardBackButton" layoutX="450.0" layoutY="13.0" mnemonicParsing="false"
                         onMouseClicked="#hideCardClue" text="Back"/>
                 <Sprite layoutX="39.0" layoutY="38.0" spriteUrl="@../images/crimeScene/ID%20Card.png" scale="17.5"/>
@@ -87,9 +93,15 @@
             <children>
                 <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#000000b2" height="500.0" stroke="TRANSPARENT"
                            strokeType="INSIDE" width="500.0"/>
+                <Label layoutX="15" layoutY="10" text="Display Case"
+                       textFill="WHITE">
+                    <font>
+                        <Font size="31.0"/>
+                    </font>
+                </Label>
                 <Sprite spriteUrl="@../images/crimeScene/Drinks%20Case.png" scale="12.75" layoutX="-81.0"
                         layoutY="22.0"/>
-                <Button fx:id="caseBackButton" layoutX="451.0" layoutY="22.0" mnemonicParsing="false"
+                <Button fx:id="caseBackButton" layoutX="450.0" layoutY="13.0" mnemonicParsing="false"
                         onMouseClicked="#hideCaseClue" text="Back"/>
                 <Pane fx:id="redDrinkPane" layoutX="225.0" layoutY="80.0" prefHeight="368.0" prefWidth="319.0"
                       visible="false">
@@ -148,7 +160,7 @@
                             </font>
                         </Text>
                         <Text fill="WHITE" layoutX="22.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0"
-                              text="Current Stock: 16 Last Stocked: 15/9/24" wrappingWidth="112.20001220703125"/>
+                              text="Current Stock: 15 Last Stocked: 15/9/24" wrappingWidth="112.20001220703125"/>
                     </children>
                 </Pane>
                 <Pane fx:id="yellowDrinkPane" layoutX="225.0" layoutY="80.0" prefHeight="368.0" prefWidth="319.0"
@@ -227,6 +239,12 @@
             <children>
                 <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#000000b2" height="500.0" layoutX="-1.0" layoutY="-1.0"
                            stroke="TRANSPARENT" strokeType="INSIDE" width="500.0"/>
+                <Label layoutX="15" layoutY="10" text="Computer"
+                       textFill="WHITE">
+                    <font>
+                        <Font size="31.0"/>
+                    </font>
+                </Label>
                 <Button fx:id="cardBackButton1" layoutX="450.0" layoutY="13.0" mnemonicParsing="false"
                         onMouseClicked="#hideComputerClue" text="Back"/>
                 <Sprite spriteUrl="@../images/crimeScene/Computer.png" layoutX="5.0" layoutY="48.0" scale="30.5"/>
@@ -333,7 +351,7 @@
                                     </font>
                                 </Text>
                                 <Text fill="WHITE" layoutX="164.0" layoutY="136.0" strokeType="OUTSIDE"
-                                      strokeWidth="0.0" text="Current Stock: 15 Last Stocked: 15/9/24"
+                                      strokeWidth="0.0" text="Current Stock: 16 Last Stocked: 15/9/24"
                                       wrappingWidth="112.20001220703125"/>
                                 <Text fill="#75e15a" layoutX="164.0" layoutY="117.0" strokeType="OUTSIDE"
                                       strokeWidth="0.0" text="In Stock  ✔" wrappingWidth="112.20001220703125"/>
@@ -375,7 +393,7 @@
                         <TextField fx:id="searchStockField" layoutX="7.0" layoutY="25.0" prefHeight="25.0"
                                    prefWidth="208.0" promptText="Search item name"/>
                         <Button fx:id="searchStockButton" layoutX="217.0" layoutY="25.0" mnemonicParsing="false"
-                                onAction="#searchStock" text="Search"/>
+                                onAction="#onHandleSearchStock" text="Search"/>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#838383" height="24.0" layoutX="132.0"
                                    layoutY="189.0" onMouseClicked="#openLogs" stroke="TRANSPARENT" strokeType="INSIDE"
                                    width="24.0"/>
@@ -395,7 +413,7 @@
                         <Text layoutX="7.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0"
                               text="Search for a time period (hours) to show entry/exit logs"/>
                         <Button fx:id="searchLogsButton" layoutX="217.0" layoutY="25.0" mnemonicParsing="false"
-                                onAction="#searchLogs" text="Search"/>
+                                onAction="#onHandleSearchLogs" text="Search"/>
                         <Text layoutX="7.0" layoutY="41.0" strokeType="OUTSIDE" strokeWidth="0.0"
                               text="From                           To"/>
                         <TextField fx:id="searchLogsEnd" layoutX="143.0" layoutY="25.0" prefHeight="25.0"
