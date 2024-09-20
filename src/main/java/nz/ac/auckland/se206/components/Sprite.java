@@ -42,14 +42,14 @@ public class Sprite extends Pane {
 
   private void loadImage() {
     try {
-      image = ImageIO.read(new URL(spriteUrl.get()));
+      image = ImageIO.read(new URL(spriteUrl.get())); // Initialises sprite url for the image
     } catch (IOException ex) {
       ex.printStackTrace();
       System.err.println("Failed to load sprite: " + ex.getMessage());
       image = new BufferedImage(2, 2, BufferedImage.TYPE_INT_ARGB);
     }
 
-    renderImage();
+    renderImage(); // Outputs the image render
   }
 
   private void renderImage() {

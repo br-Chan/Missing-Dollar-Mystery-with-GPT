@@ -74,8 +74,8 @@ public class App extends Application {
    * Pre-adds FXML UI roots to the scene manager. Note that not all scenes are added in this method.
    * For example, the game scene is loaded and added to the scene manager in the MenuController when
    * the start button is clicked.
-   * 
-   * <p> Some scenes here can be loaded elsewhere if needed.
+   *
+   * <p>Some scenes here can be loaded elsewhere if needed.
    *
    * @throws IOException if a FXML file is not found
    */
@@ -109,12 +109,13 @@ public class App extends Application {
   @Override
   public void start(final Stage stage) {
     try {
+      // Pre adds all user interface
       preAddUi();
     } catch (IOException e) {
       System.err.println("Could not find FXML file in scene manager.");
       e.printStackTrace();
     }
-
+    // Shows the first scene that we set (start)
     showFirstScene(stage, firstAppUi);
   }
 

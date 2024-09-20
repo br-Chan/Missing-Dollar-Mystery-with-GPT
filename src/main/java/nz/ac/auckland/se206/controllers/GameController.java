@@ -256,15 +256,16 @@ public class GameController {
   }
 
   public static void setVisited(String suspect) {
+    // Switch case for setting visited booleans
     switch (suspect) {
       case "Huey":
-        hueyVisited = true;
+        hueyVisited = true; //Sets huey true 
         break;
       case "Louie":
-        louieVisited = true;
+        louieVisited = true; //Sets louie true
         break;
       case "Dewey":
-        deweyVisited = true;
+        deweyVisited = true; //Sets dewey true
         break;
       default:
         break;
