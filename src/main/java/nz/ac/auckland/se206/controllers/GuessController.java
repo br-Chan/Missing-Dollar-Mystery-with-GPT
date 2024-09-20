@@ -4,6 +4,8 @@ import java.io.IOException;
 
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
+import javafx.scene.Parent;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
@@ -87,7 +89,7 @@ public class GuessController {
    */
   @FXML
   public void handleSuspect1ButtonClick(ActionEvent event) {
-    chosenSuspect = Suspect.DEWEY;
+    chosenSuspect = Suspect.LOUIE;
     suspect1Bg.setFill(Color.rgb(255, 255, 255));
 
     suspect2Bg.setFill(Color.rgb(191, 191, 191));
@@ -100,7 +102,7 @@ public class GuessController {
    */
   @FXML
   public void handleSuspect2ButtonClick(ActionEvent event) {
-    chosenSuspect = Suspect.LOUIE;
+    chosenSuspect = Suspect.HUEY;
     suspect2Bg.setFill(selectedBg);
 
     suspect1Bg.setFill(notSelectedBug);
@@ -133,10 +135,16 @@ public class GuessController {
         || reportTextArea.getText().isEmpty()) {
       // Don't go to results scene because you need to pick a suspect & write a report.
       System.out.println("Can't send report, pick suspect & write report!");
-    } else {
-      appTimer.cancelTimer();
-      SceneManager.addUi(AppUi.RESULT, App.loadFxml("result"));
-      App.getScene().setRoot(SceneManager.getUiRoot(AppUi.RESULT));
+      return;
     }
+
+    appTimer.cancelTimer();
+    var loader = new FXMLLoader(GuessController.class.getResource("/fxml/result.fxml"));
+    Parent root = loader.load();
+    ResultController controller = loader.getController();
+    controller.setResult(chosenSuspect.equals(Suspect.LOUIE), reportTextArea.getText());
+    SceneManager.addUi(AppUi.RESULT, root);
+
+    App.getScene().setRoot(SceneManager.getUiRoot(AppUi.RESULT));
   }
 }
