@@ -34,7 +34,4 @@ public class MenuController {
     SceneManager.addUi(AppUi.GAME, App.loadFxml("game"));
     App.getScene().setRoot(SceneManager.getUiRoot(AppUi.GAME));
   }
-
-  @FXML
-  private void initialize() {}
 }
