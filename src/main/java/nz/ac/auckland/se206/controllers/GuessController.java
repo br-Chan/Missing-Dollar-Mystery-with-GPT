@@ -61,6 +61,7 @@ public class GuessController {
 
     appTimer = new AppTimer(timerLabel, AppTimer.GUESSTIME);
     appTimer.beginCountdown();
+    setupGuessButton();
   }
 
   /**
@@ -69,16 +70,8 @@ public class GuessController {
    * @param event the key event
    */
   @FXML
-  public void onKeyPressed(KeyEvent event) {
-  }
-
-  /**
-   * Handles the key released event.
-   *
-   * @param event the key event
-   */
-  @FXML
-  public void onKeyReleased(KeyEvent event) {
+  public void handleReportIssueKeyEvent(KeyEvent event) {
+    setupGuessButton();
   }
 
   /**
@@ -94,6 +87,8 @@ public class GuessController {
 
     suspect2Bg.setFill(Color.rgb(191, 191, 191));
     suspect3Bg.setFill(Color.rgb(191, 191, 191));
+
+    setupGuessButton();
   }
 
   /**
@@ -107,6 +102,8 @@ public class GuessController {
 
     suspect1Bg.setFill(notSelectedBug);
     suspect3Bg.setFill(notSelectedBug);
+
+    setupGuessButton();
   }
 
   /**
@@ -120,6 +117,8 @@ public class GuessController {
 
     suspect2Bg.setFill(notSelectedBug);
     suspect1Bg.setFill(notSelectedBug);
+
+    setupGuessButton();
   }
 
   /**
@@ -131,8 +130,7 @@ public class GuessController {
    */
   @FXML
   public void handleSendReportClick(ActionEvent event) throws IOException {
-    if (chosenSuspect.equals(Suspect.NONE)
-        || reportTextArea.getText().isEmpty()) {
+    if (chosenSuspect.equals(Suspect.NONE) || reportTextArea.getText().isEmpty()) {
       // Don't go to results scene because you need to pick a suspect & write a report.
       System.out.println("Can't send report, pick suspect & write report!");
       return;
@@ -146,5 +144,16 @@ public class GuessController {
     SceneManager.addUi(AppUi.RESULT, root);
 
     App.getScene().setRoot(SceneManager.getUiRoot(AppUi.RESULT));
+  }
+
+  private void setupGuessButton() {
+    if (chosenSuspect.equals(Suspect.NONE) || reportTextArea.getText().isBlank()) {
+      sendReportButton.setDisable(true);
+      sendReportButton.setOpacity(0.5);
+      return;
+    }
+
+    sendReportButton.setDisable(false);
+    sendReportButton.setOpacity(1);
   }
 }

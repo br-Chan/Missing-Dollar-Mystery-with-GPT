@@ -13,7 +13,7 @@
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 
-<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#onKeyPressed" onKeyReleased="#onKeyReleased" prefHeight="599.0" prefWidth="789.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.GuessController">
+<BorderPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="599.0" prefWidth="789.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.GuessController">
     <top>
         <Label layoutY="100.0" prefHeight="51.0" prefWidth="642.0" BorderPane.alignment="CENTER">
             <font>
@@ -129,7 +129,7 @@
                         <Insets left="35.0" />
                     </padding>
                 </HBox>
-                <TextArea fx:id="reportTextArea" layoutX="10.0" layoutY="230.0" prefHeight="294.0" prefWidth="619.0" promptText="Write your report!" wrapText="true">
+                <TextArea fx:id="reportTextArea" layoutX="10.0" layoutY="230.0" prefHeight="294.0" prefWidth="619.0" promptText="Write your report!" wrapText="true" onKeyPressed="#handleReportIssueKeyEvent">
                     <font>
                         <Font name="Bradley Hand ITC" size="27.0" />
                     </font>
