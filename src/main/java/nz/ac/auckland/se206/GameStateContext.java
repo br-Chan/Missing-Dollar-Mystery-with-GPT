@@ -19,6 +19,7 @@ public class GameStateContext {
   private GameState gameState;
 
   private static Suspect chosenSuspect;
+  private static String report;
 
   /** Constructs a new GameStateContext and initializes the game states. */
   public GameStateContext(AbstractSuspectController suspectController) {
@@ -30,11 +31,19 @@ public class GameStateContext {
     chosenSuspect = Suspect.NONE;
   }
 
-  public void setChosenSuspect(Suspect suspect) {
+  public static void setReport(String report) {
+    GameStateContext.report = report;
+  }
+
+  public static void setChosenSuspect(Suspect suspect) {
     chosenSuspect = suspect;
   }
 
-  public Suspect getChosenSuspect() {
+  public static String getReport() {
+    return report;
+  }
+
+  public static Suspect getChosenSuspect() {
     return chosenSuspect;
   }
 

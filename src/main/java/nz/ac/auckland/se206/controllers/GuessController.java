@@ -13,6 +13,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.AppTimer;
+import nz.ac.auckland.se206.GameStateContext;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.Suspect;
@@ -38,6 +39,8 @@ public class GuessController {
 
   private Suspect chosenSuspect = Suspect.NONE;
 
+  // GameStateContext gameStateContext = new GameStateContext(null);
+
   AppTimer appTimer;
 
   private final Color selectedBg = Color.rgb(255, 255, 255);
@@ -53,6 +56,15 @@ public class GuessController {
     appTimer = new AppTimer(timerLabel, AppTimer.GUESSTIME);
     appTimer.beginCountdown();
     setupGuessButton();
+  }
+
+  @FXML
+  public void sendDataToContext(KeyEvent event) {
+    GameStateContext.setChosenSuspect(chosenSuspect);
+    System.out.println(GameStateContext.getChosenSuspect());
+
+    GameStateContext.setReport(reportTextArea.getText());
+    System.out.println(GameStateContext.getReport());
   }
 
   /**
@@ -75,6 +87,7 @@ public class GuessController {
   @FXML
   private void onHandleSuspect1ButtonClick(ActionEvent event) {
     chosenSuspect = Suspect.LOUIE;
+    sendDataToContext(null);
     suspect1Bg.setFill(selectedBg);
 
     suspect2Bg.setFill(notSelectedBug);
@@ -91,6 +104,7 @@ public class GuessController {
   private void onHandleSuspect2ButtonClick(ActionEvent event) {
     // Set the chosen suspect to Huey
     chosenSuspect = Suspect.HUEY;
+    sendDataToContext(null);
     suspect2Bg.setFill(selectedBg);
 
     // Set the other suspects to not selected
@@ -108,6 +122,7 @@ public class GuessController {
   private void onHandleSuspect3ButtonClick() {
     // Set the chosen suspect to Dewey
     chosenSuspect = Suspect.DEWEY;
+    sendDataToContext(null);
     suspect3Bg.setFill(selectedBg);
 
     // Set the other suspects to not selected
@@ -138,7 +153,7 @@ public class GuessController {
     Parent root = loader.load();
     ResultController controller = loader.getController();
     // Set the result of the guess
-    controller.setResult(chosenSuspect.equals(Suspect.LOUIE), reportTextArea.getText());
+    // controller.setResult(chosenSuspect.equals(Suspect.LOUIE), reportTextArea.getText());
     SceneManager.addUi(AppUi.RESULT, root);
 
     App.getScene().setRoot(SceneManager.getUiRoot(AppUi.RESULT));

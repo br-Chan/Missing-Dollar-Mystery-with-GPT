@@ -13,6 +13,9 @@ import nz.ac.auckland.apiproxy.chat.openai.ChatCompletionRequest;
 import nz.ac.auckland.apiproxy.chat.openai.ChatCompletionResult;
 import nz.ac.auckland.apiproxy.config.ApiProxyConfig;
 import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
+import nz.ac.auckland.se206.GameStateContext;
+import nz.ac.auckland.se206.Suspect;
+import nz.ac.auckland.se206.states.GameState;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
@@ -51,6 +54,21 @@ public class ResultController {
       System.err.println("Could not read api proxy config");
       throw new RuntimeException(e);
     }
+  }
+
+  /**
+   * TODO: Fill in this JavaDoc comment.
+   *
+   * <p>Initializes the scene view.
+   */
+  @FXML
+  public void initialize() {
+    System.out.println("chose: " + GameStateContext.getChosenSuspect());
+    System.out.println(Suspect.LOUIE);
+    System.out.println(GameStateContext.getChosenSuspect().equals(Suspect.LOUIE));
+    System.out.println(GameStateContext.getReport());
+    setResult(
+        GameStateContext.getChosenSuspect().equals(Suspect.LOUIE), GameStateContext.getReport());
   }
 
   public void setResult(boolean isGuessCorrect, String reasoning) {
@@ -96,23 +114,12 @@ public class ResultController {
 
     new Thread(task).start();
   }
-
-  /**
-   * TODO: Fill in this JavaDoc comment.
-   *
-   * <p>Initializes the scene view.
-   */
-  @FXML
-  public void initialize() {
-    System.out.println("Initialising...");
-  }
-
   @FXML
   private void onHandleRestart() throws IOException {
     SceneManager.addUi(AppUi.RESTART, App.loadFxml("restart"));
     App.getScene().setRoot(SceneManager.getUiRoot(AppUi.RESTART));
-    PauseTransition pause = new PauseTransition(Duration.millis(500));
     // Set what to do after the pause
+    PauseTransition pause = new PauseTransition(Duration.millis(500));
     pause.setOnFinished(
         event -> {
           App.restart();

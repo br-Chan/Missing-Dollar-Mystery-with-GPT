@@ -132,7 +132,7 @@
                         <Insets left="35.0" />
                     </padding>
                 </HBox>
-                <TextArea fx:id="reportTextArea" layoutX="10.0" layoutY="230.0" onKeyPressed="#onHandleReportIssueKeyEvent" prefHeight="294.0" prefWidth="619.0" promptText="Write your report!" wrapText="true">
+                <TextArea fx:id="reportTextArea" layoutX="10.0" layoutY="230.0" onKeyPressed="#onHandleReportIssueKeyEvent" onKeyTyped="#sendDataToContext" prefHeight="294.0" prefWidth="619.0" promptText="Write your report!" wrapText="true">
                     <font>
                         <Font name="Bradley Hand ITC" size="27.0" />
                     </font>
