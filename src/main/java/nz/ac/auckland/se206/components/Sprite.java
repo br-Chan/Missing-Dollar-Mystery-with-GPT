@@ -12,7 +12,6 @@ import javax.imageio.ImageIO;
 public class Sprite extends Pane {
   private BufferedImage image;
   private Canvas canvas;
-  //     private final BufferedImage image = new BufferedImage(1, 1, BufferedImage.TYPE_INT_ARGB);
 
   private SimpleStringProperty spriteUrl;
   private SimpleDoubleProperty scale;

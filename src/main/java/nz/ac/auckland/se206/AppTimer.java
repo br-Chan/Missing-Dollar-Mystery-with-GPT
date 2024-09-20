@@ -40,7 +40,7 @@ public class AppTimer {
                   timeLeft--;
                   int minutesLeft = timeLeft / 60;
                   int secondsLeft = timeLeft - 60 * minutesLeft;
-                  String digitaltimeLeft = null;
+                  String digitaltimeLeft;
                   if (secondsLeft < 10) {
                     digitaltimeLeft = "0" + minutesLeft + ":0" + secondsLeft;
                   } else {
