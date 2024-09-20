@@ -1,21 +1,16 @@
 package nz.ac.auckland.se206.controllers;
 
+import java.io.IOException;
+import java.util.Objects;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
-import javafx.scene.input.KeyEvent;
-import javafx.scene.layout.Pane;
 import nz.ac.auckland.apiproxy.chat.openai.ChatCompletionRequest;
 import nz.ac.auckland.apiproxy.chat.openai.ChatCompletionResult;
-import nz.ac.auckland.apiproxy.chat.openai.ChatMessage;
 import nz.ac.auckland.apiproxy.config.ApiProxyConfig;
 import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
-
-import java.io.BufferedReader;
-import java.io.IOException;
-import java.util.Objects;
 
 /**
  * TODO: Fill in this JavaDoc comment.
@@ -26,19 +21,22 @@ import java.util.Objects;
  * <p>This is a controller class for a fxml scene.
  */
 public class ResultController {
-  @FXML
-  private Label guessStatus;
-  @FXML
-  private Label marking;
-  @FXML
-  private TextArea markingResult;
+  @FXML private Label guessStatus;
+  @FXML private Label marking;
+  @FXML private TextArea markingResult;
 
   private ChatCompletionRequest completionRequest;
 
   public ResultController() {
     try {
-      var systemPromptFile = new String(Objects.requireNonNull(ResultController.class.getResourceAsStream("/prompts/validateGuess.txt")).readAllBytes());
-      completionRequest = new ChatCompletionRequest(ApiProxyConfig.readConfig()).addMessage("system", systemPromptFile);
+      var systemPromptFile =
+          new String(
+              Objects.requireNonNull(
+                      ResultController.class.getResourceAsStream("/prompts/validateGuess.txt"))
+                  .readAllBytes());
+      completionRequest =
+          new ChatCompletionRequest(ApiProxyConfig.readConfig())
+              .addMessage("system", systemPromptFile);
     } catch (NullPointerException e) {
       System.err.println("Could not load prompt");
     } catch (IOException e) {
@@ -60,35 +58,36 @@ public class ResultController {
 
     guessStatus.setText("You guessed correctly!");
 
-    var task = new Task<Void>() {
-      @Override
-      protected Void call() throws Exception {
-        ChatCompletionResult result;
-        try {
-          result = completionRequest.addMessage("user", reasoning).execute();
-        } catch (ApiProxyException e) {
-          System.err.println("Could not get chatgpt response " + e.getMessage());
-          return null;
-        }
+    var task =
+        new Task<Void>() {
+          @Override
+          protected Void call() throws Exception {
+            ChatCompletionResult result;
+            try {
+              result = completionRequest.addMessage("user", reasoning).execute();
+            } catch (ApiProxyException e) {
+              System.err.println("Could not get chatgpt response " + e.getMessage());
+              return null;
+            }
 
-        Platform.runLater(() -> {
-          var message = result.getChoice(0).getChatMessage().getContent();
+            Platform.runLater(
+                () -> {
+                  var message = result.getChoice(0).getChatMessage().getContent();
 
-          if (message.contains("--yes")) {
-            message = message.replace("--yes", "");
+                  if (message.contains("--yes")) {
+                    message = message.replace("--yes", "");
 
-            marking.setText("You were spot on, here is the feedback on your response");
-          } else {
-            marking.setText("Not quite, here is the feedback on your response");
+                    marking.setText("You were spot on, here is the feedback on your response");
+                  } else {
+                    marking.setText("Not quite, here is the feedback on your response");
+                  }
+
+                  markingResult.setText(message);
+                });
+
+            return null;
           }
-
-          markingResult.setText(message);
-        });
-
-
-        return null;
-      }
-    };
+        };
 
     new Thread(task).start();
   }

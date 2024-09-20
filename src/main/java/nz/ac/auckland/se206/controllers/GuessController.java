@@ -13,6 +13,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.AppTimer;
+import nz.ac.auckland.se206.GameStateContext;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.Suspect;
@@ -37,6 +38,8 @@ public class GuessController {
   @FXML private Label timerLabel;
 
   private Suspect chosenSuspect = Suspect.NONE;
+
+  GameStateContext gameStatecontext = new GameStateContext(null);
 
   AppTimer appTimer;
 
