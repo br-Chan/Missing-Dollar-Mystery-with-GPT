@@ -57,8 +57,10 @@ public class GuessController {
    */
   @FXML
   public void initialize() {
+    // Set the starting label to the default text
     System.out.println("Initialising guess scene...");
 
+    // Set the starting label to the default text
     appTimer = new AppTimer(timerLabel, AppTimer.GUESSTIME);
     appTimer.beginCountdown();
     setupGuessButton();
@@ -71,6 +73,7 @@ public class GuessController {
    */
   @FXML
   public void handleReportIssueKeyEvent(KeyEvent event) {
+    // If the report text area is empty, disable the send report button
     setupGuessButton();
   }
 
@@ -83,8 +86,10 @@ public class GuessController {
   @FXML
   public void handleSuspect1ButtonClick(ActionEvent event) {
     chosenSuspect = Suspect.LOUIE;
+    // Set the starting label to the chosen suspect
     suspect1Bg.setFill(Color.rgb(255, 255, 255));
 
+    // Set the other suspects to not selected
     suspect2Bg.setFill(Color.rgb(191, 191, 191));
     suspect3Bg.setFill(Color.rgb(191, 191, 191));
 
@@ -97,9 +102,11 @@ public class GuessController {
    */
   @FXML
   public void handleSuspect2ButtonClick(ActionEvent event) {
+    // Set the chosen suspect to Huey
     chosenSuspect = Suspect.HUEY;
     suspect2Bg.setFill(selectedBg);
 
+    // Set the other suspects to not selected
     suspect1Bg.setFill(notSelectedBug);
     suspect3Bg.setFill(notSelectedBug);
 
@@ -112,9 +119,11 @@ public class GuessController {
    */
   @FXML
   public void handleSuspect3ButtonClick() {
+    // Set the chosen suspect to Dewey
     chosenSuspect = Suspect.DEWEY;
     suspect3Bg.setFill(selectedBg);
 
+    // Set the other suspects to not selected
     suspect2Bg.setFill(notSelectedBug);
     suspect1Bg.setFill(notSelectedBug);
 
@@ -136,23 +145,30 @@ public class GuessController {
       return;
     }
 
+    // Stop the timer
     appTimer.cancelTimer();
     var loader = new FXMLLoader(GuessController.class.getResource("/fxml/result.fxml"));
     Parent root = loader.load();
     ResultController controller = loader.getController();
+    // Set the result of the guess
     controller.setResult(chosenSuspect.equals(Suspect.LOUIE), reportTextArea.getText());
     SceneManager.addUi(AppUi.RESULT, root);
 
     App.getScene().setRoot(SceneManager.getUiRoot(AppUi.RESULT));
   }
 
+  /**
+   * Sets up the guess button, disabling it if a suspect has not been chosen or if the report text
+   */
   private void setupGuessButton() {
+    // If no suspect has been chosen or the report text area is empty, disable the send report
     if (chosenSuspect.equals(Suspect.NONE) || reportTextArea.getText().isBlank()) {
       sendReportButton.setDisable(true);
       sendReportButton.setOpacity(0.5);
       return;
     }
 
+    // Otherwise, enable the send report button
     sendReportButton.setDisable(false);
     sendReportButton.setOpacity(1);
   }
