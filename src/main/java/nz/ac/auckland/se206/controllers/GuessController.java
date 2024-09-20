@@ -41,8 +41,6 @@ public class GuessController {
 
   private Suspect chosenSuspect = Suspect.NONE;
 
-  // GameStateContext gameStateContext = new GameStateContext(null);
-
   AppTimer appTimer;
 
   private final Color selectedBg = Color.rgb(255, 255, 255);
@@ -156,9 +154,6 @@ public class GuessController {
     appTimer.cancelTimer();
     var loader = new FXMLLoader(GuessController.class.getResource("/fxml/result.fxml"));
     Parent root = loader.load();
-    ResultController controller = loader.getController();
-    // Set the result of the guess
-    // controller.setResult(chosenSuspect.equals(Suspect.LOUIE), reportTextArea.getText());
     SceneManager.addUi(AppUi.RESULT, root);
 
     App.getScene().setRoot(SceneManager.getUiRoot(AppUi.RESULT));

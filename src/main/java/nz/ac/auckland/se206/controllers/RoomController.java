@@ -29,7 +29,6 @@ public class RoomController {
   @FXML private Button btnGuess;
 
   private static boolean isFirstTimeInit = true;
-  private static GameStateContext context = new GameStateContext(null);
 
   /**
    * Initializes the room view. If it's the first time initialization, it will provide instructions
@@ -81,6 +80,5 @@ public class RoomController {
    */
   @FXML
   private void handleGuessClick(ActionEvent event) throws IOException {
-    // context.handleGuessClick();
   }
 }

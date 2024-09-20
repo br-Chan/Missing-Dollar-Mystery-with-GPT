@@ -12,12 +12,12 @@ import nz.ac.auckland.se206.speech.TextToSpeech;
 
 public class MenuController {
 
+  @FXML private Button startButton;
+
   @FXML
   private void initialize() throws URISyntaxException {
     TextToSpeech.playVoiceline("Menu");
   }
-
-  @FXML private Button startButton;
 
   /**
    * Switches the displayed scene when the user clicks the start button.
