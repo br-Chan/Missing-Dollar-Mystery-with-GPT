@@ -14,7 +14,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.AppTimer;
-import nz.ac.auckland.se206.GameStateContext;
+import nz.ac.auckland.se206.GlobalVariables;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.Suspect;
@@ -62,11 +62,11 @@ public class GuessController {
 
   @FXML
   public void sendDataToContext(KeyEvent event) {
-    GameStateContext.setChosenSuspect(chosenSuspect);
-    System.out.println(GameStateContext.getChosenSuspect());
+    GlobalVariables.setChosenSuspect(chosenSuspect);
+    System.out.println(GlobalVariables.getChosenSuspect());
 
-    GameStateContext.setReport(reportTextArea.getText());
-    System.out.println(GameStateContext.getReport());
+    GlobalVariables.setReport(reportTextArea.getText());
+    System.out.println(GlobalVariables.getReport());
   }
 
   /**

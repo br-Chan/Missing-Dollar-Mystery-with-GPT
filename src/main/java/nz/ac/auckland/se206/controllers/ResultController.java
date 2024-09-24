@@ -14,7 +14,7 @@ import nz.ac.auckland.apiproxy.chat.openai.ChatCompletionResult;
 import nz.ac.auckland.apiproxy.config.ApiProxyConfig;
 import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
 import nz.ac.auckland.se206.App;
-import nz.ac.auckland.se206.GameStateContext;
+import nz.ac.auckland.se206.GlobalVariables;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.Suspect;
@@ -65,7 +65,7 @@ public class ResultController {
   @FXML
   public void initialize() {
     setResult(
-        GameStateContext.getChosenSuspect().equals(Suspect.LOUIE), GameStateContext.getReport());
+        GlobalVariables.getChosenSuspect().equals(Suspect.LOUIE), GlobalVariables.getReport());
   }
 
   public void setResult(boolean isGuessCorrect, String reasoning) {

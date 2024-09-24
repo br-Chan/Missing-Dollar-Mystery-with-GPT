@@ -9,12 +9,11 @@ import javafx.scene.input.KeyEvent;
 import nz.ac.auckland.apiproxy.chat.openai.ChatMessage;
 import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
 import nz.ac.auckland.se206.App;
-import nz.ac.auckland.se206.GameStateContext;
 import nz.ac.auckland.se206.prompts.PromptEngineering;
 
 public abstract class AbstractSuspectController extends GptChatter {
 
-  protected static GameStateContext context;
+  // protected static GameStateContext context;
 
   @FXML private ImageView chatBubbleImage;
 
@@ -23,7 +22,7 @@ public abstract class AbstractSuspectController extends GptChatter {
   protected Boolean secondTimeTalking = false;
 
   public AbstractSuspectController() {
-    context = new GameStateContext(this);
+    // context = new GameStateContext(this);
   }
 
   /**
