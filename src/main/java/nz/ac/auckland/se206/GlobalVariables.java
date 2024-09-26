@@ -99,9 +99,9 @@ public class GlobalVariables {
   }
 
   /** Cheat that toggles whether TTS is muted or not. */
-  public static void muteTTSCheat() {
+  public static void muteTtsCheat() {
     alertUserOfCheat((muteTts ? "unmuting" : "muting") + " TTS.");
     muteTts = !muteTts;
-    TextToSpeech.toggleMutePlayer();
+    TextToSpeech.setMuteStatusOfPlayer();
   }
 }

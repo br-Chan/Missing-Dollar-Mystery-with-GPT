@@ -84,12 +84,11 @@ public class TextToSpeech {
   public static void playVoiceline(String voiceline) throws URISyntaxException {
     stopPlayer();
 
-    // Plays sound if TTS has not been muted.
-    // if (!GlobalVariables.isMuteTts()) {
-      sound = new Media(App.class.getResource("/sounds/" + voiceline + ".mp3").toURI().toString());
-      player = new MediaPlayer(sound);
-      player.play();
-    // }
+    // Plays sound.
+    sound = new Media(App.class.getResource("/sounds/" + voiceline + ".mp3").toURI().toString());
+    player = new MediaPlayer(sound);
+    setMuteStatusOfPlayer();
+    player.play();
   }
 
   /** Stops the player if it is currently playing. */
@@ -99,7 +98,11 @@ public class TextToSpeech {
     }
   }
 
-  public static void toggleMutePlayer() {
+  /**
+   * Mutes or unmutes the player depending on whether TTS is to be muted in the Global Variables
+   * class.
+   */
+  public static void setMuteStatusOfPlayer() {
     if (player != null) {
       player.setMute(GlobalVariables.isMuteTts());
     }
