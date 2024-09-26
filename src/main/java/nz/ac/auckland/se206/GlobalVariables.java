@@ -41,6 +41,12 @@ public class GlobalVariables {
     interactablesMap.put("displayCaseClue", false);
   }
 
+  /**
+   * Changes the value of the input key to true, marking that the affiliated interactable has been
+   * interacted with.
+   *
+   * @param mapKey the id of the interactable that is the key in the interactables map
+   */
   public static void handleInteraction(String mapKey) {
     interactablesMap.put(mapKey, true);
   }
