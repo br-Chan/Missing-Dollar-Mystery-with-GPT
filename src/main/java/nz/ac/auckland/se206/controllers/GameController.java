@@ -121,14 +121,7 @@ public class GameController {
    */
   @FXML
   public void onKeyPressed(KeyEvent event) {
-    String pressedKey = event.getCode().toString();
-    if (pressedKey.equals("F1")) {
-      GlobalVariables.muteTtsCheat();
-    } else if (pressedKey.equals("F2")) {
-      GlobalVariables.overrideInteractablesMapCheat(true);
-    } else if (pressedKey.equals("F3")) {
-      GlobalVariables.overrideInteractablesMapCheat(false);
-    }
+    GlobalVariables.checkForCheatCode(event.getCode().toString());
   }
 
   /**

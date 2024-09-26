@@ -7,12 +7,13 @@ import nz.ac.auckland.se206.speech.TextToSpeech;
 /** Class for managing global variables of the game. */
 public class GlobalVariables {
 
-  private static boolean muteTts = false;
-
   private static Map<String, Boolean> interactablesMap = new HashMap<>();
 
   private static Suspect chosenSuspect = Suspect.NONE;
   private static String report;
+
+  private static boolean muteTts = false;
+  private static boolean interactablesOverriddenTrue = false;
 
   public static void setReport(String report) {
     GlobalVariables.report = report;
@@ -82,7 +83,15 @@ public class GlobalVariables {
     return false;
   }
 
-  public static void alertUserOfCheat(String message) {
+  public static void checkForCheatCode(String pressedKey) {
+    if (pressedKey.equals("F1")) {
+      GlobalVariables.muteTtsCheat();
+    } else if (pressedKey.equals("F2")) {
+      GlobalVariables.overrideInteractablesMapCheat();
+    }
+  }
+
+  private static void alertUserOfCheat(String message) {
     System.out.println("CHEAT ACTIVATED: " + message);
   }
 
@@ -91,16 +100,22 @@ public class GlobalVariables {
    *
    * @param override true or false
    */
-  public static void overrideInteractablesMapCheat(boolean override) {
-    alertUserOfCheat("overriding interactables map to " + override + ".");
+  private static void overrideInteractablesMapCheat() {
+    alertUserOfCheat(
+        "overriding interactables map to "
+            + (interactablesOverriddenTrue ? "false" : "true")
+            + ".");
+    interactablesOverriddenTrue = !interactablesOverriddenTrue;
+
     for (String interactable : interactablesMap.keySet()) {
-      interactablesMap.put(interactable, override);
+      interactablesMap.put(interactable, interactablesOverriddenTrue);
     }
   }
 
   /** Cheat that toggles whether TTS is muted or not. */
-  public static void muteTtsCheat() {
+  private static void muteTtsCheat() {
     alertUserOfCheat((muteTts ? "unmuting" : "muting") + " TTS.");
+    
     muteTts = !muteTts;
     TextToSpeech.setMuteStatusOfPlayer();
   }
