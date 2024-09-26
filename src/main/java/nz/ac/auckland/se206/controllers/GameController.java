@@ -114,12 +114,20 @@ public class GameController {
   }
 
   /**
-   * Handles the key pressed event.
+   * Handles the key pressed event, checking for any cheat codes pressed.
+   * TODO: DISABLE THESE BEFORE FINAL CODE RELEASE.
    *
    * @param event the key event
    */
   @FXML
-  public void onKeyPressed(KeyEvent event) {}
+  public void onKeyPressed(KeyEvent event) {
+    String pressedKey = event.getCode().toString();
+    if (pressedKey.equals("F1")) {
+      GlobalVariables.overrideInteractablesMapCheat(true);
+    } else if (pressedKey.equals("F2")) {
+      GlobalVariables.overrideInteractablesMapCheat(false);
+    }
+  }
 
   /**
    * Handles the key released event.

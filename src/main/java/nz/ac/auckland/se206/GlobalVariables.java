@@ -74,4 +74,20 @@ public class GlobalVariables {
 
     return false;
   }
+
+  public static void alertUserOfCheat(String message) {
+    System.out.println("CHEAT ACTIVATED: game now " + message);
+  }
+
+  /**
+   * Cheat that sets all values in the interactables map to the input parameter.
+   *
+   * @param override true or false
+   */
+  public static void overrideInteractablesMapCheat(boolean override) {
+    alertUserOfCheat("overriding interactables map to " + override);
+    for (String interactable : interactablesMap.keySet()) {
+      interactablesMap.put(interactable, override);
+    }
+  }
 }
