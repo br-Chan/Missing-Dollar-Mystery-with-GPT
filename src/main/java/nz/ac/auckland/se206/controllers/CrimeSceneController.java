@@ -188,7 +188,7 @@ public class CrimeSceneController {
 
   @FXML
   void napkinSelected() {
-    // Toggles naplin on and off
+    // Toggles napkin on and off
     if (napkinOn) {
       cleaningImage.setVisible(false); // Sets the napkin as invisible
       napkinOn = false;
@@ -410,7 +410,7 @@ public class CrimeSceneController {
     // Check if thing on the card has been cleaning
     if (dirtImage.getOpacity() < 0.1
         && debrisImage.getOpacity() < 0.1
-        && pencilImage.getOpacity() < 0.1) {
+        && pencilImage.getOpacity() < 0.01) {
       cardDirtyLabel.setVisible(false);
       cardChatPane.setVisible(true);
       cleaningImage.setVisible(false);
