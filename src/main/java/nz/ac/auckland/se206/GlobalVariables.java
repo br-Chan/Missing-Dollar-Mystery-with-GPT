@@ -2,9 +2,12 @@ package nz.ac.auckland.se206;
 
 import java.util.HashMap;
 import java.util.Map;
+import nz.ac.auckland.se206.speech.TextToSpeech;
 
 /** Class for managing global variables of the game. */
 public class GlobalVariables {
+
+  private static boolean muteTts = false;
 
   private static Map<String, Boolean> interactablesMap = new HashMap<>();
 
@@ -17,6 +20,10 @@ public class GlobalVariables {
 
   public static void setChosenSuspect(Suspect suspect) {
     GlobalVariables.chosenSuspect = suspect;
+  }
+
+  public static boolean isMuteTts() {
+    return muteTts;
   }
 
   public static Map<String, Boolean> getInteractablesMap() {
@@ -76,7 +83,7 @@ public class GlobalVariables {
   }
 
   public static void alertUserOfCheat(String message) {
-    System.out.println("CHEAT ACTIVATED: game now " + message);
+    System.out.println("CHEAT ACTIVATED: " + message);
   }
 
   /**
@@ -85,9 +92,16 @@ public class GlobalVariables {
    * @param override true or false
    */
   public static void overrideInteractablesMapCheat(boolean override) {
-    alertUserOfCheat("overriding interactables map to " + override);
+    alertUserOfCheat("overriding interactables map to " + override + ".");
     for (String interactable : interactablesMap.keySet()) {
       interactablesMap.put(interactable, override);
     }
+  }
+
+  /** Cheat that toggles whether TTS is muted or not. */
+  public static void muteTTSCheat() {
+    alertUserOfCheat((muteTts ? "unmuting" : "muting") + " TTS.");
+    muteTts = !muteTts;
+    TextToSpeech.toggleMutePlayer();
   }
 }

@@ -114,8 +114,8 @@ public class GameController {
   }
 
   /**
-   * Handles the key pressed event, checking for any cheat codes pressed.
-   * TODO: DISABLE THESE BEFORE FINAL CODE RELEASE.
+   * Handles the key pressed event, checking for any cheat codes pressed. TODO: DISABLE THESE BEFORE
+   * FINAL CODE RELEASE.
    *
    * @param event the key event
    */
@@ -123,8 +123,10 @@ public class GameController {
   public void onKeyPressed(KeyEvent event) {
     String pressedKey = event.getCode().toString();
     if (pressedKey.equals("F1")) {
-      GlobalVariables.overrideInteractablesMapCheat(true);
+      GlobalVariables.muteTTSCheat();
     } else if (pressedKey.equals("F2")) {
+      GlobalVariables.overrideInteractablesMapCheat(true);
+    } else if (pressedKey.equals("F3")) {
       GlobalVariables.overrideInteractablesMapCheat(false);
     }
   }
