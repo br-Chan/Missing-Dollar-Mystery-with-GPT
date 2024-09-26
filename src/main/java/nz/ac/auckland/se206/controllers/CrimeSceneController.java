@@ -148,9 +148,6 @@ public class CrimeSceneController {
     if (firstTimeCardClue) {
       TextToSpeech.playVoiceline("IDCard");
       firstTimeCardClue = false;
-
-      // Mark the computer clue as having been interacted with.
-      GlobalVariables.handleInteraction("cardClue");
     }
   }
 
@@ -256,9 +253,6 @@ public class CrimeSceneController {
     if (firstTimeDisplayCaseClue) {
       TextToSpeech.playVoiceline("DisplayCase");
       firstTimeDisplayCaseClue = false;
-
-      // Mark the computer clue as having been interacted with.
-      GlobalVariables.handleInteraction("displayCaseClue");
     }
   }
 
@@ -299,9 +293,6 @@ public class CrimeSceneController {
     if (firstTimeComputerClue) {
       TextToSpeech.playVoiceline("Computer");
       firstTimeComputerClue = false;
-
-      // Mark the computer clue as having been interacted with.
-      GlobalVariables.handleInteraction("computerClue");
     }
   }
 
@@ -356,6 +347,9 @@ public class CrimeSceneController {
         showStock(errorStockPane);
         break;
     }
+
+    // Mark the computer clue as having been interacted with.
+    GlobalVariables.handleInteraction("computerClue");
   }
 
   @FXML
@@ -383,6 +377,9 @@ public class CrimeSceneController {
     } else {
       updateLogs(Integer.parseInt(start), Integer.parseInt(end));
     }
+
+    // Mark the computer clue as having been interacted with.
+    GlobalVariables.handleInteraction("computerClue");
   }
 
   private boolean checkValidInput(String start, String end) {
@@ -455,6 +452,9 @@ public class CrimeSceneController {
     }
     // Sets the pane to show to be visible
     paneToShow.setVisible(true);
+
+    // Mark the display case clue as having been interacted with.
+    GlobalVariables.handleInteraction("displayCaseClue");
   }
 
   private void showStock(Pane paneToShow) {

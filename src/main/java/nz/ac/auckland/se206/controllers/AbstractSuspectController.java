@@ -87,20 +87,8 @@ public abstract class AbstractSuspectController extends GptChatter {
     chatBubbleImage.setImage(
         new Image(App.class.getResource("/images/chatbubblepixel.png").toString()));
     super.setChatting(response);
-    handleInteraction();
-  }
 
-  /**
-   * Changes the value of the suspect in the interactables map in Global Variables to true, marking
-   * that it has been interacted with.
-   */
-  private void handleInteraction() {
-    // if (!secondTimeTalking) {
-    //   secondTimeTalking = true;
-    // } else if (secondTimeTalking) {
-    //   System.out.println(suspectName);
-    //   GameController.setVisited(suspectName);
-    // }
+    // Mark the suspect as having been interacted with.
     GlobalVariables.handleInteraction(suspectId);
   }
 }
