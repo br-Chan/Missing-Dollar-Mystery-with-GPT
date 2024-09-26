@@ -114,8 +114,7 @@ public class GameController {
   }
 
   /**
-   * Handles the key pressed event, checking for any cheat codes pressed. TODO: DISABLE THESE BEFORE
-   * FINAL CODE RELEASE.
+   * Handles the key pressed event.
    *
    * @param event the key event
    */

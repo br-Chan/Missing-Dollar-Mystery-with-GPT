@@ -5,7 +5,9 @@ import java.net.URISyntaxException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.input.KeyEvent;
 import nz.ac.auckland.se206.App;
+import nz.ac.auckland.se206.GlobalVariables;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.speech.TextToSpeech;
@@ -17,6 +19,11 @@ public class MenuController {
   @FXML
   private void initialize() throws URISyntaxException {
     TextToSpeech.playVoiceline("Menu");
+  }
+
+  @FXML
+  private void onKeyPressed(KeyEvent event) {
+    GlobalVariables.checkForCheatCode(event.getCode().toString());
   }
 
   /**

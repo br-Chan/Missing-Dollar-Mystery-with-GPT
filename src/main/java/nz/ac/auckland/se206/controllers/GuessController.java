@@ -72,10 +72,18 @@ public class GuessController {
   /**
    * Handles the key pressed event.
    *
+   * <p>TODO: can we change this back to 'onKeyPressed'? It's a bit confusing.
+   *
+   * <p>TODO: also having 'onHandle' is a very problematic prefix that's used everywhere in the
+   * code. It should either start with 'on' or start with 'handle', not both. I prefer prefixing
+   * with 'on' for these fxml methods.
+   *
    * @param event the key event
    */
   @FXML
   public void onHandleReportIssueKeyEvent(KeyEvent event) {
+    GlobalVariables.checkForCheatCode(event.getCode().toString());
+
     // If the report text area is empty, disable the send report button
     setupGuessButton();
   }
