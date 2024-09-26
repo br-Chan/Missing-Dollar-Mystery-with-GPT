@@ -22,6 +22,7 @@ import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.AppTimer;
+import nz.ac.auckland.se206.GlobalVariables;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.speech.TextToSpeech;
@@ -193,24 +194,26 @@ public class GameController {
 
   @FXML
   private void onHandleGuessClick() throws IOException {
-    if (!hueyVisited || !louieVisited || !deweyVisited) {
-      flashUnvisitedPanes(); // Flash all unvisited corresponding panes
-    } else {
+    if (GlobalVariables.canGuessThief()) {
       appTimer.cancelTimer();
       SceneManager.addUi(AppUi.GUESS, App.loadFxml("guess"));
       App.getScene().setRoot(SceneManager.getUiRoot(AppUi.GUESS)); // Switches to guessing scene
+
+    } else {
+      System.out.println("Cannot guess");
+      flashUnvisitedPanes(); // Flash all unvisited corresponding panes
     }
   }
 
   /** Flashes the panes of the suspects which have not been visited. */
   private void flashUnvisitedPanes() {
-    if (!hueyVisited) {
+    if (!GlobalVariables.getInteractablesMap().get("suspect2")) {
       showAndFade(hueyFadePane); // Shows hueys fade pane if he hasnt been visited
     }
-    if (!louieVisited) {
+    if (!GlobalVariables.getInteractablesMap().get("suspect1")) {
       showAndFade(louieFadePane); // Shows louies fade pane if he hasnt been visited
     }
-    if (!deweyVisited) {
+    if (!GlobalVariables.getInteractablesMap().get("suspect3")) {
       showAndFade(deweyFadePane); // Shows deweys fade pane if he hasnt been visited
     }
   }

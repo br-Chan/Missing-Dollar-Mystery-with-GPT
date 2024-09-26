@@ -1,7 +1,12 @@
 package nz.ac.auckland.se206;
 
-/** Context class for managing global variables of the game. */
+import java.util.HashMap;
+import java.util.Map;
+
+/** Class for managing global variables of the game. */
 public class GlobalVariables {
+
+  private static Map<String, Boolean> interactablesMap = new HashMap<>();
 
   private static Suspect chosenSuspect = Suspect.NONE;
   private static String report;
@@ -14,6 +19,10 @@ public class GlobalVariables {
     GlobalVariables.chosenSuspect = suspect;
   }
 
+  public static Map<String, Boolean> getInteractablesMap() {
+    return interactablesMap;
+  }
+
   public static String getReport() {
     return GlobalVariables.report;
   }
@@ -22,4 +31,44 @@ public class GlobalVariables {
     return GlobalVariables.chosenSuspect;
   }
 
+  /** TODO: fill in javadoc */
+  public static void initialiseInteractablesMap() {
+    interactablesMap.put("suspect1", false);
+    interactablesMap.put("suspect2", false);
+    interactablesMap.put("suspect3", false);
+    interactablesMap.put("cardClue", false);
+    interactablesMap.put("computerClue", false);
+    interactablesMap.put("vendingMachineClue", false);
+  }
+
+  public static void handleInteraction(String mapKey) {
+    interactablesMap.put(mapKey, true);
+  }
+
+  /**
+   * Determines if the player can switch from the game scene to the guess scene to make a guess.
+   *
+   * @return true if the player has met all conditions to go to the guess scene
+   */
+  public static boolean canGuessThief() {
+    // Cannot guess if all suspects have not been interacted (player has chatted) with.
+    if (!interactablesMap.get("suspect1")
+        || !interactablesMap.get("suspect2")
+        || !interactablesMap.get("suspect3")) {
+          System.out.println(interactablesMap);
+      return false;
+    }
+
+    // TODO: uncomment once ready to implement this part of the verification
+    // Can guess if at least one clue has been interacted with.
+    // if (interactablesMap.get("cardClue")
+    //     || interactablesMap.get("computerClue")
+    //     || interactablesMap.get("vendingMachineClue")) {
+    //   return true;
+    // }
+
+    // return false;
+
+    return true;
+  }
 }
