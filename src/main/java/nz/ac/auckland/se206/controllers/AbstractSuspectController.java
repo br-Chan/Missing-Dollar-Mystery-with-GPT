@@ -14,13 +14,10 @@ import nz.ac.auckland.se206.prompts.PromptEngineering;
 
 public abstract class AbstractSuspectController extends GptChatter {
 
-  // protected static GameStateContext context;
-
   @FXML private ImageView chatBubbleImage;
 
   protected String suspectId;
   protected String suspectName;
-  protected Boolean secondTimeTalking = false;
 
   /**
    * Initializes the suspect view. If it's the first time initialization, it will provide
@@ -80,7 +77,8 @@ public abstract class AbstractSuspectController extends GptChatter {
 
   /**
    * Handles switching the chat bubble image to a speech bubble and replacing its text with
-   * ChatGPT's response to the user.
+   * ChatGPT's response to the user. If the suspect is being chatted to for the first time, the
+   * suspect is marked as been having interacted with.
    *
    * @param response the chat message to display to the user
    */

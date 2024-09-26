@@ -31,7 +31,7 @@ public class GlobalVariables {
     return GlobalVariables.chosenSuspect;
   }
 
-  /** TODO: fill in javadoc */
+  /** Adds all interactables to the interactablesMap and sets their values to false. */
   public static void initialiseInteractablesMap() {
     interactablesMap.put("suspect1", false);
     interactablesMap.put("suspect2", false);
@@ -55,7 +55,7 @@ public class GlobalVariables {
     if (!interactablesMap.get("suspect1")
         || !interactablesMap.get("suspect2")
         || !interactablesMap.get("suspect3")) {
-          System.out.println(interactablesMap);
+      System.out.println(interactablesMap);
       return false;
     }
 

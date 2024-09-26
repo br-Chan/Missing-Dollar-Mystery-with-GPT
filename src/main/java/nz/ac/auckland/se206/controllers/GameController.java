@@ -40,27 +40,6 @@ import nz.ac.auckland.se206.speech.TextToSpeech;
  */
 public class GameController {
 
-  private static Boolean hueyVisited = false;
-  private static Boolean louieVisited = false;
-  private static Boolean deweyVisited = false;
-
-  public static void setVisited(String suspect) {
-    // Switch case for setting visited booleans
-    switch (suspect) {
-      case "Huey":
-        hueyVisited = true; // Sets huey true
-        break;
-      case "Louie":
-        louieVisited = true; // Sets louie true
-        break;
-      case "Dewey":
-        deweyVisited = true; // Sets dewey true
-        break;
-      default:
-        break;
-    }
-  }
-
   @FXML private BorderPane borderPane;
   @FXML private Button suspect1Button;
   @FXML private Button suspect2Button;
@@ -104,10 +83,6 @@ public class GameController {
     System.out.println("Initialising game scene...");
     setGameView(AppUi.CRIME_SCENE);
     showSelected(crimeSceneSelected); // Shows the selection box for the crimescene in minimap
-
-    hueyVisited = false;
-    louieVisited = false;
-    deweyVisited = false;
 
     appTimer = new AppTimer(timerLabel, AppTimer.GAMETIME);
     appTimer.beginCountdown();
