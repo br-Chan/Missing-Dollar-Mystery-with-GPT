@@ -38,7 +38,7 @@ public class GlobalVariables {
     interactablesMap.put("suspect3", false);
     interactablesMap.put("cardClue", false);
     interactablesMap.put("computerClue", false);
-    interactablesMap.put("vendingMachineClue", false);
+    interactablesMap.put("displayCaseClue", false);
   }
 
   public static void handleInteraction(String mapKey) {
@@ -59,16 +59,13 @@ public class GlobalVariables {
       return false;
     }
 
-    // TODO: uncomment once ready to implement this part of the verification
     // Can guess if at least one clue has been interacted with.
-    // if (interactablesMap.get("cardClue")
-    //     || interactablesMap.get("computerClue")
-    //     || interactablesMap.get("vendingMachineClue")) {
-    //   return true;
-    // }
+    if (interactablesMap.get("cardClue")
+        || interactablesMap.get("computerClue")
+        || interactablesMap.get("displayCaseClue")) {
+      return true;
+    }
 
-    // return false;
-
-    return true;
+    return false;
   }
 }

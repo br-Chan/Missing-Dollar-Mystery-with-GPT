@@ -17,6 +17,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
 import nz.ac.auckland.se206.App;
+import nz.ac.auckland.se206.GlobalVariables;
 import nz.ac.auckland.se206.components.Sprite;
 import nz.ac.auckland.se206.speech.TextToSpeech;
 
@@ -147,6 +148,9 @@ public class CrimeSceneController {
     if (firstTimeCardClue) {
       TextToSpeech.playVoiceline("IDCard");
       firstTimeCardClue = false;
+
+      // Mark the computer clue as having been interacted with.
+      GlobalVariables.handleInteraction("cardClue");
     }
   }
 
@@ -252,6 +256,9 @@ public class CrimeSceneController {
     if (firstTimeDisplayCaseClue) {
       TextToSpeech.playVoiceline("DisplayCase");
       firstTimeDisplayCaseClue = false;
+
+      // Mark the computer clue as having been interacted with.
+      GlobalVariables.handleInteraction("displayCaseClue");
     }
   }
 
@@ -292,6 +299,9 @@ public class CrimeSceneController {
     if (firstTimeComputerClue) {
       TextToSpeech.playVoiceline("Computer");
       firstTimeComputerClue = false;
+
+      // Mark the computer clue as having been interacted with.
+      GlobalVariables.handleInteraction("computerClue");
     }
   }
 
