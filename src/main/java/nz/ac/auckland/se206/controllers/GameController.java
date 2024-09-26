@@ -90,6 +90,29 @@ public class GameController {
     setBackgroundImage();
   }
 
+  /** Adds all selection box images to an arraylist. */
+  public void addAllSelected() {
+    selectedList.add(crimeSceneSelected);
+    selectedList.add(suspectOneSelected);
+    selectedList.add(suspectTwoSelected);
+    selectedList.add(suspectThreeSelected);
+  }
+
+  /** Sets the background of the border pane to be an image. */
+  public void setBackgroundImage() {
+    Image image = new Image(App.class.getResource("/images/Background Border.png").toString());
+
+    // Handles settings for the background image
+    BackgroundImage backgroundImage =
+        new BackgroundImage(
+            image,
+            BackgroundRepeat.NO_REPEAT,
+            BackgroundRepeat.NO_REPEAT,
+            BackgroundPosition.CENTER,
+            BackgroundSize.DEFAULT);
+    borderPane.setBackground(new Background(backgroundImage));
+  }
+
   /**
    * Handles the key pressed event.
    *
@@ -180,19 +203,6 @@ public class GameController {
     }
   }
 
-  /** Flashes the panes of the suspects which have not been visited. */
-  private void flashUnvisitedPanes() {
-    if (!GlobalVariables.getInteractablesMap().get("suspect2")) {
-      showAndFade(hueyFadePane); // Shows hueys fade pane if he hasnt been visited
-    }
-    if (!GlobalVariables.getInteractablesMap().get("suspect1")) {
-      showAndFade(louieFadePane); // Shows louies fade pane if he hasnt been visited
-    }
-    if (!GlobalVariables.getInteractablesMap().get("suspect3")) {
-      showAndFade(deweyFadePane); // Shows deweys fade pane if he hasnt been visited
-    }
-  }
-
   /**
    * Shows one image out of a list of images, and hides the rest.
    *
@@ -205,27 +215,17 @@ public class GameController {
     image.setVisible(true); // Sets the selected image visible
   }
 
-  /** Adds all selection box images to an arraylist. */
-  public void addAllSelected() {
-    selectedList.add(crimeSceneSelected);
-    selectedList.add(suspectOneSelected);
-    selectedList.add(suspectTwoSelected);
-    selectedList.add(suspectThreeSelected);
-  }
-
-  /** Sets the background of the border pane to be an image. */
-  public void setBackgroundImage() {
-    Image image = new Image(App.class.getResource("/images/Background Border.png").toString());
-
-    // Handles settings for the background image
-    BackgroundImage backgroundImage =
-        new BackgroundImage(
-            image,
-            BackgroundRepeat.NO_REPEAT,
-            BackgroundRepeat.NO_REPEAT,
-            BackgroundPosition.CENTER,
-            BackgroundSize.DEFAULT);
-    borderPane.setBackground(new Background(backgroundImage));
+  /** Flashes the panes of the suspects which have not been visited. */
+  private void flashUnvisitedPanes() {
+    if (!GlobalVariables.getInteractablesMap().get("suspect2")) {
+      showAndFade(hueyFadePane); // Shows hueys fade pane if he hasnt been visited
+    }
+    if (!GlobalVariables.getInteractablesMap().get("suspect1")) {
+      showAndFade(louieFadePane); // Shows louies fade pane if he hasnt been visited
+    }
+    if (!GlobalVariables.getInteractablesMap().get("suspect3")) {
+      showAndFade(deweyFadePane); // Shows deweys fade pane if he hasnt been visited
+    }
   }
 
   /**
