@@ -83,6 +83,10 @@ public class GlobalVariables {
     return false;
   }
 
+  /**
+   * Checks a pressed key to see if it activates any cheat. This method is for checking cheats that
+   * can be activated in all/most main scenes.
+   */
   public static void checkForCheatCode(String pressedKey) {
     if (pressedKey.equals("F1")) {
       GlobalVariables.muteTtsCheat();
@@ -91,6 +95,9 @@ public class GlobalVariables {
     }
   }
 
+  /**
+   * Print alert message in terminal to inform user that a cheat has been activated and what it did.
+   */
   private static void alertUserOfCheat(String message) {
     System.out.println("CHEAT ACTIVATED: " + message);
   }
@@ -115,7 +122,7 @@ public class GlobalVariables {
   /** Cheat that toggles whether TTS is muted or not. */
   private static void muteTtsCheat() {
     alertUserOfCheat((muteTts ? "unmuting" : "muting") + " TTS.");
-    
+
     muteTts = !muteTts;
     TextToSpeech.setMuteStatusOfPlayer();
   }
