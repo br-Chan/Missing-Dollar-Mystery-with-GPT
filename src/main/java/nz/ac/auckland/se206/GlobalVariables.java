@@ -5,7 +5,7 @@ import java.util.Map;
 import javafx.scene.control.TextArea;
 import nz.ac.auckland.se206.speech.TextToSpeech;
 
-/** Class for managing global variables of the game. */
+/** Class for managing and performing operations on global variables of the game. */
 public class GlobalVariables {
 
   private static Map<String, Boolean> interactablesMap = new HashMap<>();
@@ -24,7 +24,6 @@ public class GlobalVariables {
           + "The vending machine has 1 less Berry Burst can than the stock list on the computer"
           + " does, because Louie spilled his Berry Burst and thought he deserved a new one, and so"
           + " stole it.";
-
   private static String incorrectPresetExplanation =
       "Dewey’s ID card was found at the crime scene, which Louie must have stolen from Dewey and"
           + " accidentally left behind when he stole the dollar.\r\n"
