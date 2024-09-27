@@ -61,28 +61,26 @@ public class GuessController {
   }
 
   @FXML
-  public void sendDataToContext(KeyEvent event) {
+  public void sendDataToGlobalVariables(KeyEvent event) {
     GlobalVariables.setChosenSuspect(chosenSuspect);
-    System.out.println(GlobalVariables.getChosenSuspect());
-
     GlobalVariables.setReport(reportTextArea.getText());
-    System.out.println(GlobalVariables.getReport());
   }
 
   /**
    * Handles the key pressed event.
    *
-   * <p>TODO: can we change this back to 'onKeyPressed'? It's a bit confusing.
-   *
-   * <p>TODO: also having 'onHandle' is a very problematic prefix that's used everywhere in the
-   * code. It should either start with 'on' or start with 'handle', not both. I prefer prefixing
-   * with 'on' for these fxml methods.
-   *
    * @param event the key event
    */
   @FXML
-  public void onHandleReportIssueKeyEvent(KeyEvent event) {
-    GlobalVariables.checkForCheatCode(event.getCode().toString());
+  public void onKeyPressed(KeyEvent event) {
+    String pressedKey = event.getCode().toString();
+    GlobalVariables.checkForCheatCode(pressedKey);
+
+    // Activates scene-specific cheat to toggle preset explanation and select the correct suspect.
+    if (pressedKey.equals("F3")) {
+      onHandleSuspect1ButtonClick(null);
+      GlobalVariables.togglePresetExplanationCheat(reportTextArea);
+    }
 
     // If the report text area is empty, disable the send report button
     setupGuessButton();
@@ -98,7 +96,7 @@ public class GuessController {
   private void onHandleSuspect1ButtonClick(ActionEvent event) {
     // sets chosen suspect as louie
     chosenSuspect = Suspect.LOUIE;
-    sendDataToContext(null);
+    sendDataToGlobalVariables(null);
     suspect1Bg.setFill(selectedBg);
     // sets the other backgrounds as unfilled
     suspect2Bg.setFill(notSelectedBug);
@@ -115,7 +113,7 @@ public class GuessController {
   private void onHandleSuspect2ButtonClick(ActionEvent event) {
     // Set the chosen suspect to Huey
     chosenSuspect = Suspect.HUEY;
-    sendDataToContext(null);
+    sendDataToGlobalVariables(null);
     suspect2Bg.setFill(selectedBg);
 
     // Set the other suspects to not selected
@@ -133,7 +131,7 @@ public class GuessController {
   private void onHandleSuspect3ButtonClick() {
     // Set the chosen suspect to Dewey
     chosenSuspect = Suspect.DEWEY;
-    sendDataToContext(null);
+    sendDataToGlobalVariables(null);
     suspect3Bg.setFill(selectedBg);
 
     // Set the other suspects to not selected

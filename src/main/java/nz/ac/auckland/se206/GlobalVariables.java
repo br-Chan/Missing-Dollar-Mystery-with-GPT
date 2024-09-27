@@ -2,6 +2,7 @@ package nz.ac.auckland.se206;
 
 import java.util.HashMap;
 import java.util.Map;
+import javafx.scene.control.TextArea;
 import nz.ac.auckland.se206.speech.TextToSpeech;
 
 /** Class for managing global variables of the game. */
@@ -14,6 +15,21 @@ public class GlobalVariables {
 
   private static boolean muteTts = false;
   private static boolean interactablesOverriddenTrue = false;
+  private static boolean presetExplanationIsCorrect = false;
+
+  private static String correctPresetExplanation =
+      "Louie was the last to leave at 11 PM, and that is when he must have stolen the dollar.\r\n"
+          + "Louie's ID card was found at the crime scene, which Louie must have accidentally left"
+          + " behind when he stole the dollar.\r\n"
+          + "The vending machine has 1 less Berry Burst can than the stock list on the computer"
+          + " does, because Louie spilled his Berry Burst and thought he deserved a new one, and so"
+          + " stole it.";
+
+  private static String incorrectPresetExplanation =
+      "Dewey’s ID card was found at the crime scene, which Louie must have stolen from Dewey and"
+          + " accidentally left behind when he stole the dollar.\r\n"
+          + "The vending machine has 1 less Elite Energy bottle than the stock list on the computer"
+          + " does, because Louie spilled Elite Energy and thought he deserved a new one.";
 
   public static void setReport(String report) {
     GlobalVariables.report = report;
@@ -96,17 +112,23 @@ public class GlobalVariables {
   }
 
   /**
-   * Print alert message in terminal to inform user that a cheat has been activated and what it did.
+   * Cheat that selects adds a preset explanation to the text area in the guess scene, and toggles
+   * between the 2 presets (correct and incorrect).
+   *
+   * @param textArea text area to add the preset explanation to
    */
-  private static void alertUserOfCheat(String message) {
-    System.out.println("CHEAT ACTIVATED: " + message);
+  public static void togglePresetExplanationCheat(TextArea textArea) {
+    alertUserOfCheat(
+        "adding "
+            + (presetExplanationIsCorrect ? "incorrect" : "correct")
+            + " explanation to text area.");
+
+    presetExplanationIsCorrect = !presetExplanationIsCorrect;
+    textArea.setText(
+        presetExplanationIsCorrect ? correctPresetExplanation : incorrectPresetExplanation);
   }
 
-  /**
-   * Cheat that sets all values in the interactables map to the input parameter.
-   *
-   * @param override true or false
-   */
+  /** Cheat that sets all values in the interactables map to the input parameter. */
   private static void overrideInteractablesMapCheat() {
     alertUserOfCheat(
         "overriding interactables map to "
@@ -125,5 +147,12 @@ public class GlobalVariables {
 
     muteTts = !muteTts;
     TextToSpeech.setMuteStatusOfPlayer();
+  }
+
+  /**
+   * Print alert message in terminal to inform user that a cheat has been activated and what it did.
+   */
+  private static void alertUserOfCheat(String message) {
+    System.out.println("CHEAT ACTIVATED: " + message);
   }
 }
