@@ -78,6 +78,10 @@ public class GuessController {
 
     // Activates scene-specific cheat to toggle preset explanation and select the correct suspect.
     if (pressedKey.equals("F3")) {
+      if (!GlobalVariables.ENABLE_CHEATS) {
+        return;
+      }
+
       GlobalVariables.togglePresetExplanationCheat(reportTextArea);
       onHandleSuspect1ButtonClick(null); // This method also sends the data to GlobalVariables
     }

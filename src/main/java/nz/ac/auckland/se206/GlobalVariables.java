@@ -13,6 +13,9 @@ public class GlobalVariables {
   private static Suspect chosenSuspect = Suspect.NONE;
   private static String report;
 
+  // TODO: Set this boolean to false before final release.
+  public final static boolean ENABLE_CHEATS = true;
+
   private static boolean muteTts = false;
   private static boolean interactablesOverriddenTrue = false;
   private static boolean presetExplanationIsCorrect = false;
@@ -103,6 +106,10 @@ public class GlobalVariables {
    * can be activated in all/most main scenes.
    */
   public static void checkForCheatCode(String pressedKey) {
+    if (!ENABLE_CHEATS) {
+      return;
+    }
+
     if (pressedKey.equals("F1")) {
       GlobalVariables.muteTtsCheat();
     } else if (pressedKey.equals("F2")) {
