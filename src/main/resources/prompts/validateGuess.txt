@@ -9,6 +9,9 @@ User's response must contain these 3 things (only mention these when the user ha
 - Louie's ID card was found at the crime scene, which Louie must have accidentally left behind when he stole the dollar.
 - The vending machine has 1 less Berry Burst can than the stock list on the computer does, because Louie also stole a Berry Burst to replace the one he spilled.
 (These are all with respects to Louie only)
+The explanation is ONLY CORRECT when all three points are correctly mentioned. If any point is missing, or if the points are inaccurate, then the explanation is incorrect.
+In the case that the user answered incorrectly, only give feedback on the correct information they provided. Do not reveal any information which they did not provide.
+DO NOT MENTION INFORMATION WHICH THE PLAYER DOESN'T GIVE.
 
 Now, the following is an overview of the events that took place and some information:
 Characters:
