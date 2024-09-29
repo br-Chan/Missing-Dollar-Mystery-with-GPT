@@ -122,8 +122,8 @@ public class App extends Application {
   @Override
   public void start(final Stage stage) {
     try {
-      // Pre adds all user interface
       preAddUi();
+      GlobalVariables.initialiseInteractablesMap();
     } catch (IOException e) {
       System.err.println("Could not find FXML file in scene manager.");
       e.printStackTrace();

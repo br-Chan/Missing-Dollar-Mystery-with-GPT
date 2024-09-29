@@ -22,6 +22,7 @@ import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.AppTimer;
+import nz.ac.auckland.se206.GlobalVariables;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.speech.TextToSpeech;
@@ -38,27 +39,6 @@ import nz.ac.auckland.se206.speech.TextToSpeech;
  * <p>This is a controller class for a fxml scene.
  */
 public class GameController {
-
-  private static Boolean hueyVisited = false;
-  private static Boolean louieVisited = false;
-  private static Boolean deweyVisited = false;
-
-  public static void setVisited(String suspect) {
-    // Switch case for setting visited booleans
-    switch (suspect) {
-      case "Huey":
-        hueyVisited = true; // Sets huey true
-        break;
-      case "Louie":
-        louieVisited = true; // Sets louie true
-        break;
-      case "Dewey":
-        deweyVisited = true; // Sets dewey true
-        break;
-      default:
-        break;
-    }
-  }
 
   @FXML private BorderPane borderPane;
   @FXML private Button suspect1Button;
@@ -104,14 +84,33 @@ public class GameController {
     setGameView(AppUi.CRIME_SCENE);
     showSelected(crimeSceneSelected); // Shows the selection box for the crimescene in minimap
 
-    hueyVisited = false;
-    louieVisited = false;
-    deweyVisited = false;
-
     appTimer = new AppTimer(timerLabel, AppTimer.GAMETIME);
     appTimer.beginCountdown();
     addAllSelected(); // Adds selection images to an arraylist
     setBackgroundImage();
+  }
+
+  /** Adds all selection box images to an arraylist. */
+  public void addAllSelected() {
+    selectedList.add(crimeSceneSelected);
+    selectedList.add(suspectOneSelected);
+    selectedList.add(suspectTwoSelected);
+    selectedList.add(suspectThreeSelected);
+  }
+
+  /** Sets the background of the border pane to be an image. */
+  public void setBackgroundImage() {
+    Image image = new Image(App.class.getResource("/images/Background Border.png").toString());
+
+    // Handles settings for the background image
+    BackgroundImage backgroundImage =
+        new BackgroundImage(
+            image,
+            BackgroundRepeat.NO_REPEAT,
+            BackgroundRepeat.NO_REPEAT,
+            BackgroundPosition.CENTER,
+            BackgroundSize.DEFAULT);
+    borderPane.setBackground(new Background(backgroundImage));
   }
 
   /**
@@ -120,7 +119,9 @@ public class GameController {
    * @param event the key event
    */
   @FXML
-  public void onKeyPressed(KeyEvent event) {}
+  public void onKeyPressed(KeyEvent event) {
+    GlobalVariables.checkForCheatCode(event.getCode().toString());
+  }
 
   /**
    * Handles the key released event.
@@ -193,25 +194,14 @@ public class GameController {
 
   @FXML
   private void onHandleGuessClick() throws IOException {
-    if (!hueyVisited || !louieVisited || !deweyVisited) {
-      flashUnvisitedPanes(); // Flash all unvisited corresponding panes
-    } else {
+    if (GlobalVariables.canGuessThief()) {
       appTimer.cancelTimer();
       SceneManager.addUi(AppUi.GUESS, App.loadFxml("guess"));
       App.getScene().setRoot(SceneManager.getUiRoot(AppUi.GUESS)); // Switches to guessing scene
-    }
-  }
 
-  /** Flashes the panes of the suspects which have not been visited. */
-  private void flashUnvisitedPanes() {
-    if (!hueyVisited) {
-      showAndFade(hueyFadePane); // Shows hueys fade pane if he hasnt been visited
-    }
-    if (!louieVisited) {
-      showAndFade(louieFadePane); // Shows louies fade pane if he hasnt been visited
-    }
-    if (!deweyVisited) {
-      showAndFade(deweyFadePane); // Shows deweys fade pane if he hasnt been visited
+    } else {
+      System.out.println("Cannot guess");
+      flashUnvisitedPanes(); // Flash all unvisited corresponding panes
     }
   }
 
@@ -227,27 +217,17 @@ public class GameController {
     image.setVisible(true); // Sets the selected image visible
   }
 
-  /** Adds all selection box images to an arraylist. */
-  public void addAllSelected() {
-    selectedList.add(crimeSceneSelected);
-    selectedList.add(suspectOneSelected);
-    selectedList.add(suspectTwoSelected);
-    selectedList.add(suspectThreeSelected);
-  }
-
-  /** Sets the background of the border pane to be an image. */
-  public void setBackgroundImage() {
-    Image image = new Image(App.class.getResource("/images/Background Border.png").toString());
-
-    // Handles settings for the background image
-    BackgroundImage backgroundImage =
-        new BackgroundImage(
-            image,
-            BackgroundRepeat.NO_REPEAT,
-            BackgroundRepeat.NO_REPEAT,
-            BackgroundPosition.CENTER,
-            BackgroundSize.DEFAULT);
-    borderPane.setBackground(new Background(backgroundImage));
+  /** Flashes the panes of the suspects which have not been visited. */
+  private void flashUnvisitedPanes() {
+    if (!GlobalVariables.getInteractablesMap().get("suspect2")) {
+      showAndFade(hueyFadePane); // Shows hueys fade pane if he hasnt been visited
+    }
+    if (!GlobalVariables.getInteractablesMap().get("suspect1")) {
+      showAndFade(louieFadePane); // Shows louies fade pane if he hasnt been visited
+    }
+    if (!GlobalVariables.getInteractablesMap().get("suspect3")) {
+      showAndFade(deweyFadePane); // Shows deweys fade pane if he hasnt been visited
+    }
   }
 
   /**

@@ -6,6 +6,7 @@ import javafx.fxml.FXML;
 import javafx.scene.input.KeyEvent;
 import nz.ac.auckland.apiproxy.chat.openai.ChatMessage;
 import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
+import nz.ac.auckland.se206.GlobalVariables;
 import nz.ac.auckland.se206.prompts.PromptEngineering;
 
 public class CardClueChatController extends GptChatter {
@@ -67,5 +68,8 @@ public class CardClueChatController extends GptChatter {
   @Override
   protected void setChatting(ChatMessage response) {
     super.setChatting(response);
+
+    // Mark the card clue as having been interacted with.
+    GlobalVariables.handleInteraction("cardClue");
   }
 }

@@ -17,6 +17,7 @@ import nz.ac.auckland.apiproxy.tts.TextToSpeechRequest.Provider;
 import nz.ac.auckland.apiproxy.tts.TextToSpeechRequest.Voice;
 import nz.ac.auckland.apiproxy.tts.TextToSpeechResult;
 import nz.ac.auckland.se206.App;
+import nz.ac.auckland.se206.GlobalVariables;
 
 /** A utility class for converting text to speech using the specified API proxy. */
 public class TextToSpeech {
@@ -68,18 +69,42 @@ public class TextToSpeech {
 
     Thread backgroundThread = new Thread(backgroundTask);
     backgroundThread.setDaemon(true); // Ensure the thread does not prevent JVM shutdown
-    backgroundThread.start(); // Comment out to turn of TTS.
+    if (!GlobalVariables.isMuteTts()) {
+      backgroundThread.start();
+    }
     System.out.println(text);
   }
 
+  /**
+   * Plays a new voiceline, interrupting any currently playing audio.
+   *
+   * @param voiceline the file name of the mp3 file to play, excluding '.mp3'
+   * @throws URISyntaxException if the file could not be found
+   */
   public static void playVoiceline(String voiceline) throws URISyntaxException {
-    // Stops sound if one is already playing
+    stopPlayer();
+
+    // Plays sound.
+    sound = new Media(App.class.getResource("/sounds/" + voiceline + ".mp3").toURI().toString());
+    player = new MediaPlayer(sound);
+    setMuteStatusOfPlayer();
+    player.play();
+  }
+
+  /** Stops the player if it is currently playing. */
+  public static void stopPlayer() {
     if (player != null) {
       player.stop();
     }
-    // Plays sound
-    sound = new Media(App.class.getResource("/sounds/" + voiceline + ".mp3").toURI().toString());
-    player = new MediaPlayer(sound);
-    player.play();
+  }
+
+  /**
+   * Mutes or unmutes the player depending on whether TTS is to be muted in the Global Variables
+   * class.
+   */
+  public static void setMuteStatusOfPlayer() {
+    if (player != null) {
+      player.setMute(GlobalVariables.isMuteTts());
+    }
   }
 }

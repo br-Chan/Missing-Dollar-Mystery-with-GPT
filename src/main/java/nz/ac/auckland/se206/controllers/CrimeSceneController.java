@@ -17,6 +17,7 @@ import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
 import nz.ac.auckland.se206.App;
+import nz.ac.auckland.se206.GlobalVariables;
 import nz.ac.auckland.se206.components.Sprite;
 import nz.ac.auckland.se206.speech.TextToSpeech;
 
@@ -184,7 +185,7 @@ public class CrimeSceneController {
 
   @FXML
   void napkinSelected() {
-    // Toggles naplin on and off
+    // Toggles napkin on and off
     if (napkinOn) {
       cleaningImage.setVisible(false); // Sets the napkin as invisible
       napkinOn = false;
@@ -346,6 +347,9 @@ public class CrimeSceneController {
         showStock(errorStockPane);
         break;
     }
+
+    // Mark the computer clue as having been interacted with.
+    GlobalVariables.handleInteraction("computerClue");
   }
 
   @FXML
@@ -373,6 +377,9 @@ public class CrimeSceneController {
     } else {
       updateLogs(Integer.parseInt(start), Integer.parseInt(end));
     }
+
+    // Mark the computer clue as having been interacted with.
+    GlobalVariables.handleInteraction("computerClue");
   }
 
   private boolean checkValidInput(String start, String end) {
@@ -400,7 +407,7 @@ public class CrimeSceneController {
     // Check if thing on the card has been cleaning
     if (dirtImage.getOpacity() < 0.1
         && debrisImage.getOpacity() < 0.1
-        && pencilImage.getOpacity() < 0.1) {
+        && pencilImage.getOpacity() < 0.01) {
       cardDirtyLabel.setVisible(false);
       cardChatPane.setVisible(true);
       cleaningImage.setVisible(false);
@@ -445,6 +452,9 @@ public class CrimeSceneController {
     }
     // Sets the pane to show to be visible
     paneToShow.setVisible(true);
+
+    // Mark the display case clue as having been interacted with.
+    GlobalVariables.handleInteraction("displayCaseClue");
   }
 
   private void showStock(Pane paneToShow) {

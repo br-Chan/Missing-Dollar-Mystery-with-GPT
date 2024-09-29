@@ -14,7 +14,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.AppTimer;
-import nz.ac.auckland.se206.GameStateContext;
+import nz.ac.auckland.se206.GlobalVariables;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.Suspect;
@@ -61,12 +61,9 @@ public class GuessController {
   }
 
   @FXML
-  public void sendDataToContext(KeyEvent event) {
-    GameStateContext.setChosenSuspect(chosenSuspect);
-    System.out.println(GameStateContext.getChosenSuspect());
-
-    GameStateContext.setReport(reportTextArea.getText());
-    System.out.println(GameStateContext.getReport());
+  public void sendDataToGlobalVariables(KeyEvent event) {
+    GlobalVariables.setChosenSuspect(chosenSuspect);
+    GlobalVariables.setReport(reportTextArea.getText());
   }
 
   /**
@@ -75,7 +72,20 @@ public class GuessController {
    * @param event the key event
    */
   @FXML
-  public void onHandleReportIssueKeyEvent(KeyEvent event) {
+  public void onKeyPressed(KeyEvent event) {
+    String pressedKey = event.getCode().toString();
+    GlobalVariables.checkForCheatCode(pressedKey);
+
+    // Activates scene-specific cheat to toggle preset explanation and select the correct suspect.
+    if (pressedKey.equals("F3")) {
+      if (!GlobalVariables.ENABLE_CHEATS) {
+        return;
+      }
+
+      GlobalVariables.togglePresetExplanationCheat(reportTextArea);
+      onHandleSuspect1ButtonClick(null); // This method also sends the data to GlobalVariables
+    }
+
     // If the report text area is empty, disable the send report button
     setupGuessButton();
   }
@@ -90,7 +100,7 @@ public class GuessController {
   private void onHandleSuspect1ButtonClick(ActionEvent event) {
     // sets chosen suspect as louie
     chosenSuspect = Suspect.LOUIE;
-    sendDataToContext(null);
+    sendDataToGlobalVariables(null);
     suspect1Bg.setFill(selectedBg);
     // sets the other backgrounds as unfilled
     suspect2Bg.setFill(notSelectedBug);
@@ -107,7 +117,7 @@ public class GuessController {
   private void onHandleSuspect2ButtonClick(ActionEvent event) {
     // Set the chosen suspect to Huey
     chosenSuspect = Suspect.HUEY;
-    sendDataToContext(null);
+    sendDataToGlobalVariables(null);
     suspect2Bg.setFill(selectedBg);
 
     // Set the other suspects to not selected
@@ -125,7 +135,7 @@ public class GuessController {
   private void onHandleSuspect3ButtonClick() {
     // Set the chosen suspect to Dewey
     chosenSuspect = Suspect.DEWEY;
-    sendDataToContext(null);
+    sendDataToGlobalVariables(null);
     suspect3Bg.setFill(selectedBg);
 
     // Set the other suspects to not selected

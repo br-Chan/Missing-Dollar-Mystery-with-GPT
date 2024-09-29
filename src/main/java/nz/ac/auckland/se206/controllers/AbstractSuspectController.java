@@ -9,22 +9,15 @@ import javafx.scene.input.KeyEvent;
 import nz.ac.auckland.apiproxy.chat.openai.ChatMessage;
 import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
 import nz.ac.auckland.se206.App;
-import nz.ac.auckland.se206.GameStateContext;
+import nz.ac.auckland.se206.GlobalVariables;
 import nz.ac.auckland.se206.prompts.PromptEngineering;
 
 public abstract class AbstractSuspectController extends GptChatter {
-
-  protected static GameStateContext context;
 
   @FXML private ImageView chatBubbleImage;
 
   protected String suspectId;
   protected String suspectName;
-  protected Boolean secondTimeTalking = false;
-
-  public AbstractSuspectController() {
-    context = new GameStateContext(this);
-  }
 
   /**
    * Initializes the suspect view. If it's the first time initialization, it will provide
@@ -84,7 +77,8 @@ public abstract class AbstractSuspectController extends GptChatter {
 
   /**
    * Handles switching the chat bubble image to a speech bubble and replacing its text with
-   * ChatGPT's response to the user.
+   * ChatGPT's response to the user. If the suspect is being chatted to for the first time, the
+   * suspect is marked as been having interacted with.
    *
    * @param response the chat message to display to the user
    */
@@ -93,15 +87,8 @@ public abstract class AbstractSuspectController extends GptChatter {
     chatBubbleImage.setImage(
         new Image(App.class.getResource("/images/chatbubblepixel.png").toString()));
     super.setChatting(response);
-    updateVisitedStatus();
-  }
 
-  private void updateVisitedStatus() {
-    if (!secondTimeTalking) {
-      secondTimeTalking = true;
-    } else if (secondTimeTalking) {
-      System.out.println(suspectName);
-      GameController.setVisited(suspectName);
-    }
+    // Mark the suspect as having been interacted with.
+    GlobalVariables.handleInteraction(suspectId);
   }
 }
