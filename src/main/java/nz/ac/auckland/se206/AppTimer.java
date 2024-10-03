@@ -13,13 +13,16 @@ public class AppTimer {
   public static final int GAMETIME = 5 * 60;
   public static final int GUESSTIME = 1 * 60;
 
+  private AppTimerUser appTimerUser;
+
   private Label timerLabel;
 
   private Timer timer;
   private int startingTime;
   private int timeLeft;
 
-  public AppTimer(Label timerLabel, int startingTime) {
+  public AppTimer(AppTimerUser appTimerUser, Label timerLabel, int startingTime) {
+    this.appTimerUser = appTimerUser;
     this.timerLabel = timerLabel;
     timer = new Timer(true);
     this.startingTime = startingTime;
@@ -53,7 +56,7 @@ public class AppTimer {
                   if (timeLeft <= 0) {
                     timer.cancel();
                     try {
-                      handleTimeUp();
+                      appTimerUser.handleTimeUp();
                     } catch (IOException e) {
                       e.printStackTrace();
                       System.err.println("Could not find FXML to switch to when handling time up.");
@@ -72,12 +75,9 @@ public class AppTimer {
    */
   private void handleTimeUp() throws IOException {
     if (startingTime == GAMETIME) {
-      SceneManager.addUi(AppUi.GUESS, App.loadFxml("guess"));
-      App.getScene().setRoot(SceneManager.getUiRoot(AppUi.GUESS));
+
     } else if (startingTime == GUESSTIME) {
-      var loader = new FXMLLoader(AppTimer.class.getResource("/fxml/result.fxml"));
-      SceneManager.addUi(AppUi.RESULT, loader.load());
-      App.getScene().setRoot(SceneManager.getUiRoot(AppUi.RESULT));
+
     }
   }
 

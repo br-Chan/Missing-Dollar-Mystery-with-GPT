@@ -14,6 +14,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.AppTimer;
+import nz.ac.auckland.se206.AppTimerUser;
 import nz.ac.auckland.se206.GlobalVariables;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
@@ -28,7 +29,7 @@ import nz.ac.auckland.se206.speech.TextToSpeech;
  *
  * <p>This is a controller class for the guess fxml scene.
  */
-public class GuessController {
+public class GuessController extends AppTimerUser {
   @FXML private Button sendReportButton;
 
   @FXML private Rectangle suspect1Bg;
@@ -55,7 +56,7 @@ public class GuessController {
     System.out.println("Initialising guess scene...");
 
     // Set the starting label to the default text
-    appTimer = new AppTimer(timerLabel, AppTimer.GUESSTIME);
+    appTimer = new AppTimer(this, timerLabel, AppTimer.GUESSTIME);
     appTimer.beginCountdown();
     setupGuessButton();
   }
@@ -183,5 +184,11 @@ public class GuessController {
     // Otherwise, enable the send report button
     sendReportButton.setDisable(false);
     sendReportButton.setOpacity(1);
+  }
+
+  @Override
+  public void handleTimeUp() throws IOException {
+    SceneManager.addUi(AppUi.RESULT, App.loadFxml("result"));
+    App.getScene().setRoot(SceneManager.getUiRoot(AppUi.RESULT));
   }
 }

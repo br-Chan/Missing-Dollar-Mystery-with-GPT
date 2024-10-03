@@ -22,6 +22,7 @@ import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.AppTimer;
+import nz.ac.auckland.se206.AppTimerUser;
 import nz.ac.auckland.se206.GlobalVariables;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
@@ -38,7 +39,7 @@ import nz.ac.auckland.se206.speech.TextToSpeech;
  *
  * <p>This is a controller class for a fxml scene.
  */
-public class GameController {
+public class GameController extends AppTimerUser {
 
   @FXML private BorderPane borderPane;
   @FXML private Button suspect1Button;
@@ -84,7 +85,7 @@ public class GameController {
     setGameView(AppUi.CRIME_SCENE);
     showSelected(crimeSceneSelected); // Shows the selection box for the crimescene in minimap
 
-    appTimer = new AppTimer(timerLabel, AppTimer.GAMETIME);
+    appTimer = new AppTimer(this, timerLabel, AppTimer.GAMETIME);
     appTimer.beginCountdown();
     addAllSelected(); // Adds selection images to an arraylist
     setBackgroundImage();
@@ -272,5 +273,20 @@ public class GameController {
                   });
             })
         .start(); // Start the thread
+  }
+
+  @Override
+  public void handleTimeUp() throws IOException {
+    if (GlobalVariables.canGuessThief()) {
+      SceneManager.addUi(AppUi.GUESS, App.loadFxml("guess"));
+      App.getScene().setRoot(SceneManager.getUiRoot(AppUi.GUESS));
+    } else {
+      System.out.println(
+          "You suck man you really really suck you're stupid and a bad investigator and no one"
+              + " should employ your services ever you stupid idiot man you reallly weird person"
+              + " that's just the way it goes man that doesn't really mean that you're a bad person"
+              + " overall just a bad investigator ok I'm running out of things to say goodbye never"
+              + " come back to PI masters.");
+    }
   }
 }
