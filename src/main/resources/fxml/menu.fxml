@@ -20,9 +20,9 @@
          <image>
             <Image url="@../images/Framed%20Dollar.png" />
          </image></ImageView>
-      <Label alignment="CENTER" graphicTextGap="2.0" layoutX="149.0" layoutY="1.0" prefHeight="239.0" prefWidth="650.0" scaleX="1.2" scaleY="1.2" text="The Missing Dollar Mystery" textAlignment="CENTER" wrapText="true">
+      <Label alignment="CENTER" graphicTextGap="2.0" layoutX="149.0" layoutY="1.0" prefHeight="239.0" prefWidth="650.0" scaleX="1.2" scaleY="1.2" stylesheets="@../css/styles.css" text="The Missing Dollar Mystery" textAlignment="CENTER" wrapText="true">
          <font>
-            <Font name="Consolas Bold" size="65.0" />
+            <Font name="Consolas" size="57.0" />
          </font>
       </Label>
       <Label alignment="CENTER" layoutX="411.0" layoutY="262.0" prefHeight="298.0" prefWidth="399.0" scaleX="1.2" scaleY="1.2" text="Greetings investigator, and welcome to your first case! A restaurants framed first dollar bill was stolen, and the thief has been narrowed down to three suspects. Find clues, interrogate the suspects, and make a guess on who stole the dollar!" wrapText="true">
