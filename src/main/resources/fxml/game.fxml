@@ -275,7 +275,7 @@
                   <Image url="@../images/TimerPixel.png" />
                </image>
             </ImageView>
-            <TextArea layoutX="13.0" layoutY="186.0" prefHeight="315.0" prefWidth="109.0" scaleX="1.2" scaleY="1.2" stylesheets="@../css/gameStyle.css" wrapText="true">
+            <TextArea layoutX="13.0" layoutY="209.0" prefHeight="294.0" prefWidth="109.0" scaleX="1.2" scaleY="1.2" stylesheets="@../css/gameStyle.css" wrapText="true">
                <font>
                   <Font size="10.0" />
                </font>
@@ -289,7 +289,13 @@
                <font>
                   <Font name="Consolas" size="34.0" />
                </font></Label>
-            <Button fx:id="guessButton" layoutX="10.0" layoutY="1.0" mnemonicParsing="false" onAction="#onHandleGuessClick" prefHeight="39.0" prefWidth="109.0" text="Guess" />
+            <Button fx:id="guessButton" layoutX="10.0" layoutY="1.0" mnemonicParsing="false" onAction="#onHandleGuessClick" prefHeight="39.0" prefWidth="109.0" stylesheets="@../css/styles.css" text="Guess">
+               <font>
+                  <Font name="Consolas" size="20.0" />
+               </font>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor></Button>
          </children>
       </Pane>
    </right>

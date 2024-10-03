@@ -14,17 +14,14 @@
 <?import javafx.scene.text.Text?>
 <?import nz.ac.auckland.se206.components.Sprite?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#onKeyPressed" onKeyReleased="#onKeyReleased" prefHeight="500.0" prefWidth="500.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.CrimeSceneController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#onKeyPressed" onKeyReleased="#onKeyReleased" prefHeight="500.0" prefWidth="500.0" stylesheets="@../css/styles.css" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.CrimeSceneController">
     <children>
-        <Sprite pickOnBounds="true" scale="3.90625" spriteUrl="@../images/crimeScene/Restauant.png"/>
-        <Sprite layoutX="354.0" layoutY="20.0" pickOnBounds="true" scale="1"
-                spriteUrl="@../images/crimeScene/ID%20Card.png"/>
-        <Sprite layoutX="-21.0" layoutY="25.0" pickOnBounds="true" scale="3" spriteUrl="@../images/crimeScene/Drinks%20Case.png"/>
-        <Sprite spriteUrl="@../images/crimeScene/Computer.png" layoutX="77.0" layoutY="122.0" scale="3"/>
+        <Sprite pickOnBounds="true" scale="3.90625" spriteUrl="@../images/crimeScene/Restauant.png" />
+        <Sprite layoutX="354.0" layoutY="20.0" pickOnBounds="true" scale="1" spriteUrl="@../images/crimeScene/ID%20Card.png" />
+        <Sprite layoutX="-21.0" layoutY="25.0" pickOnBounds="true" scale="3" spriteUrl="@../images/crimeScene/Drinks%20Case.png" />
+        <Sprite layoutX="77.0" layoutY="122.0" scale="3" spriteUrl="@../images/crimeScene/Computer.png" />
 
-        <Rectangle fx:id="cardRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="15.0" layoutX="353.0"
-                   layoutY="20.0" onMouseClicked="#showCardClue" opacity="0.0" stroke="BLACK" strokeType="INSIDE"
-                   width="18.0">
+        <Rectangle fx:id="cardRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="15.0" layoutX="353.0" layoutY="20.0" onMouseClicked="#showCardClue" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="18.0">
             <cursor>
                 <Cursor fx:constant="HAND" />
             </cursor>
@@ -68,7 +65,7 @@
                 </Label>
             </children>
         </Pane>
-        <Pane fx:id="casePane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0" visible="false">
+        <Pane fx:id="casePane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0" stylesheets="@../css/styles.css" visible="false">
             <children>
                 <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#000000b2" height="500.0" stroke="TRANSPARENT" strokeType="INSIDE" width="500.0" />
                 <Label layoutX="15" layoutY="10" text="Display Case" textFill="WHITE">
@@ -172,7 +169,7 @@
                 </Rectangle>
             </children>
         </Pane>
-        <Pane fx:id="computerPane" layoutX="1.0" layoutY="1.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0" visible="false">
+        <Pane fx:id="computerPane" layoutX="1.0" layoutY="1.0" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0" stylesheets="@../css/styles.css" visible="false">
             <children>
                 <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#000000b2" height="500.0" layoutX="-1.0" layoutY="-1.0" stroke="TRANSPARENT" strokeType="INSIDE" width="500.0" />
                 <Label layoutX="15" layoutY="10" text="Computer" textFill="WHITE">
