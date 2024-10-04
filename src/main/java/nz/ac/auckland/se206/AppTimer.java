@@ -1,34 +1,37 @@
 package nz.ac.auckland.se206;
 
-import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 import javafx.application.Platform;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
-import nz.ac.auckland.se206.SceneManager.AppUi;
 
+/**
+ * A timer to be used by certain FXML controllers (AppTimerUser's) to start and manage counting down
+ * from a given number in seconds. Once the time is up, it then gets the app timer user to handle
+ * that time up (usually switching to a different scene).
+ */
 public class AppTimer {
 
   public static final int GAMETIME = 5 * 60;
   public static final int GUESSTIME = 1 * 60;
 
+  private AppTimerUser appTimerUser;
+
   private Label timerLabel;
 
   private Timer timer;
-  private int startingTime;
   private int timeLeft;
 
-  public AppTimer(Label timerLabel, int startingTime) {
+  public AppTimer(AppTimerUser appTimerUser, Label timerLabel, int startingTime) {
+    this.appTimerUser = appTimerUser;
     this.timerLabel = timerLabel;
     timer = new Timer(true);
-    this.startingTime = startingTime;
     timeLeft = startingTime;
   }
 
   /**
-   * Starts the countdown from the given starting time, and automatically handles when the timer
-   * runs out.
+   * Starts the countdown from the given starting time, and calls the app timer user's 'handling
+   * method' when the timer runs out.
    */
   public void beginCountdown() {
     TimerTask task =
@@ -49,15 +52,10 @@ public class AppTimer {
                   }
                   timerLabel.setText(digitaltimeLeft);
 
-                  // Stop the timer if 0 is reached and handle it.
+                  // Stop the timer if 0 is reached and handle time up.
                   if (timeLeft <= 0) {
                     timer.cancel();
-                    try {
-                      handleTimeUp();
-                    } catch (IOException e) {
-                      e.printStackTrace();
-                      System.err.println("Could not find FXML to switch to when handling time up.");
-                    }
+                    appTimerUser.handleTimeUp();
                   }
                 });
           }
@@ -66,30 +64,7 @@ public class AppTimer {
     timer.scheduleAtFixedRate(task, 1000, 1000);
   }
 
-  /**
-   * Switches the scene to either the guess scene or results scene depending on how much total time
-   * the timer was counting down from.
-   */
-  private void handleTimeUp() throws IOException {
-    if (startingTime == GAMETIME) {
-      SceneManager.addUi(AppUi.GUESS, App.loadFxml("guess"));
-      App.getScene().setRoot(SceneManager.getUiRoot(AppUi.GUESS));
-    } else if (startingTime == GUESSTIME) {
-      var loader = new FXMLLoader(AppTimer.class.getResource("/fxml/result.fxml"));
-      SceneManager.addUi(AppUi.RESULT, loader.load());
-      App.getScene().setRoot(SceneManager.getUiRoot(AppUi.RESULT));
-    }
-  }
-
-  /**
-   * Cancels the timer; particularly useful when clicking a button to switch the scene while the
-   * timer is still going, and therefore need to cancel the timer on its own.
-   *
-   * <p>Suggestion: Could possibly just call handleTimeUp() instead of this, and timer.cancel() is
-   * called at the start of handleTimeUp() and nowhere else. So when you click the guess button in
-   * the game scene for example, handleTimeUp() is called and it's as if the timer had run out, and
-   * everything works as expected without the need for this method.
-   */
+  /** Cancels the Timer object in this class. */
   public void cancelTimer() {
     timer.cancel();
   }

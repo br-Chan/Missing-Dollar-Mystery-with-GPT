@@ -22,6 +22,7 @@ import javafx.scene.layout.Pane;
 import javafx.util.Duration;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.AppTimer;
+import nz.ac.auckland.se206.AppTimerUser;
 import nz.ac.auckland.se206.GlobalVariables;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
@@ -38,7 +39,7 @@ import nz.ac.auckland.se206.speech.TextToSpeech;
  *
  * <p>This is a controller class for a fxml scene.
  */
-public class GameController {
+public class GameController extends AppTimerUser {
 
   @FXML private BorderPane borderPane;
   @FXML private Button suspect1Button;
@@ -71,8 +72,6 @@ public class GameController {
 
   private ArrayList<ImageView> selectedList = new ArrayList<>();
 
-  AppTimer appTimer;
-
   private int hueyCount = 0;
   private int louieCount = 0;
   private int deweyCount = 0;
@@ -84,7 +83,7 @@ public class GameController {
     setGameView(AppUi.CRIME_SCENE);
     showSelected(crimeSceneSelected); // Shows the selection box for the crimescene in minimap
 
-    appTimer = new AppTimer(timerLabel, AppTimer.GAMETIME);
+    appTimer = new AppTimer(this, timerLabel, AppTimer.GAMETIME);
     appTimer.beginCountdown();
     addAllSelected(); // Adds selection images to an arraylist
     setBackgroundImage();
@@ -272,5 +271,21 @@ public class GameController {
                   });
             })
         .start(); // Start the thread
+  }
+
+  /**
+   * Called when app timer runs out of time (see AppTimerUser.java). Switches the scene to the guess
+   * scene if the user has met all conditions to be able to guess the thief, otherwise switches to
+   * the gameOver scene.
+   */
+  @Override
+  public void switchScene() throws IOException {
+    if (GlobalVariables.canGuessThief()) {
+      SceneManager.addUi(AppUi.GUESS, App.loadFxml("guess"));
+      App.getScene().setRoot(SceneManager.getUiRoot(AppUi.GUESS));
+    } else {
+      SceneManager.addUi(AppUi.GAME_OVER, App.loadFxml("gameOver"));
+      App.getScene().setRoot(SceneManager.getUiRoot(AppUi.GAME_OVER));
+    }
   }
 }

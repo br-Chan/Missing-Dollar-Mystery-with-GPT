@@ -14,6 +14,7 @@ import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.AppTimer;
+import nz.ac.auckland.se206.AppTimerUser;
 import nz.ac.auckland.se206.GlobalVariables;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
@@ -28,7 +29,7 @@ import nz.ac.auckland.se206.speech.TextToSpeech;
  *
  * <p>This is a controller class for the guess fxml scene.
  */
-public class GuessController {
+public class GuessController extends AppTimerUser {
   @FXML private Button sendReportButton;
 
   @FXML private Rectangle suspect1Bg;
@@ -40,8 +41,6 @@ public class GuessController {
   @FXML private Label timerLabel;
 
   private Suspect chosenSuspect = Suspect.NONE;
-
-  AppTimer appTimer;
 
   private final Color selectedBg = Color.rgb(255, 255, 255);
   private final Color notSelectedBug = Color.rgb(150, 150, 150);
@@ -55,7 +54,7 @@ public class GuessController {
     System.out.println("Initialising guess scene...");
 
     // Set the starting label to the default text
-    appTimer = new AppTimer(timerLabel, AppTimer.GUESSTIME);
+    appTimer = new AppTimer(this, timerLabel, AppTimer.GUESSTIME);
     appTimer.beginCountdown();
     setupGuessButton();
   }
@@ -77,10 +76,7 @@ public class GuessController {
     GlobalVariables.checkForCheatCode(pressedKey);
 
     // Activates scene-specific cheat to toggle preset explanation and select the correct suspect.
-    if (pressedKey.equals("F3")) {
-      if (!GlobalVariables.ENABLE_CHEATS) {
-        return;
-      }
+    if (pressedKey.equals("F3") && GlobalVariables.ENABLE_CHEATS) {
 
       GlobalVariables.togglePresetExplanationCheat(reportTextArea);
       onHandleSuspect1ButtonClick(null); // This method also sends the data to GlobalVariables
@@ -183,5 +179,17 @@ public class GuessController {
     // Otherwise, enable the send report button
     sendReportButton.setDisable(false);
     sendReportButton.setOpacity(1);
+  }
+
+  /**
+   * Called when app timer runs out of time (see AppTimerUser.java). Switches the scene to the
+   * result scene.
+   *
+   * <p>TODO: add logic to switch to gameOver scene if haven't met conditions
+   */
+  @Override
+  public void switchScene() throws IOException {
+    SceneManager.addUi(AppUi.RESULT, App.loadFxml("result"));
+    App.getScene().setRoot(SceneManager.getUiRoot(AppUi.RESULT));
   }
 }

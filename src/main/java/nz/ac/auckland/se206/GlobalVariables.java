@@ -13,8 +13,8 @@ public class GlobalVariables {
   private static Suspect chosenSuspect = Suspect.NONE;
   private static String report;
 
-  // TODO: Set this boolean to false before final release.
-  public final static boolean ENABLE_CHEATS = true;
+  // TODO: Set this boolean to false before final release, and turn on for client presentation.
+  public static final boolean ENABLE_CHEATS = true;
 
   private static boolean muteTts = false;
   private static boolean interactablesOverriddenTrue = false;
