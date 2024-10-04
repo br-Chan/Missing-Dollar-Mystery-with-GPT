@@ -4,13 +4,11 @@ import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 import javafx.application.Platform;
-import javafx.fxml.FXMLLoader;
 import javafx.scene.control.Label;
-import nz.ac.auckland.se206.SceneManager.AppUi;
 
 public class AppTimer {
 
-  public static final int GAMETIME = 5 * 60;
+  public static final int GAMETIME = 5 * 1;
   public static final int GUESSTIME = 1 * 60;
 
   private AppTimerUser appTimerUser;
