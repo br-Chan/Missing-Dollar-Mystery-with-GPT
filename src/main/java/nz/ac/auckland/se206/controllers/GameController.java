@@ -72,8 +72,6 @@ public class GameController extends AppTimerUser {
 
   private ArrayList<ImageView> selectedList = new ArrayList<>();
 
-  AppTimer appTimer;
-
   private int hueyCount = 0;
   private int louieCount = 0;
   private int deweyCount = 0;

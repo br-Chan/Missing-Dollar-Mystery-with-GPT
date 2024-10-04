@@ -42,8 +42,6 @@ public class GuessController extends AppTimerUser {
 
   private Suspect chosenSuspect = Suspect.NONE;
 
-  AppTimer appTimer;
-
   private final Color selectedBg = Color.rgb(255, 255, 255);
   private final Color notSelectedBug = Color.rgb(150, 150, 150);
 

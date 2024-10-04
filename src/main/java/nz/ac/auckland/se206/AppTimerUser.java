@@ -9,6 +9,10 @@ import java.io.IOException;
  */
 public abstract class AppTimerUser {
 
+  /**
+   * The instance of AppTimer. Caveat: must actually initialise this in the subclass with the proper
+   * input parameters.
+   */
   protected AppTimer appTimer;
 
   /** Cancels the timer, then switches the scene. This method should not be overriden. */
