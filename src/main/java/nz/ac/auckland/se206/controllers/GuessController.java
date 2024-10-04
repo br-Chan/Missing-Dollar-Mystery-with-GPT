@@ -78,10 +78,7 @@ public class GuessController extends AppTimerUser {
     GlobalVariables.checkForCheatCode(pressedKey);
 
     // Activates scene-specific cheat to toggle preset explanation and select the correct suspect.
-    if (pressedKey.equals("F3")) {
-      if (!GlobalVariables.ENABLE_CHEATS) {
-        return;
-      }
+    if (pressedKey.equals("F3") && GlobalVariables.ENABLE_CHEATS) {
 
       GlobalVariables.togglePresetExplanationCheat(reportTextArea);
       onHandleSuspect1ButtonClick(null); // This method also sends the data to GlobalVariables
@@ -189,7 +186,7 @@ public class GuessController extends AppTimerUser {
   /**
    * Called when app timer runs out of time (see AppTimerUser.java). Switches the scene to the
    * result scene.
-   * 
+   *
    * <p>TODO: add logic to switch to gameOver scene if haven't met conditions
    */
   @Override

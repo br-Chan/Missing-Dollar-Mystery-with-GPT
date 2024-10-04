@@ -14,6 +14,15 @@ import nz.ac.auckland.apiproxy.chat.openai.Choice;
 import nz.ac.auckland.apiproxy.config.ApiProxyConfig;
 import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
 
+/**
+ * An abstract class that FXML controller subclasses can use to implement a conversation with
+ * ChatGPT API.
+ *
+ * <p>A chat completion request is initialised with an input prompt, and conversation functonality
+ * includes logic when sending a message, running the GPT and 2 methods setChatting and setThinking
+ * to inform the user of what the GPT is doing (these 2 methods can be overriden to add to their
+ * functionality).
+ */
 public abstract class GptChatter {
 
   @FXML protected TextArea txtaChat;
@@ -26,8 +35,10 @@ public abstract class GptChatter {
 
   protected String promptFilename;
 
-  // This boolean is used for us to not use the large prompts for each suspect. When set to true, a
-  // dummy chat message will be sent to the GPT model every time a system or user prompt is sent.
+  /**
+   * This boolean is used for us to not use the large prompts for each suspect. When set to true, a
+   * dummy chat message will be sent to the GPT model every time a system or user prompt is sent.
+   */
   protected boolean disableNormalPrompt = false;
 
   /**

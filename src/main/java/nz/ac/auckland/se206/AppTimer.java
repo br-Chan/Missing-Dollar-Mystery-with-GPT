@@ -5,6 +5,11 @@ import java.util.TimerTask;
 import javafx.application.Platform;
 import javafx.scene.control.Label;
 
+/**
+ * A timer to be used by certain FXML controllers (AppTimerUser's) to start and manage counting down
+ * from a given number in seconds. Once the time is up, it then gets the app timer user to handle
+ * that time up (usually switching to a different scene).
+ */
 public class AppTimer {
 
   public static final int GAMETIME = 5 * 60;
@@ -50,7 +55,7 @@ public class AppTimer {
                   // Stop the timer if 0 is reached and handle time up.
                   if (timeLeft <= 0) {
                     timer.cancel();
-                    appTimerUser.handleTimeUp(); // This method should switch to a different scene
+                    appTimerUser.handleTimeUp();
                   }
                 });
           }
