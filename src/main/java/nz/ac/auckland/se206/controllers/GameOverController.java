@@ -8,7 +8,9 @@ import javafx.fxml.FXML;
  * <p>TODO: Edit the respective fxml file and add to this empty class to implement features. Remove
  * default methods as needed.
  *
- * <p>This is a controller class for a fxml scene.
+ * <p>This is a controller class for the gameOver scene, in which the user has lost the game by
+ * default due to not meeting some condition(s) to be able to guess or view the results of said
+ * guess.
  */
 public class GameOverController {
 

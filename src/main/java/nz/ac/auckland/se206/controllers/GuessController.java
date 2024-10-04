@@ -186,8 +186,14 @@ public class GuessController extends AppTimerUser {
     sendReportButton.setOpacity(1);
   }
 
+  /**
+   * Called when app timer runs out of time (see AppTimerUser.java). Switches the scene to the
+   * result scene.
+   * 
+   * <p>TODO: add logic to switch to gameOver scene if haven't met conditions
+   */
   @Override
-  public void handleTimeUp() throws IOException {
+  public void switchScene() throws IOException {
     SceneManager.addUi(AppUi.RESULT, App.loadFxml("result"));
     App.getScene().setRoot(SceneManager.getUiRoot(AppUi.RESULT));
   }

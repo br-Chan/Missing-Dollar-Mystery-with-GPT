@@ -275,8 +275,13 @@ public class GameController extends AppTimerUser {
         .start(); // Start the thread
   }
 
+  /**
+   * Called when app timer runs out of time (see AppTimerUser.java). Switches the scene to the guess
+   * scene if the user has met all conditions to be able to guess the thief, otherwise switches to
+   * the gameOver scene.
+   */
   @Override
-  public void handleTimeUp() throws IOException {
+  public void switchScene() throws IOException {
     if (GlobalVariables.canGuessThief()) {
       SceneManager.addUi(AppUi.GUESS, App.loadFxml("guess"));
       App.getScene().setRoot(SceneManager.getUiRoot(AppUi.GUESS));

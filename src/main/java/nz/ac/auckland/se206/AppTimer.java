@@ -1,6 +1,5 @@
 package nz.ac.auckland.se206;
 
-import java.io.IOException;
 import java.util.Timer;
 import java.util.TimerTask;
 import javafx.application.Platform;
@@ -8,7 +7,7 @@ import javafx.scene.control.Label;
 
 public class AppTimer {
 
-  public static final int GAMETIME = 5 * 1;
+  public static final int GAMETIME = 5 * 60;
   public static final int GUESSTIME = 1 * 60;
 
   private AppTimerUser appTimerUser;
@@ -16,20 +15,18 @@ public class AppTimer {
   private Label timerLabel;
 
   private Timer timer;
-  private int startingTime;
   private int timeLeft;
 
   public AppTimer(AppTimerUser appTimerUser, Label timerLabel, int startingTime) {
     this.appTimerUser = appTimerUser;
     this.timerLabel = timerLabel;
     timer = new Timer(true);
-    this.startingTime = startingTime;
     timeLeft = startingTime;
   }
 
   /**
-   * Starts the countdown from the given starting time, and automatically handles when the timer
-   * runs out.
+   * Starts the countdown from the given starting time, and calls the app timer user's 'handling
+   * method' when the timer runs out.
    */
   public void beginCountdown() {
     TimerTask task =
@@ -50,15 +47,10 @@ public class AppTimer {
                   }
                   timerLabel.setText(digitaltimeLeft);
 
-                  // Stop the timer if 0 is reached and handle it.
+                  // Stop the timer if 0 is reached and handle time up.
                   if (timeLeft <= 0) {
                     timer.cancel();
-                    try {
-                      appTimerUser.handleTimeUp();
-                    } catch (IOException e) {
-                      e.printStackTrace();
-                      System.err.println("Could not find FXML to switch to when handling time up.");
-                    }
+                    appTimerUser.handleTimeUp(); // This method should switch to a different scene
                   }
                 });
           }
@@ -67,27 +59,7 @@ public class AppTimer {
     timer.scheduleAtFixedRate(task, 1000, 1000);
   }
 
-  /**
-   * Switches the scene to either the guess scene or results scene depending on how much total time
-   * the timer was counting down from.
-   */
-  private void handleTimeUp() throws IOException {
-    if (startingTime == GAMETIME) {
-
-    } else if (startingTime == GUESSTIME) {
-
-    }
-  }
-
-  /**
-   * Cancels the timer; particularly useful when clicking a button to switch the scene while the
-   * timer is still going, and therefore need to cancel the timer on its own.
-   *
-   * <p>Suggestion: Could possibly just call handleTimeUp() instead of this, and timer.cancel() is
-   * called at the start of handleTimeUp() and nowhere else. So when you click the guess button in
-   * the game scene for example, handleTimeUp() is called and it's as if the timer had run out, and
-   * everything works as expected without the need for this method.
-   */
+  /** Cancels the Timer object in this class. */
   public void cancelTimer() {
     timer.cancel();
   }
