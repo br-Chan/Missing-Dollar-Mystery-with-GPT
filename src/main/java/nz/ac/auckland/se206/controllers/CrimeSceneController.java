@@ -130,6 +130,11 @@ public class CrimeSceneController {
   @FXML
   public void showCardClue() throws URISyntaxException {
     cardPane.setVisible(true);
+
+    // This is code that was in checkCardCleaned but is now here to automatically reveal the chat
+    cardDirtyLabel.setVisible(false);
+    cardChatPane.setVisible(true);
+
     // Tracks the cleaning tool on mouse move or drag
     cardPane.setOnMouseMoved(
         event -> {
@@ -163,20 +168,27 @@ public class CrimeSceneController {
   }
 
   @FXML
-  public void decreaseDirtOpacity() {
-    if (brushOn) {
-      decreaseOpacity(dirtImage);
-      if (dirtImage.getOpacity() < 0.1) {
+  public void decreaseDebrisOpacity() {
+    if (napkinOn) {
+      decreaseOpacity(debrisImage);
+      if (debrisImage.getOpacity() <= 0) {
+        System.out.println("debris are all gone, vanishing napkin");
+        napkinSelected(); // to remove napkin cursor image
+      } else if (debrisImage.getOpacity() < 0.1) {
+        System.out.println("nye");
         GlobalVariables.setCardProfilePicClean(true);
       }
     }
   }
 
   @FXML
-  public void decreaseDebrisOpacity() {
-    if (napkinOn) {
-      decreaseOpacity(debrisImage);
-      if (debrisImage.getOpacity() < 0.1) {
+  public void decreaseDirtOpacity() {
+    if (brushOn) {
+      decreaseOpacity(dirtImage);
+      if (dirtImage.getOpacity() <= 0) {
+        System.out.println("dirt is all gone, vanishing brush");
+        brushSelected(); // to remove brush cursor image
+      } else if (dirtImage.getOpacity() < 0.1) {
         GlobalVariables.setCardDetailsBottomClean(true);
       }
     }
@@ -186,9 +198,24 @@ public class CrimeSceneController {
   public void decreasePencilOpacity() {
     if (rubberOn) {
       decreaseOpacity(pencilImage);
-      if (pencilImage.getOpacity() < 0.01) {
+      if (pencilImage.getOpacity() <= 0) {
+        System.out.println("pencil is all gone, vanishing rubber");
+        rubberSelected(); // to remove rubber cursor image
+      } else if (pencilImage.getOpacity() < 0.01) {
         GlobalVariables.setCardDetailsTopClean(true);
       }
+    }
+  }
+
+  public void checkCardCleaned() {
+    // Check if thing on the card has been cleaning
+    if (GlobalVariables.isCardProfilePicClean()
+        && GlobalVariables.isCardDetailsBottomClean()
+        && GlobalVariables.isCardDetailsTopClean()) {
+      cleaningImage.setVisible(false);
+      brushOn = false;
+      napkinOn = false;
+      rubberOn = false;
     }
   }
 
@@ -412,24 +439,10 @@ public class CrimeSceneController {
     }
   }
 
-  public void checkCardCleaned() {
-    // Check if thing on the card has been cleaning
-    if (GlobalVariables.isCardProfilePicClean()
-        && GlobalVariables.isCardDetailsBottomClean()
-        && GlobalVariables.isCardDetailsTopClean()) {
-      cardDirtyLabel.setVisible(false);
-      cardChatPane.setVisible(true);
-      cleaningImage.setVisible(false);
-      brushOn = false;
-      napkinOn = false;
-      rubberOn = false;
-    }
-  }
-
   public void decreaseOpacity(Node image) {
     // Decrease the opacity of an image by a set amount
     image.setOpacity(image.getOpacity() - 0.005);
-    checkCardCleaned();
+    // checkCardCleaned();
   }
 
   private void addAllItemPanes() {
