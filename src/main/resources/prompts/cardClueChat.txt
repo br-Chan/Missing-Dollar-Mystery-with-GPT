@@ -1,20 +1,28 @@
 I am a private investigator observing a company identity card left behind by a thief that had stolen a local restaurant's framed first dollar.
 I will send short 'action prompts', such as "find __" or "observe __".
-Give a 10-15 word remark describing the result of my action prompts, as if I were carrying them out physically.
+Give a 10-15 word remark describing the result of my action prompts as if I were carrying them out physically.
 Give brief information, no adverbs, and act as my eyes not my thoughts. Only say what is there, not what there isn't.
 
-I have just cleaned the card thoroughly, so nothing is blocked by anything I could clean.
-The card is old and the details are faded.
-Front side:
+The card is old and details are faded ('...' means cannot be seen).
+There are 4 'sections' of the card, each of which may not be visible because they are dirty. Appending every action prompt are live information within square brackets [] about the cleanliness of each section.
+
+If an action prompt says to clean the card, respond with: "use the tools to clean instead".
+
+The first 3 sections are on the front side.
+
+Profile picture (on the left):
 On the left is a bald person's faded profile picture. They are wearing a white shirt with a red tie. Nothing else about the image can be identified.
-On the right is a list of details, heavily faded (... means cannot be seen):
-Company name: please see back side
-Age: 3...
-First name: ...ie
-Surname: ...
+
+Bottom details (on the right):
+Owner's first name: ...ie
+Owner's surname: ...
+
+Top details (on the right):
+Company name: [text says 'see back side']
+Onwer's age: 3...
 
 Back side:
 Big faded letters cover the card. All that can be identified is:
-...GE INSURANCE OFFICES
+...GE INSURANCE OFFICES [Only show this info if I have turned the card around]
 
 Only mention the existence of any data if my action prompt explicitly mentions it.

@@ -175,7 +175,6 @@ public class CrimeSceneController {
         System.out.println("debris are all gone, vanishing napkin");
         napkinSelected(); // to remove napkin cursor image
       } else if (debrisImage.getOpacity() < 0.1) {
-        System.out.println("nye");
         GlobalVariables.setCardProfilePicClean(true);
       }
     }

@@ -62,9 +62,33 @@ public class CardClueChatController extends GptChatter {
 
   @Override
   protected ChatMessage runGpt(ChatMessage msg, boolean getReply) throws ApiProxyException {
-    ChatMessage newMsg =
-        new ChatMessage(msg.getRole(), ("Say '1' in your first response. " + msg.getContent()));
+    ChatMessage newMsg = appendPrompt(msg);
+    System.out.println(newMsg.getContent());
     return super.runGpt(newMsg, getReply);
+  }
+
+  private ChatMessage appendPrompt(ChatMessage message) {
+    String messageContent = message.getContent();
+    messageContent =
+        messageContent
+            + " [Profile picture is "
+            + (GlobalVariables.isCardProfilePicClean() ? "clean" : "covered in debris")
+            + "]"
+            + " [Bottom details are "
+            + (GlobalVariables.isCardDetailsBottomClean() ? "clean" : "covered in dirt")
+            + "]"
+            + " [Top details are "
+            + (GlobalVariables.isCardDetailsTopClean() ? "clean" : "covered by pencil marks")
+            + "]"
+            + " [Back side is "
+            + ((GlobalVariables.isCardProfilePicClean()
+                    && GlobalVariables.isCardDetailsBottomClean()
+                    && GlobalVariables.isCardDetailsTopClean())
+                ? "clean"
+                : "obscured, you must clean the whole card first")
+            + "]";
+
+    return new ChatMessage(message.getRole(), messageContent);
   }
 
   @Override
