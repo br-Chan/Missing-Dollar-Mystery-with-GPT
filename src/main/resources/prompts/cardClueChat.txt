@@ -10,19 +10,18 @@ If an action prompt says to clean the card, respond with: "use the tools to clea
 
 The first 3 sections are on the front side.
 
-Profile picture (on the left):
-On the left is a bald person's faded profile picture. They are wearing a white shirt with a red tie. Nothing else about the image can be identified.
+Profile picture (on left):
+A bald person's faded profile picture. They are wearing a grey shirt and red tie. Nothing else about the image can be identified.
 
-Bottom details (on the right):
-Owner's first name: ...ie
-Owner's surname: ...
+Top details (on right): owner's name
+First name: ...ie
+Surname: ...
 
-Top details (on the right):
-Company name: [text says 'see back side']
-Onwer's age: 3...
+Bottom details (on right): owner's age & company name
+Age: 33
+Company name: SCROOGE INSURANCE OFFICES
 
 Back side:
-Big faded letters cover the card. All that can be identified is:
-...GE INSURANCE OFFICES [Only show this info if I have turned the card around]
+An unidentifiable company logo. Scrawled words in the corner say: "times dropped: |||||"
 
 Only mention the existence of any data if my action prompt explicitly mentions it.

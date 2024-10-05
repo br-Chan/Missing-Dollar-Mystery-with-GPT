@@ -80,13 +80,7 @@ public class CardClueChatController extends GptChatter {
             + " [Top details are "
             + (GlobalVariables.isCardDetailsTopClean() ? "clean" : "covered by pencil marks")
             + "]"
-            + " [Back side is "
-            + ((GlobalVariables.isCardProfilePicClean()
-                    && GlobalVariables.isCardDetailsBottomClean()
-                    && GlobalVariables.isCardDetailsTopClean())
-                ? "clean"
-                : "obscured, you must clean the whole card first")
-            + "]";
+            + " [Back side is clean]";
 
     return new ChatMessage(message.getRole(), messageContent);
   }
