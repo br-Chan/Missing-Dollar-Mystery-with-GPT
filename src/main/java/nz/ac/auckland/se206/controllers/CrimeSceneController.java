@@ -166,6 +166,9 @@ public class CrimeSceneController {
   public void decreaseDirtOpacity() {
     if (brushOn) {
       decreaseOpacity(dirtImage);
+      if (dirtImage.getOpacity() < 0.1) {
+        GlobalVariables.setCardProfilePicClean(true);
+      }
     }
   }
 
@@ -173,6 +176,9 @@ public class CrimeSceneController {
   public void decreaseDebrisOpacity() {
     if (napkinOn) {
       decreaseOpacity(debrisImage);
+      if (debrisImage.getOpacity() < 0.1) {
+        GlobalVariables.setCardDetailsBottomClean(true);
+      }
     }
   }
 
@@ -180,6 +186,9 @@ public class CrimeSceneController {
   public void decreasePencilOpacity() {
     if (rubberOn) {
       decreaseOpacity(pencilImage);
+      if (pencilImage.getOpacity() < 0.01) {
+        GlobalVariables.setCardDetailsTopClean(true);
+      }
     }
   }
 
@@ -405,9 +414,9 @@ public class CrimeSceneController {
 
   public void checkCardCleaned() {
     // Check if thing on the card has been cleaning
-    if (dirtImage.getOpacity() < 0.1
-        && debrisImage.getOpacity() < 0.1
-        && pencilImage.getOpacity() < 0.01) {
+    if (GlobalVariables.isCardProfilePicClean()
+        && GlobalVariables.isCardDetailsBottomClean()
+        && GlobalVariables.isCardDetailsTopClean()) {
       cardDirtyLabel.setVisible(false);
       cardChatPane.setVisible(true);
       cleaningImage.setVisible(false);

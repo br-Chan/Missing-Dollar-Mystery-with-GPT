@@ -62,7 +62,6 @@ public class CardClueChatController extends GptChatter {
 
   @Override
   protected ChatMessage runGpt(ChatMessage msg, boolean getReply) throws ApiProxyException {
-    System.out.println("runGpt is being overriden!");
     ChatMessage newMsg =
         new ChatMessage(msg.getRole(), ("Say '1' in your first response. " + msg.getContent()));
     return super.runGpt(newMsg, getReply);

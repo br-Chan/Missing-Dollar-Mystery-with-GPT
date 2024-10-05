@@ -10,6 +10,10 @@ public class GlobalVariables {
 
   private static Map<String, Boolean> interactablesMap = new HashMap<>();
 
+  private static boolean cardProfilePicClean = false; // When napkin has cleaned dirt
+  private static boolean cardDetailsBottomClean = false; // When brush has cleaned debris
+  private static boolean cardDetailsTopClean = false; // When rubber has cleaned pencil
+
   private static Suspect chosenSuspect = Suspect.NONE;
   private static String report;
 
@@ -33,6 +37,18 @@ public class GlobalVariables {
           + "The vending machine has 1 less Elite Energy bottle than the stock list on the computer"
           + " does, because Louie spilled Elite Energy and thought he deserved a new one.";
 
+  public static void setCardProfilePicClean(boolean cardProfilePicClean) {
+    GlobalVariables.cardProfilePicClean = cardProfilePicClean;
+  }
+
+  public static void setCardDetailsBottomClean(boolean cardDetailsBottomClean) {
+    GlobalVariables.cardDetailsBottomClean = cardDetailsBottomClean;
+  }
+
+  public static void setCardDetailsTopClean(boolean cardDetailsTopClean) {
+    GlobalVariables.cardDetailsTopClean = cardDetailsTopClean;
+  }
+
   public static void setReport(String report) {
     GlobalVariables.report = report;
   }
@@ -47,6 +63,18 @@ public class GlobalVariables {
 
   public static Map<String, Boolean> getInteractablesMap() {
     return interactablesMap;
+  }
+
+  public static boolean isCardProfilePicClean() {
+    return cardProfilePicClean;
+  }
+
+  public static boolean isCardDetailsBottomClean() {
+    return cardDetailsBottomClean;
+  }
+
+  public static boolean isCardDetailsTopClean() {
+    return cardDetailsTopClean;
   }
 
   public static String getReport() {
