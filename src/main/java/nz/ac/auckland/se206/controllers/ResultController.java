@@ -69,6 +69,7 @@ public class ResultController {
   }
 
   public void setResult(boolean isGuessCorrect, String reasoning) {
+    System.out.println(reasoning);
     // if guess is wrong does stuff
     if (!isGuessCorrect) {
       guessStatus.setText("You guessed wrong!");
@@ -94,6 +95,7 @@ public class ResultController {
             Platform.runLater(
                 () -> {
                   var message = result.getChoice(0).getChatMessage().getContent();
+                  System.out.println(message);
 
                   if (message.contains("--yes")) {
                     message = message.replace("--yes", "");
