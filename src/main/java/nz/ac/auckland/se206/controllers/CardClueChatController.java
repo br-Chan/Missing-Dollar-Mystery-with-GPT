@@ -9,6 +9,9 @@ import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
 import nz.ac.auckland.se206.GlobalVariables;
 import nz.ac.auckland.se206.prompts.PromptEngineering;
 
+/**
+ * Controller class for the card clue chat FXML, containing the investigation chat with the GPT API.
+ */
 public class CardClueChatController extends GptChatter {
 
   public CardClueChatController() {
@@ -16,8 +19,8 @@ public class CardClueChatController extends GptChatter {
   }
 
   /**
-   * Initializes the suspect view. If it's the first time initialization, it will provide
-   * instructions via text-to-speech.
+   * Initializes the card clue chat. If it's the first time initialization, it will display the
+   * mini-tutorial message in the chat.
    */
   @FXML
   public void initialize() {
@@ -26,11 +29,12 @@ public class CardClueChatController extends GptChatter {
       setChatting(
           new ChatMessage(
               "assistant",
-              "Card can now be investigated! Type actions to investigate the card. Examples:"
+              "This clue can be Investigated! Type actions to Investigate the card. Examples:"
                   + " \"look at profile picture\", \"turn card around\", etc."));
       isFirstTimeInit = false;
     }
-    // calls chat request
+
+    // Initialise the chat completion request without the GPT API creating a response.
     initialiseChatCompletionRequest(false);
   }
 
@@ -61,8 +65,47 @@ public class CardClueChatController extends GptChatter {
   }
 
   @Override
+  protected ChatMessage runGpt(ChatMessage msg, boolean getReply) throws ApiProxyException {
+    ChatMessage newMsg;
+    if (msg.getRole().equals("user")) {
+      // Add the cleanlines information for the GPT.
+      newMsg = appendPrompt(msg);
+      System.out.println(newMsg.getContent());
+    } else {
+      newMsg = msg;
+    }
+
+    return super.runGpt(newMsg, getReply);
+  }
+
+  /**
+   * Adds to the back of the chat message the cleanliness information for the 4 main sections of the
+   * card: profile picture, top details, bottom details and back side.
+   *
+   * @param message the chat message to append the information to
+   * @return the updated chat message
+   */
+  private ChatMessage appendPrompt(ChatMessage message) {
+    String messageContent = message.getContent();
+    messageContent =
+        messageContent
+            + " [Profile picture is "
+            + (GlobalVariables.isCardProfilePicClean() ? "clean" : "covered in debris")
+            + "]"
+            + " [Bottom details are "
+            + (GlobalVariables.isCardDetailsBottomClean() ? "clean" : "covered in dirt")
+            + "]"
+            + " [Top details are "
+            + (GlobalVariables.isCardDetailsTopClean() ? "clean" : "covered by pencil marks")
+            + "]"
+            + " [Back side is clean]";
+
+    return new ChatMessage(message.getRole(), messageContent);
+  }
+
+  @Override
   protected void setThinking() {
-    super.setThinking();
+    txtaChat.setText("investigating...");
   }
 
   @Override
