@@ -134,6 +134,13 @@ public class GameController extends AppTimerUser {
     gameView.getChildren().setAll(SceneManager.getUiRoot(appUi));
   }
 
+  /**
+   * Updates all UI and variables surrounding clicking Louie on the game map. Updates map UI,
+   * profile card, visited booleans, and plays TTS.
+   *
+   * @param event unused event parameter
+   * @throws URISyntaxException throws exception regarding TTS
+   */
   @FXML
   private void onHandleSuspectOneButtonClick(ActionEvent event) throws URISyntaxException {
     setGameView(AppUi.SUSPECT1);
@@ -151,6 +158,13 @@ public class GameController extends AppTimerUser {
     }
   }
 
+  /**
+   * Updates all UI and variables surrounding clicking Huey on the game map. Updates map UI, profile
+   * card, visited booleans, and plays TTS.
+   *
+   * @param event unused event parameter
+   * @throws URISyntaxException throws exception regarding TTS
+   */
   @FXML
   private void onHandleSuspectTwoButtonClick(ActionEvent event) throws URISyntaxException {
     setGameView(AppUi.SUSPECT2);
@@ -168,6 +182,13 @@ public class GameController extends AppTimerUser {
     }
   }
 
+  /**
+   * Updates all UI and variables surrounding clicking Dewey on the game map. Updates map UI,
+   * profile card, visited booleans, and plays TTS.
+   *
+   * @param event unused event parameter
+   * @throws URISyntaxException throws exception regarding TTS
+   */
   @FXML
   private void onHandleSuspectThreeButtonClick(ActionEvent event) throws URISyntaxException {
     setGameView(AppUi.SUSPECT3);
@@ -185,12 +206,23 @@ public class GameController extends AppTimerUser {
     }
   }
 
+  /**
+   * Updates game window and map UI when clicking on the crime scene.
+   *
+   * @param event unusued event parameter
+   */
   @FXML
   private void onHandleCrimeSceneButtonClick(ActionEvent event) {
     setGameView(AppUi.CRIME_SCENE);
     showSelected(crimeSceneSelected);
   }
 
+  /**
+   * Handles logic for the guess button. Checks global variable to see if all conditions have been
+   * met.
+   *
+   * @throws IOException throws exception regarding loading FXML
+   */
   @FXML
   private void onHandleGuessClick() throws IOException {
     if (GlobalVariables.canGuessThief()) {
