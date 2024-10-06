@@ -124,6 +124,11 @@ public class ResultController {
     GlobalVariables.checkForCheatCode(event.getCode().toString());
   }
 
+  /**
+   * Handles clicking restart button. Changes to a restarting screen, and calls a restart method.
+   *
+   * @throws IOException throws exception regarding loading FXML
+   */
   @FXML
   private void onHandleRestart() throws IOException {
     SceneManager.addUi(AppUi.RESTART, App.loadFxml("restart"));

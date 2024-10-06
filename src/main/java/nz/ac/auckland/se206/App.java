@@ -72,6 +72,7 @@ public class App extends Application {
     return new FXMLLoader(App.class.getResource("/fxml/" + fxml + ".fxml")).load();
   }
 
+  /** Restarts the app by creating a new app, then closing the current one. */
   public static void restart() {
     try {
       oldStage = currentStage; // Initialises the old stage
