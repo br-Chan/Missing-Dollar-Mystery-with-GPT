@@ -1,6 +1,7 @@
 package nz.ac.auckland.se206;
 
 import java.io.IOException;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -129,7 +130,18 @@ public class App extends Application {
       e.printStackTrace();
     }
     // Shows the first scene that we set (start)
-    showFirstScene(stage, firstAppUi);
+//    showFirstScene(stage, firstAppUi);
+
+    try {
+      SceneManager.addUi(AppUi.GUESS, App.loadFxml("guess"));
+      showFirstScene(stage, AppUi.GUESS); // Switches to guessing scene
+      stage.heightProperty().addListener((change) -> {
+        System.out.println(stage.getHeight());
+      });
+    } catch (Exception e) {
+      System.out.println("There was an exception");
+      e.printStackTrace();
+    }
   }
 
   private void handleWindowClose(WindowEvent event) {

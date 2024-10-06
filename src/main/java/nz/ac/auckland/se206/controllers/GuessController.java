@@ -2,6 +2,7 @@ package nz.ac.auckland.se206.controllers;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
+
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
@@ -30,22 +31,11 @@ import nz.ac.auckland.se206.speech.TextToSpeech;
  * <p>This is a controller class for the guess fxml scene.
  */
 public class GuessController extends AppTimerUser {
-  @FXML private Button sendReportButton;
-
-  @FXML private Rectangle suspect1Bg;
-  @FXML private Rectangle suspect2Bg;
-  @FXML private Rectangle suspect3Bg;
-
-  @FXML private Label startingLabel;
-  @FXML private TextArea reportTextArea;
-  @FXML private Label timerLabel;
-
   private Suspect chosenSuspect = Suspect.NONE;
 
-  private final Color selectedBg = Color.rgb(255, 255, 255);
-  private final Color notSelectedBug = Color.rgb(150, 150, 150);
-
-  /** Initializes the guess scene. */
+  /**
+   * Initializes the guess scene.
+   */
   @FXML
   public void initialize() throws URISyntaxException {
     TextToSpeech.playVoiceline("MakeAGuess");
@@ -53,16 +43,17 @@ public class GuessController extends AppTimerUser {
     // Set the starting label to the default text
     System.out.println("Initialising guess scene...");
 
+
     // Set the starting label to the default text
-    appTimer = new AppTimer(this, timerLabel, AppTimer.GUESSTIME);
-    appTimer.beginCountdown();
-    setupGuessButton();
+//    appTimer = new AppTimer(this, timerLabel, AppTimer.GUESSTIME);
+//    appTimer.beginCountdown();
+//    setupGuessButton();
   }
 
   @FXML
   public void sendDataToGlobalVariables(KeyEvent event) {
-    GlobalVariables.setChosenSuspect(chosenSuspect);
-    GlobalVariables.setReport(reportTextArea.getText());
+//    GlobalVariables.setChosenSuspect(chosenSuspect);
+//    GlobalVariables.setReport(reportTextArea.getText());
   }
 
   /**
@@ -72,18 +63,6 @@ public class GuessController extends AppTimerUser {
    */
   @FXML
   public void onKeyPressed(KeyEvent event) {
-    String pressedKey = event.getCode().toString();
-    GlobalVariables.checkForCheatCode(pressedKey);
-
-    // Activates scene-specific cheat to toggle preset explanation and select the correct suspect.
-    if (pressedKey.equals("F3") && GlobalVariables.ENABLE_CHEATS) {
-
-      GlobalVariables.togglePresetExplanationCheat(reportTextArea);
-      onHandleSuspect1ButtonClick(null); // This method also sends the data to GlobalVariables
-    }
-
-    // If the report text area is empty, disable the send report button
-    setupGuessButton();
   }
 
   /**
@@ -94,15 +73,6 @@ public class GuessController extends AppTimerUser {
    */
   @FXML
   private void onHandleSuspect1ButtonClick(ActionEvent event) {
-    // sets chosen suspect as louie
-    chosenSuspect = Suspect.LOUIE;
-    sendDataToGlobalVariables(null);
-    suspect1Bg.setFill(selectedBg);
-    // sets the other backgrounds as unfilled
-    suspect2Bg.setFill(notSelectedBug);
-    suspect3Bg.setFill(notSelectedBug);
-
-    setupGuessButton();
   }
 
   /**
@@ -111,16 +81,6 @@ public class GuessController extends AppTimerUser {
    */
   @FXML
   private void onHandleSuspect2ButtonClick(ActionEvent event) {
-    // Set the chosen suspect to Huey
-    chosenSuspect = Suspect.HUEY;
-    sendDataToGlobalVariables(null);
-    suspect2Bg.setFill(selectedBg);
-
-    // Set the other suspects to not selected
-    suspect1Bg.setFill(notSelectedBug);
-    suspect3Bg.setFill(notSelectedBug);
-
-    setupGuessButton();
   }
 
   /**
@@ -129,16 +89,6 @@ public class GuessController extends AppTimerUser {
    */
   @FXML
   private void onHandleSuspect3ButtonClick() {
-    // Set the chosen suspect to Dewey
-    chosenSuspect = Suspect.DEWEY;
-    sendDataToGlobalVariables(null);
-    suspect3Bg.setFill(selectedBg);
-
-    // Set the other suspects to not selected
-    suspect2Bg.setFill(notSelectedBug);
-    suspect1Bg.setFill(notSelectedBug);
-
-    setupGuessButton();
   }
 
   /**
@@ -150,35 +100,12 @@ public class GuessController extends AppTimerUser {
    */
   @FXML
   private void onHandleSendReportClick(ActionEvent event) throws IOException {
-    if (chosenSuspect.equals(Suspect.NONE) || reportTextArea.getText().isEmpty()) {
-      // Don't go to results scene because you need to pick a suspect & write a report.
-      System.out.println("Can't send report, pick suspect & write report!");
-      return;
-    }
-
-    // Stop the timer
-    appTimer.cancelTimer();
-    var loader = new FXMLLoader(GuessController.class.getResource("/fxml/result.fxml"));
-    Parent root = loader.load();
-    SceneManager.addUi(AppUi.RESULT, root);
-
-    App.getScene().setRoot(SceneManager.getUiRoot(AppUi.RESULT));
   }
 
   /**
    * Sets up the guess button, disabling it if a suspect has not been chosen or if the report text
    */
   private void setupGuessButton() {
-    // If no suspect has been chosen or the report text area is empty, disable the send report
-    if (chosenSuspect.equals(Suspect.NONE) || reportTextArea.getText().isBlank()) {
-      sendReportButton.setDisable(true);
-      sendReportButton.setOpacity(0.5);
-      return;
-    }
-
-    // Otherwise, enable the send report button
-    sendReportButton.setDisable(false);
-    sendReportButton.setOpacity(1);
   }
 
   /**
