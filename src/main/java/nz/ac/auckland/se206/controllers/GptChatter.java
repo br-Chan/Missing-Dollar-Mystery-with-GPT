@@ -30,9 +30,10 @@ public abstract class GptChatter {
   @FXML protected Button btnSend;
 
   protected ChatCompletionRequest chatCompletionRequest;
+  protected double temperature = 0.2;
+  protected double topP = 0.5;
 
   protected boolean isFirstTimeInit = true;
-
   protected String promptFilename;
 
   /**
@@ -58,8 +59,8 @@ public abstract class GptChatter {
       chatCompletionRequest =
           new ChatCompletionRequest(config)
               .setN(1)
-              .setTemperature(0.2)
-              .setTopP(0.5)
+              .setTemperature(temperature)
+              .setTopP(topP)
               .setMaxTokens(100); // Sets the settings for a general response
 
       setChatting(
