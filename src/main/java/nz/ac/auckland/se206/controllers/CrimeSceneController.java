@@ -129,6 +129,7 @@ public class CrimeSceneController {
    */
   @FXML
   public void showCardClue() throws URISyntaxException {
+    GlobalVariables.clueClicked("cardClue");
     cardPane.setVisible(true);
 
     // This is code that was in checkCardCleaned but is now here to automatically reveal the chat
@@ -295,6 +296,7 @@ public class CrimeSceneController {
    */
   @FXML
   public void showCaseClue() throws URISyntaxException {
+    GlobalVariables.clueClicked("displayCaseClue");
     casePane.setVisible(true);
     // Play voiceline if first time
     if (firstTimeDisplayCaseClue) {
@@ -346,6 +348,7 @@ public class CrimeSceneController {
    */
   @FXML
   public void showComputerClue() throws URISyntaxException {
+    GlobalVariables.clueClicked("computerClue");
     computerPane.setVisible(true);
     // Play voiceline if first time
     if (firstTimeComputerClue) {

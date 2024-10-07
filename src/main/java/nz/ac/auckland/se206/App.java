@@ -125,6 +125,7 @@ public class App extends Application {
     try {
       preAddUi();
       GlobalVariables.initialiseInteractablesMap();
+      GlobalVariables.initialiseCluesMap();
     } catch (IOException e) {
       System.err.println("Could not find FXML file in scene manager.");
       e.printStackTrace();
