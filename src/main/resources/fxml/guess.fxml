@@ -10,6 +10,11 @@
         <Pane>
             <Sprite scale="4.75" spriteUrl="@../images/crimeScene/Restauant.png" />
             <Sprite layoutY="15" rotate="2" scale="4.5" spriteUrl="@../images/guessScrenn/Folder.png" />
+            <Sprite layoutX="200.0" layoutY="60.0" rotate="-2.0" scale="4.5" spriteUrl="@../images/guessScrenn/ConvictionPaper.png" />
+            <Sprite layoutX="50.0" layoutY="30.0" scale="4.5" spriteUrl="@../images/guessScrenn/HueyMugshot.png" />
+            <Sprite layoutX="50.0" layoutY="140.0" scale="4.5" spriteUrl="@../images/guessScrenn/DeweyMugshot.png" />
+            <Sprite layoutX="50.0" layoutY="250.0" scale="4.5" spriteUrl="@../images/guessScrenn/LouieMugshot.png" />
+            <Sprite layoutX="430.0" layoutY="150.0" rotate="-2.0" scale="4.5" spriteUrl="@../images/guessScrenn/Paperclip.png" />
         </Pane>
     </HBox>
 </AnchorPane>
