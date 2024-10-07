@@ -30,6 +30,9 @@ public abstract class GptChatter {
   @FXML protected Button btnSend;
 
   protected ChatCompletionRequest chatCompletionRequest;
+
+  // The temperature and topP of GPT API used in the conversation. These can be edited in the
+  // subclasses of GptChatter to alter its behaviour.
   protected double temperature = 0.2;
   protected double topP = 0.5;
 
