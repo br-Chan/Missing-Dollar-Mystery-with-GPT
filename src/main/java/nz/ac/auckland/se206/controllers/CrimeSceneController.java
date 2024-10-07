@@ -156,6 +156,7 @@ public class CrimeSceneController {
     }
   }
 
+  /** Hides the card clue pane when using the back button. */
   @FXML
   public void hideCardClue() {
     // Sets the card clue pane invisible
@@ -167,6 +168,7 @@ public class CrimeSceneController {
     rubberOn = false;
   }
 
+  /** Decreaes the opacity of the dirt image on the card clue. */
   @FXML
   public void decreaseDebrisOpacity() {
     if (napkinOn) {
@@ -180,6 +182,7 @@ public class CrimeSceneController {
     }
   }
 
+  /** Decreaes the opacity of the debris image on the card clue. */
   @FXML
   public void decreaseDirtOpacity() {
     if (brushOn) {
@@ -193,6 +196,7 @@ public class CrimeSceneController {
     }
   }
 
+  /** Decreaes the opacity of the pencil mark image on the card clue. */
   @FXML
   public void decreasePencilOpacity() {
     if (rubberOn) {
@@ -218,6 +222,7 @@ public class CrimeSceneController {
     }
   }
 
+  /** Toggles napkin on/off when selecing the napkin tool. */
   @FXML
   void napkinSelected() {
     // Toggles napkin on and off
@@ -239,6 +244,7 @@ public class CrimeSceneController {
     }
   }
 
+  /** Toggles brush on/off when selecing the brush tool. */
   @FXML
   void brushSelected() {
     // Toggles brush on and off
@@ -260,6 +266,7 @@ public class CrimeSceneController {
     }
   }
 
+  /** Toggles rubber on/off when selecing the rubber tool. */
   @FXML
   void rubberSelected() {
     // Toggles rubber on and off
@@ -281,6 +288,11 @@ public class CrimeSceneController {
     }
   }
 
+  /**
+   * Sets the case clue to be visible.
+   *
+   * @throws URISyntaxException
+   */
   @FXML
   public void showCaseClue() throws URISyntaxException {
     casePane.setVisible(true);
@@ -291,36 +303,47 @@ public class CrimeSceneController {
     }
   }
 
+  /** Hides the case clue. */
   @FXML
   public void hideCaseClue() {
     casePane.setVisible(false);
   }
 
+  /** Displays the pane for Cola Crush. */
   @FXML
   private void displayRedDrink() {
     showPane(redDrinkPane);
   }
 
+  /** Displays the pane for Coffee Craze. */
   @FXML
   private void displayBlueDrink() {
     showPane(blueDrinkPane);
   }
 
+  /** Displays the pane for Elite Energy. */
   @FXML
   private void displayGreenDrink() {
     showPane(greenDrinkPane);
   }
 
+  /** Displays the pane for Berry Burst. */
   @FXML
   private void displayPinkDrink() {
     showPane(pinkDrinkPane);
   }
 
+  /** Displays the pane for Lemon Lift. */
   @FXML
   private void displayYellowDrink() {
     showPane(yellowDrinkPane);
   }
 
+  /**
+   * Sets the computer clue to be visible.
+   *
+   * @throws URISyntaxException
+   */
   @FXML
   public void showComputerClue() throws URISyntaxException {
     computerPane.setVisible(true);
@@ -331,11 +354,13 @@ public class CrimeSceneController {
     }
   }
 
+  /** Hides the computer clue pane. */
   @FXML
   public void hideComputerClue() {
     computerPane.setVisible(false);
   }
 
+  /** Displays the pane for logs "app". */
   @FXML
   public void openLogs() {
     // Makes the logs app visible
@@ -346,6 +371,7 @@ public class CrimeSceneController {
     logsAppOpen = true;
   }
 
+  /** Displays the pane for stock "app". */
   @FXML
   public void openStock() {
     // Makes the stock app visible
@@ -356,6 +382,10 @@ public class CrimeSceneController {
     logsAppOpen = false;
   }
 
+  /**
+   * Handles logic for searching stock. Checks the text field search bar to get the drink name, then
+   * shows the corresponding pane.
+   */
   @FXML
   private void onHandleSearchStock() {
     // Recieves the input in the search bar
@@ -387,6 +417,10 @@ public class CrimeSceneController {
     GlobalVariables.handleInteraction("computerClue");
   }
 
+  /**
+   * Handles logic for searching logs. Checks the text fields for the time period, then checks the
+   * validity of the times. Shows the corresponding logs depending on the time period.
+   */
   @FXML
   private void onHandleSearchLogs() {
     // Recieves input from the search bar
@@ -417,6 +451,13 @@ public class CrimeSceneController {
     GlobalVariables.handleInteraction("computerClue");
   }
 
+  /**
+   * Checks the validity of input for the logs text fields.
+   *
+   * @param start the start time
+   * @param end the end time
+   * @return whether or not the times are valid
+   */
   private boolean checkValidInput(String start, String end) {
     // Checks the integer value of the start and end input
     if (Integer.parseInt(start) > 24 || Integer.parseInt(end) > 24) {
@@ -427,6 +468,13 @@ public class CrimeSceneController {
     return true;
   }
 
+  /**
+   * Checks if the input for the logs text fields are integers.
+   *
+   * @param start the start time
+   * @param end the end time
+   * @return whether or not both inputs are integers
+   */
   private boolean checkLogsInteger(String start, String end) {
     // Checks the validity of the start and end input
     try {
@@ -444,6 +492,7 @@ public class CrimeSceneController {
     // checkCardCleaned();
   }
 
+  /** Initialises all item panes by adding them to an ArrayList. */
   private void addAllItemPanes() {
     // Adds all item panes to an arraylist
     itemPaneList.add(suspensePane);
@@ -454,6 +503,7 @@ public class CrimeSceneController {
     itemPaneList.add(yellowDrinkPane);
   }
 
+  /** Initialises all stock panes by adding them to an ArrayList. */
   private void addAllStockPanes() {
     // Adds all stock app panes to an arraylist
     stockPaneList.add(errorStockPane);
@@ -464,6 +514,11 @@ public class CrimeSceneController {
     stockPaneList.add(yellowStockPane);
   }
 
+  /**
+   * Shows a singular item pane, hiding all others in the item pane ArrayList.
+   *
+   * @param paneToShow the pane to be shown
+   */
   private void showPane(Pane paneToShow) {
     // Hides all panes in an arraylist
     for (Pane pane : itemPaneList) {
@@ -478,6 +533,11 @@ public class CrimeSceneController {
     GlobalVariables.handleInteraction("displayCaseClue");
   }
 
+  /**
+   * Shows a singular stock pane, hiding all others in the stock pane ArrayList.
+   *
+   * @param paneToShow the pane to be shown
+   */
   private void showStock(Pane paneToShow) {
     // Hides all stock panes in the stock pane list
     for (Pane pane : stockPaneList) {
@@ -489,6 +549,12 @@ public class CrimeSceneController {
     paneToShow.setVisible(true);
   }
 
+  /**
+   * Updates the logs text area based on a valid start and end time.
+   *
+   * @param start the start time
+   * @param end the end time
+   */
   private void updateLogs(Integer start, Integer end) {
     // Initialises an empty log
     StringBuilder logsString = new StringBuilder();
@@ -513,10 +579,14 @@ public class CrimeSceneController {
         logsString.append(logsList.get(i));
       }
     }
-    // Replaces commas with a newlien character for formatting
+    // Replaces commas with a newline character for formatting
     logsArea.setText(logsString.toString().replaceAll(",", "\n"));
   }
 
+  /**
+   * Initialises logs data by reading in an external text file with all logs information. Adds each
+   * line of the text file to an ArrayList.
+   */
   private void addAllLogs() {
     // Inports all logs from a txt file
     InputStream inputStream = App.class.getResourceAsStream("/data/logs.txt");
