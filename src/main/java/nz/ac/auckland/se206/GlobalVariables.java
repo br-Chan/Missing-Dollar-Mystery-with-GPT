@@ -100,7 +100,7 @@ public class GlobalVariables {
     interactablesMap.put("displayCaseClue", false);
   }
 
-  /** Adds all interactables to the interactablesMap and sets their values to false. */
+  /** Adds all clues to the cluesMap and sets their values to false. */
   public static void initialiseCluesMap() {
     cluesMap.put("cardClue", false);
     cluesMap.put("computerClue", false);
@@ -120,7 +120,7 @@ public class GlobalVariables {
   /**
    * Changes the value of the input key to true regarding clues selection.
    *
-   * @param mapKey the id of the interactable that is the key in the interactables map
+   * @param mapKey the id of the clue that is the key in the interactables map
    */
   public static void clueClicked(String mapKey) {
     cluesMap.put(mapKey, true);
