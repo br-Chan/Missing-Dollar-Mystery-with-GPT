@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.image.Image?>
@@ -7,32 +8,35 @@
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane onKeyPressed="#onKeyPressed" prefHeight="599.0" prefWidth="789.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.MenuController">
+<Pane onKeyPressed="#onKeyPressed" prefHeight="718.8" prefWidth="946.8" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.MenuController">
    <children>
-      <ImageView fitHeight="599.0" fitWidth="827.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="599.0" fitWidth="827.0" layoutX="79.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true" scaleX="1.2" scaleY="1.2">
          <image>
             <Image url="@../images/Start%20Menu%20Border.png" />
          </image>
       </ImageView>
-      <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true" />
-      <ImageView fitHeight="599.0" fitWidth="840.0" layoutX="-2.0" layoutY="53.0" pickOnBounds="true" preserveRatio="true">
+      <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="79.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true" scaleX="1.2" scaleY="1.2" />
+      <ImageView fitHeight="599.0" fitWidth="840.0" layoutX="56.0" layoutY="113.0" pickOnBounds="true" preserveRatio="true" scaleX="1.2" scaleY="1.2">
          <image>
             <Image url="@../images/Framed%20Dollar.png" />
          </image></ImageView>
-      <Label alignment="CENTER" graphicTextGap="2.0" layoutX="70.0" layoutY="-18.0" prefHeight="239.0" prefWidth="650.0" text="The Missing Dollar Mystery" textAlignment="CENTER" wrapText="true">
+      <Label alignment="CENTER" graphicTextGap="2.0" layoutX="149.0" layoutY="1.0" prefHeight="239.0" prefWidth="650.0" scaleX="1.2" scaleY="1.2" stylesheets="@../css/styles.css" text="The Missing Dollar Mystery" textAlignment="CENTER" wrapText="true">
          <font>
-            <Font name="Consolas Bold" size="65.0" />
+            <Font name="Consolas" size="57.0" />
          </font>
       </Label>
-      <Label alignment="CENTER" layoutX="332.0" layoutY="202.0" prefHeight="298.0" prefWidth="399.0" text="Greetings investigator, and welcome to your first case! A restaurants framed first dollar bill was stolen, and the thief has been narrowed down to three suspects. Find clues, interrogate the suspects, and make a guess on who stole the dollar!" wrapText="true">
+      <Label alignment="CENTER" layoutX="411.0" layoutY="262.0" prefHeight="298.0" prefWidth="399.0" scaleX="1.2" scaleY="1.2" text="Greetings investigator, and welcome to your first case! A restaurants framed first dollar bill was stolen, and the thief has been narrowed down to three suspects. Find clues, interrogate the suspects, and make a guess on who stole the dollar!" wrapText="true">
          <font>
             <Font name="Consolas" size="24.0" />
          </font>
       </Label>
-      <Button fx:id="startButton" alignment="CENTER" contentDisplay="CENTER" layoutX="340.0" layoutY="511.0" mnemonicParsing="false" onAction="#onHandleStartButtonClick" text="START">
+      <Button fx:id="startButton" alignment="CENTER" contentDisplay="CENTER" layoutX="419.0" layoutY="611.0" mnemonicParsing="false" onAction="#onHandleStartButtonClick" scaleX="1.2" scaleY="1.2" stylesheets="@../css/styles.css" text="START">
          <font>
             <Font name="Consolas" size="27.0" />
          </font>
+         <cursor>
+            <Cursor fx:constant="HAND" />
+         </cursor>
       </Button>
    </children>
 </Pane>

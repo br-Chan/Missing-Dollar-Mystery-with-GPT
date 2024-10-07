@@ -48,3 +48,27 @@
     -fx-pref-width: 6px; /* Width of vertical scrollbar */
     -fx-pref-height: 6px; /* Height of horizontal scrollbar */
 }
+
+.button {
+  -fx-background-color: white;
+  -fx-text-fill: black;
+  -fx-border-color: rgb(120, 120, 120);
+  -fx-border-width: 3px;
+  -fx-border-radius: 1px;
+}
+
+.button:hover {
+  -fx-background-color: lightgrey;
+}
+
+.button:pressed {
+  -fx-background-color: darkgrey;
+}
+
+.text-field {
+  -fx-background-color: white;
+  -fx-border-color: rgb(120, 120, 120);
+  -fx-border-width: 3px;
+  -fx-border-radius: 1px;
+  -fx-text-fill: black;
+}

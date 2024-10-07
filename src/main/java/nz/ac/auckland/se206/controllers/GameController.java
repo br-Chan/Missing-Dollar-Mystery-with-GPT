@@ -108,7 +108,14 @@ public class GameController extends AppTimerUser {
             BackgroundRepeat.NO_REPEAT,
             BackgroundRepeat.NO_REPEAT,
             BackgroundPosition.CENTER,
-            BackgroundSize.DEFAULT);
+            new BackgroundSize(
+                946.8, // Width of the background image
+                718.8, // Height of the background image
+                false, // Whether to use a percentage value for width
+                false, // Whether to use a percentage value for height
+                false, // Whether the width should be set to the image's intrinsic size
+                false // Whether the height should be set to the image's intrinsic size
+                ));
     borderPane.setBackground(new Background(backgroundImage));
   }
 
