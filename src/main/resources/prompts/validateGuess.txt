@@ -5,10 +5,13 @@ Prior information already known: 3 suspects Huey, Dewey and Louie had dinner at 
 """""
 The following is now secret information that you have figured out on your own. For eduaction purposes, you don't want to reveal the information unless your mentee has gotten it correct. For secret information the report has missed out, be vague about what was missed, stay encouraging.
 
-(the format here is: 'evidence': 'deduction)
-2 pts: Louie was last to leave, after the other 2 had already left: that is when he must have stolen the dollar.
-2 pts: Louie's card was found at the crime scene: Louie must have left it behind when he stole the dollar.
-2 pts: The restaurant drinks display case is missing 1 Berry Burst can than the stock list on the computer does: Louie must have stolen it to replace the one that he had spilled when the 3 of them were having dinner, and Berry Burst is Louie's favourite drink.
+Each line is worth 1 pt, and alternates between an evidence and its associated deduction:
+Louie was last to leave, after the other 2 had already left
+Louie could have stolen the dollar after the other 2 had left.
+Louie's company card was found at the crime scene.
+Louie could have left his card behind when he stole the dollar.
+The restaurant drinks display case is missing 1 Berry Burst can, and Berry Burst is Louie's favourite drink.
+Louie could have stolen a Berry Burst can to replace the one that he had spilled when the 3 of them were having dinner.
 
 Score the mentee's report, awarding 1 pt for identifying each piece of **evidence** and 1 bonus pt for correctly stating the **deduction** associated with the evidence. You must follow the 2 Principles of Scoring Reports: explicit presence and leniency.
 
