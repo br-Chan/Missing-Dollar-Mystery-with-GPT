@@ -12,6 +12,7 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundImage;
 import javafx.scene.layout.BackgroundPosition;
@@ -19,6 +20,7 @@ import javafx.scene.layout.BackgroundRepeat;
 import javafx.scene.layout.BackgroundSize;
 import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
+import javafx.scene.shape.Rectangle;
 import javafx.util.Duration;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.AppTimer;
@@ -61,12 +63,15 @@ public class GameController extends AppTimerUser {
   @FXML private Pane hueyPane;
   @FXML private Pane louiePane;
   @FXML private Pane deweyPane;
+  @FXML private Pane cluePane;
   @FXML private Pane leftPane;
   @FXML private Pane rightPane;
   @FXML private Pane gameView;
   @FXML private Pane hueyFadePane;
   @FXML private Pane louieFadePane;
   @FXML private Pane deweyFadePane;
+  @FXML private Pane clueFadePane;
+  @FXML private Rectangle transparentRectangle;
 
   private FadeTransition currentFadeTransition;
 
@@ -87,6 +92,25 @@ public class GameController extends AppTimerUser {
     appTimer.beginCountdown();
     addAllSelected(); // Adds selection images to an arraylist
     setBackgroundImage();
+    borderPane.setOnMouseClicked(this::handleMouseClick);
+  }
+
+  /**
+   * Updates clue pane whenever the mouse is clicked.
+   *
+   * @param event unused event parameter
+   */
+  @FXML
+  private void handleMouseClick(MouseEvent event) { 
+    updateCluePane();
+  }
+
+  private void updateCluePane() {
+    if (GlobalVariables.getCluesMap().get("computerClue")
+        || GlobalVariables.getCluesMap().get("cardClue")
+        || GlobalVariables.getCluesMap().get("displayCaseClue")) {
+      cluePane.setVisible(false);
+    }
   }
 
   /** Adds all selection box images to an arraylist. */
@@ -139,6 +163,11 @@ public class GameController extends AppTimerUser {
 
   private void setGameView(AppUi appUi) {
     gameView.getChildren().setAll(SceneManager.getUiRoot(appUi));
+  }
+
+  @FXML
+  private void doStuff() {
+    System.out.println("clicked");
   }
 
   @FXML
@@ -233,6 +262,11 @@ public class GameController extends AppTimerUser {
     }
     if (!GlobalVariables.getInteractablesMap().get("suspect3")) {
       showAndFade(deweyFadePane); // Shows deweys fade pane if he hasnt been visited
+    }
+    if (!GlobalVariables.getInteractablesMap().get("computerClue")
+        && !GlobalVariables.getInteractablesMap().get("cardClue")
+        && !GlobalVariables.getInteractablesMap().get("displayCaseClue")) {
+      showAndFade(clueFadePane); // Shows clue fade pane if he hasnt been visited
     }
   }
 

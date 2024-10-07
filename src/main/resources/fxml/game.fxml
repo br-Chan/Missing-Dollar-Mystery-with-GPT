@@ -266,7 +266,7 @@
             </Pane>
             <Pane fx:id="clueFadePane" layoutX="17.0" layoutY="510.0" mouseTransparent="true" prefHeight="43.0" prefWidth="119.0" visible="false">
                <children>
-                  <Rectangle arcHeight="1.0" arcWidth="5.0" fill="#ff00004d" height="124.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="119.0" />
+                  <Rectangle arcHeight="1.0" arcWidth="5.0" fill="#ff00004d" height="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="119.0" />
                </children>
             </Pane>
          </children>

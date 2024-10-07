@@ -9,6 +9,7 @@ import nz.ac.auckland.se206.speech.TextToSpeech;
 public class GlobalVariables {
 
   private static Map<String, Boolean> interactablesMap = new HashMap<>();
+  private static Map<String, Boolean> cluesMap = new HashMap<>();
 
   private static boolean cardProfilePicClean = false; // When napkin has cleaned dirt
   private static boolean cardDetailsBottomClean = false; // When brush has cleaned debris
@@ -65,6 +66,10 @@ public class GlobalVariables {
     return interactablesMap;
   }
 
+  public static Map<String, Boolean> getCluesMap() {
+    return cluesMap;
+  }
+
   public static boolean isCardProfilePicClean() {
     return cardProfilePicClean;
   }
@@ -95,6 +100,13 @@ public class GlobalVariables {
     interactablesMap.put("displayCaseClue", false);
   }
 
+  /** Adds all interactables to the interactablesMap and sets their values to false. */
+  public static void initialiseCluesMap() {
+    cluesMap.put("cardClue", false);
+    cluesMap.put("computerClue", false);
+    cluesMap.put("displayCaseClue", false);
+  }
+
   /**
    * Changes the value of the input key to true, marking that the affiliated interactable has been
    * interacted with.
@@ -103,6 +115,15 @@ public class GlobalVariables {
    */
   public static void handleInteraction(String mapKey) {
     interactablesMap.put(mapKey, true);
+  }
+
+  /**
+   * Changes the value of the input key to true regarding clues selection.
+   *
+   * @param mapKey the id of the interactable that is the key in the interactables map
+   */
+  public static void clueClicked(String mapKey) {
+    cluesMap.put(mapKey, true);
   }
 
   /**
