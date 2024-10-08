@@ -1,6 +1,7 @@
 package nz.ac.auckland.se206.controllers;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.Objects;
 import javafx.animation.PauseTransition;
 import javafx.application.Platform;
@@ -19,6 +20,7 @@ import nz.ac.auckland.se206.GlobalVariables;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.Suspect;
+import nz.ac.auckland.se206.speech.TextToSpeech;
 
 /**
  * TODO: Fill in this JavaDoc comment.
@@ -143,5 +145,19 @@ public class ResultController {
         });
     // Start the pause
     pause.play();
+  }
+
+  private void playResultTTS(String result) throws URISyntaxException {
+    switch (result) {
+      case "wrongGuess":
+        TextToSpeech.playVoiceline("IncorrectGuessIncorrectReasoning");
+        break;
+      case "rightGuess":
+        TextToSpeech.playVoiceline("CorrectGuessIncorrectReasoning");
+        break;
+      case "rightAll":
+        TextToSpeech.playVoiceline("CorrectGuessCorrectReasoning");
+        break;
+    }
   }
 }
