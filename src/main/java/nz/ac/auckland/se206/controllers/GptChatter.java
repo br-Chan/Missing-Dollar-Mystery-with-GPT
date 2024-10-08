@@ -111,6 +111,7 @@ public abstract class GptChatter {
         return result.getChatMessage();
       } catch (ApiProxyException e) {
         e.printStackTrace();
+        System.err.println("Something went wrong when fetching ChatGPT's response.");
         return null;
       }
     }

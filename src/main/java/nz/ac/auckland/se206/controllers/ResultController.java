@@ -3,7 +3,6 @@ package nz.ac.auckland.se206.controllers;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
-import java.util.Objects;
 import javafx.animation.PauseTransition;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
@@ -11,8 +10,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.util.Duration;
-import nz.ac.auckland.apiproxy.chat.openai.ChatCompletionRequest;
-import nz.ac.auckland.apiproxy.config.ApiProxyConfig;
+import nz.ac.auckland.apiproxy.chat.openai.ChatMessage;
 import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GlobalVariables;
@@ -27,48 +25,22 @@ import nz.ac.auckland.se206.prompts.PromptEngineering;
  * <p>TODO: Edit the respective fxml file and add to this empty class to implement features. Remove
  * default methods as needed.
  *
- * <p>This is a controller class for a fxml scene.
+ * <p>This is a controller class for the results scene.
  */
 public class ResultController extends GptChatter {
   @FXML private Label guessStatus;
   @FXML private Label marking;
 
-  private ChatCompletionRequest completionRequest;
-
   public ResultController() {
     promptFilename = "validateGuess.txt";
 
-    // TODO: UNCOMMENT THESE
-    // temperature = 0.1;
-    // topP = 0.1;
+    temperature = 0.1;
+    topP = 0.1;
     maxTokens = 300;
-
-    // tries this thing
-    try {
-      var systemPromptFile =
-          new String(
-              Objects.requireNonNull(
-                      ResultController.class.getResourceAsStream("/prompts/validateGuess.txt"))
-                  .readAllBytes());
-      completionRequest =
-          new ChatCompletionRequest(ApiProxyConfig.readConfig())
-              .addMessage("system", systemPromptFile);
-    } catch (NullPointerException e) {
-      // If doesnt load prompt
-      System.err.println("Could not load prompt");
-    } catch (IOException e) {
-      System.err.println("Could not load system prompt");
-      throw new RuntimeException(e);
-    } catch (ApiProxyException e) {
-      System.err.println("Could not read api proxy config");
-      throw new RuntimeException(e);
-    }
   }
 
   /**
-   * TODO: Fill in this JavaDoc comment.
-   *
-   * <p>Initializes the scene view.
+   * Initialises the results scene, analysing the user's accusation and report to create feedback.
    */
   @FXML
   public void initialize() {
@@ -76,25 +48,47 @@ public class ResultController extends GptChatter {
         new Task<Void>() {
           @Override
           protected Void call() throws Exception {
+            // Check if the user was right, and potentially write feedback.
             setResult(
                 GlobalVariables.getChosenSuspect().equals(Suspect.LOUIE),
                 GlobalVariables.getReport());
 
+            // Check if ChatGPT gave user's report a passing score (3 or more) and set label text
+            // accordingly.
             Platform.runLater(
                 () -> {
-                  // var message = result.getChoice(0).getChatMessage().getContent();
-                  String message = txtaChat.getText();
-                  System.out.println(message);
+                  // ChatMessage generatedFeedback = null;
+                  try {
+                    ChatMessage generatedFeedback =
+                        runGpt(new ChatMessage("user", GlobalVariables.getReport()), true);
 
-                  if (message.contains("--yes")) {
-                    message = message.replace("--yes", "");
+                    String message = generatedFeedback.getContent();
+                    System.out.println(message);
 
-                    marking.setText("You were spot on, here is the feedback on your response");
-                  } else {
-                    marking.setText("Not quite, here is the feedback on your response");
+                    if (message.contains("--yes")) {
+                      message = message.replace("--yes", "");
+
+                      marking.setText("You were spot on, here is the feedback on your response");
+                    } else {
+                      marking.setText("Not quite, here is the feedback on your response");
+                    }
+
+                    txtaChat.setText(message);
+                  } catch (ApiProxyException e) {
+                    e.printStackTrace();
                   }
+                  // finally {
+                  //   if (generatedFeedback == null) {
+                  //     txtaChat.setText(
+                  //         "The email from your mentor Inspector Ros was unable to get through
+                  // due"
+                  //             + " to internet issues, but she's probably very supportive of your"
+                  //             + " efforts.");
+                  //     System.err.println("The generated feedback was null");
+                  //     return;
+                  //   }
+                  // }
 
-                  txtaChat.setText(message);
                 });
 
             return null;
@@ -110,6 +104,13 @@ public class ResultController extends GptChatter {
     return PromptEngineering.getPrompt(promptFilename, dataMap);
   }
 
+  /**
+   * Determine if the user accused the right suspect, and if they are correct write feedback from
+   * Inspector Ros' point of view. UI labels and text areas are updated accordingly.
+   *
+   * @param isGuessCorrect whether the user's accusation was correct
+   * @param reasoning the user's report
+   */
   public void setResult(boolean isGuessCorrect, String reasoning) {
     // Handle the guess being wrong
     if (!isGuessCorrect) {
@@ -119,42 +120,9 @@ public class ResultController extends GptChatter {
       return;
     }
 
+    // Get ChatGPT to start writing the feedback to the report
     guessStatus.setText("You guessed correctly!");
-    initialiseChatCompletionRequest(true);
-    // spawn background task to do stuffff
-    // var task =
-    //     new Task<Void>() {
-    //       @Override
-    //       protected Void call() throws Exception {
-    //         ChatCompletionResult result;
-    //         try {
-    //           result = completionRequest.addMessage("user", reasoning).execute();
-    //         } catch (ApiProxyException e) {
-    //           System.err.println("Could not get chatgpt response " + e.getMessage());
-    //           return null;
-    //         }
-    //         // update the ui
-    //         Platform.runLater(
-    //             () -> {
-    //               var message = result.getChoice(0).getChatMessage().getContent();
-    //               System.out.println(message);
-
-    //               if (message.contains("--yes")) {
-    //                 message = message.replace("--yes", "");
-
-    //                 marking.setText("You were spot on, here is the feedback on your response");
-    //               } else {
-    //                 marking.setText("Not quite, here is the feedback on your response");
-    //               }
-
-    //               txtaChat.setText(message);
-    //             });
-
-    //         return null;
-    //       }
-    //     };
-    // // startes thread
-    // new Thread(task).start();
+    initialiseChatCompletionRequest(false);
   }
 
   /**
