@@ -433,23 +433,22 @@ public class CrimeSceneController {
   @FXML
   private void onHandleSearchLogs() {
     // Recieves input from the search bar
-    // String start = searchLogsStart.getText().trim();
-    // String end = searchLogsEnd.getText().trim();
 
     String start = (String) startCombo.getValue();
     String end = (String) endCombo.getValue();
 
     // Returns nothing if either is empty
-    if (start.isEmpty() || end.isEmpty()) {
+    if (start == null || end == null) {
+      logsArea.setText("Invalid input!\nPlease input a start and an end time.");
       return;
     }
 
     // Runs checks for different errors
     if (!checkLogsInteger(start, end)) {
-      logsArea.setText("Invalid input!\nPlease enter an integer."); // If the input isnt an integer
+      logsArea.setText("Invalid input!\nPlease input an integer."); // If the input isnt an integer
     } else if (!checkValidInput(start, end)) {
       logsArea.setText(
-          "Invalid input!\nPlease enter a number from 0 to 24."); // If the input is out of bounds
+          "Invalid input!\nPlease input a number from 0 to 24."); // If the input is out of bounds
     } else if (Integer.parseInt(start) > Integer.parseInt(end)) {
       logsArea.setText(
           "Invalid input!\nStart time must be earlier than end time."); // If the input order is
