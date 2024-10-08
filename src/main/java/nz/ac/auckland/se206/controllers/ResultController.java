@@ -53,18 +53,22 @@ public class ResultController extends GptChatter {
                 GlobalVariables.getChosenSuspect().equals(Suspect.LOUIE),
                 GlobalVariables.getReport());
 
-            // Check if ChatGPT gave user's report a passing score (3 or more) and set label text
-            // accordingly.
+            /**
+             * Check if ChatGPT gave user's report a passing score (3 or more) and set visual text
+             * accordingly.
+             */
             Platform.runLater(
                 () -> {
-                  // ChatMessage generatedFeedback = null;
                   try {
+                    // Create chat message containing the user's report, then get ChatGPT's response
+                    // (Inspector Ros' feedback).
                     ChatMessage generatedFeedback =
                         runGpt(new ChatMessage("user", GlobalVariables.getReport()), true);
-
                     String message = generatedFeedback.getContent();
                     System.out.println(message);
 
+                    // Handle acceptance logic. If the GPT's score for the report is at least 3 out
+                    // of 6, then Louie must confess and the feedback must end with --yes.
                     if (message.contains("--yes")) {
                       message = message.replace("--yes", "");
 
@@ -73,22 +77,11 @@ public class ResultController extends GptChatter {
                       marking.setText("Not quite, here is the feedback on your response");
                     }
 
+                    // Update the text area with Inspector Ros' feedback.
                     txtaChat.setText(message);
                   } catch (ApiProxyException e) {
                     e.printStackTrace();
                   }
-                  // finally {
-                  //   if (generatedFeedback == null) {
-                  //     txtaChat.setText(
-                  //         "The email from your mentor Inspector Ros was unable to get through
-                  // due"
-                  //             + " to internet issues, but she's probably very supportive of your"
-                  //             + " efforts.");
-                  //     System.err.println("The generated feedback was null");
-                  //     return;
-                  //   }
-                  // }
-
                 });
 
             return null;
@@ -105,8 +98,8 @@ public class ResultController extends GptChatter {
   }
 
   /**
-   * Determine if the user accused the right suspect, and if they are correct write feedback from
-   * Inspector Ros' point of view. UI labels and text areas are updated accordingly.
+   * Determine if the user accused the right suspect, and if they are wrong update the UI
+   * accordingly.
    *
    * @param isGuessCorrect whether the user's accusation was correct
    * @param reasoning the user's report
