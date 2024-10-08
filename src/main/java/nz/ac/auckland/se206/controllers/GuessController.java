@@ -84,6 +84,27 @@ public class GuessController extends AppTimerUser {
     louieTransition = new MugshotTransition(louieSprite, finalPosition[0], finalPosition[1]);
   }
 
+    /**
+   * Handles the key pressed event.
+   *
+   * @param event the key event
+   */
+  @FXML
+  public void onKeyPressed(KeyEvent event) {
+    String pressedKey = event.getCode().toString();
+    GlobalVariables.checkForCheatCode(pressedKey);
+
+    // Activates scene-specific cheat to toggle preset explanation and select the correct suspect.
+    if (pressedKey.equals("F3") && GlobalVariables.ENABLE_CHEATS) {
+
+      GlobalVariables.togglePresetExplanationCheat(reportArea);
+      onHandleSuspect3ButtonClick(); // This method also sends the data to GlobalVariables
+    }
+
+    // If the report text area is empty, disable the send report button
+    setupGuessButton();
+  }
+
   /**
    * Sends the chosen suspect to the global variables when the user presses the enter key.
    *
@@ -180,6 +201,9 @@ public class GuessController extends AppTimerUser {
    */
   @Override
   public void switchScene() throws IOException {
+    GlobalVariables.setChosenSuspect(chosenSuspect);
+    GlobalVariables.setReport(reportArea.getText());
+    
     // Stop the timer
     SceneManager.addUi(AppUi.RESULT, App.loadFxml("result"));
     App.getScene().setRoot(SceneManager.getUiRoot(AppUi.RESULT));
