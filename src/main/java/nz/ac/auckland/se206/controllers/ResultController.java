@@ -1,17 +1,17 @@
 package nz.ac.auckland.se206.controllers;
 
 import java.io.IOException;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.Objects;
 import javafx.animation.PauseTransition;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.input.KeyEvent;
 import javafx.util.Duration;
 import nz.ac.auckland.apiproxy.chat.openai.ChatCompletionRequest;
-import nz.ac.auckland.apiproxy.chat.openai.ChatCompletionResult;
 import nz.ac.auckland.apiproxy.config.ApiProxyConfig;
 import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
 import nz.ac.auckland.se206.App;
@@ -19,6 +19,7 @@ import nz.ac.auckland.se206.GlobalVariables;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.Suspect;
+import nz.ac.auckland.se206.prompts.PromptEngineering;
 
 /**
  * TODO: Fill in this JavaDoc comment.
@@ -28,14 +29,19 @@ import nz.ac.auckland.se206.Suspect;
  *
  * <p>This is a controller class for a fxml scene.
  */
-public class ResultController {
+public class ResultController extends GptChatter {
   @FXML private Label guessStatus;
   @FXML private Label marking;
-  @FXML private TextArea markingResult;
 
   private ChatCompletionRequest completionRequest;
 
   public ResultController() {
+    promptFilename = "validateGuess.txt";
+
+    // TODO: UNCOMMENT THESE
+    // temperature = 0.1;
+    // topP = 0.1;
+
     // tries this thing
     try {
       var systemPromptFile =
@@ -65,37 +71,18 @@ public class ResultController {
    */
   @FXML
   public void initialize() {
-    setResult(
-        GlobalVariables.getChosenSuspect().equals(Suspect.LOUIE), GlobalVariables.getReport());
-  }
-
-  public void setResult(boolean isGuessCorrect, String reasoning) {
-    System.out.println(reasoning);
-    // if guess is wrong does stuff
-    if (!isGuessCorrect) {
-      guessStatus.setText("You guessed wrong!");
-      marking.setVisible(false);
-      markingResult.setVisible(false);
-      return;
-    }
-
-    guessStatus.setText("You guessed correctly!");
-    // spawn background task to do stuffff
-    var task =
+    Task<Void> backgroundTask =
         new Task<Void>() {
           @Override
           protected Void call() throws Exception {
-            ChatCompletionResult result;
-            try {
-              result = completionRequest.addMessage("user", reasoning).execute();
-            } catch (ApiProxyException e) {
-              System.err.println("Could not get chatgpt response " + e.getMessage());
-              return null;
-            }
-            // update the ui
+            setResult(
+                GlobalVariables.getChosenSuspect().equals(Suspect.LOUIE),
+                GlobalVariables.getReport());
+
             Platform.runLater(
                 () -> {
-                  var message = result.getChoice(0).getChatMessage().getContent();
+                  // var message = result.getChoice(0).getChatMessage().getContent();
+                  String message = txtaChat.getText();
                   System.out.println(message);
 
                   if (message.contains("--yes")) {
@@ -106,14 +93,67 @@ public class ResultController {
                     marking.setText("Not quite, here is the feedback on your response");
                   }
 
-                  markingResult.setText(message);
+                  txtaChat.setText(message);
                 });
 
             return null;
           }
         };
-    // startes thread
-    new Thread(task).start();
+    Thread backgroundThread = new Thread(backgroundTask);
+    backgroundThread.start();
+  }
+
+  @Override
+  protected String getSystemPrompt() {
+    Map<String, String> dataMap = new HashMap<>();
+    return PromptEngineering.getPrompt(promptFilename, dataMap);
+  }
+
+  public void setResult(boolean isGuessCorrect, String reasoning) {
+    // Handle the guess being wrong
+    if (!isGuessCorrect) {
+      guessStatus.setText("You guessed wrong!");
+      marking.setVisible(false);
+      txtaChat.setVisible(false);
+      return;
+    }
+
+    guessStatus.setText("You guessed correctly!");
+    initialiseChatCompletionRequest(true);
+    // spawn background task to do stuffff
+    // var task =
+    //     new Task<Void>() {
+    //       @Override
+    //       protected Void call() throws Exception {
+    //         ChatCompletionResult result;
+    //         try {
+    //           result = completionRequest.addMessage("user", reasoning).execute();
+    //         } catch (ApiProxyException e) {
+    //           System.err.println("Could not get chatgpt response " + e.getMessage());
+    //           return null;
+    //         }
+    //         // update the ui
+    //         Platform.runLater(
+    //             () -> {
+    //               var message = result.getChoice(0).getChatMessage().getContent();
+    //               System.out.println(message);
+
+    //               if (message.contains("--yes")) {
+    //                 message = message.replace("--yes", "");
+
+    //                 marking.setText("You were spot on, here is the feedback on your response");
+    //               } else {
+    //                 marking.setText("Not quite, here is the feedback on your response");
+    //               }
+
+    //               txtaChat.setText(message);
+    //             });
+
+    //         return null;
+    //       }
+    //     };
+    // // startes thread
+    // new Thread(task).start();
   }
 
   /**
