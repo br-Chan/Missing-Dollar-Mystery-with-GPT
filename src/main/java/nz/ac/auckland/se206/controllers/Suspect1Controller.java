@@ -8,6 +8,9 @@ public class Suspect1Controller extends AbstractSuspectController {
     suspectName = "Louie";
     promptFilename = "suspect1.txt";
 
+    temperature = 0.6;
+    topP = 0.6;
+
     /*
      * Uncomment the following if you want to disable this suspect's normal prompt and make them a
      * dumb, chattering animal.

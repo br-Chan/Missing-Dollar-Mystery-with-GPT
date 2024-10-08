@@ -22,7 +22,7 @@
          </font>
       </Label>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="20.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="200.0" />
-      <TextArea fx:id="markingResult" editable="false" prefHeight="200.0" prefWidth="557.0" wrapText="true">
+      <TextArea fx:id="txtaChat" editable="false" prefHeight="200.0" prefWidth="557.0" wrapText="true">
          <VBox.margin>
             <Insets left="50.0" right="50.0" />
          </VBox.margin>
