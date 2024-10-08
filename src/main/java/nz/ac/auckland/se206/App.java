@@ -1,6 +1,7 @@
 package nz.ac.auckland.se206;
 
 import java.io.IOException;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -132,6 +133,14 @@ public class App extends Application {
     }
     // Shows the first scene that we set (start)
     showFirstScene(stage, firstAppUi);
+
+
+    stage.widthProperty().addListener((_a) -> {
+      System.out.println("Width: " + stage.getWidth());
+    });
+    stage.heightProperty().addListener((_a) -> {
+      System.out.println("Height: " + stage.getHeight());
+    });
   }
 
   private void handleWindowClose(WindowEvent event) {

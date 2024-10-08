@@ -4,50 +4,70 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.fxml.FXMLLoader;
-import javafx.scene.Parent;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Rectangle;
-import nz.ac.auckland.se206.App;
-import nz.ac.auckland.se206.AppTimer;
-import nz.ac.auckland.se206.AppTimerUser;
-import nz.ac.auckland.se206.GlobalVariables;
-import nz.ac.auckland.se206.SceneManager;
+import nz.ac.auckland.se206.*;
 import nz.ac.auckland.se206.SceneManager.AppUi;
-import nz.ac.auckland.se206.Suspect;
+import nz.ac.auckland.se206.components.Sprite;
 import nz.ac.auckland.se206.speech.TextToSpeech;
 
 /**
- * TODO: Fill in this JavaDoc comment.
+ * Controller for the guess scene.
  *
- * <p>TODO: Edit the respective fxml file and add to this empty class to implement features. Remove
- * default methods as needed.
- *
- * <p>This is a controller class for the guess fxml scene.
+ * <p>This class is responsible for handling user input and updating the guess scene.
  */
 public class GuessController extends AppTimerUser {
-  @FXML private Button sendReportButton;
-
-  @FXML private Rectangle suspect1Bg;
-  @FXML private Rectangle suspect2Bg;
-  @FXML private Rectangle suspect3Bg;
-
-  @FXML private Label startingLabel;
-  @FXML private TextArea reportTextArea;
-  @FXML private Label timerLabel;
-
+  /**
+   * The chosen suspect. This is set to NONE by default, and is updated when the user clicks on a
+   * suspect button.
+   */
   private Suspect chosenSuspect = Suspect.NONE;
 
-  private final Color selectedBg = Color.rgb(255, 255, 255);
-  private final Color notSelectedBug = Color.rgb(150, 150, 150);
+  /** The final position */
+  private final int[] finalPosition = {450, 150};
+
+  /** The sprite objects for the suspects. */
+  @FXML private Sprite hueySprite;
+
+  /**
+   * The sprite objects for the suspects. The sprite objects for the suspects. The sprite objects
+   * for the suspects.
+   */
+  @FXML private Sprite duewySprite;
+
+  /**
+   * The sprite objects for the suspects. The sprite objects for the suspects. The sprite objects
+   * for the suspects.
+   */
+  @FXML private Sprite louieSprite;
+
+  /**
+   * The text area where the user can input their report. This is used to store the user's report
+   * when they click the send report button.
+   */
+  @FXML private TextArea reportArea;
+
+  /**
+   * The label that displays the time remaining in the guess scene. This is updated by the app timer
+   */
+  @FXML private Label timerLabel;
+
+  /**
+   * The app timer object that keeps track of the time remaining in the guess scene. This is used to
+   */
+  private MugshotTransition hueyTransition;
+
+  /** The app timer object that keeps track of the time remaining in the guess scene. */
+  private MugshotTransition dewyTransition;
+
+  /** The app timer object that keeps track of the time remaining in the guess scene. */
+  private MugshotTransition louieTransition;
 
   /** Initializes the guess scene. */
   @FXML
   public void initialize() throws URISyntaxException {
+    // Play the voiceline for the guess scene
     TextToSpeech.playVoiceline("MakeAGuess");
 
     // Set the starting label to the default text
@@ -56,16 +76,15 @@ public class GuessController extends AppTimerUser {
     // Set the starting label to the default text
     appTimer = new AppTimer(this, timerLabel, AppTimer.GUESSTIME);
     appTimer.beginCountdown();
-    setupGuessButton();
+
+    // Set up the guess button
+    hueyTransition = new MugshotTransition(hueySprite, finalPosition[0], finalPosition[1]);
+    // Set up the guess button
+    dewyTransition = new MugshotTransition(duewySprite, finalPosition[0], finalPosition[1]);
+    louieTransition = new MugshotTransition(louieSprite, finalPosition[0], finalPosition[1]);
   }
 
-  @FXML
-  public void sendDataToGlobalVariables(KeyEvent event) {
-    GlobalVariables.setChosenSuspect(chosenSuspect);
-    GlobalVariables.setReport(reportTextArea.getText());
-  }
-
-  /**
+    /**
    * Handles the key pressed event.
    *
    * @param event the key event
@@ -78,8 +97,8 @@ public class GuessController extends AppTimerUser {
     // Activates scene-specific cheat to toggle preset explanation and select the correct suspect.
     if (pressedKey.equals("F3") && GlobalVariables.ENABLE_CHEATS) {
 
-      GlobalVariables.togglePresetExplanationCheat(reportTextArea);
-      onHandleSuspect1ButtonClick(null); // This method also sends the data to GlobalVariables
+      GlobalVariables.togglePresetExplanationCheat(reportArea);
+      onHandleSuspect3ButtonClick(); // This method also sends the data to GlobalVariables
     }
 
     // If the report text area is empty, disable the send report button
@@ -87,22 +106,19 @@ public class GuessController extends AppTimerUser {
   }
 
   /**
-   * Handles mouse clicks on the suspect 1 button, setting which suspect the user has chosen and
-   * updating the starting label.
+   * Sends the chosen suspect to the global variables when the user presses the enter key.
    *
-   * @param event the mouse event triggered by clicking the button
+   * @param event the key event triggered by pressing the enter key
    */
   @FXML
-  private void onHandleSuspect1ButtonClick(ActionEvent event) {
-    // sets chosen suspect as louie
-    chosenSuspect = Suspect.LOUIE;
-    sendDataToGlobalVariables(null);
-    suspect1Bg.setFill(selectedBg);
-    // sets the other backgrounds as unfilled
-    suspect2Bg.setFill(notSelectedBug);
-    suspect3Bg.setFill(notSelectedBug);
+  public void sendDataToGlobalVariables(KeyEvent event) {
+    GlobalVariables.setChosenSuspect(chosenSuspect);
+  }
 
-    setupGuessButton();
+  /** Updates the report in the global variables when the user types in the report text area. */
+  @FXML
+  private void onHandleUpdateReport() {
+    GlobalVariables.setReport(reportArea.getText());
   }
 
   /**
@@ -110,17 +126,17 @@ public class GuessController extends AppTimerUser {
    * updating the starting label.
    */
   @FXML
-  private void onHandleSuspect2ButtonClick(ActionEvent event) {
-    // Set the chosen suspect to Huey
-    chosenSuspect = Suspect.HUEY;
-    sendDataToGlobalVariables(null);
-    suspect2Bg.setFill(selectedBg);
+  private void onHandleSuspect1ButtonClick() {
+    swapImages(Suspect.HUEY);
+  }
 
-    // Set the other suspects to not selected
-    suspect1Bg.setFill(notSelectedBug);
-    suspect3Bg.setFill(notSelectedBug);
-
-    setupGuessButton();
+  /**
+   * Handles mouse clicks on the suspect 1 button, setting which suspect the user has chosen and
+   * updating the starting label.
+   */
+  @FXML
+  private void onHandleSuspect2ButtonClick() {
+    swapImages(Suspect.DEWEY);
   }
 
   /**
@@ -129,16 +145,37 @@ public class GuessController extends AppTimerUser {
    */
   @FXML
   private void onHandleSuspect3ButtonClick() {
-    // Set the chosen suspect to Dewey
-    chosenSuspect = Suspect.DEWEY;
-    sendDataToGlobalVariables(null);
-    suspect3Bg.setFill(selectedBg);
+    swapImages(Suspect.LOUIE);
+  }
 
-    // Set the other suspects to not selected
-    suspect2Bg.setFill(notSelectedBug);
-    suspect1Bg.setFill(notSelectedBug);
+  /**
+   * Swaps the images of the suspects when the user clicks on a suspect button.
+   *
+   * @param target the suspect that the user has chosen
+   */
+  private void swapImages(Suspect target) {
+    // If the target is the same as the chosen suspect, do nothing
+    if (chosenSuspect.equals(target)) {
+      return;
+    }
 
-    setupGuessButton();
+    // Play the transition for the target suspect and reverse the transition for the chosen suspect
+    switch (target) {
+      case HUEY -> hueyTransition.playForwards();
+      case DEWEY -> dewyTransition.playForwards();
+      case LOUIE -> louieTransition.playForwards();
+    }
+
+    // Reverse the transition for the chosen suspect
+    switch (chosenSuspect) {
+      case HUEY -> hueyTransition.playBackwards();
+      case DEWEY -> dewyTransition.playBackwards();
+      case LOUIE -> louieTransition.playBackwards();
+    }
+
+    // Set the chosen suspect to the target suspect
+    GlobalVariables.setChosenSuspect(target);
+    chosenSuspect = target;
   }
 
   /**
@@ -149,37 +186,12 @@ public class GuessController extends AppTimerUser {
    * @throws IOException
    */
   @FXML
-  private void onHandleSendReportClick(ActionEvent event) throws IOException {
-    if (chosenSuspect.equals(Suspect.NONE) || reportTextArea.getText().isEmpty()) {
-      // Don't go to results scene because you need to pick a suspect & write a report.
-      System.out.println("Can't send report, pick suspect & write report!");
-      return;
-    }
-
-    // Stop the timer
-    appTimer.cancelTimer();
-    var loader = new FXMLLoader(GuessController.class.getResource("/fxml/result.fxml"));
-    Parent root = loader.load();
-    SceneManager.addUi(AppUi.RESULT, root);
-
-    App.getScene().setRoot(SceneManager.getUiRoot(AppUi.RESULT));
-  }
+  private void onHandleSendReportClick(ActionEvent event) throws IOException {}
 
   /**
    * Sets up the guess button, disabling it if a suspect has not been chosen or if the report text
    */
-  private void setupGuessButton() {
-    // If no suspect has been chosen or the report text area is empty, disable the send report
-    if (chosenSuspect.equals(Suspect.NONE) || reportTextArea.getText().isBlank()) {
-      sendReportButton.setDisable(true);
-      sendReportButton.setOpacity(0.5);
-      return;
-    }
-
-    // Otherwise, enable the send report button
-    sendReportButton.setDisable(false);
-    sendReportButton.setOpacity(1);
-  }
+  private void setupGuessButton() {}
 
   /**
    * Called when app timer runs out of time (see AppTimerUser.java). Switches the scene to the
@@ -189,7 +201,21 @@ public class GuessController extends AppTimerUser {
    */
   @Override
   public void switchScene() throws IOException {
+    GlobalVariables.setChosenSuspect(chosenSuspect);
+    GlobalVariables.setReport(reportArea.getText());
+    
+    // Stop the timer
     SceneManager.addUi(AppUi.RESULT, App.loadFxml("result"));
     App.getScene().setRoot(SceneManager.getUiRoot(AppUi.RESULT));
+  }
+
+  /**
+   * Called when the timer runs out of time. Switches the scene to the results scene.
+   *
+   * @throws IOException if the fxml file for the results scene cannot be found
+   */
+  @FXML
+  public void onHandleSubmitReport() throws IOException {
+    switchScene();
   }
 }
