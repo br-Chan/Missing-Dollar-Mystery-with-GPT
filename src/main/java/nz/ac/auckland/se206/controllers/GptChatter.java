@@ -35,6 +35,7 @@ public abstract class GptChatter {
   // subclasses of GptChatter to alter its behaviour.
   protected double temperature = 0.2;
   protected double topP = 0.5;
+  protected int maxTokens = 100;
 
   protected boolean isFirstTimeInit = true;
   protected String promptFilename;
@@ -64,7 +65,7 @@ public abstract class GptChatter {
               .setN(1)
               .setTemperature(temperature)
               .setTopP(topP)
-              .setMaxTokens(100); // Sets the settings for a general response
+              .setMaxTokens(maxTokens); // Sets the settings for a general response
 
       setChatting(
           runGpt(

@@ -33,7 +33,7 @@ Hi Investigator,
 
 We took Louie in for Expert Interrogation using your report. {You gave us enough evidence for us to get a confession!|My PI Master vibes told me it was him, but your evidence didn't hold up and we didn't get a confession.}
 
-[1 short sentence feedback on each point in mentee's report, and Louie's reaction]
+[3 short sentences feedback on mentee's report, and Louie's reaction to each evidence]
 
 {At last, he broke down and admitted to the crime. Congratulations investigator, you've cracked your first case!|Sadly, we were forced to let him go.} After going over the case, I give you an Investigator-Score of {score} out of 6. [Give a supportive comment on the score]. 
 

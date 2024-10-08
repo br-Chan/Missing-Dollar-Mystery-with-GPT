@@ -41,6 +41,7 @@ public class ResultController extends GptChatter {
     // TODO: UNCOMMENT THESE
     // temperature = 0.1;
     // topP = 0.1;
+    maxTokens = 300;
 
     // tries this thing
     try {
