@@ -1,0 +1,66 @@
+.text-area {
+  -fx-background-color: black;
+  -fx-text-fill: rgb(0, 230, 0);
+  -fx-font-family: "Consolas", "Courier New", monospace;
+}
+
+/* Style the scrollbars */
+.scroll-bar {
+  -fx-background-color: transparent;
+  -fx-padding: 0;
+}
+
+/* Thumb (scroll indicator) style */
+.scroll-bar .thumb {
+  -fx-background-color: rgb(0, 230, 0);
+}
+
+/* Decrease and increase buttons hidden */
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+  -fx-padding: 0;
+  -fx-background-color: transparent;
+  -fx-shape: null; /* Hides the button shapes */
+}
+
+/* Track style (the scrollbar rail) */
+.scroll-bar .track {
+  -fx-background-color: transparent;
+}
+
+.text-area .content {
+  -fx-background-color: black;
+  -fx-effect: null;
+}
+
+.text-area .scroll-pane {
+  -fx-background-color: white;
+  -fx-background-insets: 0;
+  -fx-padding: 0;
+  -fx-border-color: transparent;
+  -fx-effect: null;
+}
+
+.button {
+  -fx-background-color: white;
+  -fx-text-fill: rgb(0, 0, 0);
+  -fx-border-color: rgb(120, 120, 120);
+  -fx-border-width: 3px;
+  -fx-border-radius: 1px;
+}
+
+.button:hover {
+  -fx-background-color: lightgrey;
+}
+
+.button:pressed {
+  -fx-background-color: darkgrey;
+}
+
+.text-field {
+  -fx-background-color: white;
+  -fx-border-color: rgb(120, 120, 120);
+  -fx-border-width: 3px;
+  -fx-border-radius: 1px;
+  -fx-text-fill: black;
+}
