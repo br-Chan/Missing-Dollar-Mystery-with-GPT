@@ -67,6 +67,7 @@ public class CrimeSceneController {
 
   @FXML private ComboBox startCombo;
   @FXML private ComboBox endCombo;
+  @FXML private ComboBox stockCombo;
 
   private boolean napkinOn;
   private boolean brushOn;
@@ -397,7 +398,8 @@ public class CrimeSceneController {
   @FXML
   private void onHandleSearchStock() {
     // Recieves the input in the search bar
-    String query = searchStockField.getText().trim().toLowerCase();
+    String query = (String) stockCombo.getValue();
+    query = query.trim().toLowerCase();
     searchStockField.clear();
     // Shows corresponding item depending on the text input
     switch (query) {
@@ -432,8 +434,12 @@ public class CrimeSceneController {
   @FXML
   private void onHandleSearchLogs() {
     // Recieves input from the search bar
-    String start = searchLogsStart.getText().trim();
-    String end = searchLogsEnd.getText().trim();
+    // String start = searchLogsStart.getText().trim();
+    // String end = searchLogsEnd.getText().trim();
+
+    String start = (String) startCombo.getValue();
+    String end = (String) endCombo.getValue();
+
     // Returns nothing if either is empty
     if (start.isEmpty() || end.isEmpty()) {
       return;
@@ -615,5 +621,8 @@ public class CrimeSceneController {
       startCombo.getItems().addAll(i.toString());
       endCombo.getItems().addAll(i.toString());
     }
+    stockCombo
+        .getItems()
+        .addAll("Cola Crush", "Coffee Craze", "Elite Energy", "Berry Burst", "Lemon Lift");
   }
 }

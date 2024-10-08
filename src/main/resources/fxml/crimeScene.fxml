@@ -214,7 +214,7 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Rectangle>
-                <Pane fx:id="stockPane" layoutX="77.0" layoutY="125.0" prefHeight="213.0" prefWidth="344.0" visible="false">
+                <Pane fx:id="stockPane" layoutX="77.0" layoutY="125.0" prefHeight="213.0" prefWidth="344.0">
                     <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffd969" height="189.0" stroke="TRANSPARENT" strokeType="INSIDE" width="344.0" />
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffd969" height="30.0" layoutX="172.0" layoutY="183.0" onMouseClicked="#openStock" stroke="TRANSPARENT" strokeType="INSIDE" width="125.0">
@@ -302,9 +302,10 @@
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></Rectangle>
+                  <ComboBox fx:id="stockCombo" layoutX="10.0" layoutY="28.0" prefHeight="25.0" prefWidth="202.0" promptText="Item Name" visibleRowCount="4" />
                     </children>
                 </Pane>
-                <Pane fx:id="logPane" layoutX="77.0" layoutY="125.0" prefHeight="213.0" prefWidth="344.0">
+                <Pane fx:id="logPane" layoutX="77.0" layoutY="125.0" prefHeight="213.0" prefWidth="344.0" visible="false">
                     <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#588fa1" height="189.0" stroke="TRANSPARENT" strokeType="INSIDE" width="344.0" />
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#588fa1" height="30.0" layoutX="47.0" layoutY="183.0" stroke="TRANSPARENT" strokeType="INSIDE" width="125.0">
