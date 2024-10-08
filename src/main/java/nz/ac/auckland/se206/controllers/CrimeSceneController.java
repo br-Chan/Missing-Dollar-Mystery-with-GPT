@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -64,6 +65,9 @@ public class CrimeSceneController {
   @FXML private Pane pinkStockPane;
   @FXML private Pane yellowStockPane;
 
+  @FXML private ComboBox startCombo;
+  @FXML private ComboBox endCombo;
+
   private boolean napkinOn;
   private boolean brushOn;
   private boolean rubberOn;
@@ -97,6 +101,7 @@ public class CrimeSceneController {
     addAllItemPanes();
     addAllStockPanes();
     addAllLogs();
+    addComboBoxItems();
   }
 
   /**
@@ -601,6 +606,14 @@ public class CrimeSceneController {
       }
     } catch (IOException e) {
       e.printStackTrace();
+    }
+  }
+
+  @SuppressWarnings("unchecked")
+  private void addComboBoxItems() {
+    for (Integer i = 0; i <= 24; i++) {
+      startCombo.getItems().addAll(i.toString());
+      endCombo.getItems().addAll(i.toString());
     }
   }
 }
