@@ -16,6 +16,9 @@ public class CardClueChatController extends GptChatter {
 
   public CardClueChatController() {
     promptFilename = "cardClueChat.txt";
+
+    temperature = 0.1;
+    topP = 0.1;
   }
 
   /**

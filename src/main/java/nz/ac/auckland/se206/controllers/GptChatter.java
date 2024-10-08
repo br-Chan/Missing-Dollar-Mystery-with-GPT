@@ -31,8 +31,13 @@ public abstract class GptChatter {
 
   protected ChatCompletionRequest chatCompletionRequest;
 
-  protected boolean isFirstTimeInit = true;
+  // The temperature and topP of GPT API used in the conversation. These can be edited in the
+  // subclasses of GptChatter to alter its behaviour.
+  protected double temperature = 0.2;
+  protected double topP = 0.5;
+  protected int maxTokens = 100;
 
+  protected boolean isFirstTimeInit = true;
   protected String promptFilename;
 
   /**
@@ -58,9 +63,9 @@ public abstract class GptChatter {
       chatCompletionRequest =
           new ChatCompletionRequest(config)
               .setN(1)
-              .setTemperature(0.2)
-              .setTopP(0.5)
-              .setMaxTokens(100); // Sets the settings for a general response
+              .setTemperature(temperature)
+              .setTopP(topP)
+              .setMaxTokens(maxTokens); // Sets the settings for a general response
 
       setChatting(
           runGpt(
@@ -106,6 +111,7 @@ public abstract class GptChatter {
         return result.getChatMessage();
       } catch (ApiProxyException e) {
         e.printStackTrace();
+        System.err.println("Something went wrong when fetching ChatGPT's response.");
         return null;
       }
     }

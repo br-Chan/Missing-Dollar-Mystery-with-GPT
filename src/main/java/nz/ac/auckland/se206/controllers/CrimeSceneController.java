@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import javafx.fxml.FXML;
 import javafx.scene.Node;
 import javafx.scene.control.Button;
+import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
@@ -64,6 +65,10 @@ public class CrimeSceneController {
   @FXML private Pane pinkStockPane;
   @FXML private Pane yellowStockPane;
 
+  @FXML private ComboBox startCombo;
+  @FXML private ComboBox endCombo;
+  @FXML private ComboBox stockCombo;
+
   private boolean napkinOn;
   private boolean brushOn;
   private boolean rubberOn;
@@ -97,6 +102,7 @@ public class CrimeSceneController {
     addAllItemPanes();
     addAllStockPanes();
     addAllLogs();
+    addComboBoxItems();
   }
 
   /**
@@ -392,8 +398,15 @@ public class CrimeSceneController {
   @FXML
   private void onHandleSearchStock() {
     // Recieves the input in the search bar
-    String query = searchStockField.getText().trim().toLowerCase();
-    searchStockField.clear();
+    String query = (String) stockCombo.getValue();
+
+    if (query == null) {
+      showStock(errorStockPane);
+      return;
+    }
+
+    query = query.trim().toLowerCase();
+
     // Shows corresponding item depending on the text input
     switch (query) {
       case "cola crush":
@@ -427,21 +440,22 @@ public class CrimeSceneController {
   @FXML
   private void onHandleSearchLogs() {
     // Recieves input from the search bar
-    String start = searchLogsStart.getText().trim();
-    String end = searchLogsEnd.getText().trim();
+
+    String start = (String) startCombo.getValue();
+    String end = (String) endCombo.getValue();
+
     // Returns nothing if either is empty
-    if (start.isEmpty() || end.isEmpty()) {
+    if (start == null || end == null) {
+      logsArea.setText("Invalid input!\nPlease input a start and an end time.");
       return;
     }
-    searchLogsStart.clear();
-    searchLogsEnd.clear();
 
     // Runs checks for different errors
     if (!checkLogsInteger(start, end)) {
-      logsArea.setText("Invalid input!\nPlease enter an integer."); // If the input isnt an integer
+      logsArea.setText("Invalid input!\nPlease input an integer."); // If the input isnt an integer
     } else if (!checkValidInput(start, end)) {
       logsArea.setText(
-          "Invalid input!\nPlease enter a number from 0 to 24."); // If the input is out of bounds
+          "Invalid input!\nPlease input a number from 0 to 24."); // If the input is out of bounds
     } else if (Integer.parseInt(start) > Integer.parseInt(end)) {
       logsArea.setText(
           "Invalid input!\nStart time must be earlier than end time."); // If the input order is
@@ -602,5 +616,19 @@ public class CrimeSceneController {
     } catch (IOException e) {
       e.printStackTrace();
     }
+  }
+
+  /** Initialises combo box items for stock and logs app. */
+  @SuppressWarnings("unchecked")
+  private void addComboBoxItems() {
+    // Loops through to add all 24 hours
+    for (Integer i = 0; i <= 24; i++) {
+      startCombo.getItems().addAll(i.toString());
+      endCombo.getItems().addAll(i.toString());
+    }
+    // Adds all drink names
+    stockCombo
+        .getItems()
+        .addAll("Cola Crush", "Coffee Craze", "Elite Energy", "Berry Burst", "Lemon Lift");
   }
 }

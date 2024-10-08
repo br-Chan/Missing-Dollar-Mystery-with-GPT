@@ -2,18 +2,16 @@ package nz.ac.auckland.se206.controllers;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
-import java.util.Objects;
+import java.util.HashMap;
+import java.util.Map;
 import javafx.animation.PauseTransition;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import javafx.scene.control.TextArea;
 import javafx.scene.input.KeyEvent;
 import javafx.util.Duration;
-import nz.ac.auckland.apiproxy.chat.openai.ChatCompletionRequest;
-import nz.ac.auckland.apiproxy.chat.openai.ChatCompletionResult;
-import nz.ac.auckland.apiproxy.config.ApiProxyConfig;
+import nz.ac.auckland.apiproxy.chat.openai.ChatMessage;
 import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GlobalVariables;
@@ -21,6 +19,7 @@ import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.Suspect;
 import nz.ac.auckland.se206.speech.TextToSpeech;
+import nz.ac.auckland.se206.prompts.PromptEngineering;
 
 /**
  * TODO: Fill in this JavaDoc comment.
@@ -28,52 +27,97 @@ import nz.ac.auckland.se206.speech.TextToSpeech;
  * <p>TODO: Edit the respective fxml file and add to this empty class to implement features. Remove
  * default methods as needed.
  *
- * <p>This is a controller class for a fxml scene.
+ * <p>This is a controller class for the results scene.
  */
-public class ResultController {
+public class ResultController extends GptChatter {
   @FXML private Label guessStatus;
   @FXML private Label marking;
-  @FXML private TextArea markingResult;
-
-  private ChatCompletionRequest completionRequest;
 
   public ResultController() {
-    // tries this thing
-    try {
-      var systemPromptFile =
-          new String(
-              Objects.requireNonNull(
-                      ResultController.class.getResourceAsStream("/prompts/validateGuess.txt"))
-                  .readAllBytes());
-      completionRequest =
-          new ChatCompletionRequest(ApiProxyConfig.readConfig())
-              .addMessage("system", systemPromptFile);
-    } catch (NullPointerException e) {
-      // If doesnt load prompt
-      System.err.println("Could not load prompt");
-    } catch (IOException e) {
-      System.err.println("Could not load system prompt");
-      throw new RuntimeException(e);
-    } catch (ApiProxyException e) {
-      System.err.println("Could not read api proxy config");
-      throw new RuntimeException(e);
-    }
+    promptFilename = "validateGuess.txt";
+
+    temperature = 0.1;
+    topP = 0.1;
+    maxTokens = 300;
   }
 
   /**
-   * TODO: Fill in this JavaDoc comment.
-   *
-   * <p>Initializes the scene view.
+   * Initialises the results scene, analysing the user's accusation and report to create feedback.
    */
   @FXML
   public void initialize() {
-    setResult(
-        GlobalVariables.getChosenSuspect().equals(Suspect.LOUIE), GlobalVariables.getReport());
+    Task<Void> backgroundTask =
+        new Task<Void>() {
+          @Override
+          protected Void call() throws Exception {
+            // Check if the user was right, and potentially write feedback.
+            setResult(
+                GlobalVariables.getChosenSuspect().equals(Suspect.LOUIE),
+                GlobalVariables.getReport());
+
+            /**
+             * Check if ChatGPT gave user's report a passing score (3 or more) and set visual text
+             * accordingly.
+             */
+            Platform.runLater(
+                () -> {
+                  try {
+                    // Create chat message containing the user's report, then get ChatGPT's response
+                    // (Inspector Ros' feedback).
+                    ChatMessage generatedFeedback =
+                        runGpt(new ChatMessage("user", GlobalVariables.getReport()), true);
+                    String message = generatedFeedback.getContent();
+                    System.out.println(message);
+
+                    // Handle acceptance logic. If the GPT's score for the report is at least 3 out
+                    // of 6, then Louie must confess and the feedback must end with --yes.
+                    if (message.contains("--yes")) {
+                      message = message.replace("--yes", "");
+
+                      marking.setText("You were spot on, here is the feedback on your response");
+                      try {
+                        playResultTTS("rightAll");
+                      } catch (URISyntaxException e) {
+                        e.printStackTrace();
+                      }
+                    } else {
+                      marking.setText("Not quite, here is the feedback on your response");
+                      try {
+                        playResultTTS("rightGuess");
+                      } catch (URISyntaxException e) {
+                        e.printStackTrace();
+                      }
+                    }
+
+                    // Update the text area with Inspector Ros' feedback.
+                    txtaChat.setText(message);
+                  } catch (ApiProxyException e) {
+                    e.printStackTrace();
+                  }
+                });
+
+            return null;
+          }
+        };
+    Thread backgroundThread = new Thread(backgroundTask);
+    backgroundThread.start();
   }
 
+  @Override
+  protected String getSystemPrompt() {
+    Map<String, String> dataMap = new HashMap<>();
+    return PromptEngineering.getPrompt(promptFilename, dataMap);
+  }
+
+  /**
+   * Determine if the user accused the right suspect, and if they are wrong update the UI
+   * accordingly.
+   *
+   * @param isGuessCorrect whether the user's accusation was correct
+   * @param reasoning the user's report
+   */
   public void setResult(boolean isGuessCorrect, String reasoning) {
-    System.out.println(reasoning);
-    // if guess is wrong does stuff
+    // Handle the guess being wrong
     if (!isGuessCorrect) {
       guessStatus.setText("You guessed wrong!");
       try {
@@ -82,55 +126,13 @@ public class ResultController {
         e.printStackTrace();
       }
       marking.setVisible(false);
-      markingResult.setVisible(false);
+      txtaChat.setVisible(false);
       return;
     }
 
+    // Get ChatGPT to start writing the feedback to the report
     guessStatus.setText("You guessed correctly!");
-    // spawn background task to do stuffff
-    var task =
-        new Task<Void>() {
-          @Override
-          protected Void call() throws Exception {
-            ChatCompletionResult result;
-            try {
-              result = completionRequest.addMessage("user", reasoning).execute();
-            } catch (ApiProxyException e) {
-              System.err.println("Could not get chatgpt response " + e.getMessage());
-              return null;
-            }
-            // update the ui
-            Platform.runLater(
-                () -> {
-                  var message = result.getChoice(0).getChatMessage().getContent();
-                  System.out.println(message);
-
-                  if (message.contains("--yes")) {
-                    message = message.replace("--yes", "");
-
-                    marking.setText("You were spot on, here is the feedback on your response");
-                    try {
-                      playResultTTS("rightAll");
-                    } catch (URISyntaxException e) {
-                      e.printStackTrace();
-                    }
-                  } else {
-                    marking.setText("Not quite, here is the feedback on your response");
-                    try {
-                      playResultTTS("rightGuess");
-                    } catch (URISyntaxException e) {
-                      e.printStackTrace();
-                    }
-                  }
-
-                  markingResult.setText(message);
-                });
-
-            return null;
-          }
-        };
-    // startes thread
-    new Thread(task).start();
+    initialiseChatCompletionRequest(false);
   }
 
   /**

@@ -42,3 +42,57 @@
   -fx-border-radius: 1px;
   -fx-text-fill: black;
 }
+
+.combo-box {
+  -fx-background-color: white;
+  -fx-border-color: rgb(120, 120, 120);
+  -fx-border-width: 3px;
+  -fx-border-radius: 1px;
+  -fx-text-fill: black;
+}
+
+.combo-box .list-cell {
+  -fx-background-color: white;
+  -fx-border-color: rgb(120, 120, 120);
+  -fx-border-width: 0px;
+  -fx-text-fill: black;
+}
+
+.combo-box .list-cell:hover {
+  -fx-background-color: lightgrey; /* Hover effect for items */
+}
+
+.combo-box .arrow-button {
+  -fx-background-color: white;
+  -fx-border-color: white;
+}
+
+.combo-box:hover {
+  -fx-border-color: rgb(100, 100, 100);
+}
+
+.combo-box:focused {
+  -fx-border-color: rgb(80, 80, 80);
+}
+
+.combo-box:pressed .arrow-button {
+  -fx-background-color: lightgrey;
+}
+
+/* Scrollbar styling */
+.combo-box .scroll-bar {
+  -fx-background-color: rgb(230, 230, 230);
+}
+
+.combo-box .scroll-bar .thumb {
+  -fx-background-color: rgb(200, 200, 200);
+  -fx-background-radius: 2px;
+}
+
+.combo-box .scroll-bar .thumb:hover {
+  -fx-background-color: rgb(180, 180, 180); /* Hover effect for scrollbar thumb */
+}
+
+.combo-box .scroll-bar .track {
+  -fx-background-color: rgb(240, 240, 240);
+}
