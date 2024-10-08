@@ -5,7 +5,6 @@
 <?import javafx.scene.control.ComboBox?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
-<?import javafx.scene.control.TextField?>
 <?import javafx.scene.image.Image?>
 <?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
@@ -214,7 +213,7 @@
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Rectangle>
-                <Pane fx:id="stockPane" layoutX="77.0" layoutY="125.0" prefHeight="213.0" prefWidth="344.0">
+                <Pane fx:id="stockPane" layoutX="77.0" layoutY="125.0" prefHeight="213.0" prefWidth="344.0" visible="false">
                     <children>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffd969" height="189.0" stroke="TRANSPARENT" strokeType="INSIDE" width="344.0" />
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#ffd969" height="30.0" layoutX="172.0" layoutY="183.0" onMouseClicked="#openStock" stroke="TRANSPARENT" strokeType="INSIDE" width="125.0">
@@ -293,7 +292,6 @@
                                 <Text fill="WHITE" layoutX="164.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Make sure item name is correct" wrappingWidth="176.0" />
                             </children>
                         </Pane>
-                        <TextField fx:id="searchStockField" layoutX="7.0" layoutY="25.0" prefHeight="25.0" prefWidth="208.0" promptText="Search item name" />
                         <Button fx:id="searchStockButton" layoutX="217.0" layoutY="25.0" mnemonicParsing="false" onAction="#onHandleSearchStock" text="Search">
                      <font>
                         <Font name="Consolas" size="13.0" />
@@ -302,7 +300,7 @@
                      <cursor>
                         <Cursor fx:constant="HAND" />
                      </cursor></Rectangle>
-                  <ComboBox fx:id="stockCombo" layoutX="10.0" layoutY="28.0" prefHeight="25.0" prefWidth="202.0" promptText="Item Name" visibleRowCount="4" />
+                  <ComboBox fx:id="stockCombo" layoutX="16.0" layoutY="25.0" prefHeight="25.0" prefWidth="199.0" promptText="Item Name" visibleRowCount="4" />
                     </children>
                 </Pane>
                 <Pane fx:id="logPane" layoutX="77.0" layoutY="125.0" prefHeight="213.0" prefWidth="344.0" visible="false">
@@ -321,12 +319,10 @@
                      <font>
                         <Font name="Consolas" size="13.0" />
                      </font></Button>
-                        <Text layoutX="7.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="From                           To" />
-                        <TextField fx:id="searchLogsEnd" layoutX="143.0" layoutY="25.0" prefHeight="25.0" prefWidth="72.0" promptText="eg 4, 8, 21" />
-                        <TextField fx:id="searchLogsStart" layoutX="40.0" layoutY="25.0" prefHeight="25.0" prefWidth="78.0" promptText="eg 0, 3, 14" />
+                        <Text layoutX="7.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="From                          To" />
                         <TextArea fx:id="logsArea" editable="false" layoutX="8.0" layoutY="63.0" prefHeight="116.0" prefWidth="259.0" />
-                  <ComboBox fx:id="startCombo" layoutX="43.0" layoutY="28.0" prefHeight="25.0" prefWidth="72.0" promptText="Start" visibleRowCount="4" />
-                  <ComboBox fx:id="endCombo" layoutX="143.0" layoutY="28.0" prefHeight="25.0" prefWidth="72.0" promptText="End" visibleRowCount="4" />
+                  <ComboBox fx:id="startCombo" layoutX="37.0" layoutY="25.0" prefHeight="31.0" prefWidth="78.0" promptText="Start" visibleRowCount="4" />
+                  <ComboBox fx:id="endCombo" layoutX="137.0" layoutY="25.0" prefHeight="31.0" prefWidth="78.0" promptText="End" visibleRowCount="4" />
                     </children>
                 </Pane>
             <Label alignment="TOP_LEFT" layoutX="386.0" layoutY="93.0" prefHeight="104.0" prefWidth="88.0" rotate="-10.0" style="-fx-background-color: D7CF9D;" text="to staff: chg amount of stock to match display case values so we know if any are stolen" textAlignment="CENTER" wrapText="true">

@@ -400,7 +400,6 @@ public class CrimeSceneController {
     // Recieves the input in the search bar
     String query = (String) stockCombo.getValue();
     query = query.trim().toLowerCase();
-    searchStockField.clear();
     // Shows corresponding item depending on the text input
     switch (query) {
       case "cola crush":
@@ -444,8 +443,6 @@ public class CrimeSceneController {
     if (start.isEmpty() || end.isEmpty()) {
       return;
     }
-    searchLogsStart.clear();
-    searchLogsEnd.clear();
 
     // Runs checks for different errors
     if (!checkLogsInteger(start, end)) {
@@ -615,12 +612,15 @@ public class CrimeSceneController {
     }
   }
 
+  /** Initialises combo box items for stock and logs app. */
   @SuppressWarnings("unchecked")
   private void addComboBoxItems() {
+    // Loops through to add all 24 hours
     for (Integer i = 0; i <= 24; i++) {
       startCombo.getItems().addAll(i.toString());
       endCombo.getItems().addAll(i.toString());
     }
+    // Adds all drink names
     stockCombo
         .getItems()
         .addAll("Cola Crush", "Coffee Craze", "Elite Energy", "Berry Burst", "Lemon Lift");
