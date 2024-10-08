@@ -23,7 +23,7 @@ import nz.ac.auckland.se206.speech.TextToSpeech;
  */
 public class GuessController extends AppTimerUser {
   private Suspect chosenSuspect = Suspect.NONE;
-  private final int[] finalPosition = {365, 135};
+  private final int[] finalPosition = {450, 150};
 
 
   @FXML
