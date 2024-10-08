@@ -1,19 +1,13 @@
 package nz.ac.auckland.se206.controllers;
 
 import java.io.IOException;
-import java.net.MulticastSocket;
 import java.net.URISyntaxException;
-import java.util.HashMap;
 
-import javafx.animation.PathTransition;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.input.KeyEvent;
-import javafx.scene.shape.Line;
-import javafx.scene.shape.MoveTo;
-import javafx.scene.shape.Path;
-import javafx.util.Duration;
 import nz.ac.auckland.se206.*;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.components.Sprite;
@@ -38,9 +32,14 @@ public class GuessController extends AppTimerUser {
   private Sprite duewySprite;
   @FXML
   private Sprite louieSprite;
+  @FXML
+  private TextArea reportArea;
+
+  @FXML
+  private Label timerLabel;
 
   private MugshotTransition hueyTransition;
-  private MugshotTransition duewyTransition;
+  private MugshotTransition dewyTransition;
   private MugshotTransition louieTransition;
 
   /**
@@ -55,19 +54,23 @@ public class GuessController extends AppTimerUser {
 
 
     // Set the starting label to the default text
-//    appTimer = new AppTimer(this, timerLabel, AppTimer.GUESSTIME);
-//    appTimer.beginCountdown();
-//    setupGuessButton();
+    appTimer = new AppTimer(this, timerLabel, AppTimer.GUESSTIME);
+    appTimer.beginCountdown();
 
     hueyTransition = new MugshotTransition(hueySprite, finalPosition[0], finalPosition[1]);
-    duewyTransition = new MugshotTransition(duewySprite, finalPosition[0], finalPosition[1]);
+    dewyTransition = new MugshotTransition(duewySprite, finalPosition[0], finalPosition[1]);
     louieTransition = new MugshotTransition(louieSprite, finalPosition[0], finalPosition[1]);
   }
 
   @FXML
   public void sendDataToGlobalVariables(KeyEvent event) {
-//    GlobalVariables.setChosenSuspect(chosenSuspect);
-//    GlobalVariables.setReport(reportTextArea.getText());
+    GlobalVariables.setChosenSuspect(chosenSuspect);
+  }
+
+
+  @FXML
+  private void onHandleUpdateReport() {
+    GlobalVariables.setReport(reportArea.getText());
   }
 
   /**
@@ -76,13 +79,7 @@ public class GuessController extends AppTimerUser {
    */
   @FXML
   private void onHandleSuspect1ButtonClick() {
-    System.out.println("onHandleSuspect1ButtonClick");
-    if (chosenSuspect == Suspect.HUEY) {
-      return;
-    }
-
     swapImages(Suspect.HUEY);
-    chosenSuspect = Suspect.HUEY;
   }
 
   /**
@@ -91,13 +88,7 @@ public class GuessController extends AppTimerUser {
    */
   @FXML
   private void onHandleSuspect2ButtonClick() {
-    System.out.println("onHandleSuspect1ButtonClick");
-    if (chosenSuspect == Suspect.DEWEY) {
-      return;
-    }
-
     swapImages(Suspect.DEWEY);
-    chosenSuspect = Suspect.DEWEY;
   }
 
   /**
@@ -106,27 +97,28 @@ public class GuessController extends AppTimerUser {
    */
   @FXML
   private void onHandleSuspect3ButtonClick() {
-    if (chosenSuspect == Suspect.LOUIE) {
-      return;
-    }
-
     swapImages(Suspect.LOUIE);
-    chosenSuspect = Suspect.LOUIE;
   }
 
   private void swapImages(Suspect target) {
+    if (chosenSuspect.equals(target)) {
+      return;
+    }
+
     switch (target) {
       case HUEY -> hueyTransition.playForwards();
-      case DEWEY -> duewyTransition.playForwards();
+      case DEWEY -> dewyTransition.playForwards();
       case LOUIE -> louieTransition.playForwards();
     }
 
-
     switch (chosenSuspect) {
       case HUEY -> hueyTransition.playBackwards();
-      case DEWEY -> duewyTransition.playBackwards();
+      case DEWEY -> dewyTransition.playBackwards();
       case LOUIE -> louieTransition.playBackwards();
     }
+
+    GlobalVariables.setChosenSuspect(target);
+    chosenSuspect = target;
   }
 
   /**
@@ -156,5 +148,10 @@ public class GuessController extends AppTimerUser {
   public void switchScene() throws IOException {
     SceneManager.addUi(AppUi.RESULT, App.loadFxml("result"));
     App.getScene().setRoot(SceneManager.getUiRoot(AppUi.RESULT));
+  }
+
+  @FXML
+  public void onHandleSubmitReport() throws IOException {
+    switchScene();
   }
 }

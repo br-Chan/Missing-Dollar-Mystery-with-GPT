@@ -1,32 +1,49 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
+<?import javafx.scene.text.Font?>
 <?import nz.ac.auckland.se206.components.Sprite?>
 
-<AnchorPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-            prefHeight="599.0" prefWidth="789.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="nz.ac.auckland.se206.controllers.GuessController">
-    <HBox alignment="CENTER" prefHeight="608.0" prefWidth="789.0">
+<AnchorPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="749.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.GuessController">
+    <HBox alignment="CENTER" prefHeight="749.0" prefWidth="950.0">
         <Pane>
-            <Sprite scale="4.75" spriteUrl="@../images/crimeScene/Restauant.png"/>
-            <Sprite layoutY="15" rotate="2" scale="4.5" spriteUrl="@../images/guessScrenn/Folder.png"/>
-            <Sprite layoutX="200.0" layoutY="60.0" rotate="-2.0" scale="4.5"
-                    spriteUrl="@../images/guessScrenn/ConvictionPaper.png"/>
-            <Sprite fx:id="hueySprite" layoutX="50.0" layoutY="30.0" onMouseClicked="#onHandleSuspect1ButtonClick"
-                    scale="4.5" spriteUrl="@../images/guessScrenn/HueyMugshot.png"/>
-            <Sprite fx:id="duewySprite" layoutX="50.0" layoutY="140.0" onMouseClicked="#onHandleSuspect2ButtonClick"
-                    scale="4.5" spriteUrl="@../images/guessScrenn/DeweyMugshot.png"/>
-            <Sprite fx:id="louieSprite" layoutX="50.0" layoutY="250.0" onMouseClicked="#onHandleSuspect3ButtonClick"
-                    scale="4.5" spriteUrl="@../images/guessScrenn/LouieMugshot.png"/>
-            <Sprite layoutX="430.0" layoutY="150.0" rotate="-2.0" scale="4.5"
-                    spriteUrl="@../images/guessScrenn/Paperclip.png"/>
-            <TextArea layoutX="221.0" layoutY="288.0" prefHeight="264.0" prefWidth="258.0" rotate="-2"
-                      style="--border-color: transparent; -fx-background-color: transparent;"
-                      wrapText="true"
-            />
+            <Sprite scale="5.8515625" spriteUrl="@../images/crimeScene/Restauant.png" />
+            <Sprite layoutY="15" rotate="2" scale="5.5" spriteUrl="@../images/guessScrenn/Folder.png" />
+            <Sprite layoutX="250.0" layoutY="60.0" rotate="-2.0" scale="5.5" spriteUrl="@../images/guessScrenn/ConvictionPaper.png" />
+            <Sprite fx:id="hueySprite" layoutX="70.0" layoutY="80.0" onMouseClicked="#onHandleSuspect1ButtonClick" scale="5.5" spriteUrl="@../images/guessScrenn/HueyMugshot.png" />
+            <Sprite fx:id="duewySprite" layoutX="75.0" layoutY="210.0" onMouseClicked="#onHandleSuspect2ButtonClick" scale="5.5" spriteUrl="@../images/guessScrenn/DeweyMugshot.png" />
+            <Sprite fx:id="louieSprite" layoutX="62.0" layoutY="360.0" onMouseClicked="#onHandleSuspect3ButtonClick" scale="5.5" spriteUrl="@../images/guessScrenn/LouieMugshot.png" />
+            <Sprite layoutX="541.0" layoutY="150.0" rotate="-2.0" scale="4.5" spriteUrl="@../images/guessScrenn/Paperclip.png" />
+            <TextArea fx:id="reportArea" layoutX="277.0" layoutY="341.0" onKeyTyped="#onHandleUpdateReport" prefHeight="318.0" prefWidth="313.0" rotate="-2" style="--border-color: transparent; -fx-background-color: transparent;" wrapText="true" />
         </Pane>
     </HBox>
+
+    <Button fx:id="guessButton" layoutX="150.0" layoutY="600.0" minWidth="170" mnemonicParsing="false" onAction="#onHandleSubmitReport" prefHeight="39.0" prefWidth="109.0" stylesheets="@../css/styles.css" text="Submit Report">
+        <font>
+            <Font name="Consolas" size="20.0" />
+        </font>
+        <cursor>
+            <Cursor fx:constant="HAND" />
+        </cursor>
+    </Button>
+
+    <ImageView fitHeight="121.0" fitWidth="121.0" layoutX="800.0" layoutY="34.0" mouseTransparent="true" preserveRatio="true">
+        <image>
+            <Image url="@../images/TimerPixel.png" />
+        </image>
+    </ImageView>
+
+    <Label fx:id="timerLabel" layoutX="815.0" layoutY="101.0" prefHeight="35.0" prefWidth="100.0" text="01:00" textFill="RED">
+        <font>
+            <Font name="Consolas" size="34.0" />
+        </font>
+    </Label>
 </AnchorPane>
