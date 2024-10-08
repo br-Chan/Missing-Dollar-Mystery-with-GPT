@@ -1,6 +1,7 @@
 package nz.ac.auckland.se206.controllers;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.Map;
 import javafx.animation.PauseTransition;
@@ -17,6 +18,7 @@ import nz.ac.auckland.se206.GlobalVariables;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.Suspect;
+import nz.ac.auckland.se206.speech.TextToSpeech;
 import nz.ac.auckland.se206.prompts.PromptEngineering;
 
 /**
@@ -73,8 +75,18 @@ public class ResultController extends GptChatter {
                       message = message.replace("--yes", "");
 
                       marking.setText("You were spot on, here is the feedback on your response");
+                      try {
+                        playResultTTS("rightAll");
+                      } catch (URISyntaxException e) {
+                        e.printStackTrace();
+                      }
                     } else {
                       marking.setText("Not quite, here is the feedback on your response");
+                      try {
+                        playResultTTS("rightGuess");
+                      } catch (URISyntaxException e) {
+                        e.printStackTrace();
+                      }
                     }
 
                     // Update the text area with Inspector Ros' feedback.
@@ -108,6 +120,11 @@ public class ResultController extends GptChatter {
     // Handle the guess being wrong
     if (!isGuessCorrect) {
       guessStatus.setText("You guessed wrong!");
+      try {
+        playResultTTS("wrongGuess");
+      } catch (URISyntaxException e) {
+        e.printStackTrace();
+      }
       marking.setVisible(false);
       txtaChat.setVisible(false);
       return;
@@ -145,5 +162,25 @@ public class ResultController extends GptChatter {
         });
     // Start the pause
     pause.play();
+  }
+
+  /**
+   * Plays different TTS based on the users guess results.
+   *
+   * @param result the result of the guess
+   * @throws URISyntaxException exception regarding playing TTS
+   */
+  private void playResultTTS(String result) throws URISyntaxException {
+    switch (result) {
+      case "wrongGuess":
+        TextToSpeech.playVoiceline("IncorrectGuessIncorrectReasoning");
+        break;
+      case "rightGuess":
+        TextToSpeech.playVoiceline("CorrectGuessIncorrectReasoning");
+        break;
+      case "rightAll":
+        TextToSpeech.playVoiceline("CorrectGuessCorrectReasoning");
+        break;
+    }
   }
 }
