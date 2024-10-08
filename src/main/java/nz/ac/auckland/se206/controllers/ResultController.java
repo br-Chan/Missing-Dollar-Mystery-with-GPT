@@ -76,6 +76,11 @@ public class ResultController {
     // if guess is wrong does stuff
     if (!isGuessCorrect) {
       guessStatus.setText("You guessed wrong!");
+      try {
+        playResultTTS("wrongGuess");
+      } catch (URISyntaxException e) {
+        e.printStackTrace();
+      }
       marking.setVisible(false);
       markingResult.setVisible(false);
       return;
@@ -104,8 +109,18 @@ public class ResultController {
                     message = message.replace("--yes", "");
 
                     marking.setText("You were spot on, here is the feedback on your response");
+                    try {
+                      playResultTTS("rightAll");
+                    } catch (URISyntaxException e) {
+                      e.printStackTrace();
+                    }
                   } else {
                     marking.setText("Not quite, here is the feedback on your response");
+                    try {
+                      playResultTTS("rightGuess");
+                    } catch (URISyntaxException e) {
+                      e.printStackTrace();
+                    }
                   }
 
                   markingResult.setText(message);
