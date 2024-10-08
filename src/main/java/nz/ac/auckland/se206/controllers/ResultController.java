@@ -162,6 +162,12 @@ public class ResultController {
     pause.play();
   }
 
+  /**
+   * Plays different TTS based on the users guess results.
+   *
+   * @param result the result of the guess
+   * @throws URISyntaxException exception regarding playing TTS
+   */
   private void playResultTTS(String result) throws URISyntaxException {
     switch (result) {
       case "wrongGuess":
