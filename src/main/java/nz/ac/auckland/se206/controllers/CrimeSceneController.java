@@ -399,7 +399,14 @@ public class CrimeSceneController {
   private void onHandleSearchStock() {
     // Recieves the input in the search bar
     String query = (String) stockCombo.getValue();
+
+    if (query == null) {
+      showStock(errorStockPane);
+      return;
+    }
+
     query = query.trim().toLowerCase();
+
     // Shows corresponding item depending on the text input
     switch (query) {
       case "cola crush":
