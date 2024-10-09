@@ -216,6 +216,7 @@ public class GuessController extends AppTimerUser {
    */
   @FXML
   public void onHandleSubmitReport() throws IOException {
+    TextToSpeech.stopPlayer();
     switchScene();
   }
 }
