@@ -269,6 +269,7 @@
                   <Rectangle arcHeight="1.0" arcWidth="5.0" fill="#ff00004d" height="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="119.0" />
                </children>
             </Pane>
+            <Rectangle fx:id="blockRectangle" arcHeight="5.0" arcWidth="5.0" fill="DODGERBLUE" height="131.0" opacity="0.0" stroke="BLACK" strokeType="INSIDE" width="138.0" />
          </children>
          <cursor>
             <Cursor fx:constant="DEFAULT" />

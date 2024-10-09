@@ -73,6 +73,7 @@ public class GameController extends AppTimerUser {
   @FXML private Pane deweyFadePane;
   @FXML private Pane clueFadePane;
   @FXML private Rectangle transparentRectangle;
+  @FXML private Rectangle blockRectangle;
 
   private FadeTransition currentFadeTransition;
 
@@ -124,6 +125,8 @@ public class GameController extends AppTimerUser {
   @FXML
   private void onHandleStartButtonClick(ActionEvent event) throws IOException, URISyntaxException {
     onHandleCrimeSceneButtonClick(event);
+    blockRectangle.setVisible(false);
+    TextToSpeech.playVoiceline("Game");
   }
 
   /** Adds all selection box images to an arraylist. */
