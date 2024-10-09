@@ -13,9 +13,11 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
+import javafx.util.Duration;
 import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GlobalVariables;
@@ -69,6 +71,10 @@ public class CrimeSceneController {
   @FXML private ComboBox endCombo;
   @FXML private ComboBox stockCombo;
 
+  private Tooltip dirtTooltip = new Tooltip("Clean dirt with brush");
+  private Tooltip debrisTooltip = new Tooltip("Clean debris with napkin");
+  private Tooltip pencilTooltip = new Tooltip("Clean pencil marks with rubber");
+
   private boolean napkinOn;
   private boolean brushOn;
   private boolean rubberOn;
@@ -103,6 +109,14 @@ public class CrimeSceneController {
     addAllStockPanes();
     addAllLogs();
     addComboBoxItems();
+
+    // Install all tooltips to the card images, and set their delays.
+    Tooltip.install(dirtImage, dirtTooltip);
+    dirtTooltip.setShowDelay(new Duration(500));
+    Tooltip.install(debrisImage, debrisTooltip);
+    debrisTooltip.setShowDelay(new Duration(500));
+    Tooltip.install(pencilImage, pencilTooltip);
+    pencilTooltip.setShowDelay(new Duration(500));
   }
 
   /**
