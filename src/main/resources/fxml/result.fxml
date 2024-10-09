@@ -19,7 +19,7 @@
         <Pane>
             <Sprite scale="5.8515625" spriteUrl="@../images/crimeScene/Restauant.png"/>
             <Sprite layoutY="15" rotate="2" scale="5.5" spriteUrl="@../images/guessScrenn/Folder.png"/>
-            <Sprite fx:id="resultsSheet" layoutX="250.0" layoutY="60.0" rotate="-2.0" scale="5.5"
+            <Sprite fx:id="resultsSheet" layoutX="50.0" layoutY="30.0" rotate="-2.0" scale="5.5"
                     spriteUrl="@../images/resultsScreen/IncorrectResponse.png">
                 <children>
                     <TextArea fx:id="resultsArea" editable="false" layoutX="210.0" layoutY="350.0" prefHeight="283.0"
@@ -40,18 +40,4 @@
             <Cursor fx:constant="HAND"/>
         </cursor>
     </Button>
-
-    <ImageView fitHeight="121.0" fitWidth="121.0" layoutX="800.0" layoutY="34.0" mouseTransparent="true"
-               preserveRatio="true">
-        <image>
-            <Image url="@../images/TimerPixel.png"/>
-        </image>
-    </ImageView>
-
-    <Label fx:id="timerLabel" layoutX="815.0" layoutY="101.0" prefHeight="35.0" prefWidth="100.0" text="01:00"
-           textFill="RED">
-        <font>
-            <Font name="Consolas" size="34.0"/>
-        </font>
-    </Label>
 </AnchorPane>
