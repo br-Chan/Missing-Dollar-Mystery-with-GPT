@@ -16,6 +16,7 @@ public class SceneManager {
     RESULT,
     RESTART,
     GAME_OVER,
+    STORY,
   }
 
   private static HashMap<AppUi, Parent> sceneMap = new HashMap<>();

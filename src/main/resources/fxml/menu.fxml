@@ -16,18 +16,13 @@
          </image>
       </ImageView>
       <ImageView fitHeight="150.0" fitWidth="200.0" layoutX="79.0" layoutY="60.0" pickOnBounds="true" preserveRatio="true" scaleX="1.2" scaleY="1.2" />
-      <ImageView fitHeight="599.0" fitWidth="840.0" layoutX="56.0" layoutY="113.0" pickOnBounds="true" preserveRatio="true" scaleX="1.2" scaleY="1.2">
+      <ImageView fitHeight="599.0" fitWidth="840.0" layoutX="336.0" layoutY="113.0" pickOnBounds="true" preserveRatio="true" scaleX="1.2" scaleY="1.2">
          <image>
-            <Image url="@../images/Framed%20Dollar.png" />
+            <Image url="@../images/Framed%20Dollar%20Pixel.png" />
          </image></ImageView>
       <Label alignment="CENTER" graphicTextGap="2.0" layoutX="149.0" layoutY="1.0" prefHeight="239.0" prefWidth="650.0" scaleX="1.2" scaleY="1.2" stylesheets="@../css/styles.css" text="The Missing Dollar Mystery" textAlignment="CENTER" wrapText="true">
          <font>
             <Font name="Consolas" size="57.0" />
-         </font>
-      </Label>
-      <Label alignment="CENTER" layoutX="411.0" layoutY="262.0" prefHeight="298.0" prefWidth="399.0" scaleX="1.2" scaleY="1.2" text="Greetings investigator, and welcome to your first case! A restaurants framed first dollar bill was stolen, and the thief has been narrowed down to three suspects. Find clues, interrogate the suspects, and make a guess on who stole the dollar!" wrapText="true">
-         <font>
-            <Font name="Consolas" size="24.0" />
          </font>
       </Label>
       <Button fx:id="startButton" alignment="CENTER" contentDisplay="CENTER" layoutX="419.0" layoutY="611.0" mnemonicParsing="false" onAction="#onHandleStartButtonClick" scaleX="1.2" scaleY="1.2" stylesheets="@../css/styles.css" text="START">
