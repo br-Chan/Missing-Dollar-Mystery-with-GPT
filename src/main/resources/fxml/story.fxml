@@ -15,7 +15,7 @@
         <Pane fx:id="casePane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0" stylesheets="@../css/styles.css">
             <children>
                 <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#000000b2" height="500.0" stroke="TRANSPARENT" strokeType="INSIDE" width="500.0" />
-            <Label alignment="CENTER" layoutX="50.0" layoutY="73.0" prefHeight="298.0" prefWidth="399.0" text="Greetings investigator, and welcome to your first case! A restaurants framed first dollar bill was stolen, and the thief has been narrowed down to three suspects. Find clues, interrogate the suspects, and make a guess on who stole the dollar!" textAlignment="CENTER" textFill="WHITE" wrapText="true">
+            <Label alignment="CENTER" layoutX="50.0" layoutY="73.0" prefHeight="327.0" prefWidth="399.0" text="Greetings Investigator, my name is Inspector Ros, your PI Masters mentor. A Chinese restaurant's framed first dollar bill was stolen, and the PI Masters team have narrowed the suspects down to a group of 3 people who left the restaurant last. Are you ready for your first case?" textAlignment="CENTER" textFill="WHITE" wrapText="true">
                <font>
                   <Font name="Consolas" size="24.0" />
                </font>
