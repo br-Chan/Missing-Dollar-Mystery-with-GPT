@@ -96,24 +96,23 @@ public class ResultController extends GptChatter {
           if (message.contains("--yes")) {
             var messageReplaced = message.replace("--yes", "");
 
-            // TODO: Show accepted reasoning
             try {
               playResultTTS("rightAll");
+              resultsArea.setVisible(true);
               mt.playBackwards();
               markingLabel.setOpacity(0);
-              resultsSheet.spriteUrlProperty().set(getClass().getResource("./images/resultsScreen/CorrectGuessAndResponse.png").toString());
+              resultsSheet.spriteUrlProperty().set(getClass().getResource("/images/resultsScreen/CorrectGuessAndResponse.png").toString());
               resultsArea.setText(messageReplaced);
             } catch (URISyntaxException e) {
               e.printStackTrace();
             }
           } else {
-
-            // TODO: Show not accepted reasoning
             try {
               playResultTTS("rightGuess");
               mt.playBackwards();
+              resultsArea.setVisible(true);
               markingLabel.setOpacity(0);
-              resultsSheet.spriteUrlProperty().set(getClass().getResource("./images/resultsScreen/CorrectGuess.png").toString());
+              resultsSheet.spriteUrlProperty().set(getClass().getResource("/images/resultsScreen/CorrectGuess.png").toString());
               resultsArea.setText(message);
             } catch (URISyntaxException e) {
               e.printStackTrace();
