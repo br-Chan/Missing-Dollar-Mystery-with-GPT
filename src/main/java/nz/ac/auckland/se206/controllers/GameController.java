@@ -48,6 +48,7 @@ public class GameController extends AppTimerUser {
   @FXML private Button suspect2Button;
   @FXML private Button suspect3Button;
   @FXML private Button crimeSceneButton;
+  @FXML private Button startButton;
 
   @FXML private ImageView suspectOneSelected;
   @FXML private ImageView suspectTwoSelected;
@@ -85,7 +86,7 @@ public class GameController extends AppTimerUser {
   @FXML
   public void initialize() {
     System.out.println("Initialising game scene...");
-    setGameView(AppUi.CRIME_SCENE);
+    setGameView(AppUi.STORY);
     showSelected(crimeSceneSelected); // Shows the selection box for the crimescene in minimap
 
     appTimer = new AppTimer(this, timerLabel, AppTimer.GAMETIME);
@@ -101,7 +102,7 @@ public class GameController extends AppTimerUser {
    * @param event unused event parameter
    */
   @FXML
-  private void handleMouseClick(MouseEvent event) { 
+  private void handleMouseClick(MouseEvent event) {
     updateCluePane();
   }
 
@@ -111,6 +112,18 @@ public class GameController extends AppTimerUser {
         || GlobalVariables.getCluesMap().get("displayCaseClue")) {
       cluePane.setVisible(false);
     }
+  }
+
+  /**
+   * Switches the displayed scene when the user clicks the start button.
+   *
+   * @param event the mouse event triggered by clicking the button
+   * @throws IOException if there is an I/O error
+   * @throws URISyntaxException
+   */
+  @FXML
+  private void onHandleStartButtonClick(ActionEvent event) throws IOException, URISyntaxException {
+    onHandleCrimeSceneButtonClick(event);
   }
 
   /** Adds all selection box images to an arraylist. */
@@ -179,6 +192,7 @@ public class GameController extends AppTimerUser {
 
   @FXML
   private void onHandleSuspectOneButtonClick(ActionEvent event) throws URISyntaxException {
+    startButton.setVisible(false);
     setGameView(AppUi.SUSPECT1);
     showSelected(suspectOneSelected);
     suspectOneAlert.setImage(
@@ -203,6 +217,7 @@ public class GameController extends AppTimerUser {
    */
   @FXML
   private void onHandleSuspectTwoButtonClick(ActionEvent event) throws URISyntaxException {
+    startButton.setVisible(false);
     setGameView(AppUi.SUSPECT2);
     showSelected(suspectTwoSelected);
     suspectTwoAlert.setImage(
@@ -227,6 +242,7 @@ public class GameController extends AppTimerUser {
    */
   @FXML
   private void onHandleSuspectThreeButtonClick(ActionEvent event) throws URISyntaxException {
+    startButton.setVisible(false);
     setGameView(AppUi.SUSPECT3);
     showSelected(suspectThreeSelected);
     suspectThreeAlert.setImage(
@@ -248,7 +264,8 @@ public class GameController extends AppTimerUser {
    * @param event unusued event parameter
    */
   @FXML
-  private void onHandleCrimeSceneButtonClick(ActionEvent event) {
+  void onHandleCrimeSceneButtonClick(ActionEvent event) {
+    startButton.setVisible(false);
     setGameView(AppUi.CRIME_SCENE);
     showSelected(crimeSceneSelected);
   }
