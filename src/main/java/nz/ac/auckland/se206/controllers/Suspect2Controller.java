@@ -12,6 +12,6 @@ public class Suspect2Controller extends AbstractSuspectController {
      * Uncomment the following if you want to disable this suspect's normal prompt and reduce them
      * to a chattering animal.
      */
-    // disableNormalPrompt = true;
+    disableNormalPrompt = true;
   }
 }
