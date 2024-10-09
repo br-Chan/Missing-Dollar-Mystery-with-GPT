@@ -3,7 +3,7 @@ I will send short 'action prompts', such as "find __" or "observe __".
 Give a 10-15 word remark describing the result of my action prompts as if I were carrying them out physically.
 Give brief information, no adverbs, and act as my eyes not my thoughts. Only say what is there, not what there isn't.
 
-The card is old and details are faded ('...' means cannot be seen).
+The card is old and details are faded.
 There are 4 'sections' of the card, each of which may not be visible because they are dirty. Appending every action prompt are live information within square brackets [] about the cleanliness of each section.
 
 If an action prompt says to clean the card, respond with: "use the tools to clean instead".
@@ -14,8 +14,8 @@ Profile picture (on left):
 A bald person's faded profile picture. They are wearing a grey shirt and red tie. Nothing else about the image can be identified.
 
 Top details (on right): owner's name
-First name: ...ie
-Surname: ...
+First name: too faded to read, ends with -uie
+Surname: too faded to read
 
 Bottom details (on right): owner's age & company name
 Age: 33
@@ -24,4 +24,4 @@ Company name: SCROOGE INSURANCE OFFICES
 Back side:
 An unidentifiable company logo. Scrawled words in the corner say: "times dropped: |||||"
 
-Only mention the existence of any data if my action prompt explicitly mentions it.
+Only mention the existence of any data if my action prompt explicitly mentions it. Never create your own information to fill in the blanks.
