@@ -84,7 +84,7 @@ public class GuessController extends AppTimerUser {
     louieTransition = new MugshotTransition(louieSprite, finalPosition[0], finalPosition[1]);
   }
 
-    /**
+  /**
    * Handles the key pressed event.
    *
    * @param event the key event
@@ -203,8 +203,7 @@ public class GuessController extends AppTimerUser {
   public void switchScene() throws IOException {
     GlobalVariables.setChosenSuspect(chosenSuspect);
     GlobalVariables.setReport(reportArea.getText());
-    
-    // Stop the timer
+
     SceneManager.addUi(AppUi.RESULT, App.loadFxml("result"));
     App.getScene().setRoot(SceneManager.getUiRoot(AppUi.RESULT));
   }
@@ -216,6 +215,9 @@ public class GuessController extends AppTimerUser {
    */
   @FXML
   public void onHandleSubmitReport() throws IOException {
+    // Stop the timer
+    appTimer.cancelTimer();
+    
     switchScene();
   }
 }
