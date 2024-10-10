@@ -10,6 +10,7 @@ import javafx.scene.image.WritableImage;
 import javafx.scene.layout.Pane;
 import javax.imageio.ImageIO;
 
+/** This sprite class turns images into custom sprite elements. */
 public class Sprite extends Pane {
   private BufferedImage image;
   private Canvas canvas;

@@ -33,6 +33,7 @@ public class ResultController extends GptChatter {
   @FXML private TextArea resultsArea;
   @FXML private Label markingLabel;
 
+  /** Initialises the result controller instance with temperature and topP for the results. */
   public ResultController() {
     promptFilename = "validateGuess.txt";
 
@@ -68,10 +69,8 @@ public class ResultController extends GptChatter {
         new Task<Void>() {
           @Override
           protected Void call() throws Exception {
-            /**
-             * Check if ChatGPT gave user's report a passing score (3 or more) and set visual text
-             * accordingly.
-             */
+            //Check if ChatGPT gave user's report a passing score (3 or more) and set visual text
+            //accordingly.
             // Create chat message containing the user's report, then get ChatGPT's response
             // (Inspector Ros' feedback).
             String message;

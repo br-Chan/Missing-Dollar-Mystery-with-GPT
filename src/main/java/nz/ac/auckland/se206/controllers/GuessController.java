@@ -24,7 +24,7 @@ public class GuessController extends AppTimerUser {
    */
   private Suspect chosenSuspect = Suspect.NONE;
 
-  /** The final position */
+  /** The final position of the items. */
   private final int[] finalPosition = {450, 150};
 
   /** The sprite objects for the suspects. */
@@ -64,7 +64,7 @@ public class GuessController extends AppTimerUser {
   /** The app timer object that keeps track of the time remaining in the guess scene. */
   private MugshotTransition louieTransition;
 
-  /** Initializes the guess scene. */
+  /** Initializes the guess scene fxml. */
   @FXML
   public void initialize() throws URISyntaxException {
     // Play the voiceline for the guess scene
@@ -183,13 +183,13 @@ public class GuessController extends AppTimerUser {
    * suspect has been chosen and there is text in the report text area.
    *
    * @param event the mouse event triggered by clicking the button
-   * @throws IOException
+   * @throws IOException exception regarding input outputs
    */
   @FXML
   private void onHandleSendReportClick(ActionEvent event) throws IOException {}
 
   /**
-   * Sets up the guess button, disabling it if a suspect has not been chosen or if the report text
+   * Sets up the guess button, disabling it if a suspect has not been chosen or if the report text.
    */
   private void setupGuessButton() {}
 
@@ -217,7 +217,7 @@ public class GuessController extends AppTimerUser {
   public void onHandleSubmitReport() throws IOException {
     // Stop the timer
     appTimer.cancelTimer();
-    
+
     switchScene();
   }
 }
