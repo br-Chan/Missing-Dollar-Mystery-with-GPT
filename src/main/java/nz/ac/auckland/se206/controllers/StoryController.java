@@ -7,6 +7,7 @@ import javafx.scene.input.KeyEvent;
 import nz.ac.auckland.se206.GlobalVariables;
 import nz.ac.auckland.se206.speech.TextToSpeech;
 
+/** This class handles the story scene. */
 public class StoryController {
 
   @FXML private Button startButton;

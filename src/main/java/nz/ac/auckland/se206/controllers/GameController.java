@@ -120,7 +120,7 @@ public class GameController extends AppTimerUser {
    *
    * @param event the mouse event triggered by clicking the button
    * @throws IOException if there is an I/O error
-   * @throws URISyntaxException
+   * @throws URISyntaxException exception regarding playing TTS voiceline
    */
   @FXML
   private void onHandleStartButtonClick(ActionEvent event) throws IOException, URISyntaxException {
