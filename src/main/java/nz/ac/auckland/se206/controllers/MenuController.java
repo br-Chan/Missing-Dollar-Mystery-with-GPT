@@ -18,7 +18,7 @@ public class MenuController {
 
   @FXML
   private void initialize() throws URISyntaxException {
-    TextToSpeech.loopMusic("HawkingWalkingWithASax_2");
+    TextToSpeech.loopMusic("HawkingWalking_3");
   }
 
   @FXML
