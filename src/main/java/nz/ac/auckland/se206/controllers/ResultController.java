@@ -4,8 +4,6 @@ import java.io.IOException;
 import java.net.URISyntaxException;
 import java.util.HashMap;
 import java.util.Map;
-
-import javafx.animation.PathTransition;
 import javafx.animation.PauseTransition;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
@@ -19,10 +17,8 @@ import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
 import nz.ac.auckland.se206.*;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.components.Sprite;
-import nz.ac.auckland.se206.speech.TextToSpeech;
 import nz.ac.auckland.se206.prompts.PromptEngineering;
-
-import javax.sound.sampled.Line;
+import nz.ac.auckland.se206.speech.TextToSpeech;
 
 /**
  * TODO: Fill in this JavaDoc comment.
@@ -33,12 +29,9 @@ import javax.sound.sampled.Line;
  * <p>This is a controller class for the results scene.
  */
 public class ResultController extends GptChatter {
-  @FXML
-  private Sprite resultsSheet;
-  @FXML
-  private TextArea resultsArea;
-  @FXML
-  private Label markingLabel;
+  @FXML private Sprite resultsSheet;
+  @FXML private TextArea resultsArea;
+  @FXML private Label markingLabel;
 
   public ResultController() {
     promptFilename = "validateGuess.txt";
@@ -71,62 +64,74 @@ public class ResultController extends GptChatter {
     MugshotTransition mt = hideGuessSheet();
     markingLabel.setOpacity(1);
 
-    Task<Void> backgroundTask = new Task<Void>() {
-      @Override
-      protected Void call() throws Exception {
-        /**
-         * Check if ChatGPT gave user's report a passing score (3 or more) and set visual text
-         * accordingly.
-         */
-        // Create chat message containing the user's report, then get ChatGPT's response
-        // (Inspector Ros' feedback).
-        String message;
-        try {
-          ChatMessage generatedFeedback = runGpt(new ChatMessage("user", GlobalVariables.getReport()), true);
-          message = generatedFeedback.getContent();
-          System.out.println(message);
-        } catch (ApiProxyException e) {
-          e.printStackTrace();
-          return null;
-        }
-
-        Platform.runLater(() -> {
-          // Handle acceptance logic. If the GPT's score for the report is at least 3 out
-          // of 6, then Louie must confess and the feedback must end with --yes.
-          if (message.contains("--yes")) {
-            var messageReplaced = message.replace("--yes", "");
-
+    Task<Void> backgroundTask =
+        new Task<Void>() {
+          @Override
+          protected Void call() throws Exception {
+            /**
+             * Check if ChatGPT gave user's report a passing score (3 or more) and set visual text
+             * accordingly.
+             */
+            // Create chat message containing the user's report, then get ChatGPT's response
+            // (Inspector Ros' feedback).
+            String message;
             try {
-              playResultTTS("rightAll");
-              resultsArea.setVisible(true);
-              mt.playBackwards();
-              markingLabel.setOpacity(0);
-              resultsSheet.spriteUrlProperty().set(getClass().getResource("/images/resultsScreen/CorrectGuessAndResponse.png").toString());
-              resultsArea.setText(messageReplaced);
-            } catch (URISyntaxException e) {
+              ChatMessage generatedFeedback =
+                  runGpt(new ChatMessage("user", GlobalVariables.getReport()), true);
+              message = generatedFeedback.getContent();
+              System.out.println(message);
+            } catch (ApiProxyException e) {
               e.printStackTrace();
+              return null;
             }
-          } else {
-            try {
-              playResultTTS("rightGuess");
-              mt.playBackwards();
-              resultsArea.setVisible(true);
-              markingLabel.setOpacity(0);
-              resultsSheet.spriteUrlProperty().set(getClass().getResource("/images/resultsScreen/CorrectGuess.png").toString());
-              resultsArea.setText(message);
-            } catch (URISyntaxException e) {
-              e.printStackTrace();
-            }
+
+            Platform.runLater(
+                () -> {
+                  // Handle acceptance logic. If the GPT's score for the report is at least 3 out
+                  // of 6, then Louie must confess and the feedback must end with --yes.
+                  if (message.contains("--yes")) {
+                    var messageReplaced = message.replace("--yes", "");
+
+                    try {
+                      playResultTTS("rightAll");
+                      resultsArea.setVisible(true);
+                      mt.playBackwards();
+                      markingLabel.setOpacity(0);
+                      resultsSheet
+                          .spriteUrlProperty()
+                          .set(
+                              getClass()
+                                  .getResource("/images/resultsScreen/CorrectGuessAndResponse.png")
+                                  .toString());
+                      resultsArea.setText(messageReplaced);
+                    } catch (URISyntaxException e) {
+                      e.printStackTrace();
+                    }
+                  } else {
+                    try {
+                      playResultTTS("rightGuess");
+                      mt.playBackwards();
+                      resultsArea.setVisible(true);
+                      markingLabel.setOpacity(0);
+                      resultsSheet
+                          .spriteUrlProperty()
+                          .set(
+                              getClass()
+                                  .getResource("/images/resultsScreen/CorrectGuess.png")
+                                  .toString());
+                      resultsArea.setText(message);
+                    } catch (URISyntaxException e) {
+                      e.printStackTrace();
+                    }
+                  }
+
+                  //             Update the text area with Inspector Ros' feedback.
+                  //            txtaChat.setText(message);
+                });
+
+            return null;
           }
-
-
-//             Update the text area with Inspector Ros' feedback.
-//            txtaChat.setText(message);
-        });
-
-        return null;
-      }
-    };
+        };
 
     Thread backgroundThread = new Thread(backgroundTask);
     backgroundThread.start();
@@ -139,7 +144,8 @@ public class ResultController extends GptChatter {
   }
 
   private MugshotTransition hideGuessSheet() {
-    MugshotTransition mt = new MugshotTransition(resultsSheet, (int) resultsSheet.getLayoutX(), -700);
+    MugshotTransition mt =
+        new MugshotTransition(resultsSheet, (int) resultsSheet.getLayoutX(), -700);
     resultsSheet.setTranslateY(-700);
     return mt;
   }
@@ -165,9 +171,10 @@ public class ResultController extends GptChatter {
     App.getScene().setRoot(SceneManager.getUiRoot(AppUi.RESTART));
     // Set what to do after the pause
     PauseTransition pause = new PauseTransition(Duration.millis(500));
-    pause.setOnFinished(event -> {
-      App.restart();
-    });
+    pause.setOnFinished(
+        event -> {
+          App.restart();
+        });
     // Start the pause
     pause.play();
   }
