@@ -1,6 +1,5 @@
 .text-area {
   -fx-background-color: #dfdfdf;
-  -fx-font-family: "Consolas", "Courier New", monospace;
 }
 
 /* Style the scrollbars */
