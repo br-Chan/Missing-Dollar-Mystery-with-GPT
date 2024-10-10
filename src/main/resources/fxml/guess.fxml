@@ -30,17 +30,17 @@
                     scale="5.5" spriteUrl="@../images/guessScrenn/LouieMugshot.png"/>
             <Sprite layoutX="541.0" layoutY="150.0" rotate="-2.0" scale="4.5"
                     spriteUrl="@../images/guessScrenn/Paperclip.png"/>
-            <TextArea fx:id="reportArea" layoutX="277.0" layoutY="341.0" onKeyTyped="#onHandleUpdateReport"
-                      prefHeight="318.0" prefWidth="313.0" rotate="-2" stylesheets="@../css/results.css"
-                      wrapText="true"/>
+            <TextArea fx:id="reportArea" layoutX="277.0" layoutY="341.0" onKeyTyped="#onHandleUpdateReport" prefHeight="318.0" prefWidth="313.0" rotate="-2" stylesheets="@../css/results.css" wrapText="true">
+                <font>
+                    <Font name="Caveat Bold" size="17" />
+                </font>
+            </TextArea>
         </Pane>
     </HBox>
 
-    <Button fx:id="guessButton" layoutX="150.0" layoutY="600.0" minWidth="170" mnemonicParsing="false"
-            onAction="#onHandleSubmitReport" prefHeight="39.0" prefWidth="109.0" stylesheets="@../css/styles.css"
-            text="Submit Report">
+    <Button fx:id="guessButton" layoutX="150.0" layoutY="600.0" minWidth="170" mnemonicParsing="false" onAction="#onHandleSubmitReport" prefHeight="39.0" prefWidth="109.0" stylesheets="@../css/styles.css" text="Submit">
         <font>
-            <Font name="Consolas" size="20.0"/>
+            <Font name="Pixelify Sans" size="20.0" />
         </font>
         <cursor>
             <Cursor fx:constant="HAND"/>
@@ -57,7 +57,7 @@
     <Label fx:id="timerLabel" layoutX="815.0" layoutY="101.0" prefHeight="35.0" prefWidth="100.0" text="01:00"
            textFill="RED">
         <font>
-            <Font name="Consolas" size="34.0"/>
+            <Font name="Pixelify Sans" size="34.0" />
         </font>
     </Label>
 </AnchorPane>

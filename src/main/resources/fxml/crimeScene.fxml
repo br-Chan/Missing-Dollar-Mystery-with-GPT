@@ -294,7 +294,7 @@
                         </Pane>
                         <Button fx:id="searchStockButton" layoutX="217.0" layoutY="25.0" mnemonicParsing="false" onAction="#onHandleSearchStock" text="Search">
                      <font>
-                        <Font name="Consolas" size="13.0" />
+                        <Font name="Pixelify Sans" size="13.0" />
                      </font></Button>
                         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#838383" height="24.0" layoutX="47.0" layoutY="189.0" onMouseClicked="#openLogs" stroke="TRANSPARENT" strokeType="INSIDE" width="125.0">
                      <cursor>
@@ -317,7 +317,7 @@
                         <Text layoutX="7.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Search for a time period (hours) to show entry/exit logs" />
                         <Button fx:id="searchLogsButton" layoutX="217.0" layoutY="25.0" mnemonicParsing="false" onAction="#onHandleSearchLogs" text="Search">
                      <font>
-                        <Font name="Consolas" size="13.0" />
+                        <Font name="Pixelify Sans" size="13.0" />
                      </font></Button>
                         <Text layoutX="7.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0" text="From                          To" />
                         <TextArea fx:id="logsArea" editable="false" layoutX="8.0" layoutY="63.0" prefHeight="116.0" prefWidth="259.0" stylesheets="@../css/logs.css" />
@@ -332,12 +332,12 @@
             </Label>
             <Label layoutX="170.0" layoutY="317.0" mouseTransparent="true" pickOnBounds="false" text="Logs" textFill="WHITE">
                <font>
-                  <Font name="Consolas" size="15.0" />
+                  <Font name="Pixelify Sans" size="15.0" />
                </font>
             </Label>
             <Label layoutX="290.0" layoutY="317.0" mouseTransparent="true" pickOnBounds="false" text="Stock" textFill="WHITE">
                <font>
-                  <Font name="Consolas" size="15.0" />
+                  <Font name="Pixelify Sans" size="15.0" />
                </font>
             </Label>
             </children>

@@ -22,18 +22,26 @@
                     spriteUrl="@../images/resultsScreen/IncorrectResponse.png">
                 <children>
                     <TextArea fx:id="resultsArea" editable="false" layoutX="22.0" layoutY="265.0" prefHeight="341.0"
-                              prefWidth="352.0" stylesheets="@../css/results.css" visible="false" wrapText="true"/>
+                              prefWidth="352.0" stylesheets="@../css/results.css" visible="false" wrapText="true">
+                        <font>
+                            <Font name="Pixelify Sans" size="12" />
+                        </font>
+                    </TextArea>
                 </children>
             </Sprite>
             <Label fx:id="markingLabel" layoutX="300" layoutY="300" opacity="0"
-                   style="-fx-font-weight: 900; -fx-font-size: 30pt" text="MARKING"/>
+                   style="--fx-font-size: 30pt" text="MARKING">
+                <font>
+                    <Font name="Pixelify Sans" size="50" />
+                </font>
+            </Label>
         </Pane>
     </HBox>
 
     <Button layoutX="150.0" layoutY="600.0" minWidth="170" mnemonicParsing="false" onAction="#onHandleRestart"
             prefHeight="39.0" prefWidth="109.0" stylesheets="@../css/styles.css" text="Restart">
         <font>
-            <Font name="Consolas" size="20.0"/>
+            <Font name="Pixelify Sans" size="20.0"/>
         </font>
         <cursor>
             <Cursor fx:constant="HAND"/>
