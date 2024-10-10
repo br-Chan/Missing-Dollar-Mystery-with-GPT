@@ -107,4 +107,24 @@ public class TextToSpeech {
       player.setMute(GlobalVariables.isMuteTts());
     }
   }
+
+  
+  /**
+   * Loops a chosen music file indefinitely.
+   * @param music the file name of the wav file to loop
+   * @throws URISyntaxException if the file could notbe found
+   */
+  public static void loopMusic(String music) throws URISyntaxException {
+    stopPlayer();
+
+    // Plays sound.
+    sound = new Media(App.class.getResource("/sounds/" + music + ".wav").toURI().toString());
+    player = new MediaPlayer(sound);
+    setMuteStatusOfPlayer();
+
+    // Set the player to loop the music indefinitely.
+    player.setCycleCount(MediaPlayer.INDEFINITE);
+
+    player.play();
+  }
 }
