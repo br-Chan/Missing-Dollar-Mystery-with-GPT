@@ -12,18 +12,13 @@ import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.speech.TextToSpeech;
 
-/**
- * Controller for the start menu scene.
- *
- * <p>This class is responsible for handling user input and updating the menu scene.
- */
 public class MenuController {
 
   @FXML private Button startButton;
 
   @FXML
   private void initialize() throws URISyntaxException {
-    TextToSpeech.loopMusic("HawkingWalkingWithASax_2");
+    TextToSpeech.stopPlayer();
   }
 
   @FXML
@@ -36,7 +31,7 @@ public class MenuController {
    *
    * @param event the mouse event triggered by clicking the button
    * @throws IOException if there is an I/O error
-   * @throws URISyntaxException exception regarding playing TTS voiceline
+   * @throws URISyntaxException
    */
   @FXML
   private void onHandleStartButtonClick(ActionEvent event) throws IOException, URISyntaxException {

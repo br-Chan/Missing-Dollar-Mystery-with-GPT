@@ -1,0 +1,33 @@
+.text-area {
+  -fx-background-color: #dfdfdf;
+  -fx-font-family: "Consolas", "Courier New", monospace;
+}
+
+/* Style the scrollbars */
+.scroll-bar {
+  -fx-background-color: transparent;
+  -fx-padding: 0;
+}
+
+/* Thumb (scroll indicator) style */
+.scroll-bar .thumb {
+  -fx-background-color: #000;
+}
+
+/* Decrease and increase buttons hidden */
+.scroll-bar .increment-button,
+.scroll-bar .decrement-button {
+  -fx-padding: 0;
+  -fx-background-color: transparent;
+  -fx-shape: null; /* Hides the button shapes */
+}
+
+/* Track style (the scrollbar rail) */
+.scroll-bar .track {
+  -fx-background-color: transparent;
+}
+
+.text-area .content {
+  -fx-background-color: #dfdfdf;
+  -fx-effect: null;
+}

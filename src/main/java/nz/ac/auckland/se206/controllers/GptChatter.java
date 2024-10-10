@@ -47,7 +47,7 @@ public abstract class GptChatter {
   protected boolean disableNormalPrompt = false;
 
   /**
-   * Gets the system prompt generation.
+   * Generates the system prompt.
    *
    * @return the system prompt string
    */
@@ -134,7 +134,7 @@ public abstract class GptChatter {
   /**
    * Sends a message to the GPT model and runs the GPT model.
    *
-   * @throws ApiProxyException exception regarding API key
+   * @throws ApiProxyException
    */
   protected void sendMessage() throws ApiProxyException {
     // Process user's input.

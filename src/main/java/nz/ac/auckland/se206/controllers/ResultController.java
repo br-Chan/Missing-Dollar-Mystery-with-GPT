@@ -9,15 +9,14 @@ import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.input.KeyEvent;
 import javafx.util.Duration;
 import nz.ac.auckland.apiproxy.chat.openai.ChatMessage;
 import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
-import nz.ac.auckland.se206.App;
-import nz.ac.auckland.se206.GlobalVariables;
-import nz.ac.auckland.se206.SceneManager;
+import nz.ac.auckland.se206.*;
 import nz.ac.auckland.se206.SceneManager.AppUi;
-import nz.ac.auckland.se206.Suspect;
+import nz.ac.auckland.se206.components.Sprite;
 import nz.ac.auckland.se206.prompts.PromptEngineering;
 import nz.ac.auckland.se206.speech.TextToSpeech;
 
@@ -30,8 +29,9 @@ import nz.ac.auckland.se206.speech.TextToSpeech;
  * <p>This is a controller class for the results scene.
  */
 public class ResultController extends GptChatter {
-  @FXML private Label guessStatus;
-  @FXML private Label marking;
+  @FXML private Sprite resultsSheet;
+  @FXML private TextArea resultsArea;
+  @FXML private Label markingLabel;
 
   public ResultController() {
     promptFilename = "validateGuess.txt";
@@ -46,62 +46,93 @@ public class ResultController extends GptChatter {
    */
   @FXML
   public void initialize() {
+    // Check if the user was right, and potentially write feedback.
+    var isGuessCorrect = GlobalVariables.getChosenSuspect().equals(Suspect.LOUIE);
+
+    // Handle the guess being wrong
+    if (!isGuessCorrect) {
+      try {
+        playResultTTS("wrongGuess");
+        return;
+      } catch (URISyntaxException e) {
+        e.printStackTrace();
+      }
+    }
+
+    // Get ChatGPT to start writing the feedback to the report
+    initialiseChatCompletionRequest(false);
+    MugshotTransition mt = hideGuessSheet();
+    markingLabel.setOpacity(1);
+
     Task<Void> backgroundTask =
         new Task<Void>() {
           @Override
           protected Void call() throws Exception {
-            // Check if the user was right, and potentially write feedback.
-            setResult(
-                GlobalVariables.getChosenSuspect().equals(Suspect.LOUIE),
-                GlobalVariables.getReport());
-
             /**
              * Check if ChatGPT gave user's report a passing score (3 or more) and set visual text
              * accordingly.
              */
+            // Create chat message containing the user's report, then get ChatGPT's response
+            // (Inspector Ros' feedback).
+            String message;
+            try {
+              ChatMessage generatedFeedback =
+                  runGpt(new ChatMessage("user", GlobalVariables.getReport()), true);
+              message = generatedFeedback.getContent();
+              System.out.println(message);
+            } catch (ApiProxyException e) {
+              e.printStackTrace();
+              return null;
+            }
+
             Platform.runLater(
                 () -> {
-                  try {
-                    // Create chat message containing the user's report, then get ChatGPT's response
-                    // (Inspector Ros' feedback).
-                    ChatMessage generatedFeedback =
-                        runGpt(
-                            new ChatMessage(
-                                "user", "Mentee's report: " + GlobalVariables.getReport()),
-                            true);
-                    String message = generatedFeedback.getContent();
-                    System.out.println(message);
+                  // Handle acceptance logic. If the GPT's score for the report is at least 3 out
+                  // of 6, then Louie must confess and the feedback must end with --yes.
+                  if (message.contains("--yes")) {
+                    var messageReplaced = message.replace("--yes", "");
 
-                    // Handle acceptance logic. If the GPT's score for the report is at least 3 out
-                    // of 6, then Louie must confess and the feedback must end with --yes.
-                    if (message.contains("--yes")) {
-                      message = message.replace("--yes", "");
-
-                      marking.setText("You were spot on, here is the feedback on your response");
-                      try {
-                        playResultTTS("rightAll");
-                      } catch (URISyntaxException e) {
-                        e.printStackTrace();
-                      }
-                    } else {
-                      marking.setText("Not quite, here is the feedback on your response");
-                      try {
-                        playResultTTS("rightGuess");
-                      } catch (URISyntaxException e) {
-                        e.printStackTrace();
-                      }
+                    try {
+                      playResultTTS("rightAll");
+                      resultsArea.setVisible(true);
+                      mt.playBackwards();
+                      markingLabel.setOpacity(0);
+                      resultsSheet
+                          .spriteUrlProperty()
+                          .set(
+                              getClass()
+                                  .getResource("/images/resultsScreen/CorrectGuessAndResponse.png")
+                                  .toString());
+                      resultsArea.setText(messageReplaced);
+                    } catch (URISyntaxException e) {
+                      e.printStackTrace();
                     }
-
-                    // Update the text area with Inspector Ros' feedback.
-                    txtaChat.setText(message);
-                  } catch (ApiProxyException e) {
-                    e.printStackTrace();
+                  } else {
+                    try {
+                      playResultTTS("rightGuess");
+                      mt.playBackwards();
+                      resultsArea.setVisible(true);
+                      markingLabel.setOpacity(0);
+                      resultsSheet
+                          .spriteUrlProperty()
+                          .set(
+                              getClass()
+                                  .getResource("/images/resultsScreen/CorrectGuess.png")
+                                  .toString());
+                      resultsArea.setText(message);
+                    } catch (URISyntaxException e) {
+                      e.printStackTrace();
+                    }
                   }
+
+                  //             Update the text area with Inspector Ros' feedback.
+                  //            txtaChat.setText(message);
                 });
 
             return null;
           }
         };
+
     Thread backgroundThread = new Thread(backgroundTask);
     backgroundThread.start();
   }
@@ -112,30 +143,11 @@ public class ResultController extends GptChatter {
     return PromptEngineering.getPrompt(promptFilename, dataMap);
   }
 
-  /**
-   * Determine if the user accused the right suspect, and if they are wrong update the UI
-   * accordingly.
-   *
-   * @param isGuessCorrect whether the user's accusation was correct
-   * @param reasoning the user's report
-   */
-  public void setResult(boolean isGuessCorrect, String reasoning) {
-    // Handle the guess being wrong
-    if (!isGuessCorrect) {
-      guessStatus.setText("You guessed wrong!");
-      try {
-        playResultTTS("wrongGuess");
-      } catch (URISyntaxException e) {
-        e.printStackTrace();
-      }
-      marking.setVisible(false);
-      txtaChat.setVisible(false);
-      return;
-    }
-
-    // Get ChatGPT to start writing the feedback to the report
-    guessStatus.setText("You guessed correctly!");
-    initialiseChatCompletionRequest(false);
+  private MugshotTransition hideGuessSheet() {
+    MugshotTransition mt =
+        new MugshotTransition(resultsSheet, (int) resultsSheet.getLayoutX(), -700);
+    resultsSheet.setTranslateY(-700);
+    return mt;
   }
 
   /**
