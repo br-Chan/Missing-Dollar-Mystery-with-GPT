@@ -123,7 +123,9 @@ public class App extends Application {
   @Override
   public void start(final Stage stage) {
     try {
+      // Adds all ui to scene manager
       preAddUi();
+      // Initialise all conditions interacted to be false
       GlobalVariables.initialiseInteractablesMap();
       GlobalVariables.initialiseCluesMap();
     } catch (IOException e) {
@@ -133,16 +135,17 @@ public class App extends Application {
     // Shows the first scene that we set (start)
     showFirstScene(stage, firstAppUi);
 
+    // Sets the stage
     stage
         .widthProperty()
         .addListener(
-            (_a) -> {
+            (a) -> {
               System.out.println("Width: " + stage.getWidth());
             });
     stage
         .heightProperty()
         .addListener(
-            (_a) -> {
+            (a) -> {
               System.out.println("Height: " + stage.getHeight());
             });
   }

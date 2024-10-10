@@ -84,11 +84,9 @@ public class CrimeSceneController {
   private ArrayList<String> logsList = new ArrayList<>();
 
   /**
-   * TODO: Fill in this JavaDoc comment.
+   * Initializes the scene view for the crime scene.
    *
-   * <p>Initializes the scene view.
-   *
-   * @throws URISyntaxException
+   * @throws URISyntaxException exception regarding playing TTS voiceline
    */
   @FXML
   public void initialize() throws URISyntaxException {
@@ -131,7 +129,7 @@ public class CrimeSceneController {
   /**
    * Sets the card clue to be visible, allows for mouse tracking with the cleaning tool.
    *
-   * @throws URISyntaxException
+   * @throws URISyntaxException exception regarding playing TTS voicelines
    */
   @FXML
   public void showCardClue() throws URISyntaxException {
@@ -217,6 +215,7 @@ public class CrimeSceneController {
     }
   }
 
+  /** Checks if all debris, dirt, and pencil has been cleaned. */
   public void checkCardCleaned() {
     // Check if thing on the card has been cleaning
     if (GlobalVariables.isCardProfilePicClean()
@@ -298,7 +297,7 @@ public class CrimeSceneController {
   /**
    * Sets the case clue to be visible.
    *
-   * @throws URISyntaxException
+   * @throws URISyntaxException exception regarding playing TTS voiceline
    */
   @FXML
   public void showCaseClue() throws URISyntaxException {
@@ -311,7 +310,7 @@ public class CrimeSceneController {
     }
   }
 
-  /** Hides the case clue. */
+  /** Hides the case clue pane. */
   @FXML
   public void hideCaseClue() {
     casePane.setVisible(false);
@@ -350,7 +349,7 @@ public class CrimeSceneController {
   /**
    * Sets the computer clue to be visible.
    *
-   * @throws URISyntaxException
+   * @throws URISyntaxException exception regarding playing TTS voiceline
    */
   @FXML
   public void showComputerClue() throws URISyntaxException {
@@ -503,6 +502,11 @@ public class CrimeSceneController {
     }
   }
 
+  /**
+   * Decreaes the opacity of an image by its current amount -0.5%.
+   *
+   * @param image the image to have its opacity decreased
+   */
   public void decreaseOpacity(Node image) {
     // Decrease the opacity of an image by a set amount
     image.setOpacity(image.getOpacity() - 0.005);

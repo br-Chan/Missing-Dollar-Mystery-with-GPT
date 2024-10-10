@@ -20,7 +20,9 @@ import nz.ac.auckland.se206.*;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.components.Sprite;
 import nz.ac.auckland.se206.speech.TextToSpeech;
+import nz.ac.auckland.se206.Suspect;
 import nz.ac.auckland.se206.prompts.PromptEngineering;
+import nz.ac.auckland.se206.speech.TextToSpeech;
 
 import javax.sound.sampled.Line;
 
@@ -55,6 +57,65 @@ public class ResultController extends GptChatter {
   public void initialize() {
     // Check if the user was right, and potentially write feedback.
     var isGuessCorrect = GlobalVariables.getChosenSuspect().equals(Suspect.LOUIE);
+    Task<Void> backgroundTask =
+        new Task<Void>() {
+          @Override
+          protected Void call() throws Exception {
+            // Check if the user was right, and potentially write feedback.
+            setResult(
+                GlobalVariables.getChosenSuspect().equals(Suspect.LOUIE),
+                GlobalVariables.getReport());
+
+            /**
+             * Check if ChatGPT gave user's report a passing score (3 or more) and set visual text
+             * accordingly.
+             */
+            Platform.runLater(
+                () -> {
+                  try {
+                    // Create chat message containing the user's report, then get ChatGPT's response
+                    // (Inspector Ros' feedback).
+                    ChatMessage generatedFeedback =
+                        runGpt(
+                            new ChatMessage(
+                                "user", "Mentee's report: " + GlobalVariables.getReport()),
+                            true);
+                    String message = generatedFeedback.getContent();
+                    System.out.println(message);
+
+                    // Handle acceptance logic. If the GPT's score for the report is at least 3 out
+                    // of 6, then Louie must confess and the feedback must end with --yes.
+                    if (message.contains("--yes")) {
+                      message = message.replace("--yes", "");
+
+                      marking.setText("You were spot on, here is the feedback on your response");
+                      try {
+                        playResultTTS("rightAll");
+                      } catch (URISyntaxException e) {
+                        e.printStackTrace();
+                      }
+                    } else {
+                      marking.setText("Not quite, here is the feedback on your response");
+                      try {
+                        playResultTTS("rightGuess");
+                      } catch (URISyntaxException e) {
+                        e.printStackTrace();
+                      }
+                    }
+
+                    // Update the text area with Inspector Ros' feedback.
+                    txtaChat.setText(message);
+                  } catch (ApiProxyException e) {
+                    e.printStackTrace();
+                  }
+                });
+
+            return null;
+          }
+        };
+    Thread backgroundThread = new Thread(backgroundTask);
+    backgroundThread.start();
+  }
 
     // Handle the guess being wrong
     if (!isGuessCorrect) {
