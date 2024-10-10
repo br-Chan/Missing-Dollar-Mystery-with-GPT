@@ -139,13 +139,13 @@ public class App extends Application {
     stage
         .widthProperty()
         .addListener(
-            (_a) -> {
+            (a) -> {
               System.out.println("Width: " + stage.getWidth());
             });
     stage
         .heightProperty()
         .addListener(
-            (_a) -> {
+            (a) -> {
               System.out.println("Height: " + stage.getHeight());
             });
   }
