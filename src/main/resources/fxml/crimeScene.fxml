@@ -60,7 +60,11 @@
                     </font>
                 </Label>
                 <Button fx:id="cardBackButton" layoutX="450.0" layoutY="13.0" mnemonicParsing="false"
-                        onMouseClicked="#hideCardClue" text="Back"/>
+                        onMouseClicked="#hideCardClue" text="Back">
+                    <font>
+                        <Font name="Pixelify Sans" />
+                    </font>
+                </Button>
                 <Sprite layoutX="39.0" layoutY="38.0" scale="17.5" spriteUrl="@../images/crimeScene/ID%20Card.png"/>
                 <Sprite fx:id="pencilImage" layoutX="194.0" layoutY="67.0" onMouseDragged="#decreasePencilOpacity"
                         onMouseMoved="#decreasePencilOpacity" scale="6.3125"
@@ -250,7 +254,11 @@
                     </font>
                 </Label>
                 <Button fx:id="cardBackButton1" layoutX="450.0" layoutY="13.0" mnemonicParsing="false"
-                        onMouseClicked="#hideComputerClue" text="Back"/>
+                        onMouseClicked="#hideComputerClue" text="Back">
+                    <font>
+                        <Font name="Pixelify Sans" />
+                    </font>
+                </Button>
                 <Sprite layoutX="5.0" layoutY="48.0" scale="30.5" spriteUrl="@../images/crimeScene/Computer.png"/>
                 <Rectangle arcHeight="5.0" arcWidth="5.0" height="213.0" layoutX="77.0" layoutY="125.0"
                            stroke="TRANSPARENT" strokeType="INSIDE" width="344.0">
@@ -525,7 +533,7 @@
                        text="to staff: chg amount of stock to match display case values so we know if any are stolen"
                        textAlignment="CENTER" wrapText="true">
                     <font>
-                        <Font name="Bradley Hand ITC" size="12.0"/>
+                        <Font name="Caveat Bold" size="12.0"/>
                     </font>
                 </Label>
                 <Label layoutX="170.0" layoutY="317.0" mouseTransparent="true" pickOnBounds="false" text="Logs"
