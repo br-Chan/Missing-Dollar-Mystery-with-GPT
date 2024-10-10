@@ -12,7 +12,7 @@ import javafx.scene.control.Label;
  */
 public class AppTimer {
 
-  public static final int GAMETIME = 5 * 60;
+  public static final int GAMETIME = 5 * 2;
   public static final int GUESSTIME = 1 * 60;
 
   private AppTimerUser appTimerUser;
