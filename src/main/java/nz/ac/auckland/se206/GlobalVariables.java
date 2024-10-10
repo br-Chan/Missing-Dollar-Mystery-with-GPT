@@ -26,17 +26,14 @@ public class GlobalVariables {
   private static boolean presetExplanationIsCorrect = false;
 
   private static String correctPresetExplanation =
-      "Louie was the last to leave at 11 PM, and that is when he must have stolen the dollar.\r\n"
-          + "Louie's ID card was found at the crime scene, which Louie must have accidentally left"
-          + " behind when he stole the dollar.\r\n"
-          + "The vending machine has 1 less Berry Burst can than the stock list on the computer"
-          + " does, because Louie spilled his Berry Burst and thought he deserved a new one, and so"
-          + " stole it.";
+      "Louie was last to leave, meaning he could have stolen the dollar after the other 2 had left."
+          + " His company card was found at the crime scene, which he could have left behind"
+          + " accidentally when he stole the dollar. The drinks display case is missing 1 Berry"
+          + " Burst can, and Berry Burst is Louie's favourite drink, so he could have stolen it to"
+          + " replace the one that he had spilled.";
   private static String incorrectPresetExplanation =
-      "Dewey’s ID card was found at the crime scene, which Louie must have stolen from Dewey and"
-          + " accidentally left behind when he stole the dollar.\r\n"
-          + "The vending machine has 1 less Elite Energy bottle than the stock list on the computer"
-          + " does, because Louie spilled Elite Energy and thought he deserved a new one.";
+      "Dude, Louie is just really suspicious. I found his card on the ground! And he sounded really"
+          + " really like the thief!";
 
   public static void setCardProfilePicClean(boolean cardProfilePicClean) {
     GlobalVariables.cardProfilePicClean = cardProfilePicClean;
