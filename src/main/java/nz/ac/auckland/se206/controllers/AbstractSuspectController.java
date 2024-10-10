@@ -12,7 +12,6 @@ import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GlobalVariables;
 import nz.ac.auckland.se206.prompts.PromptEngineering;
 
-/** Abstract class which has the variables needed by all three suspects. */
 public abstract class AbstractSuspectController extends GptChatter {
 
   @FXML private ImageView chatBubbleImage;

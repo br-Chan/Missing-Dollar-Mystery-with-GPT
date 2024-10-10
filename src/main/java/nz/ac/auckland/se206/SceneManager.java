@@ -3,10 +3,8 @@ package nz.ac.auckland.se206;
 import java.util.HashMap;
 import javafx.scene.Parent;
 
-/** This class handles all scene activity. */
 public class SceneManager {
 
-  /** Enum with all the scene "codes". */
   public enum AppUi {
     MENU,
     GAME,
