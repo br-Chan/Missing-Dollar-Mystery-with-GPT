@@ -23,12 +23,12 @@
       </ImageView>
       <Label alignment="CENTER" graphicTextGap="2.0" layoutX="149.0" layoutY="1.0" prefHeight="239.0" prefWidth="650.0" scaleX="1.2" scaleY="1.2" stylesheets="@../css/styles.css" text="GAME OVER!" textAlignment="CENTER" wrapText="true">
          <font>
-            <Font name="Consolas" size="57.0" />
+            <Font name="Pixelify Sans" size="57.0" />
          </font>
       </Label>
       <Button fx:id="restartButton" alignment="CENTER" contentDisplay="CENTER" layoutX="406.0" layoutY="613.0" mnemonicParsing="false" onAction="#handleRestartButtonClick" scaleX="1.2" scaleY="1.2" stylesheets="@../css/styles.css" text="Restart">
          <font>
-            <Font name="Consolas" size="27.0" />
+            <Font name="Pixelify Sans" size="27.0" />
          </font>
          <cursor>
             <Cursor fx:constant="HAND" />
@@ -36,7 +36,7 @@
       </Button>
       <Label layoutX="207.0" layoutY="153.0" prefHeight="74.0" prefWidth="531.0" text="You didn't complete all you had to do in time! You'll have to  work faster next time, Investigator." textAlignment="CENTER" wrapText="true">
          <font>
-            <Font size="24.0" />
+            <Font name="Pixelify Sans" size="24.0" />
          </font>
       </Label>
    </children>
