@@ -13,9 +13,11 @@ import javafx.scene.control.ComboBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Tooltip;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.Pane;
 import javafx.scene.shape.Rectangle;
+import javafx.util.Duration;
 import nz.ac.auckland.apiproxy.exceptions.ApiProxyException;
 import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GlobalVariables;
@@ -65,9 +67,24 @@ public class CrimeSceneController {
   @FXML private Pane pinkStockPane;
   @FXML private Pane yellowStockPane;
 
+  @FXML private Rectangle redDrinkRectangle;
+  @FXML private Rectangle blueDrinkRectangle;
+  @FXML private Rectangle greenDrinkRectangle;
+  @FXML private Rectangle pinkDrinkRectangle;
+  @FXML private Rectangle yellowDrinkRectangle;
+
   @FXML private ComboBox startCombo;
   @FXML private ComboBox endCombo;
   @FXML private ComboBox stockCombo;
+
+  Duration fiveHundredMilliseconds = new Duration(500);
+
+  private Tooltip dirtTooltip = new Tooltip("Clean dirt with brush");
+  private Tooltip debrisTooltip = new Tooltip("Clean debris with napkin");
+  private Tooltip pencilTooltip = new Tooltip("Clean pencil marks with rubber");
+
+  private Tooltip normalDrinkTooltip = new Tooltip("A shelf of drinks");
+  private Tooltip susDrinkTooltip = new Tooltip("Something's off about this shelf...");
 
   private boolean napkinOn;
   private boolean brushOn;
@@ -137,6 +154,14 @@ public class CrimeSceneController {
   public void showCardClue() throws URISyntaxException {
     GlobalVariables.clueClicked("cardClue");
     cardPane.setVisible(true);
+
+    // Install all tooltips to the card images.
+    Tooltip.install(dirtImage, dirtTooltip);
+    Tooltip.install(debrisImage, debrisTooltip);
+    Tooltip.install(pencilImage, pencilTooltip);
+    dirtTooltip.setShowDelay(fiveHundredMilliseconds);
+    debrisTooltip.setShowDelay(fiveHundredMilliseconds);
+    pencilTooltip.setShowDelay(fiveHundredMilliseconds);
 
     // This is code that was in checkCardCleaned but is now here to automatically reveal the chat
     cardDirtyLabel.setVisible(false);
@@ -304,6 +329,16 @@ public class CrimeSceneController {
   public void showCaseClue() throws URISyntaxException {
     GlobalVariables.clueClicked("displayCaseClue");
     casePane.setVisible(true);
+
+    // Install all tooltips to the drink panes
+    Tooltip.install(redDrinkRectangle, normalDrinkTooltip);
+    Tooltip.install(blueDrinkRectangle, normalDrinkTooltip);
+    Tooltip.install(greenDrinkRectangle, normalDrinkTooltip);
+    Tooltip.install(yellowDrinkRectangle, normalDrinkTooltip);
+    Tooltip.install(pinkDrinkRectangle, susDrinkTooltip);
+    normalDrinkTooltip.setShowDelay(fiveHundredMilliseconds);
+    susDrinkTooltip.setShowDelay(fiveHundredMilliseconds);
+
     // Play voiceline if first time
     if (firstTimeDisplayCaseClue) {
       TextToSpeech.playVoiceline("DisplayCase");
