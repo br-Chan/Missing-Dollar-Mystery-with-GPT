@@ -14,6 +14,7 @@ import nz.ac.auckland.se206.prompts.PromptEngineering;
  */
 public class CardClueChatController extends GptChatter {
 
+  /** Initialises instance of card clue chat with temperature and topP for prompts. */
   public CardClueChatController() {
     promptFilename = "cardClueChat.txt";
 

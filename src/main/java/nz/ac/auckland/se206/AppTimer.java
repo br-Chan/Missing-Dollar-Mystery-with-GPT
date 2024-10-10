@@ -22,6 +22,13 @@ public class AppTimer {
   private Timer timer;
   private int timeLeft;
 
+  /**
+   * Initialises the app timer instance, and starting the countdown.
+   *
+   * @param appTimerUser the user of the timer
+   * @param timerLabel label to show and update time
+   * @param startingTime the starting time
+   */
   public AppTimer(AppTimerUser appTimerUser, Label timerLabel, int startingTime) {
     this.appTimerUser = appTimerUser;
     this.timerLabel = timerLabel;
