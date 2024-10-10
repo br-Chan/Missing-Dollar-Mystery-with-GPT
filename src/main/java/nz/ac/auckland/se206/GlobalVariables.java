@@ -32,8 +32,8 @@ public class GlobalVariables {
           + " Burst can, and Berry Burst is Louie's favourite drink, so he could have stolen it to"
           + " replace the one that he had spilled.";
   private static String incorrectPresetExplanation =
-      "Dude, Louie is just really suspicious. I found his card on the ground! And he sounded really"
-          + " really like the thief!";
+      "Louie is the thief because he seemed like it. I found his card on the ground, not sure what"
+          + " that means.";
 
   public static void setCardProfilePicClean(boolean cardProfilePicClean) {
     GlobalVariables.cardProfilePicClean = cardProfilePicClean;

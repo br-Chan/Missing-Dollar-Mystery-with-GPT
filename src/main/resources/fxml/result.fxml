@@ -10,27 +10,21 @@
 <?import javafx.scene.text.Font?>
 <?import nz.ac.auckland.se206.components.Sprite?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-            onKeyPressed="#onKeyPressed" prefHeight="749.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/22"
-            style="-fx-background-color: #000"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.ResultController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#onKeyPressed" prefHeight="749.0" prefWidth="950.0" style="-fx-background-color: #000" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.ResultController">
     <HBox alignment="CENTER" prefHeight="749.0" prefWidth="950.0">
         <Pane>
-            <Sprite layoutY="-30" scale="5.8515625" spriteUrl="@../images/guessScrenn/Table.png"/>
-            <Sprite layoutY="15" rotate="2" scale="5.4" spriteUrl="@../images/guessScrenn/Folder.png"/>
-            <Sprite fx:id="resultsSheet" layoutX="225.0" layoutY="60.0" rotate="-2.0" scale="5.5"
-                    spriteUrl="@../images/resultsScreen/IncorrectResponse.png">
+            <Sprite layoutY="-30" scale="5.8515625" spriteUrl="@../images/guessScrenn/Table.png" />
+            <Sprite layoutY="15" rotate="2" scale="5.4" spriteUrl="@../images/guessScrenn/Folder.png" />
+            <Sprite fx:id="resultsSheet" layoutX="225.0" layoutY="60.0" rotate="-2.0" scale="5.5" spriteUrl="@../images/resultsScreen/IncorrectResponse.png">
                 <children>
-                    <TextArea fx:id="resultsArea" editable="false" layoutX="22.0" layoutY="265.0" prefHeight="341.0"
-                              prefWidth="352.0" stylesheets="@../css/results.css" visible="false" wrapText="true">
+                    <TextArea fx:id="resultsArea" editable="false" layoutX="22.0" layoutY="265.0" prefHeight="341.0" prefWidth="352.0" stylesheets="@../css/results.css" visible="false" wrapText="true">
                         <font>
-                            <Font name="Pixelify Sans" size="12" />
+                            <Font size="14.0" />
                         </font>
                     </TextArea>
                 </children>
             </Sprite>
-            <Label fx:id="markingLabel" layoutX="300" layoutY="300" opacity="0"
-                   style="--fx-font-size: 30pt" text="MARKING">
+            <Label fx:id="markingLabel" layoutX="300" layoutY="300" opacity="0" style="--fx-font-size: 30pt" text="MARKING">
                 <font>
                     <Font name="Pixelify Sans" size="50" />
                 </font>
@@ -38,13 +32,12 @@
         </Pane>
     </HBox>
 
-    <Button layoutX="150.0" layoutY="600.0" minWidth="170" mnemonicParsing="false" onAction="#onHandleRestart"
-            prefHeight="39.0" prefWidth="109.0" stylesheets="@../css/styles.css" text="Restart">
+    <Button layoutX="150.0" layoutY="600.0" minWidth="170" mnemonicParsing="false" onAction="#onHandleRestart" prefHeight="39.0" prefWidth="109.0" stylesheets="@../css/styles.css" text="Restart">
         <font>
-            <Font name="Pixelify Sans" size="20.0"/>
+            <Font name="Pixelify Sans" size="20.0" />
         </font>
         <cursor>
-            <Cursor fx:constant="HAND"/>
+            <Cursor fx:constant="HAND" />
         </cursor>
     </Button>
 </AnchorPane>
