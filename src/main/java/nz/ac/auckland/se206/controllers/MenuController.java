@@ -37,7 +37,7 @@ public class MenuController {
   private void onHandleStartButtonClick(ActionEvent event) throws IOException, URISyntaxException {
     // Initialise the scene only when the start button is clicked so that the app timer starts
     // counting down at the right time.
-    TextToSpeech.playVoiceline("Game");
+    TextToSpeech.playVoiceline("Menu");
     SceneManager.addUi(AppUi.GAME, App.loadFxml("game"));
     App.getScene().setRoot(SceneManager.getUiRoot(AppUi.GAME));
   }

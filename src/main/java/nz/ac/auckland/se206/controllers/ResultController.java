@@ -18,8 +18,8 @@ import nz.ac.auckland.se206.GlobalVariables;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
 import nz.ac.auckland.se206.Suspect;
-import nz.ac.auckland.se206.speech.TextToSpeech;
 import nz.ac.auckland.se206.prompts.PromptEngineering;
+import nz.ac.auckland.se206.speech.TextToSpeech;
 
 /**
  * TODO: Fill in this JavaDoc comment.
@@ -65,7 +65,10 @@ public class ResultController extends GptChatter {
                     // Create chat message containing the user's report, then get ChatGPT's response
                     // (Inspector Ros' feedback).
                     ChatMessage generatedFeedback =
-                        runGpt(new ChatMessage("user", GlobalVariables.getReport()), true);
+                        runGpt(
+                            new ChatMessage(
+                                "user", "Mentee's report: " + GlobalVariables.getReport()),
+                            true);
                     String message = generatedFeedback.getContent();
                     System.out.println(message);
 
