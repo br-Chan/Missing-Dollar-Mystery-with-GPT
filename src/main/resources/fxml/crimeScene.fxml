@@ -56,13 +56,13 @@
                            stroke="TRANSPARENT" strokeType="INSIDE" width="500.0"/>
                 <Label layoutX="15" layoutY="10" text="ID CARD" textFill="WHITE">
                     <font>
-                        <Font size="31.0"/>
+                        <Font name="Pixelify Sans" size="31.0"/>
                     </font>
                 </Label>
                 <Button fx:id="cardBackButton" layoutX="450.0" layoutY="13.0" mnemonicParsing="false"
                         onMouseClicked="#hideCardClue" text="Back">
                     <font>
-                        <Font name="Pixelify Sans" />
+                        <Font name="Pixelify Sans"/>
                     </font>
                 </Button>
                 <Sprite layoutX="39.0" layoutY="38.0" scale="17.5" spriteUrl="@../images/crimeScene/ID%20Card.png"/>
@@ -77,11 +77,23 @@
                         spriteUrl="@../images/crimeScene/cardClue/dirt.png"/>
                 <Sprite fx:id="cleaningImage" layoutX="133.0" layoutY="189.0" mouseTransparent="true" scale="3.125"/>
                 <Button layoutX="38.0" layoutY="281.0" mnemonicParsing="false" onMouseClicked="#napkinSelected"
-                        prefHeight="25.0" prefWidth="67.0" text="Napkin"/>
+                        prefHeight="25.0" prefWidth="67.0" text="Napkin">
+                    <font>
+                        <Font name="Pixelify Sans"/>
+                    </font>
+                </Button>
                 <Button layoutX="125.0" layoutY="281.0" mnemonicParsing="false" onMouseClicked="#brushSelected"
-                        prefHeight="25.0" prefWidth="76.0" text="Brush"/>
+                        prefHeight="25.0" prefWidth="76.0" text="Brush">
+                    <font>
+                        <Font name="Pixelify Sans"/>
+                    </font>
+                </Button>
                 <Button layoutX="222.0" layoutY="281.0" mnemonicParsing="false" onMouseClicked="#rubberSelected"
-                        prefHeight="25.0" prefWidth="88.0" text="Rubber"/>
+                        prefHeight="25.0" prefWidth="88.0" text="Rubber">
+                    <font>
+                        <Font name="Pixelify Sans"/>
+                    </font>
+                </Button>
                 <Pane fx:id="cardChatPane" layoutX="37.0" layoutY="318.0" prefHeight="150.0" prefWidth="407.0"
                       visible="false">
                     <children>
@@ -93,7 +105,7 @@
                 <Label fx:id="cardDirtyLabel" layoutX="76.0" layoutY="379.0" text="Too dirty to investigate!"
                        textFill="WHITE">
                     <font>
-                        <Font size="31.0"/>
+                        <Font name="Pixelify Sans" size="31.0"/>
                     </font>
                 </Label>
             </children>
@@ -105,13 +117,17 @@
                            strokeType="INSIDE" width="500.0"/>
                 <Label layoutX="15" layoutY="10" text="Display Case" textFill="WHITE">
                     <font>
-                        <Font size="31.0"/>
+                        <Font name="Pixelify Sans" size="31.0"/>
                     </font>
                 </Label>
                 <Sprite layoutX="-81.0" layoutY="22.0" scale="12.75"
                         spriteUrl="@../images/crimeScene/Drinks%20Case.png"/>
                 <Button fx:id="caseBackButton" layoutX="450.0" layoutY="13.0" mnemonicParsing="false"
-                        onMouseClicked="#hideCaseClue" text="Back"/>
+                        onMouseClicked="#hideCaseClue" text="Back">
+                    <font>
+                        <Font name="Pixelify Sans" />
+                    </font>
+                </Button>
                 <Pane fx:id="redDrinkPane" layoutX="225.0" layoutY="80.0" prefHeight="368.0" prefWidth="319.0"
                       visible="false">
                     <children>
@@ -120,11 +136,15 @@
                         <Text fill="WHITE" layoutX="22.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0"
                               text="Cola Crush" wrappingWidth="200">
                             <font>
-                                <Font size="36.0"/>
+                                <Font name="Pixelify Sans" size="36.0"/>
                             </font>
                         </Text>
                         <Text fill="WHITE" layoutX="22.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0"
-                              text="Current Stock: 15 Last Stocked: 15/9/24" wrappingWidth="112.20001220703125"/>
+                              text="Current Stock: 15 Last Stocked: 15/9/24" wrappingWidth="112.20001220703125">
+                            <font>
+                                <Font name="Pixelify Sans"/>
+                            </font>
+                        </Text>
                     </children>
                 </Pane>
                 <Pane fx:id="blueDrinkPane" layoutX="225.0" layoutY="80.0" prefHeight="368.0" prefWidth="319.0"
@@ -135,11 +155,15 @@
                         <Text fill="WHITE" layoutX="22.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0"
                               text="Coffee Craze" wrappingWidth="250">
                             <font>
-                                <Font size="36.0"/>
+                                <Font name="Pixelify Sans" size="36.0"/>
                             </font>
                         </Text>
                         <Text fill="WHITE" layoutX="22.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0"
-                              text="Current Stock: 12 Last Stocked: 14/9/24" wrappingWidth="112.20001220703125"/>
+                              text="Current Stock: 12 Last Stocked: 14/9/24" wrappingWidth="112.20001220703125">
+                            <font>
+                                <Font name="Pixelify Sans"/>
+                            </font>
+                        </Text>
                     </children>
                 </Pane>
                 <Pane fx:id="greenDrinkPane" layoutX="225.0" layoutY="80.0" prefHeight="368.0" prefWidth="319.0"
@@ -148,11 +172,15 @@
                         <Sprite layoutX="14.0" layoutY="24.0" scale="10.3125"
                                 spriteUrl="@../images/crimeScene/displayCaseClue/greenDrink.png"/>
                         <Text fill="WHITE" layoutX="22.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0"
-                              text="Current Stock: 23 Last Stocked: 16/9/24" wrappingWidth="112.20001220703125"/>
+                              text="Current Stock: 23 Last Stocked: 16/9/24" wrappingWidth="112.20001220703125">
+                            <font>
+                                <Font name="Pixelify Sans"/>
+                            </font>
+                        </Text>
                         <Text fill="WHITE" layoutX="20.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0"
                               text="Elite Energy" wrappingWidth="250">
                             <font>
-                                <Font size="36.0"/>
+                                <Font name="Pixelify Sans" size="36.0"/>
                             </font>
                         </Text>
                     </children>
@@ -165,11 +193,15 @@
                         <Text fill="WHITE" layoutX="22.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0"
                               text="Berry Burst" wrappingWidth="250">
                             <font>
-                                <Font size="36.0"/>
+                                <Font name="Pixelify Sans" size="36.0"/>
                             </font>
                         </Text>
                         <Text fill="WHITE" layoutX="22.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0"
-                              text="Current Stock: 15 Last Stocked: 15/9/24" wrappingWidth="112.20001220703125"/>
+                              text="Current Stock: 15 Last Stocked: 15/9/24" wrappingWidth="112.20001220703125">
+                            <font>
+                                <Font name="Pixelify Sans"/>
+                            </font>
+                        </Text>
                     </children>
                 </Pane>
                 <Pane fx:id="yellowDrinkPane" layoutX="225.0" layoutY="80.0" prefHeight="368.0" prefWidth="319.0"
@@ -180,11 +212,15 @@
                         <Text fill="WHITE" layoutX="22.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0"
                               text="Lemon Lift" wrappingWidth="250">
                             <font>
-                                <Font size="36.0"/>
+                                <Font name="Pixelify Sans" size="36.0"/>
                             </font>
                         </Text>
                         <Text fill="WHITE" layoutX="22.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0"
-                              text="Current Stock: 13 Last Stocked: 14/9/24" wrappingWidth="112.20001220703125"/>
+                              text="Current Stock: 13 Last Stocked: 14/9/24" wrappingWidth="112.20001220703125">
+                            <font>
+                                <Font name="Pixelify Sans"/>
+                            </font>
+                        </Text>
                     </children>
                 </Pane>
                 <Pane fx:id="suspensePane" layoutX="225.0" layoutY="80.0" prefHeight="368.0" prefWidth="319.0">
@@ -256,7 +292,7 @@
                 <Button fx:id="cardBackButton1" layoutX="450.0" layoutY="13.0" mnemonicParsing="false"
                         onMouseClicked="#hideComputerClue" text="Back">
                     <font>
-                        <Font name="Pixelify Sans" />
+                        <Font name="Pixelify Sans"/>
                     </font>
                 </Button>
                 <Sprite layoutX="5.0" layoutY="48.0" scale="30.5" spriteUrl="@../images/crimeScene/Computer.png"/>
@@ -315,7 +351,7 @@
                         <Text layoutX="7.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0"
                               text="Search for an item to show stock levels">
                             <font>
-                                <Font name="Pixelify Sans" />
+                                <Font name="Pixelify Sans"/>
                             </font>
                         </Text>
                         <Pane fx:id="redStockPane" layoutX="-50.0" layoutY="-5.0" prefHeight="368.0" prefWidth="349.0"
@@ -333,13 +369,13 @@
                                       strokeWidth="0.0" text="Current Stock: 15 Last Stocked: 15/9/24"
                                       wrappingWidth="112.20001220703125">
                                     <font>
-                                        <Font name="Pixelify Sans" />
+                                        <Font name="Pixelify Sans"/>
                                     </font>
                                 </Text>
                                 <Text fill="#75e15a" layoutX="164.0" layoutY="117.0" strokeType="OUTSIDE"
                                       strokeWidth="0.0" text="In Stock  ✔" wrappingWidth="112.20001220703125">
                                     <font>
-                                        <Font name="Pixelify Sans" />
+                                        <Font name="Pixelify Sans"/>
                                     </font>
                                 </Text>
                             </children>
@@ -359,13 +395,13 @@
                                       strokeWidth="0.0" text="Current Stock: 12 Last Stocked: 14/9/24"
                                       wrappingWidth="112.20001220703125">
                                     <font>
-                                        <Font name="Pixelify Sans" />
+                                        <Font name="Pixelify Sans"/>
                                     </font>
                                 </Text>
                                 <Text fill="#75e15a" layoutX="164.0" layoutY="117.0" strokeType="OUTSIDE"
                                       strokeWidth="0.0" text="In Stock  ✔" wrappingWidth="112.20001220703125">
                                     <font>
-                                        <Font name="Pixelify Sans" />
+                                        <Font name="Pixelify Sans"/>
                                     </font>
                                 </Text>
                             </children>
@@ -385,13 +421,13 @@
                                       strokeWidth="0.0" text="Current Stock: 23 Last Stocked: 16/9/24"
                                       wrappingWidth="112.20001220703125">
                                     <font>
-                                        <Font name="Pixelify Sans" />
+                                        <Font name="Pixelify Sans"/>
                                     </font>
                                 </Text>
                                 <Text fill="#75e15a" layoutX="164.0" layoutY="117.0" strokeType="OUTSIDE"
                                       strokeWidth="0.0" text="In Stock  ✔" wrappingWidth="112.20001220703125">
                                     <font>
-                                        <Font name="Pixelify Sans" />
+                                        <Font name="Pixelify Sans"/>
                                     </font>
                                 </Text>
                             </children>
@@ -505,7 +541,7 @@
                         <Text layoutX="7.0" layoutY="19.0" strokeType="OUTSIDE" strokeWidth="0.0"
                               text="Search for a time period (hours) to show entry/exit logs">
                             <font>
-                                <Font name="Pixelify Sans" />
+                                <Font name="Pixelify Sans"/>
                             </font>
                         </Text>
                         <Button fx:id="searchLogsButton" layoutX="247.0" layoutY="25.0" mnemonicParsing="false"
@@ -517,7 +553,7 @@
                         <Text layoutX="7.0" layoutY="45.0" strokeType="OUTSIDE" strokeWidth="0.0"
                               text="From                                          To">
                             <font>
-                                <Font name="Pixelify Sans" />
+                                <Font name="Pixelify Sans"/>
                             </font>
                         </Text>
                         <TextArea fx:id="logsArea" editable="false" layoutX="8.0" layoutY="63.0" prefHeight="116.0"
