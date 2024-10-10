@@ -35,6 +35,6 @@ We took Louie in for Expert Interrogation using your report. {You gave us enough
 
 [1 short sentence feedback on each point in mentee's report, and Louie's reaction. RMBR: this is dependent on the score, not the other way round]
 
-{At last, he broke down and admitted to the crime. Congratulations investigator, you've cracked your first case!|Sadly, we were forced to let him go.} After going over the case, I give you an Investigator-Score of {score} out of 6. [Give a supportive comment on the score]. 
+{At last, he broke down and admitted to the crime. Congratulations investigator, you've cracked your first case!|Sadly, we were forced to let him go.} After going over the case, I give you an Investigator's Score of {score} out of 6. [Give a supportive comment on the score]. 
 
 {Case Closed|Better luck next time} - Inspector Ros {--yes|}
