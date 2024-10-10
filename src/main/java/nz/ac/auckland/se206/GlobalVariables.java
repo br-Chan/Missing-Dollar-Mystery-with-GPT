@@ -173,24 +173,28 @@ public class GlobalVariables {
    * @param textArea text area to add the preset explanation to
    */
   public static void togglePresetExplanationCheat(TextArea textArea) {
+    // Outputs cheat message in console
     alertUserOfCheat(
         "adding "
             + (presetExplanationIsCorrect ? "incorrect" : "correct")
             + " explanation to text area.");
-
+    // Toggle cheat explanations
     presetExplanationIsCorrect = !presetExplanationIsCorrect;
+    // Update explanation text box
     textArea.setText(
         presetExplanationIsCorrect ? correctPresetExplanation : incorrectPresetExplanation);
   }
 
   /** Cheat that sets all values in the interactables map to the input parameter. */
   private static void overrideInteractablesMapCheat() {
+    // Outputs cheat message in console
     alertUserOfCheat(
         "overriding interactables map to "
             + (interactablesOverriddenTrue ? "false" : "true")
             + ".");
-    interactablesOverriddenTrue = !interactablesOverriddenTrue;
+    interactablesOverriddenTrue = !interactablesOverriddenTrue; // Toggle conditions for guessing
 
+    // Sets the interactables interacted true/false
     for (String interactable : interactablesMap.keySet()) {
       interactablesMap.put(interactable, interactablesOverriddenTrue);
     }
