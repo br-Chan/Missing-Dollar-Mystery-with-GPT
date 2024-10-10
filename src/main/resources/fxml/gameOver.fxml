@@ -26,7 +26,7 @@
             <Font name="Consolas" size="57.0" />
          </font>
       </Label>
-      <Button fx:id="startButton" alignment="CENTER" contentDisplay="CENTER" layoutX="419.0" layoutY="611.0" mnemonicParsing="false" onAction="#onHandleStartButtonClick" scaleX="1.2" scaleY="1.2" stylesheets="@../css/styles.css" text="START">
+      <Button fx:id="startButton" alignment="CENTER" contentDisplay="CENTER" layoutX="406.0" layoutY="613.0" mnemonicParsing="false" onAction="#onHandleStartButtonClick" scaleX="1.2" scaleY="1.2" stylesheets="@../css/styles.css" text="Restart">
          <font>
             <Font name="Consolas" size="27.0" />
          </font>
@@ -34,9 +34,9 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Label layoutX="267.0" layoutY="151.0" prefHeight="74.0" prefWidth="406.0" text="You didn't complete all you had to do in time! Work faster next time!" textAlignment="CENTER" wrapText="true">
+      <Label layoutX="207.0" layoutY="153.0" prefHeight="74.0" prefWidth="531.0" text="You didn't complete all you had to do in time! You'll have to  work faster next time, Investigator." textAlignment="CENTER" wrapText="true">
          <font>
-            <Font name="Pixelify Sans" size="19.0" />
+            <Font size="24.0" />
          </font>
       </Label>
    </children>
