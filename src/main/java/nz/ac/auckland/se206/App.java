@@ -125,7 +125,7 @@ public class App extends Application {
   public void start(final Stage stage) {
     try {
       System.out.println(Font.loadFont(App.class.getResource("/fonts/Caveat-Bold.ttf").toExternalForm(), 13).getName());
-      System.out.println(Font.loadFont(App.class.getResource("/fonts/PixelifySans-VariableFont_wght.ttf").toExternalForm(), 10));
+      System.out.println(Font.loadFont(App.class.getResource("/fonts/PixelifySans-VariableFont_wght.ttf").toExternalForm(), 12));
       preAddUi();
       GlobalVariables.initialiseInteractablesMap();
       GlobalVariables.initialiseCluesMap();
