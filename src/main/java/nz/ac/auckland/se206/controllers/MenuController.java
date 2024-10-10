@@ -18,7 +18,7 @@ public class MenuController {
 
   @FXML
   private void initialize() throws URISyntaxException {
-    TextToSpeech.loopMusic("HawkingWalking");
+    TextToSpeech.loopMusic("HawkingWalkingWithASax_2");
   }
 
   @FXML
@@ -31,7 +31,7 @@ public class MenuController {
    *
    * @param event the mouse event triggered by clicking the button
    * @throws IOException if there is an I/O error
-   * @throws URISyntaxException 
+   * @throws URISyntaxException
    */
   @FXML
   private void onHandleStartButtonClick(ActionEvent event) throws IOException, URISyntaxException {
