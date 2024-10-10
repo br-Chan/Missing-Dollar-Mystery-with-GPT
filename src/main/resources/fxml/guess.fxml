@@ -22,7 +22,7 @@
             <Sprite fx:id="duewySprite" layoutX="75.0" layoutY="210.0" onMouseClicked="#onHandleSuspect2ButtonClick" scale="5.5" spriteUrl="@../images/guessScrenn/DeweyMugshot.png" />
             <Sprite fx:id="louieSprite" layoutX="62.0" layoutY="360.0" onMouseClicked="#onHandleSuspect3ButtonClick" scale="5.5" spriteUrl="@../images/guessScrenn/LouieMugshot.png" />
             <Sprite layoutX="541.0" layoutY="150.0" rotate="-2.0" scale="4.5" spriteUrl="@../images/guessScrenn/Paperclip.png" />
-            <TextArea fx:id="reportArea" layoutX="277.0" layoutY="341.0" onKeyTyped="#onHandleUpdateReport" prefHeight="318.0" prefWidth="313.0" rotate="-2" style="--border-color: transparent; -fx-background-color: transparent;" wrapText="true" />
+            <TextArea fx:id="reportArea" layoutX="277.0" layoutY="341.0" onKeyTyped="#onHandleUpdateReport" prefHeight="318.0" prefWidth="313.0" rotate="-2" stylesheets="@../css/results.css" wrapText="true" />
         </Pane>
     </HBox>
 
