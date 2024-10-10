@@ -32,8 +32,8 @@ public class Sprite extends Pane {
     this.spriteUrl = new SimpleStringProperty(spriteUrl);
     this.scale = new SimpleDoubleProperty(scale);
 
-    scaleProperty().addListener((_event) -> renderImage());
-    spriteUrlProperty().addListener((_event) -> loadImage());
+    scaleProperty().addListener((event) -> renderImage());
+    spriteUrlProperty().addListener((event) -> loadImage());
 
     loadImage();
   }
