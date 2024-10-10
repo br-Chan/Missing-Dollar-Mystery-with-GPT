@@ -92,15 +92,19 @@ public class CardClueChatController extends GptChatter {
     String messageContent = message.getContent();
     messageContent =
         messageContent
+            // If the debris on card has been cleaned
             + " [Profile picture is "
             + (GlobalVariables.isCardProfilePicClean() ? "clean" : "covered in debris")
             + "]"
+            // If the dirt on card has been cleaned
             + " [Bottom details are "
             + (GlobalVariables.isCardDetailsBottomClean() ? "clean" : "covered in dirt")
             + "]"
+            // If the pencil marks on card has been cleaned
             + " [Top details are "
             + (GlobalVariables.isCardDetailsTopClean() ? "clean" : "covered by pencil marks")
             + "]"
+            // Back side is always clean
             + " [Back side is clean]";
 
     return new ChatMessage(message.getRole(), messageContent);

@@ -373,10 +373,12 @@ public class GameController extends AppTimerUser {
    */
   @Override
   public void switchScene() throws IOException {
+    // Switches to guessing scene if conditions are met
     if (GlobalVariables.canGuessThief()) {
       SceneManager.addUi(AppUi.GUESS, App.loadFxml("guess"));
       App.getScene().setRoot(SceneManager.getUiRoot(AppUi.GUESS));
     } else {
+      // Switches to game over scene if conditions arent met
       SceneManager.addUi(AppUi.GAME_OVER, App.loadFxml("gameOver"));
       App.getScene().setRoot(SceneManager.getUiRoot(AppUi.GAME_OVER));
     }
