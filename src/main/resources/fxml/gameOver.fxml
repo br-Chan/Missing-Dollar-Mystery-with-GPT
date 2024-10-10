@@ -34,7 +34,7 @@
             <Cursor fx:constant="HAND" />
          </cursor>
       </Button>
-      <Label layoutX="207.0" layoutY="153.0" prefHeight="74.0" prefWidth="531.0" text="You didn't complete all you had to do in time! You'll have to  work faster next time, Investigator." textAlignment="CENTER" wrapText="true">
+      <Label layoutX="166.0" layoutY="147.0" prefHeight="74.0" prefWidth="592.0" text="You didn't complete all you had to do in time! You'll have to  work faster next time, Investigator." textAlignment="CENTER" wrapText="true">
          <font>
             <Font name="Pixelify Sans" size="24.0" />
          </font>

@@ -204,8 +204,16 @@ public class GuessController extends AppTimerUser {
     GlobalVariables.setChosenSuspect(chosenSuspect);
     GlobalVariables.setReport(reportArea.getText());
 
-    SceneManager.addUi(AppUi.RESULT, App.loadFxml("result"));
-    App.getScene().setRoot(SceneManager.getUiRoot(AppUi.RESULT));
+    if (GlobalVariables.getChosenSuspect().equals(Suspect.NONE)
+        || GlobalVariables.getReport().length() == 0) {
+      // Conditions to proceed to results scene have not been met, so go to game over scene.
+      SceneManager.addUi(AppUi.GAME_OVER, App.loadFxml("gameOver"));
+      App.getScene().setRoot(SceneManager.getUiRoot(AppUi.GAME_OVER));
+    } else {
+      // Proceed to results scene to see if choice is correct/mark report.
+      SceneManager.addUi(AppUi.RESULT, App.loadFxml("result"));
+      App.getScene().setRoot(SceneManager.getUiRoot(AppUi.RESULT));
+    }
   }
 
   /**
