@@ -96,3 +96,14 @@
 .combo-box .scroll-bar .track {
   -fx-background-color: rgb(240, 240, 240);
 }
+
+.tooltip {
+  -fx-background: rgba(30, 30, 30);
+  -fx-text-fill: white;
+  -fx-background-color: rgba(69, 69, 69, 0.8);
+  -fx-background-radius: 0px; /* Sharp corners */
+  -fx-background-insets: 0;
+  -fx-padding: 0.667em 0.75em 0.667em 0.75em; /* 10px */
+  -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.5), 10, 0.0, 0, 3);
+  -fx-font-size: 0.85em;
+}
