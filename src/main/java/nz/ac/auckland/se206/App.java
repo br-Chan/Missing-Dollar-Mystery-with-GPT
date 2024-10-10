@@ -5,6 +5,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import nz.ac.auckland.se206.SceneManager.AppUi;
@@ -123,7 +124,11 @@ public class App extends Application {
   @Override
   public void start(final Stage stage) {
     try {
+      System.out.println(Font.loadFont(App.class.getResource("/fonts/Caveat-Bold.ttf").toExternalForm(), 13).getName());
+      System.out.println(Font.loadFont(App.class.getResource("/fonts/PixelifySans-VariableFont_wght.ttf").toExternalForm(), 12));
+      // Adds all ui to scene manager
       preAddUi();
+      // Initialise all conditions interacted to be false
       GlobalVariables.initialiseInteractablesMap();
       GlobalVariables.initialiseCluesMap();
     } catch (IOException e) {
@@ -132,17 +137,17 @@ public class App extends Application {
     }
     // Shows the first scene that we set (start)
     showFirstScene(stage, firstAppUi);
-
+    // Sets the stage
     stage
         .widthProperty()
         .addListener(
-            (_a) -> {
+            (a) -> {
               System.out.println("Width: " + stage.getWidth());
             });
     stage
         .heightProperty()
         .addListener(
-            (_a) -> {
+            (a) -> {
               System.out.println("Height: " + stage.getHeight());
             });
   }

@@ -20,12 +20,12 @@
    <top>
       <Label layoutY="100.0" prefHeight="51.0" prefWidth="486.0" scaleX="1.15" scaleY="1.15" BorderPane.alignment="CENTER">
          <font>
-            <Font name="Consolas" size="25.0" />
+            <Font name="Pixelify Sans" size="25.0" />
          </font>
          <graphic>
             <Label alignment="CENTER" prefHeight="18.0" prefWidth="472.0" scaleX="1.15" scaleY="1.15" text="Guess Who Stole the First Dollar!" translateY="8.0">
                <font>
-                  <Font name="Consolas" size="26.0" />
+                  <Font name="Pixelify Sans" size="26.0" />
                </font>
             </Label>
          </graphic>
@@ -107,12 +107,12 @@
                   </ImageView>
                   <Label layoutX="46.0" layoutY="8.0" prefHeight="45.0" prefWidth="65.0" text="Huey" wrapText="true">
                      <font>
-                        <Font name="Consolas" size="27.0" />
+                        <Font name="Pixelify Sans" size="22.0" />
                      </font>
                   </Label>
                   <Label layoutX="20.0" layoutY="52.0" prefHeight="61.0" prefWidth="94.0" text="Restaurant Worker" wrapText="true">
                      <font>
-                        <Font name="Consolas" size="16.0" />
+                        <Font name="Pixelify Sans" size="16.0" />
                      </font>
                   </Label>
                </children>
@@ -127,12 +127,12 @@
                   </ImageView>
                   <Label layoutX="40.0" layoutY="8.0" prefHeight="45.0" prefWidth="76.0" text="Louie" wrapText="true">
                      <font>
-                        <Font name="Consolas" size="27.0" />
+                        <Font name="Pixelify Sans" size="22.0" />
                      </font>
                   </Label>
                   <Label layoutX="19.0" layoutY="53.0" prefHeight="61.0" prefWidth="80.0" text="Office Clerk" wrapText="true">
                      <font>
-                        <Font name="Consolas" size="16.0" />
+                        <Font name="Pixelify Sans" size="16.0" />
                      </font>
                   </Label>
                </children>
@@ -147,12 +147,12 @@
                   </ImageView>
                   <Label layoutX="41.0" layoutY="8.0" prefHeight="45.0" prefWidth="77.0" text="Dewey" wrapText="true">
                      <font>
-                        <Font name="Consolas" size="27.0" />
+                        <Font name="Pixelify Sans" size="22.0" />
                      </font>
                   </Label>
                   <Label layoutX="18.0" layoutY="54.0" prefHeight="61.0" prefWidth="80.0" text="Local Tradesman" wrapText="true">
                      <font>
-                        <Font name="Consolas" size="16.0" />
+                        <Font name="Pixelify Sans" size="16.0" />
                      </font>
                   </Label>
                </children>
@@ -180,12 +180,12 @@
                   </ImageView>
                   <Label layoutX="47.0" layoutY="6.0" prefHeight="45.0" prefWidth="65.0" text="????" textFill="WHITE" wrapText="true">
                      <font>
-                        <Font name="Consolas" size="27.0" />
+                        <Font name="Pixelify Sans" size="27.0" />
                      </font>
                   </Label>
                   <Label layoutX="21.0" layoutY="50.0" prefHeight="61.0" prefWidth="98.0" text="?????????? ??????" textFill="WHITE" wrapText="true">
                      <font>
-                        <Font name="Consolas" size="16.0" />
+                        <Font name="Pixelify Sans" size="16.0" />
                      </font>
                   </Label>
                </children>
@@ -203,12 +203,12 @@
                   </ImageView>
                   <Label layoutX="40.0" layoutY="8.0" prefHeight="45.0" prefWidth="77.0" text="?????" textFill="WHITE" wrapText="true">
                      <font>
-                        <Font name="Consolas" size="27.0" />
+                        <Font name="Pixelify Sans" size="27.0" />
                      </font>
                   </Label>
                   <Label layoutX="19.0" layoutY="53.0" prefHeight="61.0" prefWidth="80.0" text="?????? ?????" textFill="WHITE" wrapText="true">
                      <font>
-                        <Font name="Consolas" size="16.0" />
+                        <Font name="Pixelify Sans" size="16.0" />
                      </font>
                   </Label>
                </children>
@@ -226,12 +226,12 @@
                   </ImageView>
                   <Label layoutX="41.0" layoutY="8.0" prefHeight="45.0" prefWidth="78.0" text="?????" textFill="WHITE" wrapText="true">
                      <font>
-                        <Font name="Consolas" size="27.0" />
+                        <Font name="Pixelify Sans" size="27.0" />
                      </font>
                   </Label>
                   <Label layoutX="18.0" layoutY="54.0" prefHeight="61.0" prefWidth="80.0" text="????? ?????????" textFill="WHITE" wrapText="true">
                      <font>
-                        <Font name="Consolas" size="16.0" />
+                        <Font name="Pixelify Sans" size="16.0" />
                      </font>
                   </Label>
                </children>
@@ -311,23 +311,23 @@
             </TextArea>
             <Label alignment="CENTER" layoutX="36.0" layoutY="160.0" prefHeight="18.0" prefWidth="63.0" scaleX="1.2" scaleY="1.2" text="NOTEPAD" textFill="#5e5a5a">
                <font>
-                  <Font name="Consolas" size="13.0" />
+                  <Font name="Pixelify Sans" size="13.0" />
                </font>
             </Label>
             <Label fx:id="timerLabel" layoutX="18.0" layoutY="101.0" prefHeight="35.0" prefWidth="100.0" text="05:00" textFill="RED">
                <font>
-                  <Font name="Consolas" size="34.0" />
+                  <Font name="Pixelify Sans" size="34.0" />
                </font></Label>
             <Button fx:id="guessButton" layoutX="10.0" layoutY="1.0" mnemonicParsing="false" onAction="#onHandleGuessClick" prefHeight="39.0" prefWidth="109.0" stylesheets="@../css/styles.css" text="Guess">
                <font>
-                  <Font name="Consolas" size="20.0" />
+                  <Font name="Pixelify Sans" size="20.0" />
                </font>
                <cursor>
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
             <Button fx:id="startButton" alignment="CENTER" contentDisplay="CENTER" layoutX="-384.0" layoutY="461.0" mnemonicParsing="false" onAction="#onHandleStartButtonClick" stylesheets="@../css/styles.css" text="Begin">
                <font>
-                  <Font name="Consolas" size="27.0" />
+                  <Font name="Pixelify Sans" size="27.0" />
                </font>
                <cursor>
                   <Cursor fx:constant="HAND" />

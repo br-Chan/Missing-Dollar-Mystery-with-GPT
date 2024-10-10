@@ -22,12 +22,12 @@
          </image></ImageView>
       <Label alignment="CENTER" graphicTextGap="2.0" layoutX="149.0" layoutY="1.0" prefHeight="239.0" prefWidth="650.0" scaleX="1.2" scaleY="1.2" stylesheets="@../css/styles.css" text="The Missing Dollar Mystery" textAlignment="CENTER" wrapText="true">
          <font>
-            <Font name="Consolas" size="57.0" />
+            <Font name="Pixelify Sans" size="57.0" />
          </font>
       </Label>
       <Button fx:id="startButton" alignment="CENTER" contentDisplay="CENTER" layoutX="419.0" layoutY="611.0" mnemonicParsing="false" onAction="#onHandleStartButtonClick" scaleX="1.2" scaleY="1.2" stylesheets="@../css/styles.css" text="START">
          <font>
-            <Font name="Consolas" size="27.0" />
+            <Font name="Pixelify Sans" size="27.0" />
          </font>
          <cursor>
             <Cursor fx:constant="HAND" />

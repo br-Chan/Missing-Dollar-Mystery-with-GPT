@@ -1,4 +1,5 @@
 package nz.ac.auckland.se206.components;
+
 import java.awt.image.BufferedImage;
 import java.io.IOException;
 import java.net.URL;
@@ -9,6 +10,7 @@ import javafx.scene.image.WritableImage;
 import javafx.scene.layout.Pane;
 import javax.imageio.ImageIO;
 
+/** This sprite class turns images into custom sprite elements. */
 public class Sprite extends Pane {
   private BufferedImage image;
   private Canvas canvas;
@@ -16,6 +18,12 @@ public class Sprite extends Pane {
   private SimpleStringProperty spriteUrl;
   private SimpleDoubleProperty scale;
 
+  /**
+   * Sets up the sprite component using an image.
+   *
+   * @param spriteUrl image url for the sprite component
+   * @param scale scaling factor for image size
+   */
   public Sprite(@NamedArg("spriteUrl") String spriteUrl, @NamedArg("scale") double scale) {
     super();
     // Temporary variable to store image into so I can make the image final
@@ -25,8 +33,8 @@ public class Sprite extends Pane {
     this.spriteUrl = new SimpleStringProperty(spriteUrl);
     this.scale = new SimpleDoubleProperty(scale);
 
-    scaleProperty().addListener((_event) -> renderImage());
-    spriteUrlProperty().addListener((_event) -> loadImage());
+    scaleProperty().addListener((event) -> renderImage());
+    spriteUrlProperty().addListener((event) -> loadImage());
 
     loadImage();
   }

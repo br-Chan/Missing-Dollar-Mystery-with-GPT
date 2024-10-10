@@ -91,7 +91,7 @@ public class TextToSpeech {
     player.play();
   }
 
-  /** Stops the player if it is currently playing. */
+  /** Stops player if it currently playing. */
   public static void stopPlayer() {
     if (player != null) {
       player.stop();
