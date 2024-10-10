@@ -97,13 +97,13 @@
   -fx-background-color: rgb(240, 240, 240);
 }
 
-.tooltip {
+/* .tooltip {
   -fx-background: rgba(30, 30, 30);
   -fx-text-fill: white;
-  -fx-background-color: rgba(69, 69, 69, 0.8);
-  -fx-background-radius: 0px; /* Sharp corners */
+  -fx-background-color: rgb(76, 76, 76);
+  -fx-background-radius: 0px;
   -fx-background-insets: 0;
-  -fx-padding: 0.667em 0.75em 0.667em 0.75em; /* 10px */
+  -fx-padding: 0.667em 0.75em 0.667em 0.75em;
   -fx-effect: dropshadow(three-pass-box, rgba(0, 0, 0, 0.5), 10, 0.0, 0, 3);
   -fx-font-size: 0.85em;
-}
+} */
