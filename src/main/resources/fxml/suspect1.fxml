@@ -11,26 +11,45 @@
 <?import javafx.scene.text.Font?>
 <?import nz.ac.auckland.se206.components.Sprite?>
 
-<Pane fx:id="room" focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#onKeyPressed" onKeyReleased="#onKeyReleased" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: #A9A9A9;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.Suspect1Controller">
+<Pane fx:id="room" focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity"
+      minWidth="-Infinity" onKeyPressed="#onKeyPressed" onKeyReleased="#onKeyReleased" prefHeight="500.0"
+      prefWidth="500.0" style="-fx-background-color: #A9A9A9;" xmlns="http://javafx.com/javafx/22"
+      xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.Suspect1Controller">
     <children>
-        <Sprite pickOnBounds="ture" scale="3.90625" spriteUrl="@../images/suspects/Suspect%20House%202.png" />
-        <ImageView fx:id="chatBubbleImage" fitHeight="260.0" fitWidth="216.0" layoutX="219.0" layoutY="11.0" pickOnBounds="true">
+        <Sprite pickOnBounds="ture" scale="3.90625" spriteUrl="@../images/suspects/Suspect%20House%202.png"/>
+        <ImageView fx:id="chatBubbleImage" fitHeight="260.0" fitWidth="216.0" layoutX="219.0" layoutY="11.0"
+                   pickOnBounds="true">
             <image>
-                <Image url="@../images/chatbubblepixel.png" />
+                <Image url="@../images/chatbubblepixel.png"/>
             </image>
         </ImageView>
-        <TextArea fx:id="txtaChat" editable="false" layoutX="270.0" layoutY="75.0" prefHeight="109.0" prefWidth="135.0" style="-fx-background-color: white; -fx-border-color: transparent; -fx-border-width: 0; -fx-effect: null;" stylesheets="@../css/styles.css" wrapText="true" />
-        <Sprite layoutX="166.0" layoutY="228.0" pickOnBounds="ture" scale="3.90625" spriteUrl="@../images/suspects/Louie.png" />
-        <Button fx:id="btnSend" layoutX="415.0" layoutY="465.0" mnemonicParsing="false" onAction="#onSendMessage" prefHeight="25.0" prefWidth="76.0" stylesheets="@../css/styles.css" text="Send">
-         <font>
-            <Font name="Consolas" size="13.0" />
-         </font></Button>
-        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#00000072" height="60.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="210.0" />
+        <TextArea fx:id="txtaChat" editable="false" layoutX="270.0" layoutY="75.0" prefHeight="109.0" prefWidth="135.0"
+                  style="-fx-background-color: white; -fx-border-color: transparent; -fx-border-width: 0; -fx-effect: null;"
+                  stylesheets="@../css/styles.css" wrapText="true">
+            <font>
+                <Font name="Caveat Bold" size="17"/>
+            </font>
+        </TextArea>
+        <Sprite layoutX="166.0" layoutY="228.0" pickOnBounds="ture" scale="3.90625"
+                spriteUrl="@../images/suspects/Louie.png"/>
+        <Button fx:id="btnSend" layoutX="415.0" layoutY="460.0" mnemonicParsing="false" onAction="#onSendMessage"
+                prefHeight="25.0" prefWidth="76.0" stylesheets="@../css/styles.css" text="Send">
+            <font>
+                <Font name="Pixelify Sans" size="13.0"/>
+            </font>
+        </Button>
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#00000072" height="60.0" stroke="BLACK" strokeType="INSIDE"
+                   strokeWidth="0.0" width="210.0"/>
         <Label layoutX="12.0" layoutY="8.0" text="Louie's House" textFill="WHITE">
             <font>
-                <Font size="30.0" />
+                <Font name="Pixelify Sans" size="30.0"/>
             </font>
         </Label>
-      <TextField fx:id="txtInput" layoutX="9.0" layoutY="465.0" opacity="0.85" prefHeight="26.0" prefWidth="404.0" stylesheets="@../css/styles.css" />
+        <TextField fx:id="txtInput" layoutX="9.0" layoutY="455.0" opacity="0.85" prefHeight="26.0" prefWidth="404.0"
+                   stylesheets="@../css/styles.css">
+            <font>
+                <Font name="Caveat Bold" size="17"/>
+            </font>
+        </TextField>
     </children>
 </Pane>
