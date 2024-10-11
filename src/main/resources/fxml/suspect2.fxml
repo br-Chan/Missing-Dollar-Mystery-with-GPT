@@ -14,8 +14,8 @@
 <Pane fx:id="room" focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#onKeyPressed" onKeyReleased="#onKeyReleased" prefHeight="500.0" prefWidth="500.0" style="-fx-background-color: #A9A9A9;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.Suspect2Controller">
     <children>
         <Sprite pickOnBounds="ture" scale="3.90625" spriteUrl="@../images/suspects/Suspect%20House%203.png" />
-        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#00000072" height="60.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="324.0" />
-        <Label layoutX="12.0" layoutY="8.0" text="Guanlin Restaurant" textFill="WHITE">
+        <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#00000072" height="60.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="265.0" />
+        <Label layoutX="12.0" layoutY="8.0" text="Huey's Restaurant" textFill="WHITE">
             <font>
                 <Font name="Pixelify Sans" size="30.0" />
             </font>
@@ -38,11 +38,10 @@
                 <Font name="Caveat Bold" size="17" />
             </font>
         </TextField>
-
-        <Button fx:id="btnSend" layoutX="415.0" layoutY="455.0" mnemonicParsing="false" onAction="#onSendMessage" prefHeight="44.0" prefWidth="76.0" stylesheets="@../css/styles.css" text="Send">
-            <font>
-                <Font name="Pixelify Sans" size="13.0" />
-            </font>
-        </Button>
+      <Button fx:id="btnSend" layoutX="415.0" layoutY="455.0" mnemonicParsing="false" onAction="#onSendMessage" prefHeight="42.0" prefWidth="76.0" stylesheets="@../css/styles.css" text="Send">
+         <font>
+            <Font name="Pixelify Sans" size="13.0" />
+         </font>
+      </Button>
     </children>
 </Pane>

@@ -25,7 +25,7 @@
             </font>
         </TextArea>
         <Sprite layoutX="166.0" layoutY="228.0" pickOnBounds="ture" scale="3.90625" spriteUrl="@../images/suspects/Louie.png" />
-        <Button fx:id="btnSend" layoutX="415.0" layoutY="455.0" mnemonicParsing="false" onAction="#onSendMessage" prefHeight="44.0" prefWidth="76.0" stylesheets="@../css/styles.css" text="Send">
+        <Button fx:id="btnSend" layoutX="415.0" layoutY="455.0" mnemonicParsing="false" onAction="#onSendMessage" prefHeight="42.0" prefWidth="76.0" stylesheets="@../css/styles.css" text="Send">
             <font>
                 <Font name="Pixelify Sans" size="13.0" />
             </font>
