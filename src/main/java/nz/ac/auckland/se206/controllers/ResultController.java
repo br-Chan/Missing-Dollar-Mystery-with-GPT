@@ -53,6 +53,12 @@ public class ResultController extends GptChatter {
       }
     }
 
+    try {
+      TextToSpeech.playMusic("CaseClosed");
+    } catch (URISyntaxException e) {
+      e.printStackTrace();
+    }
+
     // Get ChatGPT to start writing the feedback to the report
     initialiseChatCompletionRequest(false);
     MugshotTransition mt = hideGuessSheet();
