@@ -22,6 +22,6 @@ Age: 33
 Company name: SCROOGE INSURANCE OFFICES
 
 Back side:
-An unidentifiable company logo. Scrawled words in the corner say: "times dropped: |||||"
+An unidentifiable company logo. There are handwritten words on the top: "don't leave behind!"
 
 Only mention the existence of any data if my action prompt explicitly mentions it. Never create your own information to fill in the blanks.

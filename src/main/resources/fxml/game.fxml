@@ -97,7 +97,7 @@
                   <Cursor fx:constant="HAND" />
                </cursor></Button>
             <Rectangle arcHeight="1.0" arcWidth="5.0" disable="true" fill="#bfbfbf" height="431.0" layoutX="15.0" layoutY="125.0" mouseTransparent="true" opacity="0.74" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="123.0" />
-            <Pane layoutX="17.0" layoutY="129.0" mouseTransparent="true" prefHeight="124.0" prefWidth="119.0">
+            <Pane layoutX="17.0" layoutY="129.0" prefHeight="124.0" prefWidth="119.0">
                <children>
                   <Rectangle arcHeight="1.0" arcWidth="5.0" fill="#bfbfbf" height="124.0" opacity="0.74" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="119.0" />
                   <ImageView fitHeight="54.0" fitWidth="54.0" layoutX="-1.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
@@ -115,9 +115,14 @@
                         <Font name="Pixelify Sans" size="16.0" />
                      </font>
                   </Label>
+                  <Button fx:id="suspect2Button1" layoutX="2.0" layoutY="2.0" mnemonicParsing="false" onAction="#onHandleSuspectTwoButtonClick" opacity="0.0" prefHeight="121.0" prefWidth="115.0" text="suspect 2">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
                </children>
             </Pane>
-            <Pane layoutX="17.0" layoutY="256.0" mouseTransparent="true" prefHeight="124.0" prefWidth="119.0">
+            <Pane layoutX="17.0" layoutY="256.0" prefHeight="124.0" prefWidth="119.0">
                <children>
                   <Rectangle arcHeight="1.0" arcWidth="5.0" fill="#bfbfbf" height="124.0" opacity="0.74" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="119.0" />
                   <ImageView fitHeight="54.0" fitWidth="54.0" layoutX="-1.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
@@ -135,9 +140,14 @@
                         <Font name="Pixelify Sans" size="16.0" />
                      </font>
                   </Label>
+                  <Button fx:id="suspect1Button1" layoutX="1.0" layoutY="2.0" mnemonicParsing="false" onAction="#onHandleSuspectOneButtonClick" opacity="0.0" prefHeight="121.0" prefWidth="117.0" text="suspect 1">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
                </children>
             </Pane>
-            <Pane layoutX="17.0" layoutY="383.0" mouseTransparent="true" prefHeight="124.0" prefWidth="119.0">
+            <Pane layoutX="17.0" layoutY="383.0" prefHeight="124.0" prefWidth="119.0">
                <children>
                   <Rectangle arcHeight="1.0" arcWidth="5.0" fill="#bfbfbf" height="124.0" opacity="0.74" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="119.0" />
                   <ImageView fitHeight="54.0" fitWidth="54.0" layoutX="-2.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
@@ -155,9 +165,14 @@
                         <Font name="Pixelify Sans" size="16.0" />
                      </font>
                   </Label>
+                  <Button fx:id="suspect3Button1" layoutX="1.0" layoutY="2.0" mnemonicParsing="false" onAction="#onHandleSuspectThreeButtonClick" opacity="0.0" prefHeight="121.0" prefWidth="116.0" text="suspect 3">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
                </children>
             </Pane>
-            <Pane layoutX="17.0" layoutY="509.0" mouseTransparent="true" prefHeight="43.0" prefWidth="119.0">
+            <Pane layoutX="17.0" layoutY="509.0" prefHeight="43.0" prefWidth="119.0">
                <children>
                   <Rectangle arcHeight="1.0" arcWidth="5.0" fill="#bfbfbf" height="43.0" layoutY="1.0" opacity="0.74" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="119.0" />
                   <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="43.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
@@ -165,9 +180,14 @@
                         <Image url="@../images/magnifying.png" />
                      </image>
                   </ImageView>
+                  <Button fx:id="crimeSceneButton1" layoutY="2.0" mnemonicParsing="false" onAction="#onHandleCrimeSceneButtonClick" opacity="0.0" prefHeight="41.0" prefWidth="118.0" text="crime scene">
+                     <cursor>
+                        <Cursor fx:constant="HAND" />
+                     </cursor>
+                  </Button>
                </children>
             </Pane>
-            <Pane fx:id="hueyPane" layoutX="17.0" layoutY="129.0" mouseTransparent="true" prefHeight="124.0" prefWidth="119.0">
+            <Pane fx:id="hueyPane" layoutX="17.0" layoutY="129.0" prefHeight="124.0" prefWidth="119.0">
                <children>
                   <Rectangle arcHeight="1.0" arcWidth="5.0" fill="#949494" height="124.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="119.0" />
                   <ImageView fitHeight="54.0" fitWidth="54.0" layoutX="-1.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
@@ -190,7 +210,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane fx:id="louiePane" layoutX="17.0" layoutY="256.0" mouseTransparent="true" prefHeight="124.0" prefWidth="119.0">
+            <Pane fx:id="louiePane" layoutX="17.0" layoutY="256.0" prefHeight="124.0" prefWidth="119.0">
                <children>
                   <Rectangle arcHeight="1.0" arcWidth="5.0" fill="#949494" height="124.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="119.0" />
                   <ImageView fitHeight="54.0" fitWidth="54.0" layoutX="-1.0" layoutY="3.0" pickOnBounds="true" preserveRatio="true">
@@ -213,7 +233,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane fx:id="deweyPane" layoutX="17.0" layoutY="383.0" mouseTransparent="true" prefHeight="124.0" prefWidth="119.0">
+            <Pane fx:id="deweyPane" layoutX="17.0" layoutY="383.0" prefHeight="124.0" prefWidth="119.0">
                <children>
                   <Rectangle arcHeight="1.0" arcWidth="5.0" fill="#949494" height="124.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="119.0" />
                   <ImageView fitHeight="54.0" fitWidth="54.0" layoutX="-2.0" layoutY="4.0" pickOnBounds="true" preserveRatio="true">
@@ -236,7 +256,7 @@
                   </Label>
                </children>
             </Pane>
-            <Pane fx:id="cluePane" layoutX="17.0" layoutY="509.0" mouseTransparent="true" prefHeight="43.0" prefWidth="119.0">
+            <Pane fx:id="cluePane" layoutX="17.0" layoutY="509.0" prefHeight="43.0" prefWidth="119.0">
                <children>
                   <Rectangle arcHeight="1.0" arcWidth="5.0" fill="#949494" height="43.0" layoutY="1.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="119.0" />
                   <ImageView fitHeight="35.0" fitWidth="35.0" layoutX="43.0" layoutY="6.0" pickOnBounds="true" preserveRatio="true">
@@ -249,22 +269,22 @@
                   </ImageView>
                </children>
             </Pane>
-            <Pane fx:id="hueyFadePane" layoutX="17.0" layoutY="129.0" mouseTransparent="true" prefHeight="124.0" prefWidth="119.0" visible="false">
+            <Pane fx:id="hueyFadePane" layoutX="17.0" layoutY="129.0" prefHeight="124.0" prefWidth="119.0" visible="false">
                <children>
                   <Rectangle arcHeight="1.0" arcWidth="5.0" fill="#ff00004d" height="124.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="119.0" />
                </children>
             </Pane>
-            <Pane fx:id="louieFadePane" layoutX="17.0" layoutY="256.0" mouseTransparent="true" prefHeight="124.0" prefWidth="119.0" visible="false">
+            <Pane fx:id="louieFadePane" layoutX="17.0" layoutY="256.0" prefHeight="124.0" prefWidth="119.0" visible="false">
                <children>
                   <Rectangle arcHeight="1.0" arcWidth="5.0" fill="#ff00004d" height="124.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="119.0" />
                </children>
             </Pane>
-            <Pane fx:id="deweyFadePane" layoutX="17.0" layoutY="383.0" mouseTransparent="true" prefHeight="124.0" prefWidth="119.0" visible="false">
+            <Pane fx:id="deweyFadePane" layoutX="17.0" layoutY="383.0" prefHeight="124.0" prefWidth="119.0" visible="false">
                <children>
                   <Rectangle arcHeight="1.0" arcWidth="5.0" fill="#ff00004d" height="124.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="119.0" />
                </children>
             </Pane>
-            <Pane fx:id="clueFadePane" layoutX="17.0" layoutY="510.0" mouseTransparent="true" prefHeight="43.0" prefWidth="119.0" visible="false">
+            <Pane fx:id="clueFadePane" layoutX="17.0" layoutY="510.0" prefHeight="43.0" prefWidth="119.0" visible="false">
                <children>
                   <Rectangle arcHeight="1.0" arcWidth="5.0" fill="#ff00004d" height="43.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="119.0" />
                </children>
