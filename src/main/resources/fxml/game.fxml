@@ -306,7 +306,7 @@
             </ImageView>
             <TextArea layoutX="13.0" layoutY="209.0" prefHeight="294.0" prefWidth="109.0" scaleX="1.2" scaleY="1.2" stylesheets="@../css/gameStyle.css" wrapText="true">
                <font>
-                  <Font size="10.0" />
+                  <Font name="Caveat Bold" size="10.0" />
                </font>
             </TextArea>
             <Label alignment="CENTER" layoutX="36.0" layoutY="160.0" prefHeight="18.0" prefWidth="63.0" scaleX="1.2" scaleY="1.2" text="NOTEPAD" textFill="#5e5a5a">

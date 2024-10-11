@@ -31,10 +31,10 @@ public class MugshotTransition {
     Pane parent = (Pane) sprite.getParent();
 
     // Get the sprite object's position and dimensions
-    double spriteX = sprite.getLayoutX(),
-        spriteY = sprite.getLayoutY(),
-        spriteWidth = sprite.getLayoutBounds().getWidth() / 2,
-        spriteHeight = sprite.getLayoutBounds().getHeight() / 2;
+    double spriteX = sprite.getLayoutX();
+    double spriteY = sprite.getLayoutY();
+    double spriteWidth = sprite.getLayoutBounds().getWidth() / 2;
+    double spriteHeight = sprite.getLayoutBounds().getHeight() / 2;
 
     // Set the sprite object's position
     sprite.translateXProperty().set(spriteX);
