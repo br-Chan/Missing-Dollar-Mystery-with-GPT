@@ -129,6 +129,7 @@ public class App extends Application {
       System.out.println(
           Font.loadFont(
               App.class.getResourceAsStream("/fonts/PixelifySans-VariableFont_wght.ttf"), 12));
+
       // Adds all ui to scene manager
       preAddUi();
       // Initialise all conditions interacted to be false

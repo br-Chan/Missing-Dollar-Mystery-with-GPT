@@ -8,6 +8,7 @@ import javafx.animation.PauseTransition;
 import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.TextArea;
 import javafx.scene.input.KeyEvent;
@@ -32,6 +33,7 @@ public class ResultController extends GptChatter {
   @FXML private Sprite resultsSheet;
   @FXML private TextArea resultsArea;
   @FXML private Label markingLabel;
+  @FXML private Button restartButton;
 
   /** Initialises the result controller instance with temperature and topP for the results. */
   public ResultController() {
@@ -64,6 +66,7 @@ public class ResultController extends GptChatter {
     initialiseChatCompletionRequest(false);
     MugshotTransition mt = hideGuessSheet();
     markingLabel.setOpacity(1);
+    restartButton.setVisible(false);
 
     Task<Void> backgroundTask =
         new Task<Void>() {
@@ -76,7 +79,9 @@ public class ResultController extends GptChatter {
             String message;
             try {
               ChatMessage generatedFeedback =
-                  runGpt(new ChatMessage("user", GlobalVariables.getReport()), true);
+                  runGpt(
+                      new ChatMessage("user", "Mentee's report: " + GlobalVariables.getReport()),
+                      true);
               message = generatedFeedback.getContent();
               System.out.println(message);
             } catch (ApiProxyException e) {
@@ -90,6 +95,7 @@ public class ResultController extends GptChatter {
                   // of 6, then Louie must confess and the feedback must end with --yes.
                   if (message.contains("--yes")) {
                     var messageReplaced = message.replace("--yes", "");
+                    restartButton.setVisible(true);
 
                     try {
                       playResultTTS("rightAll");

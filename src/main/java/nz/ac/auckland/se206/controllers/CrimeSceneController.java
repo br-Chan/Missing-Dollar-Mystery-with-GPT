@@ -77,7 +77,7 @@ public class CrimeSceneController {
   @FXML private ComboBox endCombo;
   @FXML private ComboBox stockCombo;
 
-  Duration fiveHundredMilliseconds = new Duration(500);
+  private Duration fiveHundredMilliseconds = new Duration(500);
 
   private Tooltip dirtTooltip = new Tooltip("Clean dirt with brush");
   private Tooltip debrisTooltip = new Tooltip("Clean debris with napkin");
@@ -548,7 +548,6 @@ public class CrimeSceneController {
   public void decreaseOpacity(Node image) {
     // Decrease the opacity of an image by a set amount
     image.setOpacity(image.getOpacity() - 0.005);
-    // checkCardCleaned();
   }
 
   /** Initialises all item panes by adding them to an ArrayList. */
