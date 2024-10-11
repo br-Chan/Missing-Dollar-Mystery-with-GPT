@@ -217,7 +217,7 @@ public class GuessController extends AppTimerUser {
   public void onHandleSubmitReport() throws IOException {
     // Stop the timer
     appTimer.cancelTimer();
-
+    TextToSpeech.stopPlayer();
     switchScene();
   }
 }
