@@ -86,7 +86,6 @@ public class GameController extends AppTimerUser {
   /** Initializes the game scene and sets the initial game view. */
   @FXML
   public void initialize() {
-    System.out.println("Initialising game scene...");
     setGameView(AppUi.STORY);
     showSelected(crimeSceneSelected); // Shows the selection box for the crimescene in minimap
 
@@ -267,7 +266,7 @@ public class GameController extends AppTimerUser {
    * @param event unusued event parameter
    */
   @FXML
-  void onHandleCrimeSceneButtonClick(ActionEvent event) {
+  private void onHandleCrimeSceneButtonClick(ActionEvent event) {
     startButton.setVisible(false);
     setGameView(AppUi.CRIME_SCENE);
     showSelected(crimeSceneSelected);
@@ -287,7 +286,6 @@ public class GameController extends AppTimerUser {
       App.getScene().setRoot(SceneManager.getUiRoot(AppUi.GUESS)); // Switches to guessing scene
 
     } else {
-      System.out.println("Cannot guess");
       flashUnvisitedPanes(); // Flash all unvisited corresponding panes
     }
   }

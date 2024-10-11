@@ -21,14 +21,7 @@ import nz.ac.auckland.se206.components.Sprite;
 import nz.ac.auckland.se206.prompts.PromptEngineering;
 import nz.ac.auckland.se206.speech.TextToSpeech;
 
-/**
- * TODO: Fill in this JavaDoc comment.
- *
- * <p>TODO: Edit the respective fxml file and add to this empty class to implement features. Remove
- * default methods as needed.
- *
- * <p>This is a controller class for the results scene.
- */
+/** This is a controller class for the results scene. */
 public class ResultController extends GptChatter {
   @FXML private Sprite resultsSheet;
   @FXML private TextArea resultsArea;
@@ -62,6 +55,12 @@ public class ResultController extends GptChatter {
       }
     }
 
+    try {
+      TextToSpeech.playMusic("CaseClosed");
+    } catch (URISyntaxException e) {
+      e.printStackTrace();
+    }
+
     // Get ChatGPT to start writing the feedback to the report
     initialiseChatCompletionRequest(false);
     MugshotTransition mt = hideGuessSheet();
@@ -72,8 +71,8 @@ public class ResultController extends GptChatter {
         new Task<Void>() {
           @Override
           protected Void call() throws Exception {
-            //Check if ChatGPT gave user's report a passing score (3 or more) and set visual text
-            //accordingly.
+            // Check if ChatGPT gave user's report a passing score (3 or more) and set visual text
+            // accordingly.
             // Create chat message containing the user's report, then get ChatGPT's response
             // (Inspector Ros' feedback).
             String message;
@@ -192,6 +191,7 @@ public class ResultController extends GptChatter {
    * @throws URISyntaxException exception regarding playing TTS
    */
   private void playResultTTS(String result) throws URISyntaxException {
+    // Determine which audio to play based on the input string.
     switch (result) {
       case "wrongGuess":
         TextToSpeech.playVoiceline("IncorrectGuessIncorrectReasoning");

@@ -108,11 +108,26 @@ public class TextToSpeech {
     }
   }
 
-  
+  /**
+   * Plays a chosen music file.
+   *
+   * @param music the file name of the wave file to play
+   * @throws URISyntaxException if the file oculd not be found
+   */
+  public static void playMusic(String music) throws URISyntaxException {
+    // Plays sound.
+    sound = new Media(App.class.getResource("/sounds/" + music + ".wav").toURI().toString());
+    player = new MediaPlayer(sound);
+    setMuteStatusOfPlayer();
+
+    player.play();
+  }
+
   /**
    * Loops a chosen music file indefinitely.
+   *
    * @param music the file name of the wav file to loop
-   * @throws URISyntaxException if the file could notbe found
+   * @throws URISyntaxException if the file could not be found
    */
   public static void loopMusic(String music) throws URISyntaxException {
     stopPlayer();

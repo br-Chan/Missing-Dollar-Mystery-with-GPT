@@ -74,7 +74,6 @@ public class CardClueChatController extends GptChatter {
     if (msg.getRole().equals("user")) {
       // Add the cleanlines information for the GPT.
       newMsg = appendPrompt(msg);
-      System.out.println(newMsg.getContent());
     } else {
       newMsg = msg;
     }

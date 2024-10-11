@@ -24,8 +24,8 @@ import nz.ac.auckland.se206.SceneManager.AppUi;
  */
 public class GameOverController {
 
-  @FXML Button restartButton;
-  @FXML Label gameOverLabel;
+  @FXML private Button restartButton;
+  @FXML private Label gameOverLabel;
 
   /**
    * TODO: Fill in this JavaDoc comment.
@@ -34,7 +34,6 @@ public class GameOverController {
    */
   @FXML
   public void initialize() {
-    System.out.println("Initialising game over scene...");
     gameOverLabel.setText(
         "You ran out of time! "
             + GlobalVariables.getGameOverReason()
@@ -52,7 +51,7 @@ public class GameOverController {
    * @throws IOException throws exception regarding loading FXML
    */
   @FXML
-  public void handleRestartButtonClick() throws IOException {
+  private void handleRestartButtonClick() throws IOException {
     SceneManager.addUi(AppUi.RESTART, App.loadFxml("restart"));
     App.getScene().setRoot(SceneManager.getUiRoot(AppUi.RESTART));
     // Set what to do after the pause

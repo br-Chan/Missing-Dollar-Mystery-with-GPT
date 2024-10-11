@@ -91,9 +91,6 @@ public class GuessController extends AppTimerUser {
     TextToSpeech.playVoiceline("MakeAGuess");
 
     // Set the starting label to the default text
-    System.out.println("Initialising guess scene...");
-
-    // Set the starting label to the default text
     appTimer = new AppTimer(this, timerLabel, AppTimer.GUESSTIME);
     appTimer.beginCountdown();
 
@@ -249,7 +246,7 @@ public class GuessController extends AppTimerUser {
    * @throws IOException if the fxml file for the results scene cannot be found
    */
   @FXML
-  public void onHandleSubmitReport() throws IOException {
+  private void onHandleSubmitReport() throws IOException {
     // Stop the timer
     appTimer.cancelTimer();
     TextToSpeech.stopPlayer();

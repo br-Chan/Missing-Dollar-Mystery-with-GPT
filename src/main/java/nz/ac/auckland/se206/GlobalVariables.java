@@ -143,7 +143,6 @@ public class GlobalVariables {
     if (!interactablesMap.get("suspect1")
         || !interactablesMap.get("suspect2")
         || !interactablesMap.get("suspect3")) {
-      System.out.println(interactablesMap);
       return false;
     }
 
