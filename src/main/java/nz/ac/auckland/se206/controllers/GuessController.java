@@ -2,8 +2,6 @@ package nz.ac.auckland.se206.controllers;
 
 import java.io.IOException;
 import java.net.URISyntaxException;
-
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -26,65 +24,49 @@ public class GuessController extends AppTimerUser {
    */
   private Suspect chosenSuspect = Suspect.NONE;
 
-  /**
-   * The final position of the items.
-   */
+  /** The final position of the items. */
   private final int[] finalPosition = {450, 150};
 
-  /**
-   * The sprite objects for the suspects.
-   */
-  @FXML
-  private Sprite hueySprite;
+  /** The sprite objects for the suspects. */
+  @FXML private Sprite hueySprite;
 
   /**
    * The sprite objects for the suspects. The sprite objects for the suspects. The sprite objects
    * for the suspects.
    */
-  @FXML
-  private Sprite duewySprite;
+  @FXML private Sprite duewySprite;
 
   /**
    * The sprite objects for the suspects. The sprite objects for the suspects. The sprite objects
    * for the suspects.
    */
-  @FXML
-  private Sprite louieSprite;
+  @FXML private Sprite louieSprite;
 
   /**
    * The text area where the user can input their report. This is used to store the user's report
    * when they click the send report button.
    */
-  @FXML
-  private TextArea reportArea;
+  @FXML private TextArea reportArea;
 
   /**
    * The label that displays the time remaining in the guess scene. This is updated by the app timer
    */
-  @FXML
-  private Label timerLabel;
+  @FXML private Label timerLabel;
 
-  @FXML
-  private Button guessButton;
+  @FXML private Button guessButton;
 
   /**
    * The app timer object that keeps track of the time remaining in the guess scene. This is used to
    */
   private MugshotTransition hueyTransition;
 
-  /**
-   * The app timer object that keeps track of the time remaining in the guess scene.
-   */
+  /** The app timer object that keeps track of the time remaining in the guess scene. */
   private MugshotTransition dewyTransition;
 
-  /**
-   * The app timer object that keeps track of the time remaining in the guess scene.
-   */
+  /** The app timer object that keeps track of the time remaining in the guess scene. */
   private MugshotTransition louieTransition;
 
-  /**
-   * Initializes the guess scene fxml.
-   */
+  /** Initializes the guess scene fxml. */
   @FXML
   public void initialize() throws URISyntaxException {
     // Play the voiceline for the guess scene
@@ -134,19 +116,14 @@ public class GuessController extends AppTimerUser {
     GlobalVariables.setChosenSuspect(chosenSuspect);
   }
 
-  /**
-   * Updates the report in the global variables when the user types in the report text area.
-   */
+  /** Updates the report in the global variables when the user types in the report text area. */
   @FXML
   private void onHandleUpdateReport() {
     updateButton();
     GlobalVariables.setReport(reportArea.getText());
   }
 
-
-  /**
-   * Update the opacity of the guess button when it isn't clickable
-   */
+  /** Update the opacity of the guess button when it isn't clickable */
   private void updateButton() {
     guessButton.setVisible(!chosenSuspect.equals(Suspect.NONE) && !reportArea.getText().isBlank());
   }
@@ -232,7 +209,7 @@ public class GuessController extends AppTimerUser {
       GlobalVariables.setGameOverReason("You need to write up your evidence in your report.");
       SceneManager.addUi(AppUi.GAME_OVER, App.loadFxml("gameOver"));
       App.getScene().setRoot(SceneManager.getUiRoot(AppUi.GAME_OVER));
-      
+
     } else {
       // Proceed to results scene to see if choice is correct/mark report.
       SceneManager.addUi(AppUi.RESULT, App.loadFxml("result"));

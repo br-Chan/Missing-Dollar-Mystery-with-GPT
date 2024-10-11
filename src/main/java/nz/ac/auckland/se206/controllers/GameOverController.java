@@ -41,9 +41,12 @@ public class GameOverController {
             + GlobalVariables.getGameOverReason()
             + " Better luck next time, Investigator!");
     try {
-      if (GlobalVariables.getGameOverReason().equals("You need to talk to all suspects and interact with something in the crime scene.")) {
+      if (GlobalVariables.getGameOverReason()
+          .equals(
+              "You need to talk to all suspects and interact with something in the crime scene.")) {
         TextToSpeech.playVoiceline("GameOverInteractions");
-      } else if (GlobalVariables.getGameOverReason().equals("You need to accuse a suspect in your report.")) {
+      } else if (GlobalVariables.getGameOverReason()
+          .equals("You need to accuse a suspect in your report.")) {
         TextToSpeech.playVoiceline("GameOverAccuse");
       } else {
         TextToSpeech.playVoiceline("GameOverReport");
