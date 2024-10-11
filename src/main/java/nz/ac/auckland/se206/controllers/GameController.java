@@ -267,7 +267,7 @@ public class GameController extends AppTimerUser {
    * @param event unusued event parameter
    */
   @FXML
-  void onHandleCrimeSceneButtonClick(ActionEvent event) {
+  private void onHandleCrimeSceneButtonClick(ActionEvent event) {
     startButton.setVisible(false);
     setGameView(AppUi.CRIME_SCENE);
     showSelected(crimeSceneSelected);

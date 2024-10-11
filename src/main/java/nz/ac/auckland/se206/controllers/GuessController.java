@@ -228,7 +228,7 @@ public class GuessController extends AppTimerUser {
    * @throws IOException if the fxml file for the results scene cannot be found
    */
   @FXML
-  public void onHandleSubmitReport() throws IOException {
+  private void onHandleSubmitReport() throws IOException {
     // Stop the timer
     appTimer.cancelTimer();
     TextToSpeech.stopPlayer();

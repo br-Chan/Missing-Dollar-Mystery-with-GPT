@@ -108,9 +108,9 @@ public class TextToSpeech {
     }
   }
 
-  
   /**
    * Loops a chosen music file indefinitely.
+   *
    * @param music the file name of the wav file to loop
    * @throws URISyntaxException if the file could notbe found
    */
