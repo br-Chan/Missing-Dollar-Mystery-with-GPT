@@ -18,6 +18,8 @@ public class GlobalVariables {
   private static Suspect chosenSuspect = Suspect.NONE;
   private static String report;
 
+  private static String  gameOverReason = null;
+
   // TODO: Set this boolean to false before final release, and turn on for client presentation.
   public static final boolean ENABLE_CHEATS = true;
 
@@ -55,6 +57,10 @@ public class GlobalVariables {
     GlobalVariables.chosenSuspect = suspect;
   }
 
+  public static void setGameOverReason(String gameOverReason) {
+    GlobalVariables.gameOverReason = gameOverReason;
+  }
+
   public static boolean isMuteTts() {
     return muteTts;
   }
@@ -85,6 +91,10 @@ public class GlobalVariables {
 
   public static Suspect getChosenSuspect() {
     return GlobalVariables.chosenSuspect;
+  }
+
+  public static String getGameOverReason() {
+    return GlobalVariables.gameOverReason;
   }
 
   /** Adds all interactables to the interactablesMap and sets their values to false. */

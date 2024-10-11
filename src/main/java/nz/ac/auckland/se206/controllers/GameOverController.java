@@ -4,6 +4,7 @@ import java.io.IOException;
 import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.util.Duration;
 import nz.ac.auckland.se206.App;
@@ -24,6 +25,7 @@ import nz.ac.auckland.se206.SceneManager.AppUi;
 public class GameOverController {
 
   @FXML Button restartButton;
+  @FXML Label gameOverLabel;
 
   /**
    * TODO: Fill in this JavaDoc comment.
@@ -33,6 +35,10 @@ public class GameOverController {
   @FXML
   public void initialize() {
     System.out.println("Initialising game over scene...");
+    gameOverLabel.setText(
+        "You ran out of time! "
+            + GlobalVariables.getGameOverReason()
+            + " Better luck next time, Investigator!");
   }
 
   @FXML
