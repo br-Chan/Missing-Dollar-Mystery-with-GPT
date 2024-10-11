@@ -124,11 +124,8 @@ public class App extends Application {
   @Override
   public void start(final Stage stage) {
     try {
-      System.out.println(
-          Font.loadFont(App.class.getResourceAsStream("/fonts/Caveat-Bold.ttf"), 13));
-      System.out.println(
-          Font.loadFont(
-              App.class.getResourceAsStream("/fonts/PixelifySans-VariableFont_wght.ttf"), 12));
+      Font.loadFont(App.class.getResourceAsStream("/fonts/Caveat-Bold.ttf"), 13);
+      Font.loadFont(App.class.getResourceAsStream("/fonts/PixelifySans-VariableFont_wght.ttf"), 12);
 
       // Adds all ui to scene manager
       preAddUi();

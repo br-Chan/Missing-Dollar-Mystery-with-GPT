@@ -19,7 +19,7 @@
       </TextField>
       <TextArea fx:id="txtaChat" editable="false" prefHeight="119.0" prefWidth="407.0" wrapText="true">
          <font>
-            <Font name="Pixelify Sans" />
+            <Font name="Pixelify Sans" size="17"/>
          </font>
       </TextArea>
    </children>

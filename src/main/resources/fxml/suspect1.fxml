@@ -19,9 +19,9 @@
                 <Image url="@../images/chatbubblepixel.png" />
             </image>
         </ImageView>
-        <TextArea fx:id="txtaChat" editable="false" layoutX="270.0" layoutY="75.0" prefHeight="109.0" prefWidth="135.0" style="-fx-background-color: white; -fx-border-color: transparent; -fx-border-width: 0; -fx-effect: null;" stylesheets="@../css/styles.css" wrapText="true">
+        <TextArea fx:id="txtaChat" editable="false" layoutX="260.0" layoutY="74.0" prefHeight="111.0" prefWidth="159.0" style="-fx-background-color: white; -fx-border-color: transparent; -fx-border-width: 0; -fx-effect: null;" stylesheets="@../css/styles.css" wrapText="true">
             <font>
-                <Font name="Caveat Bold" size="17" />
+                <Font name="Caveat Bold" size="15" />
             </font>
         </TextArea>
         <Sprite layoutX="166.0" layoutY="228.0" pickOnBounds="ture" scale="3.90625" spriteUrl="@../images/suspects/Louie.png" />
