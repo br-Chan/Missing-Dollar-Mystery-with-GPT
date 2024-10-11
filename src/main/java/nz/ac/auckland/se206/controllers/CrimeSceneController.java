@@ -109,7 +109,6 @@ public class CrimeSceneController {
    */
   @FXML
   public void initialize() throws URISyntaxException {
-    System.out.println("Initialising crime scene scene...");
     // Hides all panes relating to clues
     cardPane.setVisible(false);
     casePane.setVisible(false);
@@ -207,7 +206,6 @@ public class CrimeSceneController {
     if (napkinOn) {
       decreaseOpacity(debrisImage);
       if (debrisImage.getOpacity() <= 0) {
-        System.out.println("debris are all gone, vanishing napkin");
         napkinSelected(); // to remove napkin cursor image
       } else if (debrisImage.getOpacity() < 0.1) {
         GlobalVariables.setCardProfilePicClean(true);
@@ -221,7 +219,6 @@ public class CrimeSceneController {
     if (brushOn) {
       decreaseOpacity(dirtImage);
       if (dirtImage.getOpacity() <= 0) {
-        System.out.println("dirt is all gone, vanishing brush");
         brushSelected(); // to remove brush cursor image
       } else if (dirtImage.getOpacity() < 0.1) {
         GlobalVariables.setCardDetailsBottomClean(true);
@@ -235,7 +232,6 @@ public class CrimeSceneController {
     if (rubberOn) {
       decreaseOpacity(pencilImage);
       if (pencilImage.getOpacity() <= 0) {
-        System.out.println("pencil is all gone, vanishing rubber");
         rubberSelected(); // to remove rubber cursor image
       } else if (pencilImage.getOpacity() < 0.01) {
         GlobalVariables.setCardDetailsTopClean(true);

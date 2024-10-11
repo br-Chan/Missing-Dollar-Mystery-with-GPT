@@ -34,7 +34,6 @@ public class GameOverController {
    */
   @FXML
   public void initialize() {
-    System.out.println("Initialising game over scene...");
     gameOverLabel.setText(
         "You ran out of time! "
             + GlobalVariables.getGameOverReason()

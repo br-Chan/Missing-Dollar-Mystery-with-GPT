@@ -26,7 +26,6 @@ public abstract class AbstractSuspectController extends GptChatter {
    */
   @FXML
   public void initialize() {
-    System.out.println("Initialising AbstractSuspectController...");
     if (isFirstTimeInit) {
       isFirstTimeInit = false;
     }

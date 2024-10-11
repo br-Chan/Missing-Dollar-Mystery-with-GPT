@@ -105,9 +105,6 @@ public abstract class GptChatter {
         Choice result = chatCompletionResult.getChoices().iterator().next();
         chatCompletionRequest.addMessage(result.getChatMessage());
 
-        // TODO: delete print statement before release.
-        System.out.println(result.getChatMessage().getContent());
-
         return result.getChatMessage();
       } catch (ApiProxyException e) {
         e.printStackTrace();
