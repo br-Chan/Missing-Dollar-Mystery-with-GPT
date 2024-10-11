@@ -433,7 +433,7 @@
                         <ComboBox fx:id="endCombo" layoutX="157.0" layoutY="25.0" prefHeight="31.0" prefWidth="78.0" promptText="End" style="-fx-font-family: 'Pixelify Sans'" visibleRowCount="4" />
                     </children>
                 </Pane>
-                <Label alignment="TOP_LEFT" layoutX="386.0" layoutY="93.0" prefHeight="104.0" prefWidth="88.0" rotate="-10.0" style="-fx-background-color: D7CF9D;" text="to staff: chg amount of stock to match display case values so we know if any are stolen" textAlignment="CENTER" wrapText="true">
+                <Label alignment="TOP_LEFT" layoutX="386.0" layoutY="93.0" prefHeight="104.0" prefWidth="88.0" rotate="-10.0" style="-fx-background-color: D7CF9D;" text="staff reminder: drinks could be stolen if stock doesn't match display case values!" textAlignment="CENTER" wrapText="true">
                     <font>
                         <Font name="Caveat Bold" size="12.0" />
                     </font>
