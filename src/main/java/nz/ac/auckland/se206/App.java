@@ -5,6 +5,7 @@ import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 import javafx.stage.WindowEvent;
 import nz.ac.auckland.se206.SceneManager.AppUi;
@@ -123,8 +124,11 @@ public class App extends Application {
   @Override
   public void start(final Stage stage) {
     try {
-      // System.out.println(Font.loadFont(App.class.getResource("/fonts/Caveat-Bold.ttf").toExternalForm(), 13).getName());
-      // System.out.println(Font.loadFont(App.class.getResource("/fonts/PixelifySans-VariableFont_wght.ttf").toExternalForm(), 12));
+      System.out.println(
+          Font.loadFont(App.class.getResourceAsStream("/fonts/Caveat-Bold.ttf"), 13));
+      System.out.println(
+          Font.loadFont(
+              App.class.getResourceAsStream("/fonts/PixelifySans-VariableFont_wght.ttf"), 12));
       // Adds all ui to scene manager
       preAddUi();
       // Initialise all conditions interacted to be false
