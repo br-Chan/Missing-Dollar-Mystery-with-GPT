@@ -26,7 +26,7 @@
                     </TextArea>
                 </children>
             </Sprite>
-            <Label fx:id="markingLabel" layoutX="300" layoutY="300" opacity="0" style="--fx-font-size: 30pt" text="MARKING">
+            <Label fx:id="markingLabel" layoutX="390.0" layoutY="200.0" opacity="0" rotate="3.0" style="--fx-font-size: 30pt" text="MARKING">
                 <font>
                     <Font name="Pixelify Sans" size="50" />
                 </font>
