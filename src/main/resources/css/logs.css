@@ -1,7 +1,7 @@
 .text-area {
   -fx-background-color: black;
   -fx-text-fill: rgb(0, 230, 0);
-  -fx-font-family: "Pixelify Sans", "Consolas", "Courier New", monospace;
+  -fx-font-family: "Consolas", "Courier New", monospace;
 }
 
 /* Style the scrollbars */
