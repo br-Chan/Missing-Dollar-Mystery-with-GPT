@@ -1,6 +1,7 @@
 package nz.ac.auckland.se206.controllers;
 
 import java.io.IOException;
+import java.net.URISyntaxException;
 import javafx.animation.PauseTransition;
 import javafx.fxml.FXML;
 import javafx.scene.control.Button;
@@ -11,6 +12,7 @@ import nz.ac.auckland.se206.App;
 import nz.ac.auckland.se206.GlobalVariables;
 import nz.ac.auckland.se206.SceneManager;
 import nz.ac.auckland.se206.SceneManager.AppUi;
+import nz.ac.auckland.se206.speech.TextToSpeech;
 
 /**
  * TODO: Fill in this JavaDoc comment.
@@ -38,6 +40,18 @@ public class GameOverController {
         "You ran out of time! "
             + GlobalVariables.getGameOverReason()
             + " Better luck next time, Investigator!");
+    try {
+      if (GlobalVariables.getGameOverReason().equals("You need to talk to all suspects and interact with something in the crime scene.")) {
+        TextToSpeech.playVoiceline("GameOverInteractions");
+      } else if (GlobalVariables.getGameOverReason().equals("You need to accuse a suspect in your report.")) {
+        TextToSpeech.playVoiceline("GameOverAccuse");
+      } else {
+        TextToSpeech.playVoiceline("GameOverReport");
+      }
+    } catch (URISyntaxException e) {
+      // TODO Auto-generated catch block
+      e.printStackTrace();
+    }
   }
 
   @FXML
