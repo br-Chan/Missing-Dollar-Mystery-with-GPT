@@ -225,8 +225,22 @@ public class GuessController extends AppTimerUser {
     GlobalVariables.setChosenSuspect(chosenSuspect);
     GlobalVariables.setReport(reportArea.getText());
 
-    SceneManager.addUi(AppUi.RESULT, App.loadFxml("result"));
-    App.getScene().setRoot(SceneManager.getUiRoot(AppUi.RESULT));
+    if (GlobalVariables.getChosenSuspect().equals(Suspect.NONE)) {
+      // Conditions to proceed to results scene have not been met, so go to game over scene.
+      GlobalVariables.setGameOverReason("You need to accuse a suspect in your report.");
+      SceneManager.addUi(AppUi.GAME_OVER, App.loadFxml("gameOver"));
+      App.getScene().setRoot(SceneManager.getUiRoot(AppUi.GAME_OVER));
+
+    } else if (GlobalVariables.getReport().length() == 0) {
+      GlobalVariables.setGameOverReason("You need to write up your evidence in your report.");
+      SceneManager.addUi(AppUi.GAME_OVER, App.loadFxml("gameOver"));
+      App.getScene().setRoot(SceneManager.getUiRoot(AppUi.GAME_OVER));
+      
+    } else {
+      // Proceed to results scene to see if choice is correct/mark report.
+      SceneManager.addUi(AppUi.RESULT, App.loadFxml("result"));
+      App.getScene().setRoot(SceneManager.getUiRoot(AppUi.RESULT));
+    }
   }
 
   /**
@@ -238,7 +252,7 @@ public class GuessController extends AppTimerUser {
   public void onHandleSubmitReport() throws IOException {
     // Stop the timer
     appTimer.cancelTimer();
-
+    TextToSpeech.stopPlayer();
     switchScene();
   }
 }

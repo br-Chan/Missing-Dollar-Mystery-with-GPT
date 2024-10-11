@@ -79,7 +79,9 @@ public class ResultController extends GptChatter {
             String message;
             try {
               ChatMessage generatedFeedback =
-                  runGpt(new ChatMessage("user", GlobalVariables.getReport()), true);
+                  runGpt(
+                      new ChatMessage("user", "Mentee's report: " + GlobalVariables.getReport()),
+                      true);
               message = generatedFeedback.getContent();
               System.out.println(message);
             } catch (ApiProxyException e) {

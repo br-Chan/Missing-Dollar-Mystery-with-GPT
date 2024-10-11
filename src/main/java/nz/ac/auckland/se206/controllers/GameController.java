@@ -379,6 +379,8 @@ public class GameController extends AppTimerUser {
       App.getScene().setRoot(SceneManager.getUiRoot(AppUi.GUESS));
     } else {
       // Switches to game over scene if conditions arent met
+      GlobalVariables.setGameOverReason(
+          "You need to talk to all suspects and interact with something in the crime scene.");
       SceneManager.addUi(AppUi.GAME_OVER, App.loadFxml("gameOver"));
       App.getScene().setRoot(SceneManager.getUiRoot(AppUi.GAME_OVER));
     }
