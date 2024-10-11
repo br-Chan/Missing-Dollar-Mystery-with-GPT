@@ -91,11 +91,12 @@ public class ResultController extends GptChatter {
 
             Platform.runLater(
                 () -> {
+                  //Make the restart button visible again
+                  restartButton.setVisible(true);
                   // Handle acceptance logic. If the GPT's score for the report is at least 3 out
                   // of 6, then Louie must confess and the feedback must end with --yes.
                   if (message.contains("--yes")) {
                     var messageReplaced = message.replace("--yes", "");
-                    restartButton.setVisible(true);
 
                     try {
                       playResultTTS("rightAll");

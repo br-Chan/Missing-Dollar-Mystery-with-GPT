@@ -4,6 +4,8 @@
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.Pane?>
@@ -24,7 +26,7 @@
                     </TextArea>
                 </children>
             </Sprite>
-            <Label fx:id="markingLabel" layoutX="300" layoutY="300" opacity="0" style="--fx-font-size: 30pt" text="MARKING">
+            <Label fx:id="markingLabel" layoutX="390.0" layoutY="200.0" opacity="0" rotate="3.0" style="--fx-font-size: 30pt" text="MARKING">
                 <font>
                     <Font name="Pixelify Sans" size="50" />
                 </font>
@@ -40,4 +42,9 @@
             <Cursor fx:constant="HAND" />
         </cursor>
     </Button>
+   <ImageView fitHeight="719.0" fitWidth="947.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../images/Outer%20Border.png" />
+      </image>
+   </ImageView>
 </AnchorPane>

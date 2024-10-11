@@ -125,12 +125,11 @@ public class App extends Application {
   public void start(final Stage stage) {
     try {
       System.out.println(
-          Font.loadFont(App.class.getResource("/fonts/Caveat-Bold.ttf").toExternalForm(), 13)
-              .getName());
+          Font.loadFont(App.class.getResourceAsStream("/fonts/Caveat-Bold.ttf"), 13));
       System.out.println(
           Font.loadFont(
-              App.class.getResource("/fonts/PixelifySans-VariableFont_wght.ttf").toExternalForm(),
-              12));
+              App.class.getResourceAsStream("/fonts/PixelifySans-VariableFont_wght.ttf"), 12));
+
       // Adds all ui to scene manager
       preAddUi();
       // Initialise all conditions interacted to be false

@@ -12,24 +12,16 @@
 <?import javafx.scene.text.Font?>
 <?import nz.ac.auckland.se206.components.Sprite?>
 
-<AnchorPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-            onKeyPressed="#onKeyPressed" prefHeight="749.0" prefWidth="950.0" xmlns="http://javafx.com/javafx/22"
-            xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.GuessController"
-            style="-fx-background-color: #000;">
+<AnchorPane fx:id="borderPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onKeyPressed="#onKeyPressed" prefHeight="749.0" prefWidth="950.0" style="-fx-background-color: #000;" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.GuessController">
     <HBox alignment="CENTER" prefHeight="749.0" prefWidth="950.0">
         <Pane>
-            <Sprite scale="5.8515625" spriteUrl="@../images/guessScrenn/Table.png" layoutY="-30"/>
-            <Sprite layoutY="15" rotate="2" scale="5.4" spriteUrl="@../images/guessScrenn/Folder.png"/>
-            <Sprite layoutX="250.0" layoutY="60.0" rotate="-2.0" scale="5.5"
-                    spriteUrl="@../images/guessScrenn/ConvictionPaper.png"/>
-            <Sprite fx:id="hueySprite" layoutX="70.0" layoutY="80.0" onMouseClicked="#onHandleSuspect1ButtonClick"
-                    scale="5.5" spriteUrl="@../images/guessScrenn/HueyMugshot.png"/>
-            <Sprite fx:id="duewySprite" layoutX="75.0" layoutY="210.0" onMouseClicked="#onHandleSuspect2ButtonClick"
-                    scale="5.5" spriteUrl="@../images/guessScrenn/DeweyMugshot.png"/>
-            <Sprite fx:id="louieSprite" layoutX="62.0" layoutY="360.0" onMouseClicked="#onHandleSuspect3ButtonClick"
-                    scale="5.5" spriteUrl="@../images/guessScrenn/LouieMugshot.png"/>
-            <Sprite layoutX="541.0" layoutY="150.0" rotate="-2.0" scale="4.5"
-                    spriteUrl="@../images/guessScrenn/Paperclip.png"/>
+            <Sprite layoutY="-30" scale="5.8515625" spriteUrl="@../images/guessScrenn/Table.png" />
+            <Sprite layoutY="15" rotate="2" scale="5.4" spriteUrl="@../images/guessScrenn/Folder.png" />
+            <Sprite layoutX="250.0" layoutY="60.0" rotate="-2.0" scale="5.5" spriteUrl="@../images/guessScrenn/ConvictionPaper.png" />
+            <Sprite fx:id="hueySprite" layoutX="70.0" layoutY="80.0" onMouseClicked="#onHandleSuspect1ButtonClick" scale="5.5" spriteUrl="@../images/guessScrenn/HueyMugshot.png" />
+            <Sprite fx:id="duewySprite" layoutX="75.0" layoutY="210.0" onMouseClicked="#onHandleSuspect2ButtonClick" scale="5.5" spriteUrl="@../images/guessScrenn/DeweyMugshot.png" />
+            <Sprite fx:id="louieSprite" layoutX="62.0" layoutY="360.0" onMouseClicked="#onHandleSuspect3ButtonClick" scale="5.5" spriteUrl="@../images/guessScrenn/LouieMugshot.png" />
+            <Sprite layoutX="541.0" layoutY="150.0" rotate="-2.0" scale="4.5" spriteUrl="@../images/guessScrenn/Paperclip.png" />
             <TextArea fx:id="reportArea" layoutX="277.0" layoutY="341.0" onKeyTyped="#onHandleUpdateReport" prefHeight="318.0" prefWidth="313.0" rotate="-2" stylesheets="@../css/results.css" wrapText="true">
                 <font>
                     <Font name="Caveat Bold" size="17" />
@@ -43,21 +35,24 @@
             <Font name="Pixelify Sans" size="20.0" />
         </font>
         <cursor>
-            <Cursor fx:constant="HAND"/>
+            <Cursor fx:constant="HAND" />
         </cursor>
     </Button>
 
-    <ImageView fitHeight="121.0" fitWidth="121.0" layoutX="800.0" layoutY="34.0" mouseTransparent="true"
-               preserveRatio="true">
+    <ImageView fitHeight="121.0" fitWidth="121.0" layoutX="800.0" layoutY="34.0" mouseTransparent="true" preserveRatio="true">
         <image>
-            <Image url="@../images/TimerPixel.png"/>
+            <Image url="@../images/TimerPixel.png" />
         </image>
     </ImageView>
 
-    <Label fx:id="timerLabel" layoutX="815.0" layoutY="101.0" prefHeight="35.0" prefWidth="100.0" text="01:00"
-           textFill="RED">
+    <Label fx:id="timerLabel" layoutX="815.0" layoutY="101.0" prefHeight="35.0" prefWidth="100.0" text="01:00" textFill="RED">
         <font>
             <Font name="Pixelify Sans" size="34.0" />
         </font>
     </Label>
+   <ImageView fitHeight="719.0" fitWidth="947.0" mouseTransparent="true" pickOnBounds="true" preserveRatio="true">
+      <image>
+         <Image url="@../images/Outer%20Border.png" />
+      </image>
+   </ImageView>
 </AnchorPane>

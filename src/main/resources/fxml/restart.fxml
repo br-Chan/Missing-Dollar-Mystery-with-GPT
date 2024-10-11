@@ -1,14 +1,26 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.text.Font?>
 
-<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="599.0" prefWidth="789.0" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.RestartController">
+<Pane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="718.8" prefWidth="946.8" xmlns="http://javafx.com/javafx/22" xmlns:fx="http://javafx.com/fxml/1" fx:controller="nz.ac.auckland.se206.controllers.RestartController">
    <children>
-      <Label layoutX="286.0" layoutY="236.0" prefHeight="127.0" prefWidth="218.0" text="Restarting...">
+      <ImageView fitHeight="711.0" fitWidth="937.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/restart.png" />
+         </image>
+      </ImageView>
+      <ImageView fitHeight="719.0" fitWidth="947.0" pickOnBounds="true" preserveRatio="true">
+         <image>
+            <Image url="@../images/Outer%20Border.png" />
+         </image>
+      </ImageView>
+      <Label layoutX="186.0" layoutY="87.0" text="Restarting...">
          <font>
-            <Font size="42.0" />
+            <Font name="Pixelify Sans Regular" size="96.0" />
          </font>
       </Label>
    </children>
