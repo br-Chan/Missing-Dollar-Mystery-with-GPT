@@ -83,7 +83,7 @@
                 </Label>
             </children>
         </Pane>
-        <Pane fx:id="casePane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0" stylesheets="@../css/styles.css" visible="false">
+        <Pane fx:id="casePane" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="500.0" stylesheets="@../css/styles.css">
             <children>
                 <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#000000b2" height="500.0" stroke="TRANSPARENT" strokeType="INSIDE" width="500.0" />
                 <Label layoutX="15" layoutY="10" text="Display Case" textFill="WHITE">
@@ -107,7 +107,7 @@
                         </Text>
                         <Text fill="WHITE" layoutX="22.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Stock: 15 Last Stocked: 15/9/24" wrappingWidth="112.20001220703125">
                             <font>
-                                <Font name="Pixelify Sans" />
+                                <Font size="14.0" />
                             </font>
                         </Text>
                     </children>
@@ -122,7 +122,7 @@
                         </Text>
                         <Text fill="WHITE" layoutX="22.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Stock: 12 Last Stocked: 14/9/24" wrappingWidth="112.20001220703125">
                             <font>
-                                <Font name="Pixelify Sans" />
+                                <Font size="14.0" />
                             </font>
                         </Text>
                     </children>
@@ -132,7 +132,7 @@
                         <Sprite layoutX="14.0" layoutY="24.0" scale="10.3125" spriteUrl="@../images/crimeScene/displayCaseClue/greenDrink.png" />
                         <Text fill="WHITE" layoutX="22.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Stock: 23 Last Stocked: 16/9/24" wrappingWidth="112.20001220703125">
                             <font>
-                                <Font name="Pixelify Sans" />
+                                <Font size="14.0" />
                             </font>
                         </Text>
                         <Text fill="WHITE" layoutX="20.0" layoutY="223.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Elite Energy" wrappingWidth="250">
@@ -152,7 +152,7 @@
                         </Text>
                         <Text fill="WHITE" layoutX="22.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Stock: 15 Last Stocked: 15/9/24" wrappingWidth="112.20001220703125">
                             <font>
-                                <Font name="Pixelify Sans" />
+                                <Font size="14.0" />
                             </font>
                         </Text>
                     </children>
@@ -167,7 +167,7 @@
                         </Text>
                         <Text fill="WHITE" layoutX="22.0" layoutY="261.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Stock: 13 Last Stocked: 14/9/24" wrappingWidth="112.20001220703125">
                             <font>
-                                <Font name="Pixelify Sans" />
+                                <Font size="14.0" />
                             </font>
                         </Text>
                     </children>
@@ -281,9 +281,9 @@
                                     </font>
                                 </Text>
                                 <Text fill="WHITE" layoutX="164.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Stock: 15 Last Stocked: 15/9/24" wrappingWidth="112.20001220703125">
-                                    <font>
-                                        <Font name="Pixelify Sans" />
-                                    </font>
+                           <font>
+                              <Font size="14.0" />
+                           </font>
                                 </Text>
                                 <Text fill="#75e15a" layoutX="164.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="In Stock  ✔" wrappingWidth="112.20001220703125">
                                     <font>
@@ -302,7 +302,7 @@
                                 </Text>
                                 <Text fill="WHITE" layoutX="164.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Stock: 12 Last Stocked: 14/9/24" wrappingWidth="112.20001220703125">
                                     <font>
-                                        <Font name="Pixelify Sans" />
+                                        <Font size="14.0" />
                                     </font>
                                 </Text>
                                 <Text fill="#75e15a" layoutX="164.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="In Stock  ✔" wrappingWidth="112.20001220703125">
@@ -322,7 +322,7 @@
                                 </Text>
                                 <Text fill="WHITE" layoutX="164.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Stock: 23 Last Stocked: 16/9/24" wrappingWidth="112.20001220703125">
                                     <font>
-                                        <Font name="Pixelify Sans" />
+                                        <Font size="14.0" />
                                     </font>
                                 </Text>
                                 <Text fill="#75e15a" layoutX="164.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="In Stock  ✔" wrappingWidth="112.20001220703125">
@@ -342,7 +342,7 @@
                                 </Text>
                                 <Text fill="WHITE" layoutX="164.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Stock: 16 Last Stocked: 15/9/24" wrappingWidth="112.20001220703125">
                                     <font>
-                                        <Font name="Pixelify Sans" />
+                                        <Font size="14.0" />
                                     </font>
                                 </Text>
                                 <Text fill="#75e15a" layoutX="164.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="In Stock  ✔" wrappingWidth="112.20001220703125">
@@ -362,7 +362,7 @@
                                 </Text>
                                 <Text fill="WHITE" layoutX="164.0" layoutY="136.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Current Stock: 13 Last Stocked: 14/9/24" wrappingWidth="112.20001220703125">
                                     <font>
-                                        <Font name="Pixelify Sans" />
+                                        <Font size="14.0" />
                                     </font>
                                 </Text>
                                 <Text fill="#75e15a" layoutX="164.0" layoutY="117.0" strokeType="OUTSIDE" strokeWidth="0.0" text="In Stock  ✔" wrappingWidth="112.20001220703125">
