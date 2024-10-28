@@ -5,7 +5,9 @@ Developed by:
 -  [Connor Hare](https://github.com/LaSpruca)
 -  [Perry Xie](https://github.com/PerryXie123)
 
-https://github.com/user-attachments/assets/e08c2a2e-8ccb-4908-a80e-806f7cd154c3
+Game demo (6 mins):
+
+[![The Missing Dollar Mystery](https://markdown-videos-api.jorgenkh.no/url?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3Dtjx5raeqHC4)](https://www.youtube.com/watch?v=tjx5raeqHC4)
 
 ## To setup the API to access Chats with ChatGPT
 
