@@ -1,9 +1,11 @@
-# The Missing Dollar Mystery - a JavaFX Game using OpenAI's GPT Model
+# The Missing Dollar Mystery -<br>a JavaFX Game using OpenAI's GPT Model
 
 Developed by:
 -  [Brandon Chan](https://github.com/br-Chan)
 -  [Connor Hare](https://github.com/LaSpruca)
 -  [Perry Xie](https://github.com/PerryXie123)
+
+https://github.com/user-attachments/assets/e08c2a2e-8ccb-4908-a80e-806f7cd154c3
 
 ## To setup the API to access Chats with ChatGPT
 
