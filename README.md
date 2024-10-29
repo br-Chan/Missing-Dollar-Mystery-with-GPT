@@ -1,51 +1,28 @@
-# Sample JavaFX application using Proxy API
+# The Missing Dollar Mystery -<br>a JavaFX Game using OpenAI's GPT Model
 
-## To setup the API to access Chat Completions and TTS
+Developed by:
+-  [Brandon Chan](https://github.com/br-Chan)
+-  [Connor Hare](https://github.com/LaSpruca)
+-  [Perry Xie](https://github.com/PerryXie123)
 
-- add in the root of the project (i.e., the same level where `pom.xml` is located) a file named `apiproxy.config`
-- put inside the credentials that you received from no-reply@digitaledu.ac.nz (put the quotes "")
+Game demo (6 mins):
+
+[![The Missing Dollar Mystery](https://markdown-videos-api.jorgenkh.no/url?url=https%3A%2F%2Fwww.youtube.com%2Fwatch%3Fv%3Dtjx5raeqHC4)](https://www.youtube.com/watch?v=tjx5raeqHC4)
+
+## To setup the API to access Chats with ChatGPT
+
+- add in the root of the project (i.e. the same level where `pom.xml` is located) a file named `apiproxy.config`
+- put inside an OpenAI access token:
 
   ```
-  email: "UPI@aucklanduni.ac.nz"
+  email: "EMAIL_ADDRESS"
   apiKey: "YOUR_KEY"
   ```
-  These are your credentials to invoke the APIs. 
 
-  The token credits are charged as follows:
-  - 1 token credit per 1 character for Googlel "Standard" Text-to-Speech. 
-  - 4 token credit per 1 character for Google "WaveNet" and "Neural2" Text-to-Speech.
-  - 1 token credit per 1 character for OpenAI Text-to-Text.
-  - 1 token credit per 1 token for OpenAI Chat Completions (as determined by OpenAI, charging both input and output tokens).
-
-
-## Free TTS
-
-There is a free TTS service available for testing purposes. You will see this in the `nz.ac.auckland.se206.speech.FreeTextToSpeech` class. The voice here is not as good as the Google and OpenAI TTS services, but it is free and can be used for testing purposes.
-
-You will see an example of this in the `ChatController` class. 
-
-
-
-## To setup codestyle's API
-
-- add in the root of the project (i.e., the same level where `pom.xml` is located) a file named `codestyle.config`
-- put inside the credentials that you received from gradestyle@digitaledu.ac.nz (put the quotes "")
-
-  ```
-  email: "UPI@aucklanduni.ac.nz"
-  accessToken: "YOUR_KEY"
-  ```
-
- these are your credentials to invoke gradestyle
+If you don't have an API key to try out the application (which is likely the case), the video demo above shows off most of the features of our game.
 
 ## To run the game
 
-`./mvnw clean javafx:run`
-
-## To debug the game
-
-`./mvnw clean javafx:run@debug` then in VS Code "Run & Debug", then run "Debug JavaFX"
-
-## To run codestyle
-
-`./mvnw clean compile exec:java@style`
+- Clone the repository with: `https://github.com/br-Chan/Missing-Dollar-Mystery-with-GPT.git`
+- Run the game with: `./mvnw clean javafx:run`
+- To debug the game, run `./mvnw clean javafx:run@debug` then in VS Code "Run & Debug", then run "Debug JavaFX"
