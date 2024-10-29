@@ -15,7 +15,7 @@ Game demo (6 mins):
 - put inside an OpenAI access token:
 
   ```
-  email: "EMAIL_ADDRESS" (see if it doesn't work - addresses of the form UPI@aucklanduni.ac.nz were always used during client meetings and development)
+  email: "EMAIL_ADDRESS"
   apiKey: "YOUR_KEY"
   ```
 
